@@ -103,9 +103,17 @@ rm -rf node_modules
 ## A note on dependencies
 
 `node_modules` lives in the project folder (not in a Docker volume) so your
-editor can see it and give you autocompletion. That works because every
-dependency here is plain JavaScript.
+editor can see it and give you autocompletion. That works because nothing here
+ships a compiled binary: `./setup.sh` installs inside the Linux container, and
+the result is portable to your machine.
 
-Adding a dependency with a compiled native binary would break this, because the
-one installed for Linux in the container would not run on your machine. If you
-need one, install it into a named volume instead.
+Adding a dependency with a native binary would break this, because the one built
+for Linux in the container would not run on your host. If you need one, install
+it into a named volume instead.
+
+One nuance, if you go looking: `nodemon` depends on chokidar 3, which lists
+`fsevents` (a macOS-only native module) as an *optional* dependency. Installing
+in the Linux container skips it, which is why there are no `.node` binaries. If
+you run `npm install` on your host instead, you will get it — harmless, because
+chokidar guards the import and falls back, but it is the one exception to "all
+plain JavaScript".

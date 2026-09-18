@@ -17,11 +17,17 @@ this lab is that you edit a file and reload. TypeScript is allowed only because
 Node 24 strips types at runtime — `erasableSyntaxOnly` is on in `tsconfig.json`
 to keep it that way.
 
-**Every dependency must be pure JavaScript.** `node_modules` lives in the
+**No dependency may ship a compiled binary.** `node_modules` lives in the
 bind-mounted project root so the host editor gets IntelliSense. A dependency with
-a compiled native binary would be installed for Linux and break on the host.
+a native binary would be built for Linux in the container and break on the host.
 Adding one means moving `node_modules` into a named volume and giving up editor
 support — do not do it without asking.
+
+Verified 2026-09-18: zero `.node` files after `./setup.sh`. Known exception,
+benign: `nodemon` -> chokidar 3 lists `fsevents` as an optional macOS-only
+dependency. The container install skips it (`os: ["darwin"]`); a host `npm
+install` picks it up, and chokidar guards the import in a try/catch. Do not
+treat its presence as a breakage.
 
 **No htmx in the base environment.** The lab ships as a plain MPA baseline on
 purpose: attendees see it without htmx first, then add htmx themselves during the
