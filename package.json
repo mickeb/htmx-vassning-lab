@@ -1,0 +1,26 @@
+{
+  "name": "htmx-vassning-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Turnkey lab environment for the HTMX vassning. Node runs in Docker; you edit on the host.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node src/server.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "liquidjs": "^10.29.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.0.0",
+    "chokidar": "^5.0.0",
+    "nodemon": "^3.1.14",
+    "typescript": "^7.0.2"
+  }
+}

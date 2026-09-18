@@ -1,0 +1,16 @@
+services:
+  lab:
+    build: .
+    image: htmx-vassning-lab
+    container_name: htmx-vassning-lab
+    init: true
+    ports:
+      # Host port is overridable (LAB_PORT=4002 ./setup.sh) for when 4000 is taken.
+      - "${LAB_PORT:-4000}:4000"
+    volumes:
+      # Whole project root, so edits on the host are live in the container.
+      - .:/app
+    environment:
+      NODE_ENV: development
+      PORT: "4000"
+    restart: unless-stopped

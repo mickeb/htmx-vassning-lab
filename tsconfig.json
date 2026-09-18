@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Node strips types at runtime instead of compiling. It can only remove
+    // syntax that erases cleanly, so reject the rest (enums, namespaces,
+    // constructor parameter properties) rather than fail at startup.
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+
+    // Type checking only. There is no build step and nothing is emitted.
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
