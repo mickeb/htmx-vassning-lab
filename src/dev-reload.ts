@@ -52,13 +52,24 @@ export async function attachDevReload(
     }, 100)
   }
 
+  // Polling by default, because inotify events do not cross every host's
+  // bind mount -- most notably Windows with the project on the Windows
+  // filesystem rather than inside WSL2, and older Docker Desktop setups using
+  // gRPC-FUSE. Native watching failing is a bad failure: the page still reports
+  // hot reload as "connected" (the SSE stream is fine) while nothing reloads.
+  //
+  // The cost is latency, measured on macOS with VirtioFS: ~520ms mean and
+  // jittery, against ~160ms and steady for native. Imperceptible for
+  // save-and-look, and worth it for working everywhere.
+  //
+  // Set LAB_WATCH_POLL=false to use native watching instead.
+  const usePolling = process.env.LAB_WATCH_POLL !== 'false'
+
   watch([join(projectRoot, 'views'), join(projectRoot, 'public')], {
-    // Filesystem events do not travel reliably across a Docker bind mount on
-    // macOS. Polling a tree this small costs nothing and always works.
-    usePolling: true,
+    usePolling,
     interval: 300,
     ignoreInitial: true,
   }).on('all', scheduleReload)
 
-  console.log('  hot reload: watching views/ and public/ (polling)')
+  console.log(`  hot reload: watching views/ and public/ (${usePolling ? 'polling' : 'native'})`)
 }

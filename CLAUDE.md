@@ -27,10 +27,19 @@ support — do not do it without asking.
 purpose: attendees see it without htmx first, then add htmx themselves during the
 exercises. Do not add `htmx.org` as a dependency or vendor it into `public/`.
 
-**Hot reload uses polling, deliberately.** `usePolling` in `src/dev-reload.ts`
-and `legacyWatch` in `nodemon.json` are not accidents — filesystem events do not
-travel reliably across a Docker bind mount on macOS. Do not "optimise" them to
-native watching.
+**Hot reload polls by default, deliberately.** Not because macOS needs it —
+measured 2026-09-18, native watching works fine on macOS with VirtioFS. The
+reason is hosts where inotify does *not* cross the bind mount: Windows with the
+project on the Windows filesystem rather than inside WSL2, and older Docker
+Desktop using gRPC-FUSE. Native failing there is a nasty failure mode, because
+the page still reports hot reload as "connected" while nothing actually reloads.
+
+Cost of polling, measured: ~520ms mean and jittery, versus ~160ms and steady for
+native. Imperceptible for save-and-look.
+
+`LAB_WATCH_POLL=false` opts into native watching. Do not change the default, and
+do not remove `legacyWatch` from `nodemon.json` (server restarts are rarer and
+not latency-sensitive, so that one stays on polling unconditionally).
 
 ## Layout
 

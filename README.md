@@ -43,6 +43,11 @@ nothing to compile.
 | `public/**` | The browser reloads |
 | `src/*.ts` | The server restarts, then the browser reloads |
 
+Reloads land in about half a second. If you want them snappier and your setup
+supports it, `LAB_WATCH_POLL=false docker compose up -d` switches to native
+filesystem watching (~160ms). The default polls, because that works on every
+host; native watching silently does nothing on some Windows setups.
+
 ## Everyday commands
 
 ```bash
