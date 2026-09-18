@@ -62,7 +62,7 @@ src/server.ts       Express server and routes
 src/dev-reload.ts   Hot reload (development only)
 views/              Liquid templates
 public/             CSS and browser JavaScript, served as-is
-exercises/          Exercise material
+exercises/          Exercise material (none written yet)
 ```
 
 ## The stack
@@ -71,7 +71,7 @@ exercises/          Exercise material
 | --- | --- |
 | Runtime | Node 24 LTS, in Docker |
 | Server | [Express 5](https://expressjs.com/) |
-| Templates | [LiquidJS](https://liquidjs.com/) — the `{% raw %}{% if %}{% endraw %}` / `{% raw %}{{ value }}{% endraw %}` syntax you may know from Jinja2, Twig, Django or Shopify |
+| Templates | [LiquidJS](https://liquidjs.com/) — the `{% if %}` / `{{ value }}` syntax you may know from Jinja2, Twig, Django or Shopify |
 | Styling | Plain CSS |
 | Browser JS | Plain JavaScript, no bundler |
 
@@ -91,7 +91,7 @@ page says `connected`. If it doesn't, `docker compose restart lab`.
 
 ```bash
 docker compose down
-rm -rf node_modules package-lock.json
+rm -rf node_modules
 ./setup.sh
 ```
 
