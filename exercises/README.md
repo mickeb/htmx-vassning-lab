@@ -19,7 +19,7 @@ Each `README.md` covers, using these Swedish headings:
 1. **`Mål`** — what works at the end, in one sentence.
 2. **`Bakgrund`** — the idea being introduced, kept short.
 3. **`Steg`** — what to change, by file. Numbered `###` subheadings.
-4. **`Klart når`** — how you know it worked. **Checks only:** a task list of
+4. **`Klart när`** — how you know it worked. **Checks only:** a task list of
    things to observe, plus a collapsed troubleshooting entry for the ways it
    fails. Explanation does not belong here; the reader is ticking boxes.
 5. **`Det som faktiskt hände`** — the idea the exercise exists for, said plainly
