@@ -841,9 +841,16 @@ det du skrev.</p>
 </tr>
 </tbody>
 </table>
-<p><code>hx-on</code> kopplar JavaScript till en händelse direkt på elementet. För htmx egna
-händelser skriver man <code>::</code> i stället för <code>htmx:</code>, så <code>hx-on::after:swap</code> betyder
-"när htmx har bytt in ett svar här".</p>
+<p><code>hx-on</code> kopplar JavaScript till en händelse direkt på elementet. Attributet
+heter <code>hx-on:</code> plus händelsens namn — <code>hx-on:click</code> för ett vanligt klick.</p>
+<p>htmx egna händelser heter i sin tur <code>htmx:after:swap</code>, <code>htmx:before:request</code> och
+så vidare. Fullt utskrivet blir attributet alltså <code>hx-on:htmx:after:swap</code>. Och
+eftersom varje htmx-händelse börjar med <code>htmx:</code> går det att utelämna ordet men
+behålla kolonet:</p>
+<div class="language-text highlight"><pre><span></span><code>hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
+</code></pre></div>
+<p>Det är därifrån det dubbla kolonet kommer. Båda formerna fungerar; den korta är
+den vanliga.</p>
 <div class="admonition warning">
 <p class="admonition-title">Händelsenamn i htmx 4 har kolon</p>
 <p>Händelsen heter <code>after:swap</code>. Inte <code>afterSwap</code> — det är htmx 2, och det är

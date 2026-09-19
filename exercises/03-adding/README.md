@@ -151,9 +151,18 @@ Det behövs ingen JavaScript-fil för det. Ett attribut på formuläret räcker.
 | --- | --- | --- |
 | `hx-on` | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
 
-`hx-on` kopplar JavaScript till en händelse direkt på elementet. För htmx egna
-händelser skriver man `::` i stället för `htmx:`, så `hx-on::after:swap` betyder
-"när htmx har bytt in ett svar här".
+`hx-on` kopplar JavaScript till en händelse direkt på elementet. Attributet
+heter `hx-on:` plus händelsens namn — `hx-on:click` för ett vanligt klick.
+
+htmx egna händelser heter i sin tur `htmx:after:swap`, `htmx:before:request` och
+så vidare. Fullt utskrivet blir attributet alltså `hx-on:htmx:after:swap`. Och
+eftersom varje htmx-händelse börjar med `htmx:` går det att utelämna ordet men
+behålla kolonet:
+
+    hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
+
+Det är därifrån det dubbla kolonet kommer. Båda formerna fungerar; den korta är
+den vanliga.
 
 !!! warning "Händelsenamn i htmx 4 har kolon"
 
