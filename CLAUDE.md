@@ -163,7 +163,7 @@ The server runs in the container, not on the host. To run something against it:
 
 The environment and the todo app are complete and verified.
 
-**Exercises 1 and 2 are written; the other six are not.** The progression they
+**Exercises 1 and 2 are written; the other seven are not.** The progression they
 follow is written up in the presentation repo, in `state/EXERCISES.md`, and that
 file is the source of truth for it — but it is not frozen. Sections 1 and 2 both
 moved while their prose was being written, and section 2 turned out to specify an
