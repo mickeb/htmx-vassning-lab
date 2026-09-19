@@ -154,3 +154,26 @@ Version pinned deliberately: Material for MkDocs entered maintenance mode with
 9.7.0 on 2025-11-11 — security and critical fixes only, with feature work moved
 to its successor, [Zensical](https://zensical.org/). Since the built output is
 committed, nothing shifts under the talk.
+
+### Always link the official docs when a table introduces attributes
+
+When an exercise presents htmx attributes in a table, the table carries a
+**`Dokumentation`** column linking each one to the htmx 4 reference:
+
+```markdown
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-get` | Vilken adress ska hämtas? | [Referens](https://four.htmx.org/reference/attributes/hx-get) |
+```
+
+The URL pattern is `https://four.htmx.org/reference/attributes/<attribute>`.
+Verified 2026-09-19 for every attribute the progression uses: `hx-get`,
+`hx-post`, `hx-target`, `hx-swap`, `hx-swap-oob`, `hx-trigger`, `hx-include`,
+`hx-indicator`, `hx-push-url`, `hx-replace-url` and `hx-confirm` all return 200.
+
+**Link `four.htmx.org`, never a bare search.** An attendee who looks up an
+attribute unaided lands on htmx 2 documentation, where the answer looks right and
+is wrong. Sending them somewhere correct is the point of the column.
+
+The attribute name in the first column stays plain code — the link lives in the
+documentation column, so nothing is linked twice.

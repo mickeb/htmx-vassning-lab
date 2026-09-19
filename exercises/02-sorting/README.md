@@ -21,11 +21,11 @@ Kolumnrubriken är redan en länk, och den fungerar redan. Den pekar på
 
 Tre attribut räcker:
 
-| Attribut | Svarar på |
-| --- | --- |
-| `hx-get` | Vilken adress ska hämtas? |
-| `hx-target` | Var i sidan ska svaret in? |
-| [`hx-swap`](https://four.htmx.org/reference/attributes/hx-swap) | Hur ska det sättas in? |
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-get` | Vilken adress ska hämtas? | [Referens](https://four.htmx.org/reference/attributes/hx-get) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
 Adressen är `/todo-app/fragments/table`. Den rutten fanns redan innan du
 började — den renderar exakt samma tabell, men utan sidan runt omkring.
