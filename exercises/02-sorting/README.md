@@ -85,14 +85,6 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
 ## Klart när
 
-**Ingenting ska se annorlunda ut.** Sorteringen fungerade innan du rörde filen
-och fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
-tecken på att något gått fel — det är hela poängen.
-
-Det som ändrats är *hur* svaret hämtas. I stället för att webbläsaren navigerar
-till en ny sida gör htmx anropet i bakgrunden med `fetch` och byter ut tabellen
-på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
-
 - [ ] Sorteringen beter sig **precis som förut** — ett klick vänder ordningen och chevronen pekar åt andra hållet.
 - [ ] **Sidan laddas inte om.** Ingen blinkning, ingen laddningssnurra i fliken, och rullningsläget står kvar där du lämnade det.
 - [ ] Nätverkspanelen visar **en** förfrågan till `/todo-app/fragments/table?sort=…` — och ingen ny dokumentladdning.
@@ -113,7 +105,16 @@ på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
 
 ## Det som faktiskt hände
 
-Klicka runt lite och titta på tabellen som kom tillbaka. Den bär **sin egen**
+**Ingenting ser annorlunda ut.** Sorteringen fungerade innan du rörde filen och
+fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
+tecken på att något gått fel — det är hela poängen.
+
+Det som ändrades är *hur* svaret hämtas. I stället för att webbläsaren navigerar
+till en ny sida gör htmx anropet i bakgrunden med `fetch` och byter ut tabellen
+på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
+
+Och det finns mer att titta på. Klicka runt lite och titta på tabellen som kom
+tillbaka. Den bär **sin egen**
 chevron åt rätt håll, **sin egen** länk som pekar på motsatt ordning, och sin
 egen sökterm om du har sökt.
 

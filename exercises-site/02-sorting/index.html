@@ -672,12 +672,6 @@ lägger i den.</strong> Ingenting minns något mellan förfrågningar.</p>
 och det är inte tänkt att förbli så. En senare övning tar bort den ena.</p>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
-<p><strong>Ingenting ska se annorlunda ut.</strong> Sorteringen fungerade innan du rörde filen
-och fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
-tecken på att något gått fel — det är hela poängen.</p>
-<p>Det som ändrats är <em>hur</em> svaret hämtas. I stället för att webbläsaren navigerar
-till en ny sida gör htmx anropet i bakgrunden med <code>fetch</code> och byter ut tabellen
-på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sorteringen beter sig <strong>precis som förut</strong> — ett klick vänder ordningen och chevronen pekar åt andra hållet.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Sidan laddas inte om.</strong> Ingen blinkning, ingen laddningssnurra i fliken, och rullningsläget står kvar där du lämnade det.</li>
@@ -697,7 +691,14 @@ handlar om, och den går inte att se på sidan.</p>
 det inte med <code>/todo-app/fragments/table</code>?"</em> ovan.</p>
 </details>
 <h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<p>Klicka runt lite och titta på tabellen som kom tillbaka. Den bär <strong>sin egen</strong>
+<p><strong>Ingenting ser annorlunda ut.</strong> Sorteringen fungerade innan du rörde filen och
+fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
+tecken på att något gått fel — det är hela poängen.</p>
+<p>Det som ändrades är <em>hur</em> svaret hämtas. I stället för att webbläsaren navigerar
+till en ny sida gör htmx anropet i bakgrunden med <code>fetch</code> och byter ut tabellen
+på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
+<p>Och det finns mer att titta på. Klicka runt lite och titta på tabellen som kom
+tillbaka. Den bär <strong>sin egen</strong>
 chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin
 egen sökterm om du har sökt.</p>
 <p>Ingenting på klienten håller reda på hur listan är sorterad. Det finns ingen
