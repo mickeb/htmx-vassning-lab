@@ -99,3 +99,58 @@ Attendees come from mixed programming backgrounds and many do not work with Node
 Exercises
 should be about hypermedia and HTMX, not about Node, npm or tooling. Anything
 requiring a terminal command beyond `./setup.sh` probably needs rethinking.
+
+## The exercise site
+
+Attendees read these in a browser, not in an editor. The Markdown in this folder
+is the source; [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+turns it into a static site.
+
+`mkdocs.yml` at the repo root holds the configuration and the nav order. Build
+from the repo root:
+
+```bash
+docker run --rm -v "${PWD}:/docs" squidfunk/mkdocs-material:9.7.7 build
+```
+
+Live preview while writing, with reload on save, on <http://localhost:8000>:
+
+```bash
+docker run --rm -it -p 8000:8000 -v "${PWD}:/docs" squidfunk/mkdocs-material:9.7.7
+```
+
+Nothing is installed on the host and nothing is added to `package.json`. The
+toolchain is an authoring tool, not a lab dependency — which is what keeps the
+no-build-step rule intact for attendees.
+
+**Commit the generated `exercises-site/`.** `src/server.ts` serves it at
+<http://localhost:4000/exercises>, so attendees get the site by cloning and
+running `./setup.sh`, with no extra tooling and no second server.
+
+The output goes to `exercises-site/` rather than `public/` on purpose: the hot
+reload watcher polls `public/` every 300ms, and the generated site is 49 files
+and 2.6 MB (measured 2026-09-19).
+
+**This file is excluded from the site** (`exclude_docs` in `mkdocs.yml`). It is
+author notes in English; `index.md` beside it is the attendee-facing front page
+in Swedish.
+
+### Hiding hints
+
+The reason for a real site rather than raw Markdown. A collapsed block:
+
+```markdown
+??? tip "Ledtråd — formen på en import map"
+
+    Indented four spaces. Anything can go in here, including code blocks.
+```
+
+`???` starts collapsed, `???+` starts open, and `!!!` is a plain admonition that
+cannot be collapsed at all — use that for things nobody should be able to skip,
+like the htmx 2 version trap. Types worth knowing: `tip`, `warning`, `example`,
+`question`, `note`, `danger`.
+
+Version pinned deliberately: Material for MkDocs entered maintenance mode with
+9.7.0 on 2025-11-11 — security and critical fixes only, with feature work moved
+to its successor, [Zensical](https://zensical.org/). Since the built output is
+committed, nothing shifts under the talk.
