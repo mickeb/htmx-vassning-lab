@@ -20,13 +20,10 @@ Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad 
 produktion: samma `import`-rader i koden, olika URL i tabellen. htmx finns i
 båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
 
-Här används samma mekanism till att hålla versionsnumret på ett enda ställe.
-
 !!! warning "Versionen måste stå utskriven"
 
-    `npm install htmx.org` ger dig **htmx 2**, inte htmx 4. En CDN-länk utan
-    versionsnummer ger också htmx 2. htmx 4 ligger kvar på dist-taggen `next`
-    fram till början av 2027.
+    En CDN-länk utan versionsnummer ger **htmx 2**, inte htmx 4. htmx 4 ligger
+    kvar på dist-taggen `next` fram till början av 2027.
 
     Nästan allt htmx-material som finns ute — handledningar, forumsvar och det
     en AI-assistent föreslår — gäller htmx 2. Det ser korrekt ut och är fel.
