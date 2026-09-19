@@ -428,16 +428,33 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ga-vidare" class="md-nav__link">
+    <nav class="md-nav" aria-label="Det som faktiskt hände">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titta-i-natverkspanelen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gå vidare
+        Titta i nätverkspanelen
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Titta på tabellen som kom tillbaka
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -556,16 +573,33 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ga-vidare" class="md-nav__link">
+    <nav class="md-nav" aria-label="Det som faktiskt hände">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titta-i-natverkspanelen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gå vidare
+        Titta i nätverkspanelen
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Titta på tabellen som kom tillbaka
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -678,13 +712,6 @@ och det är inte tänkt att förbli så. En senare övning tar bort den ena.</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan till <code>/todo-app/fragments/table?sort=…</code> — och ingen ny dokumentladdning.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Du kan klicka <strong>flera gånger i rad</strong> och ordningen växlar varje gång.</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Jämför med en riktig sidladdning</p>
-<p>Ha nätverkspanelen öppen och tryck <code>F5</code>. Då kommer dokumentet, stilmallen,
-skripten och allt det andra in igen — en hel sida.</p>
-<p>Klicka sedan på <strong>Created at</strong>. En rad i panelen. Det är skillnaden övningen
-handlar om, och den går inte att se på sidan.</p>
-</div>
 <details class="question">
 <summary>Det växlar bara en gång — sedan står det still</summary>
 <p>Då saknar <code>hx-get</code> sin query-sträng. Se den fällbara rutan <em>"Varför räcker
@@ -697,20 +724,22 @@ tecken på att något gått fel — det är hela poängen.</p>
 <p>Det som ändrades är <em>hur</em> svaret hämtas. I stället för att webbläsaren navigerar
 till en ny sida gör htmx anropet i bakgrunden med <code>fetch</code> och byter ut tabellen
 på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
-<p>Och det finns mer att titta på. Klicka runt lite och titta på tabellen som kom
-tillbaka. Den bär <strong>sin egen</strong>
+<h3 id="titta-i-natverkspanelen">Titta i nätverkspanelen<a class="headerlink" href="#titta-i-natverkspanelen" title="Permanent link">&para;</a></h3>
+<p>Ha den öppen och tryck <code>F5</code>. Dokumentet, stilmallen, skripten och allt det andra
+kommer in igen — en hel sida.</p>
+<p>Klicka sedan på <strong>Created at</strong>. En rad.</p>
+<p>Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det som
+kom tillbaka är fortfarande HTML. Ingen ostilad datadump att bygga ihop något
+av — en färdig tabell.</p>
+<p>Inget att köra, inget att skriva. Bara att titta.</p>
+<h3 id="titta-pa-tabellen-som-kom-tillbaka">Titta på tabellen som kom tillbaka<a class="headerlink" href="#titta-pa-tabellen-som-kom-tillbaka" title="Permanent link">&para;</a></h3>
+<p>Klicka runt lite och läs den. Den bär <strong>sin egen</strong>
 chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin
 egen sökterm om du har sökt.</p>
 <p>Ingenting på klienten håller reda på hur listan är sorterad. Det finns ingen
 variabel någonstans som säger <code>sortOrder = 'desc'</code>, ingen kod som vänder en
 pil, inget tillstånd att hålla synkroniserat med något annat.</p>
 <p>Servern renderade en korrekt tabell, och sidan blev den.</p>
-<h2 id="ga-vidare">Gå vidare<a class="headerlink" href="#ga-vidare" title="Permanent link">&para;</a></h2>
-<p>Öppna nätverkspanelen och sortera igen. Jämför det som kommer tillbaka nu med
-vad en full sidladdning skickade — ladda om sidan med <code>F5</code> och titta på den
-första raden i panelen.</p>
-<p>Samma innehåll, en bråkdel av antalet byte, och det är fortfarande HTML.</p>
-<p>Inget att köra, inget att skriva. Bara att titta.</p>
 
 
 

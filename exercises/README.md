@@ -14,13 +14,24 @@ exercises/
   02-.../
 ```
 
-Each `README.md` covers:
+Each `README.md` covers, using these Swedish headings:
 
-1. **Goal** — what works at the end, in one sentence.
-2. **Background** — the idea being introduced, kept short.
-3. **Steps** — what to change, by file.
-4. **Done when** — how you know it worked, observable in the browser.
-5. **Going further** — optional, for people who finish early.
+1. **`Mål`** — what works at the end, in one sentence.
+2. **`Bakgrund`** — the idea being introduced, kept short.
+3. **`Steg`** — what to change, by file. Numbered `###` subheadings.
+4. **`Klart når`** — how you know it worked. **Checks only:** a task list of
+   things to observe, plus a collapsed troubleshooting entry for the ways it
+   fails. Explanation does not belong here; the reader is ticking boxes.
+5. **`Det som faktiskt hände`** — the idea the exercise exists for, said plainly
+   once it has been done. This is where explanation goes, and where anything
+   worth examining lives, as `###` subheadings — the network panel, the response,
+   whatever the exercise made visible. It replaces a separate "going further"
+   section: the extra material is reading and looking, not more to build, so it
+   belongs with the payoff rather than after it.
+
+A section is dropped when an exercise has nothing for it, rather than padded.
+Exercise 1 has no `Det som faktiskt hände`, because installing a library is not
+an idea to land.
 
 ## Starting state
 
