@@ -12,6 +12,8 @@ export interface Todo {
 export interface TodoStats {
   total: number
   complete: number
+  /** Everything there is, is done. False for an empty list -- nothing is not everything. */
+  allComplete: boolean
 }
 
 /** Everything the list needs to render, whether as a full page or as a fragment. */
@@ -54,10 +56,9 @@ export async function stats(): Promise<TodoStats> {
     `SELECT count(*) AS total, count(*) FILTER (WHERE complete) AS complete FROM todos`,
   )
   const row = rows[0]
-  return {
-    total: Number(row?.total ?? 0),
-    complete: Number(row?.complete ?? 0),
-  }
+  const total = Number(row?.total ?? 0)
+  const complete = Number(row?.complete ?? 0)
+  return { total, complete, allComplete: total > 0 && complete === total }
 }
 
 /** The shared model behind both GET /todo-app and GET /todo-app/fragments/table. */

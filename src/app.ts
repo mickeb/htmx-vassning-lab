@@ -128,7 +128,8 @@ todoApp.post('/fragments/todos/:id/complete', async (req, res) => {
     return
   }
 
-  res.render('todo-app/complete-response', { todo, q, sort, stats: await todos.stats() })
+  const stats = await todos.stats()
+  res.render('todo-app/complete-response', { todo, q, sort, stats })
 })
 
 todoApp.post('/fragments/todos/clear', async (req, res) => {
