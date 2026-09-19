@@ -4,7 +4,7 @@
 {% endcomment %}
 <header class="todo-header" id="todo-header">
   <h1 class="todo-header__title">Todos</h1>
-  <p class="todo-header__count">{{ stats.complete }} of {{ stats.total }} todos completed</p>
+  <p class="todo-header__count">{{ stats.total | minus: stats.complete }} todos left</p>
 
   <form class="todo-header__clear" method="post" action="/todo-app/todos/clear"
         onsubmit="return confirm('Delete all todos? This cannot be undone.')">
