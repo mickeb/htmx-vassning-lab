@@ -726,13 +726,14 @@ tecken på att något gått fel — det är hela poängen.</p>
 till en ny sida gör htmx anropet i bakgrunden med <code>fetch</code> och byter ut tabellen
 på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
 <h3 id="titta-i-natverkspanelen">Titta i nätverkspanelen<a class="headerlink" href="#titta-i-natverkspanelen" title="Permanent link">&para;</a></h3>
-<p>Ha den öppen och tryck <code>F5</code>. Dokumentet, stilmallen, skripten och allt det andra
-kommer in igen — en hel sida.</p>
-<p>Klicka sedan på <strong>Created at</strong>. En rad.</p>
-<p>Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det som
-kom tillbaka är fortfarande HTML. Svaret är alltså inte ett JSON-objekt som kod
-i webbläsaren måste tolka, förstå och rendera till element. Det är färdiga
-tabellrader som går att sätta in som de är.</p>
+<p>Ha den öppen och tryck <code>F5</code>. Panelen fylls med allt sidan består av: dokumentet,
+stilmallen, skripten.</p>
+<p>Klicka sedan på <strong>Created at</strong>. Nu tillkommer en enda rad i panelen — förfrågan
+till <code>/todo-app/fragments/table</code>.</p>
+<p>Samma innehåll i listan som efter en full sidladdning, en bråkdel av antalet
+byte, och det som kom tillbaka är fortfarande HTML. Svaret är alltså inte ett
+JSON-objekt som kod i webbläsaren måste tolka, förstå och rendera till element.
+Det är färdiga tabellrader som går att sätta in som de är.</p>
 <h3 id="titta-pa-tabellen-som-kom-tillbaka">Titta på tabellen som kom tillbaka<a class="headerlink" href="#titta-pa-tabellen-som-kom-tillbaka" title="Permanent link">&para;</a></h3>
 <p>Klicka runt lite och läs den. Den bär <strong>sin egen</strong>
 chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin

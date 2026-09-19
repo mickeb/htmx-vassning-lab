@@ -108,15 +108,16 @@ på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
 
 ### Titta i nätverkspanelen
 
-Ha den öppen och tryck `F5`. Dokumentet, stilmallen, skripten och allt det andra
-kommer in igen — en hel sida.
+Ha den öppen och tryck `F5`. Panelen fylls med allt sidan består av: dokumentet,
+stilmallen, skripten.
 
-Klicka sedan på **Created at**. En rad.
+Klicka sedan på **Created at**. Nu tillkommer en enda rad i panelen — förfrågan
+till `/todo-app/fragments/table`.
 
-Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det som
-kom tillbaka är fortfarande HTML. Svaret är alltså inte ett JSON-objekt som kod
-i webbläsaren måste tolka, förstå och rendera till element. Det är färdiga
-tabellrader som går att sätta in som de är.
+Samma innehåll i listan som efter en full sidladdning, en bråkdel av antalet
+byte, och det som kom tillbaka är fortfarande HTML. Svaret är alltså inte ett
+JSON-objekt som kod i webbläsaren måste tolka, förstå och rendera till element.
+Det är färdiga tabellrader som går att sätta in som de är.
 
 ### Titta på tabellen som kom tillbaka
 
