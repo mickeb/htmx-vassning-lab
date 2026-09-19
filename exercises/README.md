@@ -44,8 +44,15 @@ being shown the answers to later ones:
 git diff main solution/01-first-swap
 ```
 
+## Language
+
+**Write exercises in English** — the `README.md` in each exercise folder, and any
+other prose. Code, identifiers and comments are English too. Do not mix languages
+within a file.
+
 ## Writing for this audience
 
-Attendees come from mixed backgrounds and many do not work with Node. Exercises
+Attendees come from mixed programming backgrounds and many do not work with Node.
+Exercises
 should be about hypermedia and HTMX, not about Node, npm or tooling. Anything
 requiring a terminal command beyond `./setup.sh` probably needs rethinking.

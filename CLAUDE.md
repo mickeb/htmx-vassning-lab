@@ -6,9 +6,12 @@ Docker.
 
 ## Audience
 
-Mixed backgrounds — many attendees do not work with Node day to day and are not
-expected to have it installed. Everything Node-related happens inside the
-container. Keep explanations and error messages free of Node-specific jargon.
+Mixed programming backgrounds — many attendees do not work with Node day to day
+and are not expected to have it installed. Everything Node-related happens inside
+the container. Keep explanations and error messages free of Node-specific jargon.
+
+**All written material is in English**: exercise Markdown, READMEs, code,
+identifiers, comments and error messages. Do not mix languages within a file.
 
 ## Hard constraints
 
