@@ -160,9 +160,8 @@ som ska ske.
 
 ## Och sen?
 
-Varje förfrågan hittills har startat med ett klick — på en länk, på en knapp,
-på **Add**.
+Öppna `views/todo-app/todo-table.liquid` och titta på sorteringslänken igen.
+Adressen står där två gånger: en gång i `href`, en gång i `hx-get`. Samma
+frågesträng, olika sökväg.
 
-Nästa övning lämnar över till tangentbordet: listan ska uppdatera sig medan du
-skriver i sökfältet. Då blir frågan inte bara vad en förfrågan innehåller, utan
-*när* den ska skickas.
+Nästa övning tar bort den ena. Servern får svara på samma adress på två sätt.
