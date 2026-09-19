@@ -130,3 +130,19 @@ variabel någonstans som säger `sortOrder = 'desc'`, ingen kod som vänder en
 pil, inget tillstånd att hålla synkroniserat med något annat.
 
 Servern renderade en korrekt tabell, och sidan blev den.
+
+!!! note "Det här har ett namn"
+
+    Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
+    vilken ordning den leder till, vilken sökning som gäller — är kärnan i
+    **HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet
+    drivs av det hypermedia servern skickar, inte av kod som håller reda på
+    saker i webbläsaren.
+
+    Värt att notera: **htmx lade inte till det här.** Länken du började med
+    gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
+    sidladdning hämtade nästa representation.
+
+    Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
+    tillstånd i klienten — och då försvinner det. Den här övningen tog bort
+    sidladdningen utan att släppa hypermedia.
