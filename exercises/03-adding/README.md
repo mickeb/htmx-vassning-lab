@@ -22,6 +22,9 @@ En sak skiljer sig från sorteringen, och den är värd att lägga på minnet:
     tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
     `q`- och `sort`-fälten, följer med utan att du gör något.
 
+    Reglerna för vad som skickas med står i
+    [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
+
 Två attribut känner du igen. Ett är nytt, och ett värde är nytt:
 
 | Attribut | Svarar på | Dokumentation |

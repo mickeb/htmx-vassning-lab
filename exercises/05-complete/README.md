@@ -108,21 +108,6 @@ hålla reda på vilken.
 Det är samma tanke som resten av övningarna, en nivå ner: ingenting på klienten
 behöver veta *vilken* todo som bockades av. Knappen vet var den sitter.
 
-### `POST` tog med sig formuläret — utan att du bad om det
-
-Titta på förfrågan i nätverkspanelen. Den skickade `q` och `sort`, trots att
-`hx-post` sitter på **knappen** och de dolda fälten ligger i formuläret runt
-omkring.
-
-Jämför med övning 2, där `hx-get` på en länk inte skickade någonting alls och
-adressen fick bära sorteringen själv. Regeln är densamma i båda fallen:
-
-> en förfrågan med kropp — allt utom `GET` och `DELETE` — tar med sig fälten i
-> formuläret den hör till
-
-En `POST` har en kropp. En `GET` har det inte. Det är hela skillnaden, och den
-kommer tillbaka.
-
 ### Rubriken var inte en ny idé
 
 Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
