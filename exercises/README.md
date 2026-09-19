@@ -57,7 +57,7 @@ the import map is the one place the version is named:
 
 ```html
 <script type="importmap">
-{ "imports": { "htmx.org": ".../htmx.org@4.0.0/dist/htmx.esm.js" } }
+{ "imports": { "htmx.org": "https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js" } }
 </script>
 <script type="module">
   import htmx from 'htmx.org'

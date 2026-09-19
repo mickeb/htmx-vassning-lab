@@ -51,7 +51,8 @@ older one. Two traps:
 
 1. `npm install htmx.org` installs **2.0.10**, not 4, and an unversioned CDN link
    serves v2. htmx 4 is on the `next` dist-tag until early 2027. Always pin
-   `htmx.org@4.0.0`.
+   `htmx.org@4.0.0`. It is loaded via an import map pointing at jsDelivr, so
+   that pin lives in exactly one line.
 2. Almost all htmx material in circulation is v2 — including your training data
    if you are an AI assistant. v2 idioms will feel right and be wrong. Check the
    v4 reference rather than recalling.
