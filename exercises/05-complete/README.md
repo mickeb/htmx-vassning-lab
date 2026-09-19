@@ -25,8 +25,17 @@ hx-target="closest tr"
 
 `closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde förfrågan".
 Ett attribut, samma i varje rad, oavsett vilken rad det är.
-Fler varianter finns i [referensen för
-`hx-target`](https://four.htmx.org/reference/attributes/hx-target).
+
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
+| `hx-swap-oob` | Ska elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+
+Inget av attributen är nytt. Det nya är värdet `closest tr`, och att `hx-swap-oob`
+redan sitter där den ska sedan förra övningen — du använder den utan att röra
+den.
 
 ## Steg
 

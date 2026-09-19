@@ -761,9 +761,41 @@ tillbaka raden i sitt nya skick, och den ska ersätta den gamla.</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
 </code></pre></div>
 <p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde förfrågan".
-Ett attribut, samma i varje rad, oavsett vilken rad det är.
-Fler varianter finns i <a href="https://four.htmx.org/reference/attributes/hx-target">referensen för
-<code>hx-target</code></a>.</p>
+Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Svarar på</th>
+<th>Dokumentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hx-post</code></td>
+<td>Vilken adress ska postas till?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-post">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-target</code></td>
+<td>Var i sidan ska svaret in?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-target">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-swap</code></td>
+<td>Hur ska det sättas in?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-swap">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-swap-oob</code></td>
+<td>Ska elementet hamna någon annanstans än i målet?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-swap-oob">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<p>Inget av attributen är nytt. Det nya är värdet <code>closest tr</code>, och att <code>hx-swap-oob</code>
+redan sitter där den ska sedan förra övningen — du använder den utan att röra
+den.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
