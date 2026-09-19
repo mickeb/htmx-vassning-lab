@@ -12,11 +12,9 @@ JSON-tabell i sidans `<head>` som talar om vad ett namn ska peka på. När ett
 modulskript sedan skriver `import htmx from 'htmx.org'` slår webbläsaren upp
 `htmx.org` i tabellen och hämtar filen därifrån.
 
-Ingen `npm install`, inget byggsteg, ingen fil att checka in.
-
-Men det är inte det viktigaste. Poängen med en import map är **indirektionen**:
-koden säger `htmx.org` och bryr sig inte om var filen ligger. Tabellen avgör
-det, och den kan peka om utan att en enda `import`-rad ändras.
+Poängen med en import map är **indirektionen**: koden säger `htmx.org` och bryr
+sig inte om var filen ligger. Tabellen avgör det, och den kan peka om utan att
+en enda `import`-rad ändras.
 
 Det gäller vilket JavaScript-bibliotek som helst, och det är så man kör en
 ominifierad utvecklingsversion lokalt och en minifierad i produktion: samma
