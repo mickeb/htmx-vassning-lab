@@ -63,3 +63,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    länk, och en sidladdning försvinner.
 3. [**Lägg till en todo utan sidladdning**](03-adding/README.md) — en `POST`
    som bär med sig formuläret, och ett fel som servern placerar själv.
+4. [**Uppdatera två ställen med ett svar**](04-out-of-band/README.md) — ett svar
+   där varje del bär med sig var den hör hemma.
