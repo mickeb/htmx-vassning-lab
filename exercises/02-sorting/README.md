@@ -36,9 +36,10 @@ du ska inte skriva någon serverkod i den här övningen.
 
     [http://localhost:4000/todo-app/fragments/table?sort=desc](http://localhost:4000/todo-app/fragments/table?sort=desc)
 
-    Det som kommer tillbaka är **HTML**, inte JSON. Ingen ostilad sida att bygga
-    ihop på klienten — det är en bit färdig tabell. Det är halva poängen med
-    hela angreppssättet, och det är lättare att se än att läsa sig till.
+    Det som kommer tillbaka är **HTML**, inte JSON. Du får alltså inget som kod
+    i webbläsaren måste tolka och rendera — du får en färdig tabell som kan
+    sättas in rakt av. Det är halva poängen med hela angreppssättet, och det är
+    lättare att se än att läsa sig till.
 
 ## Steg
 
@@ -113,8 +114,9 @@ kommer in igen — en hel sida.
 Klicka sedan på **Created at**. En rad.
 
 Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det som
-kom tillbaka är fortfarande HTML. Ingen ostilad datadump att bygga ihop något
-av — en färdig tabell.
+kom tillbaka är fortfarande HTML. Svaret är alltså inte ett JSON-objekt som kod
+i webbläsaren måste tolka, förstå och rendera till element. Det är färdiga
+tabellrader som går att sätta in som de är.
 
 ### Titta på tabellen som kom tillbaka
 

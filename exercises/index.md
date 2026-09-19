@@ -48,10 +48,10 @@ Två av dem går att öppna direkt i en flik:
 - [`/todo-app/fragments/header`](http://localhost:4000/todo-app/fragments/header)
   — räknaren överst
 
-Gör det en gång innan du börjar. Det som kommer tillbaka är **HTML**, inte JSON
-— en bit färdig tabell, inte data att bygga ihop något av på klienten. Det är
-halva poängen med hela angreppssättet, och det är lättare att se än att läsa sig
-till.
+Gör det en gång innan du börjar. Det som kommer tillbaka är **HTML**, inte JSON.
+Ingen kod i webbläsaren behöver tolka svaret och bygga element av det — det är
+en färdig tabell som kan sättas in rakt av. Det är halva poängen med hela
+angreppssättet, och det är lättare att se än att läsa sig till.
 
 Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övningar.
 

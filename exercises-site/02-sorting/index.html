@@ -669,9 +669,10 @@ du ska inte skriva någon serverkod i den här övningen.</p>
 <div class="admonition tip">
 <p class="admonition-title">Öppna den i en flik innan du fortsätter</p>
 <p><a href="http://localhost:4000/todo-app/fragments/table?sort=desc">http://localhost:4000/todo-app/fragments/table?sort=desc</a></p>
-<p>Det som kommer tillbaka är <strong>HTML</strong>, inte JSON. Ingen ostilad sida att bygga
-ihop på klienten — det är en bit färdig tabell. Det är halva poängen med
-hela angreppssättet, och det är lättare att se än att läsa sig till.</p>
+<p>Det som kommer tillbaka är <strong>HTML</strong>, inte JSON. Du får alltså inget som kod
+i webbläsaren måste tolka och rendera — du får en färdig tabell som kan
+sättas in rakt av. Det är halva poängen med hela angreppssättet, och det är
+lättare att se än att läsa sig till.</p>
 </div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
@@ -729,8 +730,9 @@ på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
 kommer in igen — en hel sida.</p>
 <p>Klicka sedan på <strong>Created at</strong>. En rad.</p>
 <p>Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det som
-kom tillbaka är fortfarande HTML. Ingen ostilad datadump att bygga ihop något
-av — en färdig tabell.</p>
+kom tillbaka är fortfarande HTML. Svaret är alltså inte ett JSON-objekt som kod
+i webbläsaren måste tolka, förstå och rendera till element. Det är färdiga
+tabellrader som går att sätta in som de är.</p>
 <h3 id="titta-pa-tabellen-som-kom-tillbaka">Titta på tabellen som kom tillbaka<a class="headerlink" href="#titta-pa-tabellen-som-kom-tillbaka" title="Permanent link">&para;</a></h3>
 <p>Klicka runt lite och läs den. Den bär <strong>sin egen</strong>
 chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin
