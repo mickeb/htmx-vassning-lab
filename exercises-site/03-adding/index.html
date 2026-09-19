@@ -571,6 +571,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fireworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fyrverkerier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -825,14 +852,15 @@ listan</strong>, som en ny rad.</p>
 <p>Det är väntat. Attributen du nyss satte säger "lägg svaret sist i <code>#todo-rows</code>",
 och servern har inget sätt att säga emot dem från HTML:en.</p>
 <h3 id="3-lat-servern-styra-svaret">3. Låt servern styra svaret<a class="headerlink" href="#3-lat-servern-styra-svaret" title="Permanent link">&para;</a></h3>
-<p>Två svarsrubriker i <code>src/app.ts</code>, i felgrenen för <code>POST /fragments/todos</code>.</p>
+<p>Två HTTP-headers i svaret, satta i <code>src/app.ts</code>, i felgrenen för
+<code>POST /fragments/todos</code>.</p>
 <p><code>HX-Retarget</code> byter ut <code>hx-target</code> för det här ena svaret. <code>HX-Reswap</code> byter ut
 <code>hx-swap</code>.</p>
 <details class="tip">
 <summary>Varför räcker det inte med <code>HX-Retarget</code>?</summary>
 <p>För att <code>hx-swap="beforeend"</code> fortfarande gäller. Du pekar om svaret till
 formuläret och lägger det sedan <strong>sist inuti</strong> formuläret — ett formulär
-inuti ett formulär. Båda rubrikerna behövs: en för vart, en för hur.</p>
+inuti ett formulär. Du behöver båda: en för vart, en för hur.</p>
 </details>
 <details class="example">
 <summary>Facit</summary>
@@ -869,7 +897,7 @@ som inte är <code>2xx</code> så stämmer det för htmx 2, inte för htmx 4.</p
 elementet kan inte veta i förväg att just den här förfrågan skulle misslyckas.</p>
 <p>Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som
 klienten får tolka, skickade den tillbaka <strong>det som skulle visas</strong> plus två
-rubriker som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
+headers som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
 <code>if</code>-sats och ingen kunskap om vad som kunde gå fel.</p>
 <h3 id="raknaren-stammer-inte-langre">Räknaren stämmer inte längre<a class="headerlink" href="#raknaren-stammer-inte-langre" title="Permanent link">&para;</a></h3>
 <p>Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du

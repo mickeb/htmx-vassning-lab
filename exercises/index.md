@@ -67,3 +67,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    där varje del bär med sig var den hör hemma.
 5. [**Bocka av en todo**](05-complete/README.md) — ett mål som beskriver ett
    släktskap i stället för en adress.
+6. [**Fyrverkerier när allt är klart**](06-fireworks/README.md) — en HTTP-header
+   som säger att något hänt, inte vad sidan ska göra åt det.

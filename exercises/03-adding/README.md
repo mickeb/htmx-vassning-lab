@@ -77,7 +77,8 @@ och servern har inget sätt att säga emot dem från HTML:en.
 
 ### 3. Låt servern styra svaret
 
-Två svarsrubriker i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
+Två HTTP-headers i svaret, satta i `src/app.ts`, i felgrenen för
+`POST /fragments/todos`.
 
 `HX-Retarget` byter ut `hx-target` för det här ena svaret. `HX-Reswap` byter ut
 `hx-swap`.
@@ -86,7 +87,7 @@ Två svarsrubriker i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
 
     För att `hx-swap="beforeend"` fortfarande gäller. Du pekar om svaret till
     formuläret och lägger det sedan **sist inuti** formuläret — ett formulär
-    inuti ett formulär. Båda rubrikerna behövs: en för vart, en för hur.
+    inuti ett formulär. Du behöver båda: en för vart, en för hur.
 
 ??? example "Facit"
 
@@ -128,7 +129,7 @@ elementet kan inte veta i förväg att just den här förfrågan skulle misslyck
 
 Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som
 klienten får tolka, skickade den tillbaka **det som skulle visas** plus två
-rubriker som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
+headers som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
 `if`-sats och ingen kunskap om vad som kunde gå fel.
 
 ### Räknaren stämmer inte längre
