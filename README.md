@@ -23,6 +23,11 @@ opens <http://localhost:4000>.
 You should see a page reporting four checks — server, stylesheet, JavaScript and
 hot reload. If all four are green, you're ready.
 
+The application you will be working on is the todo app at
+<http://localhost:4000/todo-app>. It starts out empty, and as an ordinary
+multi-page app: every search, sort, tick and form post reloads the whole page.
+Adding a few todos is a good way to get a feel for it.
+
 Re-running `./setup.sh` is always safe.
 
 ### If port 4000 is taken
@@ -53,7 +58,8 @@ host; native watching silently does nothing on some Windows setups.
 ```bash
 docker compose logs -f lab    # follow the server logs
 docker compose restart lab    # restart the server
-docker compose down           # stop the lab
+docker compose down           # stop the lab (your todos are kept)
+docker compose down -v        # stop the lab and delete all todos
 ./setup.sh                    # start it again
 ```
 
@@ -61,9 +67,12 @@ docker compose down           # stop the lab
 
 ```
 setup.sh            One-command setup. Start here.
-compose.yaml        Container definition and port mapping
+compose.yaml        Container definitions and port mapping
 Dockerfile          The Node 24 runtime image
-src/server.ts       Express server and routes
+src/server.ts       Server setup -- templates, static files, startup
+src/app.ts          The todo app's routes
+src/lib/            Database access; the queries live here
+src/sql/schema.sql  The database, applied automatically on every start
 src/dev-reload.ts   Hot reload (development only)
 views/              Liquid templates
 public/             CSS and browser JavaScript, served as-is
@@ -76,6 +85,7 @@ exercises/          Exercise material (none written yet)
 | --- | --- |
 | Runtime | Node 24 LTS, in Docker |
 | Server | [Express 5](https://expressjs.com/) |
+| Database | [PostgreSQL 18](https://www.postgresql.org/), in Docker, via [`pg`](https://node-postgres.com/) |
 | Templates | [LiquidJS](https://liquidjs.com/) — the `{% if %}` / `{{ value }}` syntax you may know from Jinja2, Twig, Django or Shopify |
 | Styling | Plain CSS |
 | Browser JS | Plain JavaScript, no bundler |
@@ -92,10 +102,13 @@ it to report that it's running, then try again.
 **The page doesn't reload when I save.** Check that the "Hot reload" line on the
 page says `connected`. If it doesn't, `docker compose restart lab`.
 
+**I want my todo list back to empty.** `docker compose down -v` deletes the
+database, and `./setup.sh` starts again from nothing.
+
 **Something is badly broken.** Reset and start over:
 
 ```bash
-docker compose down
+docker compose down -v
 rm -rf node_modules
 ./setup.sh
 ```

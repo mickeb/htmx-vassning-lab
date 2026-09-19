@@ -1,0 +1,8 @@
+{% comment %}
+  The answer to "a todo was added": the new row, on its own.
+
+  It is a file of its own rather than rendering todo-row directly, so that what
+  this action returns can change without touching every other place a row is
+  drawn.
+{% endcomment %}
+{% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}

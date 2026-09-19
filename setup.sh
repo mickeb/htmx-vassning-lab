@@ -86,7 +86,7 @@ ok "Port ${PORT} is available"
 
 # --- 4. Build the image ------------------------------------------------------
 step "Building the container image"
-info "First run downloads Node and takes a minute or two. Later runs are cached."
+info "First run downloads Node and Postgres and takes a minute or two. Later runs are cached."
 if ! docker compose build; then
   die "The container image failed to build." \
 "Scroll up for the reason. If it mentions network or TLS problems, check your
@@ -106,8 +106,10 @@ if ! docker compose run --rm --no-deps lab npm install --no-audit --no-fund; the
 fi
 ok "Dependencies installed into ./node_modules"
 
-# --- 6. Start the server -----------------------------------------------------
-step "Starting the dev server"
+# --- 6. Start the database and the server ------------------------------------
+# Compose waits for Postgres to report healthy before starting the server, so
+# the server never comes up against a database that is not accepting connections.
+step "Starting Postgres and the dev server"
 docker compose up -d --force-recreate
 
 # --- 7. Wait until it actually answers ---------------------------------------
@@ -124,11 +126,13 @@ if [ -z "$healthy" ]; then
   echo ""
   docker compose logs --tail 40 lab || true
   die "Could not reach ${URL}/healthz" \
-"The container is still running, so you can keep investigating:
+"The containers are still running, so you can keep investigating:
 
-  docker compose logs -f lab     follow the logs
+  docker compose logs -f lab     follow the server logs
+  docker compose logs -f db      follow the database logs
   docker compose restart lab     restart the server
-  docker compose down            stop everything"
+  docker compose down            stop everything
+  docker compose down -v         stop everything and delete the todos"
 fi
 ok "Server is responding"
 
@@ -143,6 +147,7 @@ echo "  public/ or src/ -- the browser reloads by itself."
 echo ""
 echo "  ${dim}docker compose logs -f lab   follow the logs${reset}"
 echo "  ${dim}docker compose down          stop the lab${reset}"
+echo "  ${dim}docker compose down -v       stop the lab and delete the todos${reset}"
 echo ""
 
 if command -v open >/dev/null 2>&1; then

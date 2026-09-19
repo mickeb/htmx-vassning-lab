@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
 import { Liquid } from 'liquidjs'
+import { todoApp } from './app.ts'
 import { databaseReachable, migrate } from './lib/db.ts'
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -49,6 +50,8 @@ app.get('/', (_req, res) => {
     bootTime,
   })
 })
+
+app.use('/todo-app', todoApp)
 
 if (isDev) {
   const { attachDevReload } = await import('./dev-reload.ts')

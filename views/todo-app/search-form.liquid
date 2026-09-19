@@ -1,0 +1,12 @@
+<form class="search" method="get" action="/todo-app">
+  <label class="search__field">
+    <svg class="search__icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+    <span class="visually-hidden">Search todos</span>
+    <input class="search__input" type="search" name="q" value="{{ q }}" placeholder="Search todos">
+  </label>
+
+  {% comment %} Carries the current sort through the search, so searching does not reset it. {% endcomment %}
+  <input type="hidden" name="sort" value="{{ sort }}">
+
+  <button class="button" type="submit">Search</button>
+</form>

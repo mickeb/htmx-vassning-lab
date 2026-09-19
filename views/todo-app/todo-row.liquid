@@ -1,0 +1,21 @@
+{% comment %} One row. Needs only `todo`, plus `q` and `sort` to post back to the same view. {% endcomment %}
+<tr class="todo-row{% if todo.complete %} todo-row--complete{% endif %}" id="todo-{{ todo.id }}">
+  <td class="todo-row__created">{{ todo.created_at | date: "%Y-%m-%d %H:%M:%S" }}</td>
+  <td class="todo-row__description">{{ todo.description }}</td>
+  {% comment %}
+    One cell for the complete column: the button while there is something to do,
+    the tick once there is not. Completing is one-way, so the button does not
+    come back.
+  {% endcomment %}
+  <td class="todo-row__complete">
+    {% if todo.complete %}
+    <span class="todo-row__tick" aria-hidden="true">✓</span><span class="visually-hidden">Completed</span>
+    {% else %}
+    <form method="post" action="/todo-app/todos/{{ todo.id }}/complete">
+      <input type="hidden" name="q" value="{{ q }}">
+      <input type="hidden" name="sort" value="{{ sort }}">
+      <button class="button button--small" type="submit">Complete</button>
+    </form>
+    {% endif %}
+  </td>
+</tr>

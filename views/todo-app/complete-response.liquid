@@ -1,0 +1,8 @@
+{% comment %}
+  The answer to "a todo was completed": the updated row, on its own.
+
+  `stats` is in scope here too, even though nothing below uses it yet -- so that
+  this response can grow to say something about the rest of the page without the
+  handler in app.ts having to change.
+{% endcomment %}
+{% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}

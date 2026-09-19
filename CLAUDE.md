@@ -41,6 +41,20 @@ dependency. The container install skips it (`os: ["darwin"]`); a host `npm
 install` picks it up, and chokidar guards the import in a try/catch. Do not
 treat its presence as a breakage.
 
+Re-verified 2026-09-19 after adding `pg` 8.23: still zero `.node` files. `pg` is
+pure JavaScript — `pg-native` is an *optional peer* dependency and is not
+installed.
+
+One caveat the `.node` check does not catch: **TypeScript 7 ships a
+platform-specific executable**, pulled in as an optional dependency
+(`@typescript/typescript-<os>-<arch>`). Installing in the container resolves the
+Linux one, so `npx tsc` on a macOS host fails with "Unable to resolve
+@typescript/typescript-darwin-arm64". That is expected, not a broken install —
+run `docker compose run --rm --no-deps lab npm run typecheck` instead. It is a
+devDependency and never runs in the browser or the server, so it does not
+threaten the bind-mount constraint; it just means the `.node` file count is not
+the whole test.
+
 **No htmx in the base environment.** The lab ships as a plain MPA baseline on
 purpose: attendees see it without htmx first, then add htmx themselves during the
 exercises. Do not add `htmx.org` as a dependency or vendor it into `public/`.
@@ -82,15 +96,54 @@ not latency-sensitive, so that one stays on polling unconditionally).
 | Path | Purpose |
 | --- | --- |
 | `setup.sh` | One-command setup. Must fail with sentences, never a stack trace. |
-| `src/server.ts` | Express 5 + LiquidJS. Routes go here. |
+| `src/server.ts` | Setup and configuration only — Liquid, static files, startup. Attendees should never need to open it. |
+| `src/app.ts` | The todo app's request handlers. Parse input, call a lib function, render a template. Nothing else. |
+| `src/lib/db.ts` | Pool and `migrate()`. |
+| `src/lib/todos.ts` | Every SQL statement in the app. Attendees never touch this. |
+| `src/sql/schema.sql` | The whole database. |
 | `src/dev-reload.ts` | SSE hot reload. Development only. |
-| `views/` | Liquid templates. `layout.liquid` is the shell. |
+| `views/` | Liquid templates. `layout.liquid` is the shell; `views/todo-app/` is the app. |
 | `public/` | CSS and browser JS, served as-is. |
 | `exercises/` | Exercise material. See `exercises/README.md` for the convention. |
 
 `views/index.liquid` is an environment self-check with four indicators (server,
 stylesheet, JavaScript, hot reload). Keep all four working — it is the first
 thing an attendee sees and how they diagnose a broken setup.
+
+## The todo app
+
+`/todo-app` is the application the exercises operate on. It is a plain
+multi-page app: every search, sort, tick and post is a full page load. That is
+the point — attendees convert it to htmx themselves.
+
+The table has three columns: created at (sortable), description, and complete.
+The last one holds the Complete button while there is something to do and a tick
+once there is not — one column, not a status column plus an action column.
+
+**Every template under `views/todo-app/` renders standalone.** They use
+`{% render %}`, which is scope-isolated, so each partial has to declare what it
+needs and can therefore be returned on its own. Do not convert them to
+`{% include %}`; that is what would couple them to the page.
+
+**Fragment routes ship in the baseline.** `/todo-app/fragments/...` returns the
+same partials without the page around them. Nothing uses them until an exercise
+points at them, and that is deliberate: attendees should spend the session
+thinking about htmx, not about Express routing. Exercises name these URLs so
+attendees can open one in a browser and see that HTML, not JSON, comes back.
+This supersedes the "no fragment routes" clause in the presentation repo's
+`DECISIONS.md` entry of 2026-09-18; the rest of that decision stands.
+
+**`src/sql/schema.sql` is applied on every boot** — which means every time a
+file under `src/` is saved, because nodemon restarts the server. Every statement
+in it must be safe to re-run. There is no migration table, no migration tool and
+no seed data. The app starts empty on purpose.
+
+**The empty list is handled in CSS, not on the server.** `todo-table.liquid`
+always emits both the table and the "No todos to show." message, and a `:has()`
+rule in `app.css` picks which is visible. The table is hidden rather than
+removed so `#todo-rows` is always there to append to — an exercise appends a row
+client-side, and the message has to get out of the way without a round trip.
+Do not replace this with a Liquid conditional.
 
 ## Commands
 
@@ -106,5 +159,7 @@ The server runs in the container, not on the host. To run something against it:
 
 ## Status
 
-The environment is complete. **Exercise content has not been written** —
-`exercises/` holds only the documented convention.
+The environment and the todo app are complete and verified. **Exercise content
+has not been written** — `exercises/` holds only the documented convention. The
+progression the exercises follow is settled and written up in the presentation
+repo, in `state/EXERCISES.md`.
