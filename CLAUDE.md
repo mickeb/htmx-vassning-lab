@@ -45,7 +45,9 @@ treat its presence as a breakage.
 purpose: attendees see it without htmx first, then add htmx themselves during the
 exercises. Do not add `htmx.org` as a dependency or vendor it into `public/`.
 
-**When htmx does arrive, it is htmx 4** — <https://four.htmx.org/>. Two traps:
+**"htmx" always means htmx 4 here** — <https://four.htmx.org/>. Any unqualified
+mention of htmx means version 4; write "htmx 2" explicitly if you ever mean the
+older one. Two traps:
 
 1. `npm install htmx.org` installs **2.0.10**, not 4, and an unversioned CDN link
    serves v2. htmx 4 is on the `next` dist-tag until early 2027. Always pin

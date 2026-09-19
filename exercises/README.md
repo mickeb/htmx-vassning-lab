@@ -46,15 +46,25 @@ git diff main solution/01-first-swap
 
 ## Which htmx
 
-Exercises target **htmx 4** (<https://four.htmx.org/>), not htmx 2.
+**"htmx" always means htmx 4** (<https://four.htmx.org/>). Write "htmx 2"
+explicitly if you ever need to refer to the older version.
 
-When an exercise tells the reader to add htmx, pin the version — `npm install
-htmx.org` and unversioned CDN links both give **htmx 2**, because htmx 4 sits on
-the `next` dist-tag until early 2027:
+htmx 4 is loaded with an **import map**.
+
+Pin the version there. `npm install htmx.org` and unversioned CDN links both
+give **htmx 2**, because htmx 4 sits on the `next` dist-tag until early 2027 —
+the import map is the one place the version is named:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js"></script>
+<script type="importmap">
+{ "imports": { "htmx.org": ".../htmx.org@4.0.0/dist/htmx.esm.js" } }
+</script>
+<script type="module">
+  import htmx from 'htmx.org'
+</script>
 ```
+
+The import map must come before any module script using the bare specifier.
 
 Differences most likely to bite while writing exercises:
 
