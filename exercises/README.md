@@ -54,9 +54,13 @@ English:
 | Swedish | the prose in each exercise's `README.md` — goal, background, steps |
 | English | folder and file names (`01-first-swap/`, not `01-forsta-bytet/`) |
 | English | all code samples, identifiers, htmx attributes, comments |
+| English | **any UI text the exercise adds to the app** — headings, labels, buttons, messages |
 
-So an exercise is an English path containing Swedish prose. Do not mix the two
-within the prose itself.
+So an exercise is an English path containing Swedish prose, telling the reader in
+Swedish to add English UI text. That is intended: the lab application is English
+throughout, and only the teaching material is Swedish.
+
+Do not mix the two within the prose itself.
 
 ## Writing for this audience
 

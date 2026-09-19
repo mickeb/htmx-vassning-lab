@@ -10,10 +10,17 @@ Mixed programming backgrounds — many attendees do not work with Node day to da
 and are not expected to have it installed. Everything Node-related happens inside
 the container. Keep explanations and error messages free of Node-specific jargon.
 
-**Language splits by readership.** Exercise prose — what attendees read — is
-**Swedish**. Everything else is **English**: folder and file names (including
-exercise folders), code, identifiers, comments, error messages, this file and the
-repo README. An exercise is an English path containing Swedish prose.
+**Language: only the teaching material is Swedish.** Exercise prose is written in
+**Swedish**. Everything else in this repo is **English**, including things
+attendees see:
+
+- the web UI — every string the app renders, all of `views/` and `public/`
+- `README.md`, the setup guide
+- folder and file names, including exercise folders
+- code, identifiers, htmx attributes, comments, this file
+
+An exercise is an English path containing Swedish prose, instructing the reader
+to add English UI text. That is intended.
 
 ## Hard constraints
 
