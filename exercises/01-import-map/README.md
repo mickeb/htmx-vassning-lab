@@ -26,8 +26,9 @@ båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
     göra det fram till början av 2027.
 
     Nästan allt htmx-material som finns ute — handledningar, forumsvar och det
-    en AI-assistent föreslår — gäller htmx 2. Det ser korrekt ut och är fel.
-    Dubbelkolla på <https://four.htmx.org/reference/>.
+    en AI-assistent föreslår — gäller htmx 2. Det kan fungera, men det kan
+    också ha ändrats i och med version 4. Dubbelkolla alltid på
+    <https://four.htmx.org/reference/>.
 
 ## Steg
 
