@@ -33,9 +33,9 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 | `hx-swap-oob` | Ska elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
-Inget av attributen är nytt. Det nya är värdet `closest tr`, och att `hx-swap-oob`
-redan sitter där den ska sedan förra övningen — du använder den utan att röra
-den.
+Inget av attributen är nytt. Det nya är värdet `closest tr`. Rubriken kan redan
+märkas out of band sedan förra övningen — du använder det utan att röra
+`todo-header.liquid`.
 
 ## Steg
 
@@ -64,9 +64,10 @@ bock — men räknaren står still igen.
 ### 2. Räkna om rubriken
 
 Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
-raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo.
+raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
+be om märkningen på samma sätt.
 
-`stats` finns redan i mallen. `hx-swap-oob` sitter redan på `<header>` sedan
+`stats` finns redan i mallen, och `todo-header.liquid` är redan förberedd sedan
 förra övningen, så du behöver inte röra den filen.
 
 !!! warning "Raden först — igen"
@@ -78,7 +79,7 @@ förra övningen, så du behöver inte röra den filen.
 
     ```liquid
     {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
-    {% render 'todo-app/todo-header', stats: stats %}
+    {% render 'todo-app/todo-header', stats: stats, oob: true %}
     ```
 
 ## Klart när
@@ -112,6 +113,10 @@ behöver veta *vilken* todo som bockades av. Knappen vet var den sitter.
 
 Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
 bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.
+
+Lägg märke till att `oob: true` står i svaret, inte i rubriken. Två olika svar
+ber om samma märkning var för sig, och rubriken själv vet ingenting om vare sig
+det ena eller det andra.
 
 ## Och sen?
 

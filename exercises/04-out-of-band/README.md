@@ -27,27 +27,41 @@ elementet på sidan som har **samma `id`** och ersätter det.
 
 ## Steg
 
-### 1. Märk rubriken
+### 1. Låt rubriken kunna märkas
 
 Öppna `views/todo-app/todo-header.liquid`. `<header>`-taggen har redan
-`id="todo-header"`, vilket är det htmx matchar på. Lägg till attributet.
+`id="todo-header"`, vilket är det htmx matchar på. Nu ska den kunna bära
+`hx-swap-oob="true"` — men bara när den skickas som en del av ett svar.
+
+Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
+en del av svaret du bygger i nästa steg. Märkningen hör till svaret, inte till
+elementet.
 
 ??? example "Facit"
 
-    ```html
-    <header class="todo-header" id="todo-header" hx-swap-oob="true">
+    ```liquid
+    <header class="todo-header" id="todo-header"{% if oob %} hx-swap-oob="true"{% endif %}>
     ```
 
-!!! note "Attributet stör inte den vanliga sidan"
+    `oob` är ingenting Liquid känner till i förväg — det är bara ett värde som
+    den som renderar mallen kan skicka med. Gör ingen det blir villkoret falskt
+    och attributet uteblir.
 
-    Rubriken renderas också som en del av hela sidan, och där sitter attributet
-    nu också. Det gör ingenting: htmx tittar bara efter `hx-swap-oob` i svar som
-    byts in, aldrig i sidan som laddades från början.
+!!! note "Varför inte sätta attributet rakt av?"
+
+    För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
+    Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
+    `hx-swap-oob` i svar som byts in, inte i sidan som redan ligger där.
+
+    Men en sida kan också *vara* ett svar. Den dagen den är det börjar en
+    märkning som ligger kvar gälla på ett ställe där ingen bett om den, och det
+    som försvinner gör det tyst.
 
 ### 2. Skicka med rubriken i svaret
 
 Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara den nya
-raden. Rendera rubriken också, **efter** raden.
+raden. Rendera rubriken också, **efter** raden, och be om märkningen med
+`oob: true`.
 
 `stats` finns redan tillgängligt i mallen — hanteraren skickar med det — så du
 behöver inte ändra något i `app.ts`.
@@ -69,7 +83,7 @@ behöver inte ändra något i `app.ts`.
 
     ```liquid
     {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
-    {% render 'todo-app/todo-header', stats: stats %}
+    {% render 'todo-app/todo-header', stats: stats, oob: true %}
     ```
 
 ## Klart när
@@ -78,6 +92,8 @@ behöver inte ändra något i `app.ts`.
 - [ ] Nätverkspanelen visar **en** förfrågan, inte två.
 - [ ] Sidan laddas inte om.
 - [ ] Det finns fortfarande bara en rubrik på sidan.
+- [ ] Sidan du laddar om innehåller ingen `hx-swap-oob` — bara svaren gör det.
+      Titta i sidkällan, och i svaret i nätverkspanelen.
 
 ??? question "Raden försvann, och det står lös text i listan"
 
@@ -85,9 +101,12 @@ behöver inte ändra något i `app.ts`.
 
 ??? question "Räknaren ändras inte"
 
-    Kontrollera att `id` på `<header>` är exakt `todo-header` och att attributet
-    står på `<header>`-taggen, inte på något inuti den. htmx matchar på `id` och
-    gör ingenting alls om den inte hittar något.
+    Titta först på svaret i nätverkspanelen. Står det ingen `hx-swap-oob` i
+    rubriken där, så saknas `oob: true` i `add-response.liquid`.
+
+    Står den där matchar htmx på `id`: kontrollera att det är exakt
+    `todo-header`, och att attributet hamnar på `<header>`-taggen och inte på
+    något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.
 
 ## Det som faktiskt hände
 

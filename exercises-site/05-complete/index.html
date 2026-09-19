@@ -800,9 +800,9 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
 </tr>
 </tbody>
 </table>
-<p>Inget av attributen är nytt. Det nya är värdet <code>closest tr</code>, och att <code>hx-swap-oob</code>
-redan sitter där den ska sedan förra övningen — du använder den utan att röra
-den.</p>
+<p>Inget av attributen är nytt. Det nya är värdet <code>closest tr</code>. Rubriken kan redan
+märkas out of band sedan förra övningen — du använder det utan att röra
+<code>todo-header.liquid</code>.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
@@ -824,8 +824,9 @@ den. Samma bytesläge som du satte på tabellen i övning 2.</p>
 bock — men räknaren står still igen.</p>
 <h3 id="2-rakna-om-rubriken">2. Räkna om rubriken<a class="headerlink" href="#2-rakna-om-rubriken" title="Permanent link">&para;</a></h3>
 <p>Det här kan du redan. <code>views/todo-app/complete-response.liquid</code> skickar bara
-raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo.</p>
-<p><code>stats</code> finns redan i mallen. <code>hx-swap-oob</code> sitter redan på <code>&lt;header&gt;</code> sedan
+raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
+be om märkningen på samma sätt.</p>
+<p><code>stats</code> finns redan i mallen, och <code>todo-header.liquid</code> är redan förberedd sedan
 förra övningen, så du behöver inte röra den filen.</p>
 <div class="admonition warning">
 <p class="admonition-title">Raden först — igen</p>
@@ -835,7 +836,7 @@ först i svaret överlever inte webbläsarens HTML-tolk.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-row&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">todo</span><span class="o">:</span><span class="w"> </span>todo<span class="p">,</span><span class="w"> </span><span class="na">q</span><span class="o">:</span><span class="w"> </span>q<span class="p">,</span><span class="w"> </span><span class="na">sort</span><span class="o">:</span><span class="w"> </span>sort<span class="w"> </span><span class="p">%}</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="w"> </span><span class="p">%}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="p">,</span><span class="w"> </span><span class="na">oob</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
@@ -864,6 +865,9 @@ behöver veta <em>vilken</em> todo som bockades av. Knappen vet var den sitter.<
 <h3 id="rubriken-var-inte-en-ny-ide">Rubriken var inte en ny idé<a class="headerlink" href="#rubriken-var-inte-en-ny-ide" title="Permanent link">&para;</a></h3>
 <p>Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
 bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.</p>
+<p>Lägg märke till att <code>oob: true</code> står i svaret, inte i rubriken. Två olika svar
+ber om samma märkning var för sig, och rubriken själv vet ingenting om vare sig
+det ena eller det andra.</p>
 <h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
 <p>Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
 bockas av.</p>
