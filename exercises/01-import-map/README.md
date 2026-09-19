@@ -22,8 +22,8 @@ båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
 
 !!! warning "Versionen måste stå utskriven"
 
-    En CDN-länk utan versionsnummer ger **htmx 2**, inte htmx 4. htmx 4 ligger
-    kvar på dist-taggen `next` fram till början av 2027.
+    En CDN-länk utan versionsnummer ger **htmx 2**, inte htmx 4, och kommer att
+    göra det fram till början av 2027.
 
     Nästan allt htmx-material som finns ute — handledningar, forumsvar och det
     en AI-assistent föreslår — gäller htmx 2. Det ser korrekt ut och är fel.
