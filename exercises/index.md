@@ -30,3 +30,5 @@ reload. Alla fyra ska vara gröna innan du går vidare.
 
 1. [**Installera htmx med en import map**](01-import-map/README.md) — få in htmx
    i appen och bekräfta att det är rätt version.
+2. [**Sortera utan sidladdning**](02-sorting/README.md) — tre attribut på en
+   länk, och en sidladdning försvinner.
