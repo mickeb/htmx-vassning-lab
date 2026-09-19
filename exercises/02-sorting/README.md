@@ -85,9 +85,26 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
 ## Klart när
 
-- [ ] Ett klick på **Created at** vänder ordningen, och chevronen pekar åt andra hållet.
-- [ ] Sidan laddas inte om — ingen blink, och nätverkspanelen visar en förfrågan till `fragments/table`, inget dokument.
+**Ingenting ska se annorlunda ut.** Sorteringen fungerade innan du rörde filen
+och fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
+tecken på att något gått fel — det är hela poängen.
+
+Det som ändrats är *hur* svaret hämtas. I stället för att webbläsaren navigerar
+till en ny sida gör htmx anropet i bakgrunden med `fetch` och byter ut tabellen
+på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
+
+- [ ] Sorteringen beter sig **precis som förut** — ett klick vänder ordningen och chevronen pekar åt andra hållet.
+- [ ] **Sidan laddas inte om.** Ingen blinkning, ingen laddningssnurra i fliken, och rullningsläget står kvar där du lämnade det.
+- [ ] Nätverkspanelen visar **en** förfrågan till `/todo-app/fragments/table?sort=…` — och ingen ny dokumentladdning.
 - [ ] Du kan klicka **flera gånger i rad** och ordningen växlar varje gång.
+
+!!! tip "Jämför med en riktig sidladdning"
+
+    Ha nätverkspanelen öppen och tryck `F5`. Då kommer dokumentet, stilmallen,
+    skripten och allt det andra in igen — en hel sida.
+
+    Klicka sedan på **Created at**. En rad i panelen. Det är skillnaden övningen
+    handlar om, och den går inte att se på sidan.
 
 ??? question "Det växlar bara en gång — sedan står det still"
 
