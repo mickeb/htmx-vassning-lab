@@ -18,9 +18,10 @@ Men det är inte det viktigaste. Poängen med en import map är **indirektionen*
 koden säger `htmx.org` och bryr sig inte om var filen ligger. Tabellen avgör
 det, och den kan peka om utan att en enda `import`-rad ändras.
 
-Samma kod kan därför köra `htmx.esm.js` — den ominifierade versionen, som går
-att läsa och sätta brytpunkter i — lokalt, och `htmx.esm.min.js` i produktion.
-Skillnaden är vilken URL som står i tabellen.
+Det gäller vilket JavaScript-bibliotek som helst, och det är så man kör en
+ominifierad utvecklingsversion lokalt och en minifierad i produktion: samma
+`import`-rader i koden, olika URL i tabellen. htmx finns i båda formerna —
+`htmx.esm.js` och `htmx.esm.min.js`.
 
 Här används samma mekanism till att hålla versionsnumret på ett enda ställe.
 

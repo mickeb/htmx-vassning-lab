@@ -579,9 +579,10 @@ modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webblä
 <p>Men det är inte det viktigaste. Poängen med en import map är <strong>indirektionen</strong>:
 koden säger <code>htmx.org</code> och bryr sig inte om var filen ligger. Tabellen avgör
 det, och den kan peka om utan att en enda <code>import</code>-rad ändras.</p>
-<p>Samma kod kan därför köra <code>htmx.esm.js</code> — den ominifierade versionen, som går
-att läsa och sätta brytpunkter i — lokalt, och <code>htmx.esm.min.js</code> i produktion.
-Skillnaden är vilken URL som står i tabellen.</p>
+<p>Det gäller vilket JavaScript-bibliotek som helst, och det är så man kör en
+ominifierad utvecklingsversion lokalt och en minifierad i produktion: samma
+<code>import</code>-rader i koden, olika URL i tabellen. htmx finns i båda formerna —
+<code>htmx.esm.js</code> och <code>htmx.esm.min.js</code>.</p>
 <p>Här används samma mekanism till att hålla versionsnumret på ett enda ställe.</p>
 <div class="admonition warning">
 <p class="admonition-title">Versionen måste stå utskriven</p>
