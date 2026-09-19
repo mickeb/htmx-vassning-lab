@@ -79,7 +79,7 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
     ```
 
     Och ja — adressen står nu två gånger, nästan likadant. Det är inte snyggt,
-    och det är inte tänkt att förbli så. Övning 7 tar bort den ena.
+    och det är inte tänkt att förbli så. En senare övning tar bort den ena.
 
 ## Klart när
 
