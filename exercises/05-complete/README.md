@@ -1,0 +1,127 @@
+# 5. Bocka av en todo
+
+## Mål
+
+Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren — utan
+att sidan laddas om.
+
+## Bakgrund
+
+Knappen sitter redan i ett formulär som postar. Samma utgångsläge som när du
+lade till en todo, och samma grepp: htmx bredvid det som redan fungerar.
+
+Två saker skiljer.
+
+**Hela raden byts ut, inte en del av den.** Att bocka av är enkelriktat — när
+todon är klar ska knappen vara borta och en bock stå i stället. Servern skickar
+tillbaka raden i sitt nya skick, och den ska ersätta den gamla.
+
+**Målet är inte ett `id` den här gången.** Varje rad har visserligen ett eget
+`id`, men du behöver det inte. `hx-target` förstår också *relativa* uttryck:
+
+```
+hx-target="closest tr"
+```
+
+`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde förfrågan".
+Ett attribut, samma i varje rad, oavsett vilken rad det är.
+Fler varianter finns i [referensen för
+`hx-target`](https://four.htmx.org/reference/attributes/hx-target).
+
+## Steg
+
+### 1. Lägg attributen på Complete-knappen
+
+Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
+`/todo-app/fragments/todos/{{ todo.id }}/complete`.
+
+??? tip "Ledtråd — vilket byte?"
+
+    Raden som kommer tillbaka ska *ersätta* den gamla raden, inte hamna inuti
+    den. Samma bytesläge som du satte på tabellen i övning 2.
+
+??? example "Facit"
+
+    ```html
+    <button class="button button--small" type="submit"
+            hx-post="/todo-app/fragments/todos/{{ todo.id }}/complete"
+            hx-target="closest tr"
+            hx-swap="outerHTML">Complete</button>
+    ```
+
+Klicka på **Complete** på någon rad. Den stryks över och knappen byts mot en
+bock — men räknaren står still igen.
+
+### 2. Räkna om rubriken
+
+Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
+raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo.
+
+`stats` finns redan i mallen. `hx-swap-oob` sitter redan på `<header>` sedan
+förra övningen, så du behöver inte röra den filen.
+
+!!! warning "Raden först — igen"
+
+    Samma regel som förra övningen, av samma skäl: ett `<tr>` som inte står
+    först i svaret överlever inte webbläsarens HTML-tolk.
+
+??? example "Facit"
+
+    ```liquid
+    {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
+    {% render 'todo-app/todo-header', stats: stats %}
+    ```
+
+## Klart när
+
+- [ ] **Complete** stryker över raden och ersätter knappen med en bock.
+- [ ] Räknaren räknar ner med ett.
+- [ ] Nätverkspanelen visar **en** förfrågan, och inget dokument.
+- [ ] Antalet rader i listan är oförändrat — raden byttes ut, inte tillagd.
+
+??? question "Ingenting händer när jag klickar"
+
+    Kontrollera att attributen sitter på `<button>` och inte på `<form>`, och
+    att adressen innehåller `/fragments/`.
+
+??? question "Raden försvann och det står lös text i listan"
+
+    Rubriken ligger före raden i `complete-response.liquid`.
+
+## Det som faktiskt hände
+
+### Målet beskrev ett släktskap, inte en adress
+
+`closest tr` pekar inte ut en specifik rad. Det beskriver var raden finns i
+förhållande till knappen, och det stämmer i varje rad utan att någon behöver
+hålla reda på vilken.
+
+Det är samma tanke som resten av övningarna, en nivå ner: ingenting på klienten
+behöver veta *vilken* todo som bockades av. Knappen vet var den sitter.
+
+### `POST` tog med sig formuläret — utan att du bad om det
+
+Titta på förfrågan i nätverkspanelen. Den skickade `q` och `sort`, trots att
+`hx-post` sitter på **knappen** och de dolda fälten ligger i formuläret runt
+omkring.
+
+Jämför med övning 2, där `hx-get` på en länk inte skickade någonting alls och
+adressen fick bära sorteringen själv. Regeln är densamma i båda fallen:
+
+> en förfrågan med kropp — allt utom `GET` och `DELETE` — tar med sig fälten i
+> formuläret den hör till
+
+En `POST` har en kropp. En `GET` har det inte. Det är hela skillnaden, och den
+kommer tillbaka.
+
+### Rubriken var inte en ny idé
+
+Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
+bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.
+
+## Och sen?
+
+Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
+bockas av.
+
+Nästa övning gör något av det ögonblicket. Något att fira.

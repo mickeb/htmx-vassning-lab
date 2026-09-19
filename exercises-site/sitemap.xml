@@ -20,4 +20,8 @@
          <loc>http://localhost:4000/exercises/04-out-of-band/</loc>
          <lastmod>2026-09-19</lastmod>
     </url>
+    <url>
+         <loc>http://localhost:4000/exercises/05-complete/</loc>
+         <lastmod>2026-09-19</lastmod>
+    </url>
 </urlset>
