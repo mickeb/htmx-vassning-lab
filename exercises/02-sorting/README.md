@@ -116,8 +116,6 @@ Jämför de två: samma innehåll i listan, en bråkdel av antalet byte, och det
 kom tillbaka är fortfarande HTML. Ingen ostilad datadump att bygga ihop något
 av — en färdig tabell.
 
-Inget att köra, inget att skriva. Bara att titta.
-
 ### Titta på tabellen som kom tillbaka
 
 Klicka runt lite och läs den. Den bär **sin egen**
