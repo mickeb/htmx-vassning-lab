@@ -10,8 +10,10 @@ Mixed programming backgrounds — many attendees do not work with Node day to da
 and are not expected to have it installed. Everything Node-related happens inside
 the container. Keep explanations and error messages free of Node-specific jargon.
 
-**All written material is in English**: exercise Markdown, READMEs, code,
-identifiers, comments and error messages. Do not mix languages within a file.
+**Language splits by readership.** Exercise prose — what attendees read — is
+**Swedish**. Everything else is **English**: folder and file names (including
+exercise folders), code, identifiers, comments, error messages, this file and the
+repo README. An exercise is an English path containing Swedish prose.
 
 ## Hard constraints
 

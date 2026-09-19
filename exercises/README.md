@@ -46,9 +46,17 @@ git diff main solution/01-first-swap
 
 ## Language
 
-**Write exercises in English** — the `README.md` in each exercise folder, and any
-other prose. Code, identifiers and comments are English too. Do not mix languages
-within a file.
+**Exercise prose is written in Swedish.** Everything structural around it stays
+English:
+
+| | |
+| --- | --- |
+| Swedish | the prose in each exercise's `README.md` — goal, background, steps |
+| English | folder and file names (`01-first-swap/`, not `01-forsta-bytet/`) |
+| English | all code samples, identifiers, htmx attributes, comments |
+
+So an exercise is an English path containing Swedish prose. Do not mix the two
+within the prose itself.
 
 ## Writing for this audience
 
