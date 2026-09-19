@@ -12,8 +12,17 @@ JSON-tabell i sidans `<head>` som talar om vad ett namn ska peka på. När ett
 modulskript sedan skriver `import htmx from 'htmx.org'` slår webbläsaren upp
 `htmx.org` i tabellen och hämtar filen därifrån.
 
-Ingen `npm install`, inget byggsteg, ingen fil att checka in. Och — det som
-faktiskt är poängen här — **versionen står på exakt ett ställe**.
+Ingen `npm install`, inget byggsteg, ingen fil att checka in.
+
+Men det är inte det viktigaste. Poängen med en import map är **indirektionen**:
+koden säger `htmx.org` och bryr sig inte om var filen ligger. Tabellen avgör
+det, och den kan peka om utan att en enda `import`-rad ändras.
+
+Samma kod kan därför köra `htmx.esm.js` — den ominifierade versionen, som går
+att läsa och sätta brytpunkter i — lokalt, och `htmx.esm.min.js` i produktion.
+Skillnaden är vilken URL som står i tabellen.
+
+Här används samma mekanism till att hålla versionsnumret på ett enda ställe.
 
 !!! warning "Versionen måste stå utskriven"
 

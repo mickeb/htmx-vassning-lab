@@ -575,8 +575,14 @@ att versionen är <code>4.0.0</code>.</p>
 JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
 modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
 <code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
-<p>Ingen <code>npm install</code>, inget byggsteg, ingen fil att checka in. Och — det som
-faktiskt är poängen här — <strong>versionen står på exakt ett ställe</strong>.</p>
+<p>Ingen <code>npm install</code>, inget byggsteg, ingen fil att checka in.</p>
+<p>Men det är inte det viktigaste. Poängen med en import map är <strong>indirektionen</strong>:
+koden säger <code>htmx.org</code> och bryr sig inte om var filen ligger. Tabellen avgör
+det, och den kan peka om utan att en enda <code>import</code>-rad ändras.</p>
+<p>Samma kod kan därför köra <code>htmx.esm.js</code> — den ominifierade versionen, som går
+att läsa och sätta brytpunkter i — lokalt, och <code>htmx.esm.min.js</code> i produktion.
+Skillnaden är vilken URL som står i tabellen.</p>
+<p>Här används samma mekanism till att hålla versionsnumret på ett enda ställe.</p>
 <div class="admonition warning">
 <p class="admonition-title">Versionen måste stå utskriven</p>
 <p><code>npm install htmx.org</code> ger dig <strong>htmx 2</strong>, inte htmx 4. En CDN-länk utan
