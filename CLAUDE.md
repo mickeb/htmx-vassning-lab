@@ -104,7 +104,9 @@ not latency-sensitive, so that one stays on polling unconditionally).
 | `src/dev-reload.ts` | SSE hot reload. Development only. |
 | `views/` | Liquid templates. `layout.liquid` is the shell; `views/todo-app/` is the app. |
 | `public/` | CSS and browser JS, served as-is. |
-| `exercises/` | Exercise material. See `exercises/README.md` for the convention. |
+| `exercises/` | Exercise material, in Markdown. See `exercises/README.md` for the convention and the build. |
+| `exercises-site/` | The exercise site, generated from `exercises/` and committed. Never edit by hand. |
+| `mkdocs.yml` | Material for MkDocs config for that site. Pinned to 9.7.7, run from Docker. |
 
 `views/index.liquid` is an environment self-check with four indicators (server,
 stylesheet, JavaScript, hot reload). Keep all four working — it is the first
@@ -159,7 +161,19 @@ The server runs in the container, not on the host. To run something against it:
 
 ## Status
 
-The environment and the todo app are complete and verified. **Exercise content
-has not been written** — `exercises/` holds only the documented convention. The
-progression the exercises follow is settled and written up in the presentation
-repo, in `state/EXERCISES.md`.
+The environment and the todo app are complete and verified.
+
+**Exercise 1 is written; the other seven are not.** The progression they follow
+is written up in the presentation repo, in `state/EXERCISES.md`, and that file
+is the source of truth for it — but it is not frozen, and section 1 already
+moved while exercise 1's prose was being written.
+
+**Exercises are read as a site, not as raw Markdown.** Material for MkDocs
+builds `exercises/` into `exercises-site/`, which is committed and served at
+`http://localhost:4000/exercises`. The build runs from a Docker image and never
+touches an attendee's machine, which is what keeps the no-build-step constraint
+intact — see `exercises/README.md` for the commands and the hint syntax, and the
+presentation repo's `DECISIONS.md` for why Material and what was rejected.
+
+**Rebuild and commit `exercises-site/` whenever `exercises/` changes.** It is
+generated output, so it goes stale silently if that step is skipped.
