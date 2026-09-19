@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
 import { Liquid } from 'liquidjs'
+import { databaseReachable, migrate } from './lib/db.ts'
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -30,9 +31,15 @@ app.set('view engine', 'liquid')
 
 app.use(express.static(join(projectRoot, 'public')))
 
-// Used by setup.sh to decide when the server is actually ready.
-app.get('/healthz', (_req, res) => {
-  res.type('text/plain').send('ok')
+// Used by setup.sh to decide when the server is actually ready. It checks the
+// database too, so "the server responds" cannot be true while the todo app is
+// broken underneath.
+app.get('/healthz', async (_req, res) => {
+  if (await databaseReachable()) {
+    res.type('text/plain').send('ok')
+  } else {
+    res.status(503).type('text/plain').send('database unreachable')
+  }
 })
 
 app.get('/', (_req, res) => {
@@ -47,6 +54,9 @@ if (isDev) {
   const { attachDevReload } = await import('./dev-reload.ts')
   await attachDevReload(app, { projectRoot, bootId })
 }
+
+// Applied before the first request, and again on every restart. See lib/db.ts.
+await migrate()
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`\n  htmx-vassning-lab  ->  http://localhost:${port}\n`)

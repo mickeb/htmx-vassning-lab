@@ -13,4 +13,36 @@ services:
     environment:
       NODE_ENV: development
       PORT: "4000"
+      DATABASE_URL: postgres://lab:lab@db:5432/lab
+    depends_on:
+      db:
+        condition: service_healthy
     restart: unless-stopped
+
+  db:
+    image: postgres:18-alpine
+    container_name: htmx-vassning-lab-db
+    environment:
+      POSTGRES_USER: lab
+      POSTGRES_PASSWORD: lab
+      POSTGRES_DB: lab
+    volumes:
+      # A named volume, not a bind mount: keeping a Postgres data directory in
+      # the project folder would be slow on macOS and noise in the repo.
+      #
+      # Mounted at /var/lib/postgresql, not .../data. Postgres 18 images store
+      # data in a major-version subdirectory below this path, and refuse to
+      # start if the older .../data mount is used instead.
+      - db-data:/var/lib/postgresql
+    # No ports published. Nothing outside this network needs the database, and
+    # plenty of attendees already have something on 5432.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab -d lab"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 5s
+    restart: unless-stopped
+
+volumes:
+  db-data:
