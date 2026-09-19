@@ -141,35 +141,42 @@ och den är inte det förfrågan siktade på.
 
 ## Extra: töm textfältet
 
-En liten sak som stör efter ett tag: texten ligger kvar i fältet efter att todon
-lagts till. Formuläret renderas aldrig om när allt gick bra — servern skickar
-bara raden — så fältet behåller det du skrev.
+Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas
+aldrig om när allt gick bra — servern skickar bara raden — så fältet behåller
+det du skrev.
 
-Lägg till en lyssnare i `public/js/app.js`.
+Det behövs ingen JavaScript-fil för det. Ett attribut på formuläret räcker.
+
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-on` | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
+
+`hx-on` kopplar JavaScript till en händelse direkt på elementet. För htmx egna
+händelser skriver man `::` i stället för `htmx:`, så `hx-on::after:swap` betyder
+"när htmx har bytt in ett svar här".
 
 !!! warning "Händelsenamn i htmx 4 har kolon"
 
-    Den heter `htmx:after:swap`. Inte `htmx:afterSwap` — det är htmx 2, och det
-    är vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
-    inget felmeddelande. Lyssnaren körs bara aldrig.
-
-??? tip "Ledtråd — den uppenbara varianten har en bugg"
-
-    Att tömma fältet vid varje `htmx:after:swap` fungerar — men sorteringen från
-    förra övningen byter också innehåll, och utlöser alltså samma händelse.
-
-    Skriv halva en todo, sortera utan att skicka in, och se vad som händer med
-    det du skrivit.
+    Händelsen heter `after:swap`. Inte `afterSwap` — det är htmx 2, och det är
+    vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
+    inget felmeddelande. Koden körs bara aldrig.
 
 ??? example "Facit"
 
-    ```js
-    document.addEventListener('htmx:after:swap', function (e) {
-      if (e.target.id !== 'new-todo-form') return
-      document.querySelector('.new-todo__input').value = ''
-    })
+    ```html
+    <form class="new-todo" id="new-todo-form" method="post" action="/todo-app/todos"
+          hx-post="/todo-app/fragments/todos"
+          hx-target="#todo-rows"
+          hx-swap="beforeend"
+          hx-on::after:swap="this.reset()">
     ```
 
-    Vid det här bytet är `e.target` formuläret som gjorde förfrågan. Genom att
-    kontrollera det rör lyssnaren inte andra byten — sorteringens byte har ett
-    annat `target` och faller igenom på första raden.
+    `this` är formuläret och `reset()` är vanlig DOM — ingenting htmx-specifikt.
+
+Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
+Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
+det här fältet. Hade du i stället lagt en lyssnare på `document` hade
+halvskriven text försvunnit varje gång någon sorterade.
+
+Beteendet står alltså på elementet det gäller. För att se vad formuläret gör
+behöver du inte leta i en JavaScript-fil — det står i formuläret.

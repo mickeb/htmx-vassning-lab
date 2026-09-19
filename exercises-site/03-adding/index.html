@@ -821,34 +821,51 @@ en annan del som ingen bad om. Den ligger inte i närheten av raden som ändrade
 och den är inte det förfrågan siktade på.</p>
 <p><strong>Nästa övning handlar om precis det.</strong> Låt den vara trasig så länge.</p>
 <h2 id="extra-tom-textfaltet">Extra: töm textfältet<a class="headerlink" href="#extra-tom-textfaltet" title="Permanent link">&para;</a></h2>
-<p>En liten sak som stör efter ett tag: texten ligger kvar i fältet efter att todon
-lagts till. Formuläret renderas aldrig om när allt gick bra — servern skickar
-bara raden — så fältet behåller det du skrev.</p>
-<p>Lägg till en lyssnare i <code>public/js/app.js</code>.</p>
+<p>Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas
+aldrig om när allt gick bra — servern skickar bara raden — så fältet behåller
+det du skrev.</p>
+<p>Det behövs ingen JavaScript-fil för det. Ett attribut på formuläret räcker.</p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Svarar på</th>
+<th>Dokumentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hx-on</code></td>
+<td>Vad ska köras när en händelse inträffar?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-on">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<p><code>hx-on</code> kopplar JavaScript till en händelse direkt på elementet. För htmx egna
+händelser skriver man <code>::</code> i stället för <code>htmx:</code>, så <code>hx-on::after:swap</code> betyder
+"när htmx har bytt in ett svar här".</p>
 <div class="admonition warning">
 <p class="admonition-title">Händelsenamn i htmx 4 har kolon</p>
-<p>Den heter <code>htmx:after:swap</code>. Inte <code>htmx:afterSwap</code> — det är htmx 2, och det
-är vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
-inget felmeddelande. Lyssnaren körs bara aldrig.</p>
+<p>Händelsen heter <code>after:swap</code>. Inte <code>afterSwap</code> — det är htmx 2, och det är
+vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
+inget felmeddelande. Koden körs bara aldrig.</p>
 </div>
-<details class="tip">
-<summary>Ledtråd — den uppenbara varianten har en bugg</summary>
-<p>Att tömma fältet vid varje <code>htmx:after:swap</code> fungerar — men sorteringen från
-förra övningen byter också innehåll, och utlöser alltså samma händelse.</p>
-<p>Skriv halva en todo, sortera utan att skicka in, och se vad som händer med
-det du skrivit.</p>
-</details>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-js highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;htmx:after:swap&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;new-todo-form&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.new-todo__input&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">})</span>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>      <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-rows&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;beforeend&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>      <span class="na">hx-on::after:swap</span><span class="o">=</span><span class="s">&quot;this.reset()&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Vid det här bytet är <code>e.target</code> formuläret som gjorde förfrågan. Genom att
-kontrollera det rör lyssnaren inte andra byten — sorteringens byte har ett
-annat <code>target</code> och faller igenom på första raden.</p>
+<p><code>this</code> är formuläret och <code>reset()</code> är vanlig DOM — ingenting htmx-specifikt.</p>
 </details>
+<p>Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
+Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
+det här fältet. Hade du i stället lagt en lyssnare på <code>document</code> hade
+halvskriven text försvunnit varje gång någon sorterade.</p>
+<p>Beteendet står alltså på elementet det gäller. För att se vad formuläret gör
+behöver du inte leta i en JavaScript-fil — det står i formuläret.</p>
 
 
 
