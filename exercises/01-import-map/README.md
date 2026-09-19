@@ -27,8 +27,8 @@ båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
 
     Nästan allt htmx-material som finns ute — handledningar, forumsvar och det
     en AI-assistent föreslår — gäller htmx 2. Det ser korrekt ut och är fel.
-    Slå upp i [htmx 4-referensen](https://four.htmx.org/reference/) i stället
-    för att gå på minnet.
+    Dubbelkolla i [htmx 4-referensen](https://four.htmx.org/reference/) i
+    stället för att lita på det du sedan tidigare har i huvudet.
 
 ## Steg
 
