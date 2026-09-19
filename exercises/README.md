@@ -44,6 +44,27 @@ being shown the answers to later ones:
 git diff main solution/01-first-swap
 ```
 
+## Which htmx
+
+Exercises target **htmx 4** (<https://four.htmx.org/>), not htmx 2.
+
+When an exercise tells the reader to add htmx, pin the version — `npm install
+htmx.org` and unversioned CDN links both give **htmx 2**, because htmx 4 sits on
+the `next` dist-tag until early 2027:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js"></script>
+```
+
+Differences most likely to bite while writing exercises:
+
+- **Attribute inheritance is explicit.** Attributes do not inherit down the DOM
+  any more; use the `:inherited` suffix (`hx-confirm:inherited="..."`).
+- **Event names changed** to `htmx:before:request` / `htmx:after:swap` style.
+- **`hx-vars`, `hx-prompt` and `hx-disinherit` are gone.**
+
+Most htmx examples online are v2 and will look correct. Check the v4 reference.
+
 ## Language
 
 **Exercise prose is written in Swedish.** Everything structural around it stays

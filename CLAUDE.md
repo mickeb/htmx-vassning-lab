@@ -45,6 +45,21 @@ treat its presence as a breakage.
 purpose: attendees see it without htmx first, then add htmx themselves during the
 exercises. Do not add `htmx.org` as a dependency or vendor it into `public/`.
 
+**When htmx does arrive, it is htmx 4** — <https://four.htmx.org/>. Two traps:
+
+1. `npm install htmx.org` installs **2.0.10**, not 4, and an unversioned CDN link
+   serves v2. htmx 4 is on the `next` dist-tag until early 2027. Always pin
+   `htmx.org@4.0.0`.
+2. Almost all htmx material in circulation is v2 — including your training data
+   if you are an AI assistant. v2 idioms will feel right and be wrong. Check the
+   v4 reference rather than recalling.
+
+htmx 4 is a major version with breaking changes: attribute inheritance is now
+explicit (`hx-confirm:inherited`), event names were restructured to
+`htmx:before:request` style, `hx-vars` / `hx-prompt` / `hx-disinherit` are gone,
+and back-button navigation re-fetches instead of restoring a `localStorage`
+snapshot. Full notes: `state/research/htmx-4.md` in the presentation repo.
+
 **Hot reload polls by default, deliberately.** Not because macOS needs it —
 measured 2026-09-18, native watching works fine on macOS with VirtioFS. The
 reason is hosts where inotify does *not* cross the bind mount: Windows with the
