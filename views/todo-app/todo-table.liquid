@@ -10,12 +10,18 @@
   <table class="todo-table__table">
     <thead>
       <tr>
-        <th class="todo-table__col--created" scope="col">
-          Created at
-          <span class="sort">
-            <a class="sort__chevron{% if sort == 'asc' %} sort__chevron--active{% endif %}" href="/todo-app?sort=asc{% if q != "" %}&amp;q={{ q | url_encode }}{% endif %}" aria-label="Sort by created, oldest first"><svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 5l4-4 4 4"/></svg></a>
-            <a class="sort__chevron{% if sort == 'desc' %} sort__chevron--active{% endif %}" href="/todo-app?sort=desc{% if q != "" %}&amp;q={{ q | url_encode }}{% endif %}" aria-label="Sort by created, newest first"><svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
-          </span>
+        {% comment %}
+          The whole column label is the sort control, and it toggles: the link
+          always points at the opposite of the current order. The chevron shows
+          which way the list is sorted right now.
+        {% endcomment %}
+        {% if sort == 'desc' %}{% assign next_sort = 'asc' %}{% else %}{% assign next_sort = 'desc' %}{% endif %}
+        <th class="todo-table__col--created" scope="col" aria-sort="{% if sort == 'desc' %}descending{% else %}ascending{% endif %}">
+          <a class="sort sort--{{ sort }}" href="/todo-app?sort={{ next_sort }}{% if q != "" %}&amp;q={{ q | url_encode }}{% endif %}">
+            Created at
+            <svg class="sort__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            <span class="visually-hidden">sorted {% if sort == 'desc' %}newest{% else %}oldest{% endif %} first; activate to reverse</span>
+          </a>
         </th>
         <th scope="col">Description</th>
         <th class="todo-table__col--complete" scope="col">Complete</th>
