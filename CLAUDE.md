@@ -163,11 +163,15 @@ The server runs in the container, not on the host. To run something against it:
 
 The environment and the todo app are complete and verified.
 
-**Exercises 1 to 4 are written; the other five are not.** The progression they
-follow is written up in the presentation repo, in `state/EXERCISES.md`, and that
-file is the source of truth for it — but it is not frozen. Sections 1 and 2 both
-moved while their prose was being written, and section 2 turned out to specify an
-`hx-get` that does not work.
+**Exercises 1 to 5 are written; 6 to 9 are not.** The progression they follow is
+written up in the presentation repo, in `state/EXERCISES.md`, and that file is the
+source of truth for it — but it is not frozen. Sections 1 and 2 both moved while
+their prose was being written, the whole running order was restructured once, and
+four sections turned out to specify something that does not work.
+
+The conventions the written ones follow are in `exercises/README.md`: section
+shape, the `???` and `!!!` hint syntax, "Klart när" being checks only, and the
+`Dokumentation` column on attribute tables.
 
 **Run an exercise against the lab before writing its prose.** That is how the
 section 2 error surfaced, and it had survived because the failure looked like
