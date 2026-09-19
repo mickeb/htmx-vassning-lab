@@ -32,6 +32,7 @@ nav:
   - Start: index.md
   - 1. Installera htmx: 01-import-map/README.md
   - 2. Sortering: 02-sorting/README.md
+  - 3. Lägg till en todo: 03-adding/README.md
 
 theme:
   name: material

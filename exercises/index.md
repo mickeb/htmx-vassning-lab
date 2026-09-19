@@ -61,3 +61,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    i appen och bekräfta att det är rätt version.
 2. [**Sortera utan sidladdning**](02-sorting/README.md) — tre attribut på en
    länk, och en sidladdning försvinner.
+3. [**Lägg till en todo utan sidladdning**](03-adding/README.md) — en `POST`
+   som bär med sig formuläret, och ett fel som servern placerar själv.
