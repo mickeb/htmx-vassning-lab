@@ -575,9 +575,9 @@ att versionen är <code>4.0.0</code>.</p>
 JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
 modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
 <code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
-<p>Poängen med en import map är <strong>indirektionen</strong>: koden säger <code>htmx.org</code> och bryr
-sig inte om var filen ligger. Tabellen avgör det, och den kan peka om utan att
-en enda <code>import</code>-rad ändras.</p>
+<p>Poängen med en import map är att <strong>koden inte behöver veta var filen ligger</strong>.
+Koden säger <code>htmx.org</code>; tabellen bestämmer vad det pekar på, och tabellen kan
+ändras utan att en enda <code>import</code>-rad rörs.</p>
 <p>Det gäller vilket JavaScript-bibliotek som helst, och det är så man kör en
 ominifierad utvecklingsversion lokalt och en minifierad i produktion: samma
 <code>import</code>-rader i koden, olika URL i tabellen. htmx finns i båda formerna —
