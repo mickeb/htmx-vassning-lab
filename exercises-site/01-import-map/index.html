@@ -1,0 +1,710 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Övningar till HTMX-vassningen.">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:4000/exercises/01-import-map/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Installera htmx - HTMX-vassning — övningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-installera-htmx-med-en-import-map" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="HTMX-vassning — övningar" class="md-header__button md-logo" aria-label="HTMX-vassning — övningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTMX-vassning — övningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Installera htmx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Byt till mörkt läge"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Byt till mörkt läge" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Byt till ljust läge"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Byt till ljust läge" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Sök" placeholder="Sök" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Sök">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Rensa" aria-label="Rensa" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialiserar sök
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HTMX-vassning — övningar" class="md-nav__button md-logo" aria-label="HTMX-vassning — övningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HTMX-vassning — övningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Installera htmx
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Installera htmx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mål
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bakgrund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bakgrund
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oppna-viewslayoutliquid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öppna views/layout.liquid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lagg-till-import-map-och-modulskript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lägg till import map och modulskript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spara-och-ladda-om" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Spara och ladda om
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klart-nar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klart när
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mål
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bakgrund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bakgrund
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oppna-viewslayoutliquid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öppna views/layout.liquid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lagg-till-import-map-och-modulskript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lägg till import map och modulskript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spara-och-ladda-om" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Spara och ladda om
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klart-nar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klart när
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-installera-htmx-med-en-import-map">1. Installera htmx med en import map<a class="headerlink" href="#1-installera-htmx-med-en-import-map" title="Permanent link">&para;</a></h1>
+<h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
+<p>htmx 4 laddas på varje sida i labbet, och du kan bekräfta i webbläsarens konsol
+att versionen är <code>4.0.0</code>.</p>
+<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
+<p>htmx laddas som en <strong>ES-modul via en import map</strong>. En import map är en liten
+JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
+modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
+<code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
+<p>Ingen <code>npm install</code>, inget byggsteg, ingen fil att checka in. Och — det som
+faktiskt är poängen här — <strong>versionen står på exakt ett ställe</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Versionen måste stå utskriven</p>
+<p><code>npm install htmx.org</code> ger dig <strong>htmx 2</strong>, inte htmx 4. En CDN-länk utan
+versionsnummer ger också htmx 2. htmx 4 ligger kvar på dist-taggen <code>next</code>
+fram till början av 2027.</p>
+<p>Nästan allt htmx-material som finns ute — handledningar, forumsvar och det
+en AI-assistent föreslår — gäller htmx 2. Det ser korrekt ut och är fel.
+Slå upp i <a href="https://four.htmx.org/reference/">htmx 4-referensen</a> i stället
+för att gå på minnet.</p>
+</div>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-oppna-viewslayoutliquid">1. Öppna <code>views/layout.liquid</code><a class="headerlink" href="#1-oppna-viewslayoutliquid" title="Permanent link">&para;</a></h3>
+<p>Det är skalet som varje sida i labbet renderas in i. Lägger du något i dess
+<code>&lt;head&gt;</code> finns det på alla sidor.</p>
+<h3 id="2-lagg-till-import-map-och-modulskript">2. Lägg till import map och modulskript<a class="headerlink" href="#2-lagg-till-import-map-och-modulskript" title="Permanent link">&para;</a></h3>
+<p>Båda ska in före <code>&lt;/head&gt;</code>.</p>
+<p>Ordningen spelar roll: <strong>import map:en måste stå före det modulskript som
+använder namnet.</strong> Webbläsaren läser tabellen en gång, och har den inte
+kommit än när importen körs går uppslaget inte att göra.</p>
+<details class="tip">
+<summary>Ledtråd — formen på en import map</summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;importmap&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="w"> </span><span class="s2">&quot;imports&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;paketnamn&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://exempel.se/fil.js&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Innehållet är ren JSON. Inga kommentarer, inga avslutande kommatecken —
+en trailing comma räcker för att hela tabellen ska ignoreras tyst.</p>
+</details>
+<details class="tip">
+<summary>Ledtråd — vilken URL?</summary>
+<p>Filen som ska laddas är <code>dist/htmx.esm.js</code> ur paketet <code>htmx.org</code>, version
+<code>4.0.0</code>, från jsDelivr:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Facit — hela tillägget</summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;importmap&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"> </span><span class="s2">&quot;imports&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;htmx.org&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">htmx</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;htmx.org&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Det behövs inget mer. htmx startar sig själv när modulen laddats — du
+behöver inte anropa något för att komma igång.</p>
+</details>
+<h3 id="3-spara-och-ladda-om">3. Spara och ladda om<a class="headerlink" href="#3-spara-och-ladda-om" title="Permanent link">&para;</a></h3>
+<p>Hot reload laddar om sidan åt dig när du sparar. Öppna sedan konsolen i
+webbläsarens utvecklarverktyg och skriv:</p>
+<div class="language-js highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">htmx</span><span class="p">.</span><span class="nx">version</span>
+</code></pre></div>
+<h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>htmx.version</code> svarar <code>'4.0.0'</code> i konsolen.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar att <code>htmx.esm.js</code> hämtats från jsDelivr.</li>
+</ul>
+<details class="question">
+<summary>Det fungerar inte — vad kan vara fel?</summary>
+<p><strong><code>htmx is not defined</code> i konsolen.</strong>
+Import map:en står antagligen efter modulskriptet, eller så har JSON:en ett
+syntaxfel. Ett fel i tabellen rapporteras inte alltid tydligt — den slutar
+bara gälla.</p>
+<p><strong><code>Failed to resolve module specifier "htmx.org"</code>.</strong>
+Webbläsaren hittade ingen import map alls när importen kördes. Kontrollera
+att <code>type="importmap"</code> är rätt stavat och att skriptet ligger i <code>&lt;head&gt;</code>.</p>
+<p><strong><code>htmx.version</code> svarar <code>2.x.x</code>.</strong>
+Då pekar URL:en på en oversionerad adress någonstans. Jämför med URL:en i
+ledtråden ovan — versionen ska stå i den.</p>
+<p><strong>Ingenting alls händer när du sparar.</strong>
+Kontrollera hot reload-indikatorn på <a href="http://localhost:4000">startsidan</a>.
+Är den röd har sidan tappat kontakten med servern; ladda om manuellt.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Sidfot" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Föregående: Start">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Föregående
+              </span>
+              <div class="md-ellipsis">
+                Start
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
