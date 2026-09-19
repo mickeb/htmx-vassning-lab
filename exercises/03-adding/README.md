@@ -145,7 +145,7 @@ Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas
 aldrig om när allt gick bra — servern skickar bara raden — så fältet behåller
 det du skrev.
 
-Det behövs ingen JavaScript-fil för det. Ett attribut på formuläret räcker.
+Ett attribut på formuläret räcker.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
@@ -187,5 +187,5 @@ Sorteringen från förra övningen byter också innehåll på sidan, men den rö
 det här fältet. Hade du i stället lagt en lyssnare på `document` hade
 halvskriven text försvunnit varje gång någon sorterade.
 
-Beteendet står alltså på elementet det gäller. För att se vad formuläret gör
-behöver du inte leta i en JavaScript-fil — det står i formuläret.
+Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
+formuläret.
