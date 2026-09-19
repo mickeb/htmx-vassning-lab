@@ -25,7 +25,7 @@ Tre attribut räcker:
 | --- | --- |
 | `hx-get` | Vilken adress ska hämtas? |
 | `hx-target` | Var i sidan ska svaret in? |
-| `hx-swap` | Hur ska det sättas in? |
+| [`hx-swap`](https://four.htmx.org/reference/attributes/hx-swap) | Hur ska det sättas in? |
 
 Adressen är `/todo-app/fragments/table`. Den rutten fanns redan innan du
 började — den renderar exakt samma tabell, men utan sidan runt omkring.
