@@ -44,7 +44,8 @@ routing i Express. Varje övning pekar ut den rutt den behöver.
 Två av dem går att öppna direkt i en flik:
 
 - [`/todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table)
-  — hela listan
+  — hela listan. Den här rutten tas bort i en senare övning, när den har gjort
+  sitt.
 - [`/todo-app/fragments/header`](http://localhost:4000/todo-app/fragments/header)
   — räknaren överst
 
@@ -69,3 +70,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    släktskap i stället för en adress.
 6. [**Fyrverkerier när allt är klart**](06-fireworks/README.md) — en HTTP-header
    som säger att något hänt, inte vad sidan ska göra åt det.
+7. [**En adress, två svar**](07-one-url/README.md) — servern läser en header och
+   svarar olika beroende på vem som frågar.

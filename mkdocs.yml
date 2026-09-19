@@ -36,6 +36,7 @@ nav:
   - 4. Out-of-band-byten: 04-out-of-band/README.md
   - 5. Bocka av en todo: 05-complete/README.md
   - 6. Fyrverkerier: 06-fireworks/README.md
+  - 7. En adress, två svar: 07-one-url/README.md
 
 theme:
   name: material
