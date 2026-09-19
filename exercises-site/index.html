@@ -305,6 +305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#det-labbet-redan-ger-dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det labbet redan ger dig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -415,6 +426,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#det-labbet-redan-ger-dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det labbet redan ger dig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -462,6 +484,28 @@ filer i din egen editor och laddar om sidan i webbläsaren — det är hela
 arbetsflödet. Behöver en övning ett terminalkommando utöver <code>./setup.sh</code> är
 det ett misstag i övningen, inte i din miljö.</p>
 </div>
+<h2 id="det-labbet-redan-ger-dig">Det labbet redan ger dig<a class="headerlink" href="#det-labbet-redan-ger-dig" title="Permanent link">&para;</a></h2>
+<p>Appen har <strong>två uppsättningar rutter över samma data</strong>.</p>
+<p>De vanliga — <code>/todo-app</code>, och formulären som postar till den — returnerar hela
+sidor, precis som webben fungerade innan JavaScript blev inblandat.</p>
+<p>Vid sidan av dem ligger <strong>fragmentrutter</strong> under <code>/todo-app/fragments/...</code>. De
+renderar exakt samma Liquid-mallar, men utan sidan runt omkring. De fanns med
+redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
+någon serverkod för att använda dem.</p>
+<p>Det är ett medvetet val. Sessionen handlar om hypermedia och htmx, inte om
+routing i Express. Varje övning pekar ut den rutt den behöver.</p>
+<p>Två av dem går att öppna direkt i en flik:</p>
+<ul>
+<li><a href="http://localhost:4000/todo-app/fragments/table"><code>/todo-app/fragments/table</code></a>
+  — hela listan</li>
+<li><a href="http://localhost:4000/todo-app/fragments/header"><code>/todo-app/fragments/header</code></a>
+  — räknaren överst</li>
+</ul>
+<p>Gör det en gång innan du börjar. Det som kommer tillbaka är <strong>HTML</strong>, inte JSON
+— en bit färdig tabell, inte data att bygga ihop något av på klienten. Det är
+halva poängen med hela angreppssättet, och det är lättare att se än att läsa sig
+till.</p>
+<p>Resten av fragmentrutterna svarar bara på <code>POST</code> och dyker upp i senare övningar.</p>
 <h2 id="ovningarna">Övningarna<a class="headerlink" href="#ovningarna" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="01-import-map/"><strong>Installera htmx med en import map</strong></a> — få in htmx

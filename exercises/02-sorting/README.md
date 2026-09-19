@@ -28,7 +28,9 @@ Tre attribut räcker:
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
 Adressen är `/todo-app/fragments/table`. Den rutten fanns redan innan du
-började — den renderar exakt samma tabell, men utan sidan runt omkring.
+började — den renderar exakt samma tabell, men utan sidan runt omkring. Den är
+en av [fragmentrutterna labbet levereras med](../index.md#det-labbet-redan-ger-dig);
+du ska inte skriva någon serverkod i den här övningen.
 
 !!! tip "Öppna den i en flik innan du fortsätter"
 
