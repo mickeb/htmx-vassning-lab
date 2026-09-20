@@ -71,3 +71,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    som säger att något hänt, inte vad sidan ska göra åt det.
 7. [**En adress, två svar**](07-one-url/README.md) — servern läser en header och
    svarar olika beroende på vem som frågar.
+8. [**Ge tillbaka adressen**](08-url-state/README.md) — ett attribut som lämnar
+   tillbaka något webben alltid har haft.
