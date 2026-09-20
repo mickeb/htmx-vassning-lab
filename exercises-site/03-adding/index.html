@@ -1061,6 +1061,18 @@ inget felmeddelande. Koden körs bara aldrig.</p>
 </code></pre></div>
 <p><code>this</code> är formuläret och <code>reset()</code> är vanlig DOM — ingenting htmx-specifikt.</p>
 </details>
+<div class="admonition note">
+<p class="admonition-title">htmx 4 har också en längre form</p>
+<p><code>hx-on:&lt;händelse&gt;="kod"</code> är den enkla formen, och den du kommer se mest.
+htmx 4 lade till en längre som bygger på <code>hx-trigger</code>:s grammatik och
+skiljer händelsen från koden med <code>-&gt;</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>hx-on=&quot;<span class="p">&lt;</span><span class="nt">händelse</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">filter</span><span class="p">&gt;</span>] <span class="p">&lt;</span><span class="nt">modifierare</span><span class="p">&gt;</span> -&gt; <span class="p">&lt;</span><span class="nt">kod</span><span class="p">&gt;</span>&quot;
+</code></pre></div>
+<p>Den kan filtrera på händelsen, lyssna på ett annat element med <code>from:</code>, köra
+samma kod för flera händelser och para ihop flera händelser med olika kod.
+Inget av det behövs här. Formerna står bredvid varandra i
+<a href="https://four.htmx.org/reference/attributes/hx-on">referensen</a>.</p>
+</div>
 <p>Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
 Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
 det här fältet. Hade du i stället lagt en lyssnare på <code>document</code> hade

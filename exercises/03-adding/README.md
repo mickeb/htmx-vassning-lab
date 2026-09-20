@@ -186,6 +186,21 @@ den vanliga.
 
     `this` är formuläret och `reset()` är vanlig DOM — ingenting htmx-specifikt.
 
+!!! note "htmx 4 har också en längre form"
+
+    `hx-on:<händelse>="kod"` är den enkla formen, och den du kommer se mest.
+    htmx 4 lade till en längre som bygger på `hx-trigger`:s grammatik och
+    skiljer händelsen från koden med `->`:
+
+    ```html
+    hx-on="<händelse>[<filter>] <modifierare> -> <kod>"
+    ```
+
+    Den kan filtrera på händelsen, lyssna på ett annat element med `from:`, köra
+    samma kod för flera händelser och para ihop flera händelser med olika kod.
+    Inget av det behövs här. Formerna står bredvid varandra i
+    [referensen](https://four.htmx.org/reference/attributes/hx-on).
+
 Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
 Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
 det här fältet. Hade du i stället lagt en lyssnare på `document` hade
