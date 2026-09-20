@@ -75,3 +75,7 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    tillbaka något webben alltid har haft.
 9. [**Sök medan du skriver**](09-search/README.md) — en förfrågan bär exakt det
    du lägger i den, och det du lägger i den måste renderas om.
+
+Blir det tid över finns [**extrauppgifter**](extra/README.md) — uppgifter utan
+ledtrådar och facit — och [**vidare läsning**](reading/README.md) om delar av
+htmx 4 som övningarna inte rör vid.

@@ -43,6 +43,16 @@ decides what a reasonable solution is and when it is done.
 Add a new one by appending a numbered section. The page says up front that this
 is what it is, so an assignment does not read as an unfinished exercise.
 
+## Further reading
+
+`reading/README.md` is reading material, not work: one `##` per area, a few
+sentences on what it is and why it is worth knowing, then the links. Each area
+says what it has to do with this lab — otherwise it is a link dump.
+
+Same rule as everywhere else: check the claims against
+<https://four.htmx.org/> before writing them down, and say htmx 2 explicitly if
+something only applies there.
+
 ## Starting state
 
 Exercises build on the running lab in `views/`, `public/` and `src/`. Each one
