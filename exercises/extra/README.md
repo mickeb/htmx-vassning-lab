@@ -18,5 +18,6 @@ Labbet börjar som en vanlig flersidesapp: varje länk och varje formulär ger e
 sidladdning. `hx-boost` låter htmx ta över dem utan att något attribut sätts på
 länkarna och formulären själva.
 
-Utgå från appen som den såg ut innan övning 1 och experimentera med `hx-boost`
-och `hx-select`.
+Backa appen till sitt ursprungliga skick först — som den såg ut innan övning 1 —
+och experimentera sedan med `hx-boost` och `hx-select`. Boost förutsätter att
+adressen svarar med en hel sida, och det gör den inte längre efter övning 7.
