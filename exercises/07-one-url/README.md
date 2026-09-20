@@ -2,8 +2,8 @@
 
 ## Mål
 
-Sorteringslänken har bara en adress kvar. `href` och `hx-get` innehåller samma
-sträng, och fragmentrutten för tabellen är borttagen.
+Sorteringslänken har bara en adress kvar: `href` och `hx-get` innehåller samma
+sträng.
 
 ## Bakgrund
 
@@ -90,37 +90,11 @@ och låt grenarna dela på det.
 
 Sortera ett par gånger. Det ska bete sig precis som förut.
 
-### 3. Ta bort fragmentrutten
-
-Ingen använder `GET /todo-app/fragments/table` längre. Ta bort den ur
-`src/app.ts`.
-
-!!! note "Länken från startsidan försvinner med den"
-
-    Övningssidans startsida ber dig öppna `/todo-app/fragments/table` i en flik,
-    för att se att det som kommer tillbaka är HTML och inte JSON. Den adressen
-    svarar `404` efter det här steget.
-
-    Det är inte en olycka utan poängen: rutten fanns för att göra de tidiga
-    övningarna små. `/todo-app/fragments/header` finns kvar om du vill titta på
-    ett fragment igen.
-
-??? example "Facit"
-
-    ```ts
-    // Hela den här hanteraren ska bort:
-    todoApp.get('/fragments/table', async (req, res) => {
-      const { q, sort } = listParams(req.query)
-      res.render('todo-app/todo-table', await todos.listModel(q, sort))
-    })
-    ```
-
 ## Klart när
 
 - [ ] Sortering fungerar som förut: **en** förfrågan, ingen sidladdning, och
       pilen växlar åt rätt håll varje gång.
 - [ ] `hx-get` och `href` innehåller samma sträng.
-- [ ] `/todo-app/fragments/table` svarar `404`.
 - [ ] Öppnar du `href`-adressen i en ny flik kommer **hela sidan** tillbaka,
       sorterad som adressen säger.
 
@@ -128,11 +102,6 @@ Ingen använder `GET /todo-app/fragments/table` längre. Ta bort den ur
 
     Då träffade grenen i `app.ts` inte, så htmx fick tillbaka ett helt dokument
     och bytte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
-
-??? question "Sorteringen ger 404"
-
-    Rutten är borttagen men länken pekar fortfarande på `/fragments/table`.
-    Steg 2 och steg 3 hör ihop.
 
 ## Det som faktiskt hände
 
@@ -152,8 +121,9 @@ rutt, inte något som lades till.
 
 ### Fragmentrutten var en byggnadsställning
 
-Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
-routing. Nu när du vet vad ett fragmentsvar är slutade den betala för sig.
+`/todo-app/fragments/table` finns kvar i labbet, men ingenting använder den
+längre. Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
+routing, och i en riktig kodbas hade den tagits bort i den här commiten.
 
 Kvar finns idén den fanns till för: **servern bestämmer vad ett svar
 innehåller.** Först utifrån vad som hände — en rad, en rubrik, en händelse — och

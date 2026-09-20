@@ -44,8 +44,7 @@ routing i Express. Varje övning pekar ut den rutt den behöver.
 Två av dem går att öppna direkt i en flik:
 
 - [`/todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table)
-  — hela listan. Den här rutten tas bort i en senare övning, när den har gjort
-  sitt.
+  — hela listan
 - [`/todo-app/fragments/header`](http://localhost:4000/todo-app/fragments/header)
   — räknaren överst
 

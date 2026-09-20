@@ -538,17 +538,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#3-ta-bort-fragmentrutten" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Ta bort fragmentrutten
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -705,17 +694,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#3-ta-bort-fragmentrutten" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Ta bort fragmentrutten
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -801,8 +779,8 @@
 
 <h1 id="7-en-adress-tva-svar">7. En adress, två svar<a class="headerlink" href="#7-en-adress-tva-svar" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>Sorteringslänken har bara en adress kvar. <code>href</code> och <code>hx-get</code> innehåller samma
-sträng, och fragmentrutten för tabellen är borttagen.</p>
+<p>Sorteringslänken har bara en adress kvar: <code>href</code> och <code>hx-get</code> innehåller samma
+sträng.</p>
 <h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
 <p>Sedan övning 2 har sorteringslänken burit samma frågesträng två gånger:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>href=&quot;/todo-app?sort=desc&quot;
@@ -881,33 +859,11 @@ gjorde. Det är därför den strax kan tas bort.</p>
 </code></pre></div>
 </details>
 <p>Sortera ett par gånger. Det ska bete sig precis som förut.</p>
-<h3 id="3-ta-bort-fragmentrutten">3. Ta bort fragmentrutten<a class="headerlink" href="#3-ta-bort-fragmentrutten" title="Permanent link">&para;</a></h3>
-<p>Ingen använder <code>GET /todo-app/fragments/table</code> längre. Ta bort den ur
-<code>src/app.ts</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Länken från startsidan försvinner med den</p>
-<p>Övningssidans startsida ber dig öppna <code>/todo-app/fragments/table</code> i en flik,
-för att se att det som kommer tillbaka är HTML och inte JSON. Den adressen
-svarar <code>404</code> efter det här steget.</p>
-<p>Det är inte en olycka utan poängen: rutten fanns för att göra de tidiga
-övningarna små. <code>/todo-app/fragments/header</code> finns kvar om du vill titta på
-ett fragment igen.</p>
-</div>
-<details class="example">
-<summary>Facit</summary>
-<div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Hela den här hanteraren ska bort:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">todoApp</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/fragments/table&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listParams</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">todos</span><span class="p">.</span><span class="nx">listModel</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="p">))</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">})</span>
-</code></pre></div>
-</details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sortering fungerar som förut: <strong>en</strong> förfrågan, ingen sidladdning, och
       pilen växlar åt rätt håll varje gång.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>hx-get</code> och <code>href</code> innehåller samma sträng.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>/todo-app/fragments/table</code> svarar <code>404</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Öppnar du <code>href</code>-adressen i en ny flik kommer <strong>hela sidan</strong> tillbaka,
       sorterad som adressen säger.</li>
 </ul>
@@ -915,11 +871,6 @@ ett fragment igen.</p>
 <summary>Hela sidan hamnar inne i tabellen</summary>
 <p>Då träffade grenen i <code>app.ts</code> inte, så htmx fick tillbaka ett helt dokument
 och bytte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
-</details>
-<details class="question">
-<summary>Sorteringen ger 404</summary>
-<p>Rutten är borttagen men länken pekar fortfarande på <code>/fragments/table</code>.
-Steg 2 och steg 3 hör ihop.</p>
 </details>
 <h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
 <h3 id="samma-lank-fungerar-med-och-utan-htmx">Samma länk fungerar med och utan htmx<a class="headerlink" href="#samma-lank-fungerar-med-och-utan-htmx" title="Permanent link">&para;</a></h3>
@@ -933,8 +884,9 @@ sidan, eftersom <code>HX-Request</code> saknas, och resultatet blir detsamma. Ba
 <p>Ingenting behövde skrivas två gånger för att få det. Det som togs bort var en
 rutt, inte något som lades till.</p>
 <h3 id="fragmentrutten-var-en-byggnadsstallning">Fragmentrutten var en byggnadsställning<a class="headerlink" href="#fragmentrutten-var-en-byggnadsstallning" title="Permanent link">&para;</a></h3>
-<p>Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
-routing. Nu när du vet vad ett fragmentsvar är slutade den betala för sig.</p>
+<p><code>/todo-app/fragments/table</code> finns kvar i labbet, men ingenting använder den
+längre. Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
+routing, och i en riktig kodbas hade den tagits bort i den här commiten.</p>
 <p>Kvar finns idén den fanns till för: <strong>servern bestämmer vad ett svar
 innehåller.</strong> Först utifrån vad som hände — en rad, en rubrik, en händelse — och
 nu också utifrån vem som frågar.</p>
