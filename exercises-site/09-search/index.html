@@ -1,0 +1,1256 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Övningar till HTMX-vassningen.">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:4000/exercises/09-search/">
+      
+      
+        <link rel="prev" href="../08-url-state/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>9. Sök medan du skriver - HTMX-vassning — övningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-sok-medan-du-skriver" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="HTMX-vassning — övningar" class="md-header__button md-logo" aria-label="HTMX-vassning — övningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTMX-vassning — övningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Sök medan du skriver
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Byt till mörkt läge"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Byt till mörkt läge" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Byt till ljust läge"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Byt till ljust läge" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Sök" placeholder="Sök" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Sök">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Rensa" aria-label="Rensa" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialiserar sök
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HTMX-vassning — övningar" class="md-nav__button md-logo" aria-label="HTMX-vassning — övningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HTMX-vassning — övningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-import-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Installera htmx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-sorting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Sortering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-adding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Lägg till en todo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-out-of-band/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Out-of-band-byten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-complete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Bocka av en todo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fireworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fyrverkerier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-one-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. En adress, två svar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-url-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Ge tillbaka adressen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Sök medan du skriver
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Sök medan du skriver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mål
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bakgrund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bakgrund
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sok-medan-du-skriver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sök medan du skriver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sortera-forst-sok-sedan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sortera först, sök sedan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sokordet-i-adressen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sökordet i adressen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extra-visa-att-nagot-hander" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Extra: visa att något händer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klart-nar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klart när
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det som faktiskt hände
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Det som faktiskt hände">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#en-forfragan-bar-exakt-det-du-lagger-i-den" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En förfrågan bär exakt det du lägger i den
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#det-du-skickar-maste-renderas-om" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det du skickar måste renderas om
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adressen-ar-inte-en-etikett" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressen är inte en etikett
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#och-sen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Och sen?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mål
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bakgrund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bakgrund
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sok-medan-du-skriver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sök medan du skriver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sortera-forst-sok-sedan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sortera först, sök sedan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sokordet-i-adressen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sökordet i adressen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extra-visa-att-nagot-hander" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Extra: visa att något händer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klart-nar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klart när
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det som faktiskt hände
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Det som faktiskt hände">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#en-forfragan-bar-exakt-det-du-lagger-i-den" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En förfrågan bär exakt det du lägger i den
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#det-du-skickar-maste-renderas-om" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Det du skickar måste renderas om
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adressen-ar-inte-en-etikett" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressen är inte en etikett
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#och-sen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Och sen?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-sok-medan-du-skriver">9. Sök medan du skriver<a class="headerlink" href="#9-sok-medan-du-skriver" title="Permanent link">&para;</a></h1>
+<h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
+<p>Listan filtreras medan du skriver, sorteringen följer med sökningen, och
+sökordet hamnar i adressen utan att fylla historiken med ett steg per
+tangenttryckning.</p>
+<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
+<p>Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
+knapp, precis som den alltid har varit — och den får förbli det. Attributen
+hamnar på <strong>fältet</strong>, inte på formuläret, så att söka medan man skriver läggs
+ovanpå det som redan fungerar.</p>
+<p>Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
+<strong>Search</strong> gör fortfarande en vanlig sidladdning till samma adress. Det är inte
+något som ska byggas bort; det är reservvägen, synlig.</p>
+<p>Två nya attribut, och två till längre fram i övningen:</p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Svarar på</th>
+<th>Dokumentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hx-trigger</code></td>
+<td>Vad ska utlösa förfrågan, och när?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-trigger">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-include</code></td>
+<td>Vad mer än elementets eget värde ska skickas med?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-include">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<p>Sökningen är en <code>GET</code> hela vägen. Frågesträngen i adressen är själva poängen —
+det är den som gör en sökning möjlig att skicka vidare, och det är den du
+lämnade tillbaka till sorteringen i förra övningen.</p>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-sok-medan-du-skriver">1. Sök medan du skriver<a class="headerlink" href="#1-sok-medan-du-skriver" title="Permanent link">&para;</a></h3>
+<p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg attributen på
+<code>&lt;input class="search__input"&gt;</code>. Adressen är <code>/todo-app</code> — samma som
+sorteringen hämtar sedan övning 7.</p>
+<p>Utlösaren är det nya:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-trigger=&quot;input changed delay:300ms&quot;
+</code></pre></div>
+<p><code>input</code> är webbläsarens egen händelse: den kommer vid varje tangenttryckning.
+<code>delay:300ms</code> startar om nedräkningen vid varje ny händelse, så en förfrågan går
+iväg när du <strong>pausar</strong>, inte per tecken. <code>changed</code> hoppar över förfrågan om
+värdet inte faktiskt ändrats — pilknappar och liknande ger <code>input</code> utan att
+texten blir en annan.</p>
+<div class="admonition warning">
+<p class="admonition-title">Glöm inte <code>hx-swap</code></p>
+<p>Svaret <strong>är</strong> <code>#todo-table</code>. Standardbytet i htmx 4 är <code>innerHTML</code>, så utan
+<code>hx-swap="outerHTML"</code> hamnar en ny <code>#todo-table</code> <em>inuti</em> den gamla. Listan
+ser rätt ut, men sidan har nu två element med samma <code>id</code>.</p>
+</div>
+<details class="example">
+<summary>Facit</summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;search__input&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;search&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;q&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ q }}&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search todos&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>       <span class="na">id</span><span class="o">=</span><span class="s">&quot;search-q&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>       <span class="na">hx-get</span><span class="o">=</span><span class="s">&quot;/todo-app&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>       <span class="na">hx-trigger</span><span class="o">=</span><span class="s">&quot;input changed delay:300ms&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>       <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>       <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+</details>
+<p>Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge <strong>en</strong> förfrågan,
+inte fem. Ta bort <code>delay:300ms</code> en stund och skriv igen om du vill se
+skillnaden.</p>
+<h3 id="2-sortera-forst-sok-sedan">2. Sortera först, sök sedan<a class="headerlink" href="#2-sortera-forst-sok-sedan" title="Permanent link">&para;</a></h3>
+<p>Sortera nyast först. Skriv sedan något i sökrutan.</p>
+<p>Ordningen slår tillbaka till äldst först vid första tangenttryckningen.</p>
+<p>Titta i nätverkspanelen, på adressen som gick iväg:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/todo-app?q=alpha            &lt;- det som skickades
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/todo-app?q=alpha&amp;sort=desc  &lt;- det formuläret hade skickat
+</code></pre></div>
+<p>Sorteringen är inte med. Servern har ingen aning om vad du valde, faller
+tillbaka på sin standardordning och svarar med en helt korrekt lista — på fel
+fråga.</p>
+<div class="admonition note">
+<p class="admonition-title">En <code>GET</code> bär inte med sig sitt formulär</p>
+<p>I övning 3 följde hela formuläret med av sig självt. Det gjorde det för att
+en <code>POST</code> har en kropp. Regeln, från
+<a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>, är att
+ett element skickar <strong>sitt eget värde</strong>, och att formulärets alla fält
+följer med först när förfrågan har en kropp.</p>
+<p><code>GET</code> har ingen kropp. Fältet skickar <code>q</code> och ingenting annat — det dolda
+sorteringsfältet ligger i samma formulär och följer ändå inte med.</p>
+</div>
+<p>Fixen är <code>hx-include</code>, som pekar ut vad mer som ska skickas. Men den kräver en
+sak till, och det är den intressanta halvan.</p>
+<div class="admonition warning">
+<p class="admonition-title">Fältet måste ligga där det renderas om</p>
+<p>Formuläret har redan ett dolt sorteringsfält. Pekar du <code>hx-include</code> på det
+får du <strong>fel svar på ett nytt sätt</strong>: sökrutan ligger utanför <code>#todo-table</code>,
+så en sortering renderar aldrig om den. Fältet står kvar på det värde det
+hade när sidan laddades, och <code>hx-include</code> skickar lydigt det gamla värdet.</p>
+<p>Resultatet ser exakt ut som buggen du just tittade på.</p>
+<p>Samma sak händer om du bakar in sorteringen i adressen —
+<code>hx-get="/todo-app?sort={{ sort }}"</code>. Liquid skriver in värdet när sidan
+renderas, och formuläret renderas inte om.</p>
+</div>
+<p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som varje byte renderar
+om, och peka <code>hx-include</code> på det.</p>
+<details class="example">
+<summary>Facit — <code>views/todo-app/todo-table.liquid</code></summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;current-sort&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Facit — fältet i sökrutan</summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>       hx-include=&quot;#current-sort&quot;
+</code></pre></div>
+</details>
+<p>Sortera nyast först och skriv igen. Ordningen ligger kvar. Sortera medan en
+sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har burit
+<code>q</code> i adressen sedan övning 2.</p>
+<div class="admonition note">
+<p class="admonition-title">Nu finns det två dolda sorteringsfält</p>
+<p>Ett i formuläret och ett i tabellen. Det är inte ett misstag. Formulärets
+används när formuläret postas på vanligt vis — reservvägen — och tabellens
+används av htmx. Bara ett av dem skickas åt gången.</p>
+</div>
+<h3 id="3-sokordet-i-adressen">3. Sökordet i adressen<a class="headerlink" href="#3-sokordet-i-adressen" title="Permanent link">&para;</a></h3>
+<p>Sorteringen lägger sin adress i historiken sedan förra övningen. Gör samma sak
+här: lägg <code>hx-push-url="true"</code> på sökfältet och skriv några ord med korta
+pauser.</p>
+<p>Titta sedan på bakåtknappen.</p>
+<p>Varje paus har blivit ett eget steg i historiken. Att ta sig tillbaka till där
+du var innan du började söka kräver ett tryck per paus. Adressen stämmer, men
+historiken har blivit en logg över ditt skrivande.</p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Svarar på</th>
+<th>Dokumentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hx-replace-url</code></td>
+<td>Ska adressen bytas ut utan att ett steg läggs till?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-replace-url">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<p>Byt ut attributet mot <code>hx-replace-url="true"</code>.</p>
+<details class="example">
+<summary>Facit</summary>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>       hx-include=&quot;#current-sort&quot;
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>       hx-replace-url=&quot;true&quot;
+</code></pre></div>
+</details>
+<p>Regeln, rakt ut: <strong>push för beslut, replace för förfining.</strong> Att sortera är ett
+beslut — du vill kunna gå tillbaka till det. Att skriva ett tecken till i en
+sökruta är det inte.</p>
+<p>De två sitter kvar sida vid sida i appen nu: sorteringslänken lägger till steg,
+sökrutan byter ut. Samma sorts adress, två olika svar på frågan om det är värt
+ett steg bakåt.</p>
+<h3 id="4-extra-visa-att-nagot-hander">4. Extra: visa att något händer<a class="headerlink" href="#4-extra-visa-att-nagot-hander" title="Permanent link">&para;</a></h3>
+<p>Sökningen sker på en paus, och på en långsam förbindelse hinner det gå en stund
+innan listan byts. Just nu syns ingenting under tiden.</p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Svarar på</th>
+<th>Dokumentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hx-indicator</code></td>
+<td>Vilket element ska markeras medan förfrågan pågår?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-indicator">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<p>htmx lägger klassen <code>htmx-request</code> på elementet under tiden, och tar bort den
+när svaret kommit. Stilmallen som får det att synas kommer från htmx självt:</p>
+<div class="language-css highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">.</span><span class="nc">htmx-indicator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">visibility</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">.</span><span class="nc">htmx-request</span><span class="w"> </span><span class="p">.</span><span class="nc">htmx-indicator</span><span class="o">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">.</span><span class="nc">htmx-request</span><span class="p">.</span><span class="nc">htmx-indicator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">visibility</span><span class="p">:</span><span class="w"> </span><span class="kc">visible</span><span class="p">;</span><span class="w"> </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-in</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Du behöver alltså bara ett element med klassen <code>htmx-indicator</code> och ett
+<code>hx-indicator</code> som pekar på det.</p>
+<details class="example">
+<summary>Facit</summary>
+<p>I <code>search-form.liquid</code>, efter <code>&lt;/label&gt;</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;htmx-indicator&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;search-status&quot;</span><span class="p">&gt;</span>Searching…<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Och på fältet:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>       hx-indicator=&quot;#search-status&quot;
+</code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Attributet måste sitta på elementet som gör förfrågan</p>
+<p>Arvet mellan element är explicit i htmx 4. Sitter <code>hx-indicator</code> på
+formuläret gäller det inte fältet inuti, om det inte skrivs
+<code>hx-indicator:inherited</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Du kommer inte se den lokalt</p>
+<p>Servern svarar på några millisekunder, och intoningen tar 200. Indikatorn
+hinner aldrig bli synlig.</p>
+<p>Strypa hastigheten i nätverkspanelen är det enklaste sättet att se den.
+Annars: markera <code>&lt;span&gt;</code> i inspektören och skriv i sökrutan — klassen
+<code>htmx-request</code> dyker upp och försvinner.</p>
+</div>
+<h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Listan filtreras medan du skriver, utan att sidan laddas om.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fem tecken i rad ger <strong>en</strong> förfrågan, inte fem.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sortera nyast först och sök — ordningen ligger kvar.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Adressen visar <code>?q=...</code>, och bakåtknappen går <strong>inte</strong> tillbaka genom
+      varje paus.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bakåt efter en sortering tar dig till sökningen igen — med sökordet kvar i
+      rutan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Knappen <strong>Search</strong> fungerar fortfarande, med en vanlig sidladdning.</li>
+</ul>
+<details class="question">
+<summary>Ordningen slår tillbaka så fort jag skriver</summary>
+<p>Antingen saknas <code>hx-include</code>, eller så pekar den på fältet i formuläret i
+stället för på det i tabellen. Titta på adressen i nätverkspanelen: saknas
+<code>sort</code> helt är det det första, står det fel värde är det det andra.</p>
+</details>
+<details class="question">
+<summary>Listan hamnar inuti sig själv</summary>
+<p><code>hx-swap="outerHTML"</code> saknas. Ladda om sidan så försvinner dubbleringen.</p>
+</details>
+<details class="question">
+<summary>Varje bokstav ger en förfrågan</summary>
+<p><code>delay:300ms</code> saknas i <code>hx-trigger</code>, eller står på fel plats — den hör till
+<code>input</code>, inte till elementet.</p>
+</details>
+<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
+<h3 id="en-forfragan-bar-exakt-det-du-lagger-i-den">En förfrågan bär exakt det du lägger i den<a class="headerlink" href="#en-forfragan-bar-exakt-det-du-lagger-i-den" title="Permanent link">&para;</a></h3>
+<p>Det är hela lärdomen från steg 2, och den gäller vidare än htmx. En <code>GET</code> har
+ingen kropp, så det finns ingenstans att lägga ett formulär. Fältet skickade
+sitt eget värde, för det var det enda någon hade bett om.</p>
+<p>Ingenting kommer med "av sig självt", och ingenting minns förra förfrågan.
+Behöver servern veta något måste det stå i den här förfrågan.</p>
+<h3 id="det-du-skickar-maste-renderas-om">Det du skickar måste renderas om<a class="headerlink" href="#det-du-skickar-maste-renderas-om" title="Permanent link">&para;</a></h3>
+<p>Den andra halvan är lättare att missa och dyrare att upptäcka sent. Det räcker
+inte att peka ut ett värde — värdet måste komma från något som uppdateras när
+det det beskriver ändras.</p>
+<p>Sorteringsfältet i formuläret låg utanför det som byttes. Det var korrekt när
+sidan laddades och blev inaktuellt vid första sorteringen, utan att någonting
+såg fel ut.</p>
+<p>Det är samma idé som räknaren i övning 4, en nivå ner: där skickade servern med
+det som ändrades så att sidan inte behövde räkna själv. Här måste den skicka med
+det som ändrades så att nästa förfrågan kan citera tillbaka det rätt.</p>
+<h3 id="adressen-ar-inte-en-etikett">Adressen är inte en etikett<a class="headerlink" href="#adressen-ar-inte-en-etikett" title="Permanent link">&para;</a></h3>
+<p>Tryck bakåt efter en sortering och titta på sökrutan: sökordet står kvar i den.</p>
+<p>Ingen kod lade tillbaka det. htmx hämtade adressen på nytt, servern renderade
+sidan för den adressen — inklusive <code>value="{{ q }}"</code> i sökfältet — och det som
+kom tillbaka var hela tillståndet. Adressen beskrev sidan tillräckligt väl för
+att sidan skulle gå att bygga upp igen från den.</p>
+<p>Det är därför sökningen fick förbli en <code>GET</code> med sina fält i frågesträngen, och
+inte blev en <code>POST</code>.</p>
+<h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
+<p>Det var den sista övningen. Appen du började med laddade om sidan vid varje
+sortering, varje tillagd todo, varje bock och varje sökning. Nu gör den inget av
+det — och du har inte skrivit en rad kod som bygger HTML i webbläsaren.</p>
+<p>Det som togs bort var sidladdningarna. Det som fick vara kvar var allt annat:
+länkar med adresser, formulär som postar, svar som är HTML, och en server som
+bestämmer vad ett svar innehåller.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Sidfot" >
+        
+          
+          <a href="../08-url-state/" class="md-footer__link md-footer__link--prev" aria-label="Föregående: 8. Ge tillbaka adressen">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Föregående
+              </span>
+              <div class="md-ellipsis">
+                8. Ge tillbaka adressen
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

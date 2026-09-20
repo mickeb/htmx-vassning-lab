@@ -73,3 +73,5 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    svarar olika beroende på vem som frågar.
 8. [**Ge tillbaka adressen**](08-url-state/README.md) — ett attribut som lämnar
    tillbaka något webben alltid har haft.
+9. [**Sök medan du skriver**](09-search/README.md) — en förfrågan bär exakt det
+   du lägger i den, och det du lägger i den måste renderas om.

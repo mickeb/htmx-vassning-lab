@@ -38,6 +38,7 @@ nav:
   - 6. Fyrverkerier: 06-fireworks/README.md
   - 7. En adress, två svar: 07-one-url/README.md
   - 8. Ge tillbaka adressen: 08-url-state/README.md
+  - 9. Sök medan du skriver: 09-search/README.md
 
 theme:
   name: material
