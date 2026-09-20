@@ -1,7 +1,7 @@
 # Exercises
 
-No exercises have been written yet. This file documents the convention they
-should follow so they stay consistent when they are.
+All nine exercises are written. This file documents the conventions they follow,
+so anything added later stays consistent with them.
 
 ## Structure
 
@@ -32,6 +32,16 @@ Each `README.md` covers, using these Swedish headings:
 A section is dropped when an exercise has nothing for it, rather than padded.
 Exercise 1 has no `Det som faktiskt hände`, because installing a library is not
 an idea to land.
+
+## Extra assignments
+
+`extra/README.md` is a different kind of material and deliberately not shaped
+like an exercise. One `##` heading per assignment, and **the task and nothing
+else** — no background, no `???` hints, no facit, no `Klart när` list. The reader
+decides what a reasonable solution is and when it is done.
+
+Add a new one by appending a numbered section. The page says up front that this
+is what it is, so an assignment does not read as an unfinished exercise.
 
 ## Starting state
 
