@@ -31,7 +31,7 @@ det är den som gör en sökning möjlig att skicka vidare, och det är den du
 lämnade tillbaka till sorteringen i förra övningen.
 
 Öppna `views/todo-app/search-form.liquid` och lägg attributen på
-`<input class="search__input">`. Adressen är `/todo-app` — samma som
+`<input class="search__input">`-elementet. Adressen är `/todo-app` — samma som
 sorteringen hämtar sedan övning 8.
 
 `hx-trigger` är det nya:
