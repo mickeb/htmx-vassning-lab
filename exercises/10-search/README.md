@@ -224,3 +224,7 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 Det var den sista övningen. Appen du började med har nu blivit något många
 skulle tro är skrivet med React eller Vue — och du har inte skrivit en rad kod
 som bygger HTML i webbläsaren.
+
+Har du tid över finns [**extrauppgifter**](../extra/README.md) att utforska och
+[**vidare läsning**](../reading/README.md) om andra koncept och tekniker i
+htmx-sfären som kan vara bra att känna till.
