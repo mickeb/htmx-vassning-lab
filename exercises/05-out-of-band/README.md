@@ -55,8 +55,9 @@ inte som en del av hela sidan.
 
 ### 2. Skicka med rubriken i svaret
 
-Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara tabellen.
-Rendera rubriken också, och skicka med `oob: true`.
+Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara
+`todo-app/todo-table`. Rendera `todo-app/todo-header` också, och skicka med
+`oob: true`.
 
 `stats` finns redan tillgängligt i templaten — hanteraren skickar med det — så du
 behöver inte ändra något i `app.ts`.

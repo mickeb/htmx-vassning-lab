@@ -911,8 +911,9 @@ Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
 det som försvinner gör det tyst.</p>
 </div>
 <h3 id="2-skicka-med-rubriken-i-svaret">2. Skicka med rubriken i svaret<a class="headerlink" href="#2-skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h3>
-<p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara tabellen.
-Rendera rubriken också, och skicka med <code>oob: true</code>.</p>
+<p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara
+<code>todo-app/todo-table</code>. Rendera <code>todo-app/todo-header</code> också, och skicka med
+<code>oob: true</code>.</p>
 <p><code>stats</code> finns redan tillgängligt i templaten — hanteraren skickar med det — så du
 behöver inte ändra något i <code>app.ts</code>.</p>
 <div class="admonition note">
