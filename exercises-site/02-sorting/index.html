@@ -872,6 +872,10 @@ listan byter ordning utan att sidan laddas om.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
+<p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
+<h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
 <p><code>hx-get</code> hämtar <code>/todo-app/fragments/table</code>. Den routen finns redan och renderar
 ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring — så
 du ska inte skriva någon serverkod i den här övningen.</p>
@@ -879,10 +883,6 @@ du ska inte skriva någon serverkod i den här övningen.</p>
 tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom
 ifrån, inte innehållet i det; <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti en
 <code>#todo-table</code>.</p>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
-<p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
-<h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
 <p>Adressen i <code>hx-get</code> måste skicka med sorteringen, precis som <code>href</code> gör — i det
 här fallet som en query-parameter.</p>
 <details class="warning">

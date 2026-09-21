@@ -18,6 +18,14 @@ listan byter ordning utan att sidan laddas om.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
+## Steg
+
+### 1. Öppna `views/todo-app/todo-table.liquid`
+
+Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
+
+### 2. Lägg till de tre attributen
+
 `hx-get` hämtar `/todo-app/fragments/table`. Den routen finns redan och renderar
 ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring — så
 du ska inte skriva någon serverkod i den här övningen.
@@ -26,14 +34,6 @@ du ska inte skriva någon serverkod i den här övningen.
 tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
 ifrån, inte innehållet i det; `innerHTML` hade gett dig en `#todo-table` inuti en
 `#todo-table`.
-
-## Steg
-
-### 1. Öppna `views/todo-app/todo-table.liquid`
-
-Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
-
-### 2. Lägg till de tre attributen
 
 Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
 här fallet som en query-parameter.
