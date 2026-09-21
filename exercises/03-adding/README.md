@@ -66,7 +66,7 @@ svar formuläret får — även felsvar.
 ### 3. Låt server-side styra var svaret ska visas
 
 HTTP-headern `HX-Retarget` i svaret låter oss köra över det som markupen
-specificerar — för det här ena svaret.
+specificerar — men bara i det svar den sitter i.
 
 Sätt den i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
 
