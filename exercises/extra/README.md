@@ -1,9 +1,11 @@
 # Extrauppgifter
 
-Här står bara uppgiften.
+Nedan hittar du ett par föreslagna extrauppgifter. Ingen bakgrund, inga
+ledtrådar, inget facit och ingen lista att bocka av — du avgör själv vad som är
+en rimlig lösning och när den är klar.
 
-Ingen bakgrund, inga ledtrådar, inget facit och ingen lista att bocka av. Du
-avgör själv vad som är en rimlig lösning och när den är klar.
+Presentera gärna din lösning för kollegorna i samband med vässningens
+avslutande del.
 
 ## 1. Boosta i stället
 
