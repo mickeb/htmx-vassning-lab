@@ -7,11 +7,11 @@ ger ett synligt fel på rätt ställe.
 
 ## Användbara attribut
 
-| Attribut    | Svarar på                      | Dokumentation                                                    |
-| ----------- | ------------------------------ | ---------------------------------------------------------------- |
-| `hx-post`   | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post)   |
-| `hx-target` | Var i sidan ska svaret in?     | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
-| `hx-swap`   | Hur ska det sättas in?         | [Referens](https://four.htmx.org/reference/attributes/hx-swap)   |
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
 ## Steg
 
@@ -66,11 +66,9 @@ svar formuläret får — även felsvar.
 ### 3. Låt server-side styra var svaret ska visas
 
 HTTP-headern `HX-Retarget` i svaret låter oss köra över det som markupen
-specificerar i `hx-target`-attributet.
+specificerar — men bara i det svar den sitter i.
 
-Öppna `src/app.ts` och leta upp hanteraren för `POST /fragments/todos`. Uppdatera
-den så att headern specificerar "nya todo"-formuläret när ingen beskrivning
-skickas med.
+Sätt den i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
 
 ??? example "Facit"
 
@@ -120,9 +118,9 @@ det du skrev.
 
 Ett attribut på formuläret räcker.
 
-| Attribut | Svarar på                                | Dokumentation                                                |
-| -------- | ---------------------------------------- | ------------------------------------------------------------ |
-| `hx-on`  | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-on` | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
 
 `hx-on` kopplar JavaScript till en händelse direkt på elementet. Attributet heter
 `hx-on:` plus händelsens namn — `hx-on:click` för ett vanligt klick.

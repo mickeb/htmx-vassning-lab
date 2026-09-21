@@ -973,10 +973,8 @@ förväntar sig.</p>
 svar formuläret får — även felsvar.</p>
 <h3 id="3-lat-server-side-styra-var-svaret-ska-visas">3. Låt server-side styra var svaret ska visas<a class="headerlink" href="#3-lat-server-side-styra-var-svaret-ska-visas" title="Permanent link">&para;</a></h3>
 <p>HTTP-headern <code>HX-Retarget</code> i svaret låter oss köra över det som markupen
-specificerar i <code>hx-target</code>-attributet.</p>
-<p>Öppna <code>src/app.ts</code> och leta upp hanteraren för <code>POST /fragments/todos</code>. Uppdatera
-den så att headern specificerar "nya todo"-formuläret när ingen beskrivning
-skickas med.</p>
+specificerar — men bara i det svar den sitter i.</p>
+<p>Sätt den i <code>src/app.ts</code>, i felgrenen för <code>POST /fragments/todos</code>.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
