@@ -69,7 +69,7 @@ och låt grenarna dela på det.
     ```
 
     `res.render('todo-app/todo-table', model)` är exakt vad routen under
-    `/fragments/` redan gjorde. Det är därför den strax kan tas bort.
+    `/fragments/` redan gjorde. Den är alltså död kod från och med nu.
 
 ### 2. Peka om sorteringslänken
 
