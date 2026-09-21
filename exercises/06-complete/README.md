@@ -3,7 +3,7 @@
 ## Mål
 
 Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren i
-rubriken — utan att sidan laddas om.
+rubriken, utan att sidan laddas om.
 
 ## Användbara attribut
 
