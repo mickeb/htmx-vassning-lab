@@ -1,6 +1,6 @@
 # Vidare läsning
 
-Tre saker i htmx 4 som övningarna inte rör vid, men som är värda att känna till.
+Fyra saker som övningarna inte rör vid, men som är värda att känna till.
 Det här är läsning, inte uppgifter — det finns inget att bygga och inget att
 bocka av.
 
@@ -29,6 +29,19 @@ DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript.
 
 - [`hx-live`](https://four.htmx.org/extensions/hx-live) — tillägget, med
   beslutsträdet, `q()`, delad `data`-state och de asynkrona hjälpmedlen
+
+## _hyperscript — ett språk för det som händer i sidan
+
+Från samma personer som htmx, och i samma glapp som `hx-live`: sådant som ska
+hända i sidan utan att servern blandas in. Skillnaden är formen. `hx-live`
+binder ett attribut till ett uttryck; _hyperscript är ett litet språk för
+beteende, skrivet i ett `_`-attribut.
+
+Dokumentationssajten för htmx 4 är byggd med det. Öppnar du dess HTML hittar du
+rader som `_="install Scrollspy"` och
+`_="on click set #mobile-navigation-toggle.checked to false"`.
+
+- [_hyperscript](https://hyperscript.org/) — språket och dess dokumentation
 
 ## Alpine.js
 
