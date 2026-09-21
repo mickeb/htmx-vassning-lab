@@ -13,8 +13,8 @@ Räknaren i rubriken stämmer igen direkt när du lägger till en todo.
 Räknaren går inte att laga med `hx-target`. Det attributet pekar ut **ett**
 ställe, och svaret behöver hamna på två.
 
-Lösningen vänder på frågan: i stället för att requesten bestämmer var allt ska
-hamna får en del av **svaret** säga var just den hör hemma.
+Återigen låter vi servern bestämma var svaret ska hamna — den här gången varje
+del för sig.
 
 `oob` står för *out of band* — vid sidan av. Ett element i svaret som har
 `hx-swap-oob="true"` placeras inte där `hx-target` pekar. htmx letar i stället
