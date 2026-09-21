@@ -22,7 +22,7 @@ färdig, så du kunde peka `hx-get` på den utan att skriva någon serverkod.
 Men båda adresserna returnerar samma innehåll: tabellen. Det enda som skiljer
 är om sidan ligger runt omkring eller inte.
 
-I en riktig app är det dessutom vanligt att vilja återanvända samma adress på
+I en "riktig app" är det dessutom vanligt att vilja återanvända samma adress på
 det här sättet — av skäl som nästa övning handlar om.
 
 ## Användbara headers
