@@ -19,9 +19,8 @@ tangenttryckning.
 
 Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
 knapp. Kanske lite oväntat är det input-fältet som kommer få de nya attributen,
-och inte själva form-elementet. Det beror på vilket event som ska utlösa
-requesten: fältets `input`. Formuläret får inget event förrän någon trycker på
-**Search**.
+och inte själva form-elementet. Requesten ska triggas av att du skriver, inte
+av att formuläret submittas.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 **Search** kommer fortsätta submitta formuläret precis som vanligt. Det är inte
