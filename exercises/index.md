@@ -1,8 +1,6 @@
 # Övningar
 
 Labbmiljön serverar en todo-app på [http://localhost:4000/todo-app](http://localhost:4000/todo-app).
-Den är en helt vanlig flersidesapp: varje sökning, sortering, bock och formulär
-skickar om hela sidan. Övningarna tar bort de sidladdningarna, en i taget.
 
 ## Innan du börjar
 
