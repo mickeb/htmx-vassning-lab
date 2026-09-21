@@ -60,8 +60,8 @@ Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
 Men titta noga — formuläret ersätter **listan**, i stället för att hamna där man
 förväntar sig.
 
-Det är väntat. `hx-target` står i sidan, och det gäller varje svar formuläret
-får — även felsvar. Vad servern än svarar hamnar i `#todo-table`.
+Det är väntat. `hx-target="#todo-table"` sitter på formuläret och gäller alla
+svar formuläret får — även felsvar.
 
 ### 3. Låt servern styra svaret
 

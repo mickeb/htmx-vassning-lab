@@ -969,8 +969,8 @@ det är vad det innebär att svaret är en lista och inte en rad.</p>
 <p>Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
 Men titta noga — formuläret ersätter <strong>listan</strong>, i stället för att hamna där man
 förväntar sig.</p>
-<p>Det är väntat. <code>hx-target</code> står i sidan, och det gäller varje svar formuläret
-får — även felsvar. Vad servern än svarar hamnar i <code>#todo-table</code>.</p>
+<p>Det är väntat. <code>hx-target="#todo-table"</code> sitter på formuläret och gäller alla
+svar formuläret får — även felsvar.</p>
 <h3 id="3-lat-servern-styra-svaret">3. Låt servern styra svaret<a class="headerlink" href="#3-lat-servern-styra-svaret" title="Permanent link">&para;</a></h3>
 <p>En HTTP-header i svaret, satt i <code>src/app.ts</code>, i felgrenen för
 <code>POST /fragments/todos</code>.</p>
