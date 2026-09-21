@@ -82,12 +82,6 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
     Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
 
-## Titta på tabellen som kom tillbaka
-
-Klicka runt lite och läs den. Den bär **sin egen** chevron åt rätt håll, **sin
-egen** länk som pekar på motsatt ordning, och sin egen sökterm om du har sökt.
-Ingen variabel i webbläsaren säger `sortOrder = 'desc'`, ingen kod vänder en pil.
-
 !!! note "Det här har ett namn"
 
     Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,

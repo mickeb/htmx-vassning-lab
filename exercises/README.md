@@ -40,11 +40,11 @@ Three exercises keep a section outside this shape, each for a stated reason:
 
 - **4** opens with **`Vilken bugg?`** instead of an attribute table, because its
   opening *is* the work — reproduce the bug, read the request body, get the rule.
-- **2** ends with **`Titta på tabellen som kom tillbaka`** — the observation as
-  prose, with HATEOAS named in a `!!! note "Det här har ett namn"` box. It is the
-  only place the term is introduced and glossed, and `CONTEXT.md` and
-  `OUTLINE.md` in the presentation repo both depend on it being here. Keep it
-  boxed: the section is a thing to look at, and the name is an aside on it.
+- **2** closes with a bare `!!! note "Det här har ett namn"` box, after
+  `Klart när`, with no heading of its own. It is the only place HATEOAS is
+  introduced and glossed, and `CONTEXT.md` and `OUTLINE.md` in the presentation
+  repo both depend on it being here. Keep it boxed and keep it unheaded: it is
+  an aside, not a section.
 - **5** and **8** end with **`Värt att känna till`** for a pointer the material
   depends on elsewhere — `hx-partial` as the htmx 4 alternative to
   `hx-swap-oob`, and why the dead fragment route is left in place.
