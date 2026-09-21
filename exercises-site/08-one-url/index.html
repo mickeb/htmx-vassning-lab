@@ -950,10 +950,10 @@ den för att välja vad den skickar tillbaka. Samma mekanism, motsatt
 riktning.</p>
 </div>
 <p>Öppna <code>src/app.ts</code> och leta upp hanteraren för <code>GET /</code>. Den renderar alltid hela
-sidan. Lägg till en gren före den: kommer requesten från htmx, rendera bara
-tabellen.</p>
+sidan. Lägg till en <code>if</code>-sats före den: kommer requesten från htmx, rendera
+bara tabellen.</p>
 <p><code>todos.listModel(...)</code> ger det som behövs i båda fallen, så hämta det en gång
-och låt grenarna dela på det.</p>
+och låt båda fallen dela på det.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">todoApp</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -999,8 +999,8 @@ och låt grenarna dela på det.</p>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>Hela sidan hamnar inne i tabellen</summary>
-<p>Då träffade grenen i <code>app.ts</code> inte, så htmx fick tillbaka ett helt dokument
-och satte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
+<p>Då slog <code>if</code>-satsen i <code>app.ts</code> inte till, så htmx fick tillbaka ett helt
+dokument och satte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
 </details>
 <h2 id="vart-att-kanna-till">Värt att känna till<a class="headerlink" href="#vart-att-kanna-till" title="Permanent link">&para;</a></h2>
 <p><code>/todo-app/fragments/table</code> finns kvar i labbet, men ingenting använder den

@@ -50,11 +50,11 @@ kunna svara på samma adress på två sätt.
     riktning.
 
 Öppna `src/app.ts` och leta upp hanteraren för `GET /`. Den renderar alltid hela
-sidan. Lägg till en gren före den: kommer requesten från htmx, rendera bara
-tabellen.
+sidan. Lägg till en `if`-sats före den: kommer requesten från htmx, rendera
+bara tabellen.
 
 `todos.listModel(...)` ger det som behövs i båda fallen, så hämta det en gång
-och låt grenarna dela på det.
+och låt båda fallen dela på det.
 
 ??? example "Facit"
 
@@ -108,8 +108,8 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
 
 ??? question "Hela sidan hamnar inne i tabellen"
 
-    Då träffade grenen i `app.ts` inte, så htmx fick tillbaka ett helt dokument
-    och satte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
+    Då slog `if`-satsen i `app.ts` inte till, så htmx fick tillbaka ett helt
+    dokument och satte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
 
 ## Värt att känna till
 
