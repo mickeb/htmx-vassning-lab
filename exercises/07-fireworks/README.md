@@ -84,8 +84,8 @@ på eventet ännu. 😢
 
 ### 3. Hantera eventet
 
-Importera `Fireworks`, ge biblioteket en yta att rita på, och starta den när
-eventet `fireworks` kommer.
+I modulskriptet i `views/layout.liquid`: importera `Fireworks`, ge biblioteket
+en yta att rita på, och starta den när eventet `fireworks` kommer.
 
 Ett event i webbläsaren fångas med `addEventListener`
 ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)).
