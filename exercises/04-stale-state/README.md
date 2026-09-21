@@ -78,7 +78,7 @@ Det finns ett HTML-attribut för precis det.
 Ett fält med `form="nånting"` tillhör formuläret vars `id` är `nånting` — var i
 dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls.
 
-!!! tip "Det här är inte htmx"
+!!! tip "Det här är inte htmx!"
 
     `form` är ett vanligt HTML-attribut och har funnits sedan HTML5. Webbläsaren
     räknar fältet till formuläret när den bygger requesten, oavsett vem som
