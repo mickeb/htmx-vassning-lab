@@ -27,8 +27,7 @@ Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort 
 ### 2. Lägg till de tre attributen
 
 `hx-get` hämtar `/todo-app/fragments/table`. Den routen finns redan och renderar
-ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring — så
-du ska inte skriva någon serverkod i den här övningen.
+ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring.
 
 `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
 tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
