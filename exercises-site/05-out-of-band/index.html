@@ -465,10 +465,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-rendera-hx-swap-oob-bara-i-svar" class="md-nav__link">
+  <a href="#1-oppna-viewstodo-apptodo-headerliquid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Rendera hx-swap-oob bara i svar
+        1. Öppna views/todo-app/todo-header.liquid
       
     </span>
   </a>
@@ -782,10 +782,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-rendera-hx-swap-oob-bara-i-svar" class="md-nav__link">
+  <a href="#1-oppna-viewstodo-apptodo-headerliquid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Rendera hx-swap-oob bara i svar
+        1. Öppna views/todo-app/todo-header.liquid
       
     </span>
   </a>
@@ -887,11 +887,10 @@ flera instruktioner.</p>
 upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
 <p><a href="https://four.htmx.org/docs#out-of-band-swaps">Mer om out-of-band swaps</a></p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-rendera-hx-swap-oob-bara-i-svar">1. Rendera <code>hx-swap-oob</code> bara i svar<a class="headerlink" href="#1-rendera-hx-swap-oob-bara-i-svar" title="Permanent link">&para;</a></h3>
-<p>Öppna <code>views/todo-app/todo-header.liquid</code>. <code>&lt;header&gt;</code>-taggen har redan
-<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska templaten rendera
-<code>hx-swap-oob="true"</code> på den, men bara när rubriken skickas som en del av ett
-svar.</p>
+<h3 id="1-oppna-viewstodo-apptodo-headerliquid">1. Öppna <code>views/todo-app/todo-header.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-headerliquid" title="Permanent link">&para;</a></h3>
+<p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.
+Nu ska templaten rendera <code>hx-swap-oob="true"</code> på den, men bara när rubriken
+skickas som en del av ett svar.</p>
 <p>Samma template renderas nämligen på två ställen: som en del av hela sidan, och som
 en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
 elementet.</p>
