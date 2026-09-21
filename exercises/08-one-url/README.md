@@ -5,7 +5,7 @@
 Sorteringslänken har bara en adress kvar: `href` och `hx-get` innehåller samma
 sträng.
 
-## Användbara headers
+## Varför två adresser?
 
 Sedan övning 2 har sorteringslänken haft samma frågesträng två gånger:
 
@@ -21,15 +21,20 @@ Anledningen till att det blev två var att sidan och tabellen har haft var sin
 adress. Men de är inte två olika saker — de är **samma sak i två utföranden**.
 Hela listan, med eller utan sidan runt omkring.
 
-Och en adress kan svara olika beroende på vem som frågar. htmx skickar en header
-i varje request den gör:
+## Användbara headers
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `HX-Request` | Kommer den här requesten från htmx? | [Referens](https://four.htmx.org/reference/headers/hx-request) |
 
-Den är alltid `true` när den finns, och den saknas när webbläsaren hämtar sidan
-själv. Det räcker för att servern ska kunna svara på samma adress på två sätt.
+## Steg
+
+### 1. Låt `/todo-app` svara på två sätt
+
+En adress kan svara olika beroende på vem som frågar. htmx skickar `HX-Request`
+i varje request den gör: den är alltid `true` när den finns, och saknas när
+webbläsaren hämtar sidan själv. Det räcker för att servern ska kunna svara på
+samma adress på två sätt.
 
 !!! note "Den här gången *läser* servern en header"
 
@@ -39,10 +44,6 @@ själv. Det räcker för att servern ska kunna svara på samma adress på två s
     Nu går det åt andra hållet: headern sitter i requesten, och servern läser
     den för att välja vad den skickar tillbaka. Samma mekanism, motsatt
     riktning.
-
-## Steg
-
-### 1. Låt `/todo-app` svara på två sätt
 
 Öppna `src/app.ts` och leta upp hanteraren för `GET /`. Den renderar alltid hela
 sidan. Lägg till en gren före den: kommer requesten från htmx, rendera bara
