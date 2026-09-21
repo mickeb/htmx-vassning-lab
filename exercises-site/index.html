@@ -316,6 +316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tva-uppsattningar-routes-over-samma-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Två uppsättningar routes över samma data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -707,6 +718,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tva-uppsattningar-routes-over-samma-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Två uppsättningar routes över samma data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -754,6 +776,36 @@ arbetsflödet. Behöver en övning ett terminalkommando utöver
 <code>docker compose up</code> är det ett misstag i övningen, inte i din miljö.</p>
 </div>
 <h2 id="det-labbet-redan-ger-dig">Det labbet redan ger dig<a class="headerlink" href="#det-labbet-redan-ger-dig" title="Permanent link">&para;</a></h2>
+<p>Allt körs i en Docker-container, så du behöver inte installera något själv.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node 24</strong></td>
+<td>körtiden</td>
+<td><a href="https://nodejs.org/">nodejs.org</a></td>
+</tr>
+<tr>
+<td><strong>Express 5</strong></td>
+<td>routes och request-hantering</td>
+<td><a href="https://expressjs.com/">expressjs.com</a></td>
+</tr>
+<tr>
+<td><strong>Liquid</strong></td>
+<td>templatespråket i filerna under <code>views/</code></td>
+<td><a href="https://liquidjs.com/">liquidjs.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>Du behöver inte kunna något av det för att göra övningarna. Det mesta du gör
+sker i en template, och ett par övningar lägger till några rader i <code>src/app.ts</code>.</p>
+<h2 id="tva-uppsattningar-routes-over-samma-data">Två uppsättningar routes över samma data<a class="headerlink" href="#tva-uppsattningar-routes-over-samma-data" title="Permanent link">&para;</a></h2>
 <p>Appen har <strong>två uppsättningar routes över samma data</strong>.</p>
 <p>De vanliga — <code>/todo-app</code>, och formulären som postar till den — returnerar hela
 sidor, precis som webben fungerade innan JavaScript blev inblandat.</p>

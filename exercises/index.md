@@ -27,6 +27,19 @@ både övningarna och labbmiljön.
 
 ## Det labbet redan ger dig
 
+Allt körs i en Docker-container, så du behöver inte installera något själv.
+
+| | | |
+| --- | --- | --- |
+| **Node 24** | körtiden | [nodejs.org](https://nodejs.org/) |
+| **Express 5** | routes och request-hantering | [expressjs.com](https://expressjs.com/) |
+| **Liquid** | templatespråket i filerna under `views/` | [liquidjs.com](https://liquidjs.com/) |
+
+Du behöver inte kunna något av det för att göra övningarna. Det mesta du gör
+sker i en template, och ett par övningar lägger till några rader i `src/app.ts`.
+
+## Två uppsättningar routes över samma data
+
 Appen har **två uppsättningar routes över samma data**.
 
 De vanliga — `/todo-app`, och formulären som postar till den — returnerar hela
