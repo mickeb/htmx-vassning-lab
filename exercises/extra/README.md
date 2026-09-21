@@ -1,7 +1,6 @@
 # Extrauppgifter
 
-Nedan hittar du ett par föreslagna extrauppgifter. Ingen bakgrund, inga
-ledtrådar, inget facit och ingen lista att bocka av — du avgör själv vad som är
+Nedan hittar du ett par föreslagna extrauppgifter. Du avgör själv vad som är
 en rimlig lösning och när den är klar.
 
 Presentera gärna din lösning för kollegorna i samband med vässningens
