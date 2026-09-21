@@ -113,7 +113,7 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
 längre. I en riktig kodbas hade den tagits bort i den här commiten.
 
 Kvar finns idén den fanns till för: **servern bestämmer vad ett svar
-innehåller.** Först utifrån vad som hände — en rad, en rubrik, en händelse — och
+innehåller.** Först utifrån vad som hände — en rad, en rubrik, ett event — och
 nu också utifrån vem som frågar.
 
 ## Nästa övning

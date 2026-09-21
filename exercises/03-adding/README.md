@@ -120,14 +120,14 @@ Ett attribut på formuläret räcker.
 
 | Attribut | Svarar på                                | Dokumentation                                                |
 | -------- | ---------------------------------------- | ------------------------------------------------------------ |
-| `hx-on`  | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
+| `hx-on`  | Vad ska köras när ett event inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
 
-`hx-on` kopplar JavaScript till en händelse direkt på elementet. Attributet heter
-`hx-on:` plus händelsens namn — `hx-on:click` för ett vanligt klick.
+`hx-on` kopplar JavaScript till ett event direkt på elementet. Attributet heter
+`hx-on:` plus eventets namn — `hx-on:click` för ett vanligt klick.
 
-htmx egna händelser heter i sin tur `htmx:after:swap`, `htmx:before:request` och
+htmx egna event heter i sin tur `htmx:after:swap`, `htmx:before:request` och
 så vidare. Fullt utskrivet blir attributet alltså `hx-on:htmx:after:swap`. Och
-eftersom varje htmx-händelse börjar med `htmx:` går det att utelämna ordet men
+eftersom varje htmx-event börjar med `htmx:` går det att utelämna ordet men
 behålla kolonet:
 
     hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
@@ -135,9 +135,9 @@ behålla kolonet:
 Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
 är det vanliga.
 
-!!! warning "Händelsenamn i htmx 4 har kolon"
+!!! warning "Eventnamn i htmx 4 har kolon"
 
-    Händelsen heter `after:swap`. Inte `afterSwap` — det är htmx 2, och det är
+    Eventet heter `after:swap`. Inte `afterSwap` — det är htmx 2, och det är
     vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
     inget felmeddelande. Koden körs bara aldrig.
 

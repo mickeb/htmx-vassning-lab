@@ -42,8 +42,8 @@ sorteringen hämtar sedan övning 8.
 hx-trigger="input changed delay:300ms"
 ```
 
-`input` är webbläsarens egen händelse: den kommer vid varje tangenttryckning.
-`delay:300ms` startar om nedräkningen vid varje ny händelse, så en request går
+`input` är webbläsarens eget event: det kommer vid varje tangenttryckning.
+`delay:300ms` startar om nedräkningen vid varje nytt event, så en request går
 iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
 värdet inte ändrats — pilknappar och liknande ger `input` utan att
 texten blir en annan.
