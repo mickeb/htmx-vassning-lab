@@ -4,9 +4,6 @@ Labbmiljön serverar en todo-app på [http://localhost:4000/todo-app](http://loc
 Den är en helt vanlig flersidesapp: varje sökning, sortering, bock och formulär
 skickar om hela sidan. Övningarna tar bort de sidladdningarna, en i taget.
 
-Du arbetar i **en och samma kodbas** hela vägen. Varje övning börjar där den
-förra slutade, så det finns inget att kopiera mellan mappar.
-
 ## Innan du börjar
 
 Öppna [labbmiljön](http://localhost:4000/todo-app){:target="_blank" rel="noopener"}
