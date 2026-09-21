@@ -442,10 +442,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -503,10 +503,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#vart-att-kanna-till" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Värt att känna till
       
     </span>
   </a>
@@ -748,10 +748,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -809,10 +809,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#vart-att-kanna-till" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Värt att känna till
       
     </span>
   </a>
@@ -840,15 +840,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
 extra förfrågan.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Att lägga till en todo lämnade två saker trasiga. Den ena lagade du nyss. Den
-andra står kvar: rubriken högst upp renderas aldrig om, så den räknar fortfarande
-som om den nya todon inte fanns. Rubriken ligger utanför <code>#todo-table</code>, och bytet
-rör bara det som låg innanför.</p>
-<p>Det går inte att lösa med <code>hx-target</code>. Det attributet pekar ut <strong>ett</strong> ställe,
-och svaret behöver hamna på två.</p>
-<p>Lösningen vänder på frågan. I stället för att förfrågan bestämmer var allt ska
-hamna får en del av <strong>svaret</strong> säga var just den hör hemma.</p>
+<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -865,6 +857,10 @@ hamna får en del av <strong>svaret</strong> säga var just den hör hemma.</p>
 </tr>
 </tbody>
 </table>
+<p>Räknaren går inte att laga med <code>hx-target</code>. Det attributet pekar ut <strong>ett</strong>
+ställe, och svaret behöver hamna på två.</p>
+<p>Lösningen vänder på frågan: i stället för att förfrågan bestämmer var allt ska
+hamna får en del av <strong>svaret</strong> säga var just den hör hemma.</p>
 <p><code>oob</code> står för <em>out of band</em> — vid sidan av. Ett element i svaret som är märkt
 <code>hx-swap-oob="true"</code> placeras inte där bytet skulle ha lagt det. htmx letar upp
 elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
@@ -928,19 +924,7 @@ rubriken där, så saknas <code>oob: true</code> i <code>add-response.liquid</co
 <code>todo-header</code>, och att attributet hamnar på <code>&lt;header&gt;</code>-taggen och inte på
 något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<p>Ett svar. En förfrågan. Två ställen på sidan uppdaterade.</p>
-<p>Det är värt att stanna vid, för det är inte så det brukar se ut. Det vanliga är
-att klienten vet att "när en todo läggs till måste räknaren också uppdateras" —
-antingen genom en andra förfrågan, eller genom kod som räknar om siffran själv.
-Båda kräver att klienten känner till sambandet.</p>
-<p>Här gör den inte det. Servern fick frågan "lägg till den här todon" och svarade
-med <strong>allt som ändrades av det</strong>, där varje del bär med sig var den hör hemma.
-Ingen kod på sidan vet att en ny todo påverkar en räknare. Om rubriken en dag
-visar något annat, eller om det tillkommer fler delar som ändras, är det ett
-serverbeslut och sidan behöver inte röras.</p>
-<p>Samma idé som i övning 2, från andra hållet: där skickade servern en korrekt
-representation, här skickar den flera på en gång.</p>
+<h2 id="vart-att-kanna-till">Värt att känna till<a class="headerlink" href="#vart-att-kanna-till" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">htmx 4 har också ett nyare sätt</p>
 <p><code>hx-swap-oob</code> finns i alla versioner av htmx och är det du kommer stöta på

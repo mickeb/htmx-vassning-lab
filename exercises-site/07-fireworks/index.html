@@ -496,10 +496,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara headers
       
     </span>
   </a>
@@ -568,21 +568,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -770,10 +759,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara headers
       
     </span>
   </a>
@@ -842,21 +831,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -884,8 +862,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>När den sista todon bockas av smäller fyrverkerier över sidan. Är det inte den
 sista händer ingenting.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Övningen har två halvor, och den första är en repris.</p>
+<h2 id="anvandbara-headers">Användbara headers<a class="headerlink" href="#anvandbara-headers" title="Permanent link">&para;</a></h2>
 <p><strong>Ett bibliotek till, genom import map:en.</strong> <code>fireworks-js</code> blir en rad till i
 tabellen du skrev i övning 1, och importeras sedan med sitt namn.</p>
 <p><strong>Servern bestämmer när det ska firas.</strong> Hittills har varje svar varit HTML som
@@ -1009,19 +986,7 @@ JSON-fel, antagligen ett kommatecken för mycket eller för lite. Då har htmx
 slutat fungera samtidigt — sortering och avbockning laddar om hela sidan
 igen.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<p><code>HX-Trigger</code> innehöll ordet <code>fireworks</code>. Inte JavaScript, inte en instruktion
-att köra något, inte ens en klass att sätta på ett element. Servern rapporterade
-att något hade inträffat — det finns inga todos kvar att bocka av — och frontend
-avgjorde själv vad det skulle betyda.</p>
-<p>Byt ut lyssnaren mot en <code>console.log</code> och servern märker ingen skillnad. Ta bort
-fyrverkerierna helt och den fortsätter skicka headern. Det som firas är ett
-beslut på servern; hur det firas är ett beslut i frontend, och de två känner
-bara till ett ord gemensamt.</p>
-<p>Det är samma uppdelning som i övning 5, en nivå upp. Där bar svaret med sig var
-varje del hörde hemma. Här bär det med sig att något hänt, och ingenting om vad
-som ska ske.</p>
-<h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
+<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
 <p>Öppna <code>views/todo-app/todo-table.liquid</code> och titta på sorteringslänken igen.
 Adressen står där två gånger: en gång i <code>href</code>, en gång i <code>hx-get</code>. Samma
 frågesträng, olika sökväg.</p>

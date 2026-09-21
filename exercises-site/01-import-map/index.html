@@ -334,17 +334,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bakgrund
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#steg" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -748,17 +737,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bakgrund
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#steg" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -840,17 +818,6 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>htmx 4 laddas på varje sida i labbet, och du kan bekräfta i webbläsarens konsol
 att versionen är <code>4.0.0</code>.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>htmx laddas som en <strong>ES-modul via en import map</strong>. En import map är en liten
-JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
-modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
-<code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
-<p>Poängen med en import map är att <strong>koden inte behöver veta var filen ligger</strong>.
-Koden säger <code>htmx.org</code>; tabellen bestämmer vad det pekar på, och tabellen kan
-ändras utan att en enda <code>import</code>-rad rörs.</p>
-<p>Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
-produktion: samma <code>import</code>-rader i koden, olika URL i tabellen. htmx finns i
-båda formerna — <code>htmx.esm.js</code> och <code>htmx.esm.min.js</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Versionen måste stå utskriven</p>
 <p>En CDN-länk utan versionsnummer ger <strong>htmx 2</strong>, inte htmx 4, och kommer att
@@ -865,6 +832,16 @@ också ha ändrats i och med version 4. Dubbelkolla alltid på
 <p>Det är skalet som varje sida i labbet renderas in i. Lägger du något i dess
 <code>&lt;head&gt;</code> finns det på alla sidor.</p>
 <h3 id="2-lagg-till-import-map-och-modulskript">2. Lägg till import map och modulskript<a class="headerlink" href="#2-lagg-till-import-map-och-modulskript" title="Permanent link">&para;</a></h3>
+<p>htmx laddas som en <strong>ES-modul via en import map</strong>. En import map är en liten
+JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
+modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
+<code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
+<p>Poängen med en import map är att <strong>koden inte behöver veta var filen ligger</strong>.
+Koden säger <code>htmx.org</code>; tabellen bestämmer vad det pekar på, och tabellen kan
+ändras utan att en enda <code>import</code>-rad rörs.</p>
+<p>Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
+produktion: samma <code>import</code>-rader i koden, olika URL i tabellen. htmx finns i
+båda formerna — <code>htmx.esm.js</code> och <code>htmx.esm.min.js</code>.</p>
 <p>Båda ska in före <code>&lt;/head&gt;</code>.</p>
 <p>Ordningen spelar roll: <strong>import map:en måste stå före det modulskript som
 använder namnet.</strong> Webbläsaren läser tabellen en gång, och har den inte

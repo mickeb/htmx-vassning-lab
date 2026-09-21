@@ -2,24 +2,16 @@
 
 ## Mål
 
-Ett klick på kolumnrubriken **Created at** växlar sorteringsordning utan att
-sidan laddas om.
+Ett klick på kolumnrubriken **Created at** vänder sorteringsordningen, och
+listan byter ordning utan att sidan laddas om.
 
 !!! note "Du behöver några todos att sortera"
 
     Har du inte lagt in några än, gå till
     [http://localhost:4000/todo-app](http://localhost:4000/todo-app) och lägg in
-    en handfull — fyra eller fem räcker. En tom lista går utmärkt att sortera,
-    men det syns inget.
+    en handfull — fyra eller fem räcker.
 
-## Bakgrund
-
-Kolumnrubriken är redan en länk, och den fungerar redan. Den pekar på
-`/todo-app` med omvänd sortering, och webbläsaren hämtar hela sidan på nytt.
-
-Övningen tar inte bort länken. Den tar bort **sidladdningen**.
-
-Tre attribut räcker:
+## Användbara attribut
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
@@ -28,18 +20,15 @@ Tre attribut räcker:
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
 Adressen är `/todo-app/fragments/table`. Den rutten fanns redan innan du
-började — den renderar exakt samma tabell, men utan sidan runt omkring. Den är
-en av [fragmentrutterna labbet levereras med](../index.md#det-labbet-redan-ger-dig);
-du ska inte skriva någon serverkod i den här övningen.
+började — den renderar exakt samma tabell, men utan sidan runt omkring. Du ska
+inte skriva någon serverkod i den här övningen.
 
 !!! tip "Öppna den i en flik innan du fortsätter"
 
     [http://localhost:4000/todo-app/fragments/table?sort=desc](http://localhost:4000/todo-app/fragments/table?sort=desc)
 
-    Det som kommer tillbaka är **HTML**, inte JSON. Du får alltså inget som kod
-    i webbläsaren måste tolka och rendera — du får en färdig tabell som kan
-    sättas in rakt av. Det är halva poängen med hela angreppssättet, och det är
-    lättare att se än att läsa sig till.
+    Det som kommer tillbaka är **HTML**, inte JSON — en färdig tabell som kan
+    sättas in rakt av.
 
 ## Steg
 
@@ -49,12 +38,10 @@ Leta upp länken i kolumnrubriken. Den börjar med `<a class="sort sort--{{ sort
 
 ### 2. Lägg till de tre attributen
 
-Målet är `#todo-table` och bytet är `outerHTML`.
-
-Att det är just `outerHTML` är inte en detalj: fragmentet som kommer tillbaka
-**är** `<div id="todo-table">`. Det ersätter alltså elementet det kom ifrån, inte
-innehållet i det. Hade du använt `innerHTML` hade du fått en `#todo-table` inuti
-en `#todo-table`.
+Målet är `#todo-table` och bytet är `outerHTML`. Fragmentet som kommer tillbaka
+**är** `<div id="todo-table">`, så det ska ersätta elementet det kom ifrån, inte
+innehållet i det — `innerHTML` hade gett dig en `#todo-table` inuti en
+`#todo-table`.
 
 Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
@@ -68,8 +55,8 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
     bad om stigande, och fick stigande — och sedan händer ingenting mer, hur
     många gånger du än klickar.
 
-    Regeln är värd att ta med sig: **en htmx-förfrågan innehåller exakt det du
-    lägger i den.** Ingenting minns något mellan förfrågningar.
+    **En htmx-förfrågan innehåller exakt det du lägger i den.** Ingenting minns
+    något mellan förfrågningar.
 
 ??? example "Facit — hela länken"
 
@@ -81,8 +68,8 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
        hx-swap="outerHTML">
     ```
 
-    Och ja — adressen står nu två gånger, nästan likadant. Det är inte snyggt,
-    och det är inte tänkt att förbli så. En senare övning tar bort den ena.
+    Adressen står nu två gånger, nästan likadant. Det är inte tänkt att förbli
+    så — en senare övning tar bort den ena.
 
 ## Klart när
 
@@ -93,56 +80,24 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
 ??? question "Det växlar bara en gång — sedan står det still"
 
-    Då saknar `hx-get` sin query-sträng. Se den fällbara rutan *"Varför räcker
-    det inte med `/todo-app/fragments/table`?"* ovan.
+    Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
 
-## Det som faktiskt hände
+## Det här har ett namn
 
-**Ingenting ser annorlunda ut.** Sorteringen fungerade innan du rörde filen och
-fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
-tecken på att något gått fel — det är hela poängen.
-
-Det som ändrades är *hur* svaret hämtas. I stället för att webbläsaren navigerar
-till en ny sida gör htmx anropet i bakgrunden med `fetch` och byter ut tabellen
-på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.
-
-### Titta i nätverkspanelen
-
-Ha den öppen och tryck `F5`. Panelen fylls med allt sidan består av: dokumentet,
-stilmallen, skripten.
-
-Klicka sedan på **Created at**. Nu tillkommer en enda rad i panelen — förfrågan
-till `/todo-app/fragments/table`.
-
-Samma innehåll i listan som efter en full sidladdning, en bråkdel av antalet
-byte, och det som kom tillbaka är fortfarande HTML. Svaret är alltså inte ett
-JSON-objekt som kod i webbläsaren måste tolka, förstå och rendera till element.
-Det är färdiga tabellrader som går att sätta in som de är.
-
-### Titta på tabellen som kom tillbaka
-
-Klicka runt lite och läs den. Den bär **sin egen**
+Klicka runt lite och läs tabellen som kommer tillbaka. Den bär **sin egen**
 chevron åt rätt håll, **sin egen** länk som pekar på motsatt ordning, och sin
-egen sökterm om du har sökt.
+egen sökterm om du har sökt. Ingen variabel i webbläsaren säger
+`sortOrder = 'desc'`, ingen kod vänder en pil.
 
-Ingenting på klienten håller reda på hur listan är sorterad. Det finns ingen
-variabel någonstans som säger `sortOrder = 'desc'`, ingen kod som vänder en
-pil, inget tillstånd att hålla synkroniserat med något annat.
+Att svaret bär med sig kontrollerna för vad som kan göras härnäst är kärnan i
+**HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet drivs
+av det hypermedia servern skickar, inte av kod som håller reda på saker i
+webbläsaren.
 
-Servern renderade en korrekt tabell, och sidan blev den.
+Värt att notera: **htmx lade inte till det här.** Länken du började med gjorde
+redan samma sak. Den bar sin egen nästa ordning, och en full sidladdning hämtade
+nästa representation.
 
-!!! note "Det här har ett namn"
-
-    Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
-    vilken ordning den leder till, vilken sökning som gäller — är kärnan i
-    **HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet
-    drivs av det hypermedia servern skickar, inte av kod som håller reda på
-    saker i webbläsaren.
-
-    Värt att notera: **htmx lade inte till det här.** Länken du började med
-    gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
-    sidladdning hämtade nästa representation.
-
-    Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
-    tillstånd i klienten — och då försvinner det. Den här övningen tog bort
-    sidladdningen utan att släppa hypermedia.
+Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
+tillstånd i klienten — och då försvinner det. Den här övningen tog bort
+sidladdningen utan att släppa hypermedia.

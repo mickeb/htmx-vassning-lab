@@ -523,10 +523,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara headers
       
     </span>
   </a>
@@ -584,49 +584,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#vart-att-kanna-till" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Värt att känna till
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#samma-lank-fungerar-med-och-utan-htmx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Samma länk fungerar med och utan htmx
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fragmentrutten-var-en-byggnadsstallning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fragmentrutten var en byggnadsställning
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -787,10 +759,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara headers
       
     </span>
   </a>
@@ -848,49 +820,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#vart-att-kanna-till" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Värt att känna till
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#samma-lank-fungerar-med-och-utan-htmx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Samma länk fungerar med och utan htmx
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fragmentrutten-var-en-byggnadsstallning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fragmentrutten var en byggnadsställning
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -918,7 +862,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>Sorteringslänken har bara en adress kvar: <code>href</code> och <code>hx-get</code> innehåller samma
 sträng.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
+<h2 id="anvandbara-headers">Användbara headers<a class="headerlink" href="#anvandbara-headers" title="Permanent link">&para;</a></h2>
 <p>Sedan övning 2 har sorteringslänken burit samma frågesträng två gånger:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>href=&quot;/todo-app?sort=desc&quot;
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>hx-get=&quot;/todo-app/fragments/table?sort=desc&quot;
@@ -1009,25 +953,14 @@ gjorde. Det är därför den strax kan tas bort.</p>
 <p>Då träffade grenen i <code>app.ts</code> inte, så htmx fick tillbaka ett helt dokument
 och bytte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<h3 id="samma-lank-fungerar-med-och-utan-htmx">Samma länk fungerar med och utan htmx<a class="headerlink" href="#samma-lank-fungerar-med-och-utan-htmx" title="Permanent link">&para;</a></h3>
-<p>Det här är argumentet för hela angreppssättet, och nu står det i märkningen i
-stället för i en beskrivning av det.</p>
-<p>Sorteringslänken är <strong>en</strong> länk till <strong>en</strong> adress. Klickar du med htmx laddat
-hämtas adressen med <code>fetch</code> och tabellen byts ut. Vore htmx inte laddat — ett
-skript som inte hann fram, en webbläsare som inte kör det — följer webbläsaren
-länken och hämtar samma adress som ett vanligt sidbyte. Servern svarar med hela
-sidan, eftersom <code>HX-Request</code> saknas, och resultatet blir detsamma. Bara dyrare.</p>
-<p>Ingenting behövde skrivas två gånger för att få det. Det som togs bort var en
-rutt, inte något som lades till.</p>
-<h3 id="fragmentrutten-var-en-byggnadsstallning">Fragmentrutten var en byggnadsställning<a class="headerlink" href="#fragmentrutten-var-en-byggnadsstallning" title="Permanent link">&para;</a></h3>
+<h2 id="vart-att-kanna-till">Värt att känna till<a class="headerlink" href="#vart-att-kanna-till" title="Permanent link">&para;</a></h2>
 <p><code>/todo-app/fragments/table</code> finns kvar i labbet, men ingenting använder den
 längre. Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
 routing, och i en riktig kodbas hade den tagits bort i den här commiten.</p>
 <p>Kvar finns idén den fanns till för: <strong>servern bestämmer vad ett svar
 innehåller.</strong> Först utifrån vad som hände — en rad, en rubrik, en händelse — och
 nu också utifrån vem som frågar.</p>
-<h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
+<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
 <p>Sortera så att nyast ligger först. Titta sedan på adressfältet.</p>
 <p>Det står <code>/todo-app</code>. Kopiera adressen, öppna den i en ny flik, och listan
 kommer tillbaka i fel ordning — sidan visar en sortering som adressen inte

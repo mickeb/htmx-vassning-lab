@@ -5,26 +5,7 @@
 Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren — utan
 att sidan laddas om.
 
-## Bakgrund
-
-Knappen sitter redan i ett formulär som postar. Samma utgångsläge som när du
-lade till en todo, och samma grepp: htmx bredvid det som redan fungerar.
-
-Två saker skiljer.
-
-**Hela raden byts ut, inte en del av den.** Att bocka av är enkelriktat — när
-todon är klar ska knappen vara borta och en bock stå i stället. Servern skickar
-tillbaka raden i sitt nya skick, och den ska ersätta den gamla.
-
-**Målet är inte ett `id` den här gången.** Varje rad har visserligen ett eget
-`id`, men du behöver det inte. `hx-target` förstår också *relativa* uttryck:
-
-```
-hx-target="closest tr"
-```
-
-`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde förfrågan".
-Ett attribut, samma i varje rad, oavsett vilken rad det är.
+## Användbara attribut
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
@@ -33,9 +14,21 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 | `hx-swap-oob` | Ska elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
-Inget av attributen är nytt. Det nya är värdet `closest tr`. Rubriken kan redan
-märkas out of band sedan övning 5 — du använder det utan att röra
-`todo-header.liquid`.
+Inget av attributen är nytt. Det nya är **värdet** på `hx-target`:
+
+```
+hx-target="closest tr"
+```
+
+`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde förfrågan".
+Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
+inte radens `id`.
+
+Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
+är klar ska knappen vara borta och en bock stå i stället.
+
+Rubriken kan redan märkas out of band sedan övning 5 — du använder det utan att
+röra `todo-header.liquid`.
 
 ## Steg
 
@@ -111,27 +104,7 @@ så du behöver inte röra den filen.
     Rubriken ligger före raden i `complete-response.liquid`. Byt plats på dem,
     och se varningen i steg 2.
 
-## Det som faktiskt hände
-
-### Målet beskrev ett släktskap, inte en adress
-
-`closest tr` pekar inte ut en specifik rad. Det beskriver var raden finns i
-förhållande till knappen, och det stämmer i varje rad utan att någon behöver
-hålla reda på vilken.
-
-Det är samma tanke som resten av övningarna, en nivå ner: ingenting på klienten
-behöver veta *vilken* todo som bockades av. Knappen vet var den sitter.
-
-### Rubriken var inte en ny idé
-
-Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
-bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.
-
-Lägg märke till att `oob: true` står i svaret, inte i rubriken. Två olika svar
-ber om samma märkning var för sig, och rubriken själv vet ingenting om vare sig
-det ena eller det andra.
-
-## Och sen?
+## Nästa övning
 
 Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
 bockas av.

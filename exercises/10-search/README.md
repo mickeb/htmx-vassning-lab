@@ -6,7 +6,7 @@ Listan filtreras medan du skriver, sorteringen följer med sökningen, och
 sökordet hamnar i adressen utan att fylla historiken med ett steg per
 tangenttryckning.
 
-## Bakgrund
+## Användbara attribut
 
 Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
 knapp, precis som den alltid har varit — och den får förbli det. Attributen
@@ -248,44 +248,7 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
     `delay:300ms` saknas i `hx-trigger`, eller står på fel plats — den hör till
     `input`, inte till elementet.
 
-## Det som faktiskt hände
-
-### En förfrågan bär exakt det du lägger i den
-
-Det är hela lärdomen från steg 2, och den gäller vidare än htmx. En `GET` har
-ingen kropp, så det finns ingenstans att lägga ett formulär. Fältet skickade
-sitt eget värde, för det var det enda någon hade bett om.
-
-Ingenting kommer med "av sig självt", och ingenting minns förra förfrågan.
-Behöver servern veta något måste det stå i den här förfrågan.
-
-### Det du skickar måste renderas om
-
-Den andra halvan är lättare att missa och dyrare att upptäcka sent. Det räcker
-inte att peka ut ett värde — värdet måste komma från något som uppdateras när
-det det beskriver ändras.
-
-Sorteringsfältet i formuläret låg utanför det som byttes. Det var korrekt när
-sidan laddades och blev inaktuellt vid första sorteringen, utan att någonting
-såg fel ut.
-
-Det är samma idé som räknaren i övning 5, en nivå ner: där skickade servern med
-det som ändrades så att sidan inte behövde räkna själv. Här måste den skicka med
-det som ändrades så att nästa förfrågan kan citera tillbaka det rätt.
-
-### Adressen är inte en etikett
-
-Tryck bakåt efter en sortering och titta på sökrutan: sökordet står kvar i den.
-
-Ingen kod lade tillbaka det. htmx hämtade adressen på nytt, servern renderade
-sidan för den adressen — inklusive `value="{{ q }}"` i sökfältet — och det som
-kom tillbaka var hela tillståndet. Adressen beskrev sidan tillräckligt väl för
-att sidan skulle gå att bygga upp igen från den.
-
-Det är därför sökningen fick förbli en `GET` med sina fält i frågesträngen, och
-inte blev en `POST`.
-
-## Och sen?
+## Och sen då?
 
 Det var den sista övningen. Appen du började med laddade om sidan vid varje
 sortering, varje tillagd todo, varje bock och varje sökning. Nu gör den inget av

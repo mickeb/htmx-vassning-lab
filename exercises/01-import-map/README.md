@@ -5,21 +5,6 @@
 htmx 4 laddas på varje sida i labbet, och du kan bekräfta i webbläsarens konsol
 att versionen är `4.0.0`.
 
-## Bakgrund
-
-htmx laddas som en **ES-modul via en import map**. En import map är en liten
-JSON-tabell i sidans `<head>` som talar om vad ett namn ska peka på. När ett
-modulskript sedan skriver `import htmx from 'htmx.org'` slår webbläsaren upp
-`htmx.org` i tabellen och hämtar filen därifrån.
-
-Poängen med en import map är att **koden inte behöver veta var filen ligger**.
-Koden säger `htmx.org`; tabellen bestämmer vad det pekar på, och tabellen kan
-ändras utan att en enda `import`-rad rörs.
-
-Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
-produktion: samma `import`-rader i koden, olika URL i tabellen. htmx finns i
-båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
-
 !!! warning "Versionen måste stå utskriven"
 
     En CDN-länk utan versionsnummer ger **htmx 2**, inte htmx 4, och kommer att
@@ -38,6 +23,19 @@ Det är skalet som varje sida i labbet renderas in i. Lägger du något i dess
 `<head>` finns det på alla sidor.
 
 ### 2. Lägg till import map och modulskript
+
+htmx laddas som en **ES-modul via en import map**. En import map är en liten
+JSON-tabell i sidans `<head>` som talar om vad ett namn ska peka på. När ett
+modulskript sedan skriver `import htmx from 'htmx.org'` slår webbläsaren upp
+`htmx.org` i tabellen och hämtar filen därifrån.
+
+Poängen med en import map är att **koden inte behöver veta var filen ligger**.
+Koden säger `htmx.org`; tabellen bestämmer vad det pekar på, och tabellen kan
+ändras utan att en enda `import`-rad rörs.
+
+Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
+produktion: samma `import`-rader i koden, olika URL i tabellen. htmx finns i
+båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
 
 Båda ska in före `</head>`.
 

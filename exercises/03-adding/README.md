@@ -5,16 +5,17 @@
 En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
 ger ett synligt fel på rätt ställe.
 
-## Bakgrund
+## Användbara attribut
 
-Formuläret postar redan. Det har `method="post"` och `action="/todo-app/todos"`,
-och det fungerar. Precis som i förra övningen tar du inte bort det — du lägger
-htmx bredvid det.
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-**Det här är samma form som sorteringen**, med en `POST` i stället för en `GET`.
-Du pekar ut en adress, ett mål och ett byte, och svaret är hela listan i sitt nya
-skick. Ingen ny idé, med andra ord — men två saker skiljer, och båda är värda att
-lägga på minnet.
+Det är **samma form som sorteringen**, med en `POST` i stället för en `GET`.
+Målet är `#todo-table` och bytet är `outerHTML`, av samma skäl som förra gången:
+det som kommer tillbaka **är** `<div id="todo-table">`.
 
 !!! note "En `POST` bär med sig hela formuläret"
 
@@ -27,19 +28,6 @@ lägga på minnet.
 
     Reglerna för vad som skickas med står i
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
-
-Den andra skillnaden kommer i steg 2: servern kan behöva säga emot attributen du
-sätter nu.
-
-| Attribut | Svarar på | Dokumentation |
-| --- | --- | --- |
-| `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
-| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
-| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
-
-Målet är `#todo-table` och bytet är `outerHTML` — samma två värden som på
-sorteringslänken, och av samma skäl: det som kommer tillbaka **är**
-`<div id="todo-table">`, så det ska ersätta elementet, inte hamna inuti det.
 
 ## Steg
 
@@ -131,48 +119,6 @@ felrapporten.
 
     Kontrollera först om du har något i sökrutan. Se varningen i steg 1.
 
-## Det som faktiskt hände
-
-### Svaret var listan, inte raden
-
-Du bad inte om att få en rad tillagd. Du postade en todo och fick tillbaka **hur
-listan ser ut nu**.
-
-Ingen kod på sidan räknade ut var den nya todon skulle ligga. Ingenting behövde
-veta hur listan var sorterad eller vad som söktes — servern renderade en korrekt
-lista, och sidan blev den.
-
-Hade svaret varit en rad som lades sist hade den hamnat på fel ställe så fort
-listan gick i någon annan ordning, och webbläsaren hade inte haft något sätt att
-märka det.
-
-Det förutsätter förstås att servern får veta hur du sorterat. Det är värt att
-hålla i minnet.
-
-### Servern bestämde var svaret skulle hamna
-
-`hx-target` står i HTML:en och gäller normalt varje gång. Men elementet kan inte
-veta i förväg att just den här förfrågan skulle misslyckas.
-
-Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som klienten
-får tolka, skickade den tillbaka **det som skulle visas** plus en header som
-säger var det hör hemma. Klienten behövde ingen felhantering, ingen `if`-sats och
-ingen kunskap om vad som kunde gå fel.
-
-### Räknaren stämmer inte längre
-
-Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du lade
-till något.
-
-Det är inte ett misstag i övningen. Du bytte ut en del av sidan, och räknaren är
-en annan del som ingen bad om. Den ligger utanför `#todo-table`, och den är inte
-det förfrågan siktade på.
-
-Den lagas snart, men inte härnäst. **Det är nämligen två saker som är trasiga nu**,
-och den andra är svårare att få syn på: sortera nyast först och lägg till en todo.
-
-Låt båda vara så länge.
-
 ## Extra: töm textfältet
 
 Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
@@ -244,3 +190,15 @@ formuläret.
     Den ligger kvar efter ett lyckat tillägg, av samma skäl: formuläret renderas
     aldrig om. `reset()` återställer fältets värde men tar inte bort en
     CSS-klass. Det är inget övningen bygger bort.
+
+## Nästa övning
+
+Två saker är trasiga nu.
+
+Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
+ligger utanför `#todo-table`, så bytet rörde den aldrig. Den lagas — men inte
+härnäst.
+
+Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.
+
+Nästa övning handlar om den.

@@ -6,7 +6,7 @@ Sorteringen syns i adressfältet igen. Adressen går att kopiera och skicka
 vidare, och bakåtknappen tar dig ett steg tillbaka i listan i stället för ut ur
 appen.
 
-## Bakgrund
+## Användbara attribut
 
 Sortera nyast först och titta på adressfältet. Det står fortfarande `/todo-app`.
 
@@ -102,31 +102,7 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
     Då har ingenting lagts i historiken. Har du sorterat efter att du lade till
     attributet? Bara sorteringar som gjorts *efter* det hamnar där.
 
-## Det som faktiskt hände
-
-### Adressen är en del av tillståndet, inte en bieffekt
-
-En sorterad lista är ett tillstånd som är värt att kunna peka på. Innan htmx
-skötte webbläsaren det åt oss, som en bieffekt av att sidan byttes. När
-sidbytena försvann försvann bieffekten med dem.
-
-`hx-push-url` lägger inte till någon ny förmåga. Den lämnar tillbaka något som
-alltid har funnits på webben: att det du tittar på har en adress.
-
-Lägg märke till hur lite det kostade — ett attribut, och bara för att svaret
-redan låg på en adress som fungerar för sig själv. Hade den här övningen kommit
-före den förra hade det inte gått.
-
-### Bakåt är en vanlig förfrågan
-
-Servern vet ingenting om att du tryckte bakåt. Den fick en förfrågan om
-`/todo-app` och svarade med sidan, precis som den hade gjort för vilken besökare
-som helst.
-
-Det är samma mönster som resten av dagen: htmx lägger inget minne på klienten
-som kan komma i otakt med servern. Behövs sidan igen hämtas den igen.
-
-## Och sen?
+## Nästa övning
 
 Sortering har adressen tillbaka. Sökrutan har den inte — skriv något i den och
 se efter.

@@ -5,7 +5,7 @@
 Sorteringslänken har bara en adress kvar: `href` och `hx-get` innehåller samma
 sträng.
 
-## Bakgrund
+## Användbara headers
 
 Sedan övning 2 har sorteringslänken burit samma frågesträng två gånger:
 
@@ -103,23 +103,7 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
     Då träffade grenen i `app.ts` inte, så htmx fick tillbaka ett helt dokument
     och bytte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
 
-## Det som faktiskt hände
-
-### Samma länk fungerar med och utan htmx
-
-Det här är argumentet för hela angreppssättet, och nu står det i märkningen i
-stället för i en beskrivning av det.
-
-Sorteringslänken är **en** länk till **en** adress. Klickar du med htmx laddat
-hämtas adressen med `fetch` och tabellen byts ut. Vore htmx inte laddat — ett
-skript som inte hann fram, en webbläsare som inte kör det — följer webbläsaren
-länken och hämtar samma adress som ett vanligt sidbyte. Servern svarar med hela
-sidan, eftersom `HX-Request` saknas, och resultatet blir detsamma. Bara dyrare.
-
-Ingenting behövde skrivas två gånger för att få det. Det som togs bort var en
-rutt, inte något som lades till.
-
-### Fragmentrutten var en byggnadsställning
+## Värt att känna till
 
 `/todo-app/fragments/table` finns kvar i labbet, men ingenting använder den
 längre. Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
@@ -129,7 +113,7 @@ Kvar finns idén den fanns till för: **servern bestämmer vad ett svar
 innehåller.** Först utifrån vad som hände — en rad, en rubrik, en händelse — och
 nu också utifrån vem som frågar.
 
-## Och sen?
+## Nästa övning
 
 Sortera så att nyast ligger först. Titta sedan på adressfältet.
 

@@ -361,10 +361,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -422,41 +422,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#det-har-har-ett-namn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Det här har ett namn
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#titta-i-natverkspanelen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Titta i nätverkspanelen
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Titta på tabellen som kom tillbaka
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -776,10 +748,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -837,41 +809,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#det-har-har-ett-namn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
+        Det här har ett namn
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#titta-i-natverkspanelen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Titta i nätverkspanelen
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Titta på tabellen som kom tillbaka
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -894,20 +838,15 @@
 
 <h1 id="2-sortera-utan-sidladdning">2. Sortera utan sidladdning<a class="headerlink" href="#2-sortera-utan-sidladdning" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>Ett klick på kolumnrubriken <strong>Created at</strong> växlar sorteringsordning utan att
-sidan laddas om.</p>
+<p>Ett klick på kolumnrubriken <strong>Created at</strong> vänder sorteringsordningen, och
+listan byter ordning utan att sidan laddas om.</p>
 <div class="admonition note">
 <p class="admonition-title">Du behöver några todos att sortera</p>
 <p>Har du inte lagt in några än, gå till
 <a href="http://localhost:4000/todo-app">http://localhost:4000/todo-app</a> och lägg in
-en handfull — fyra eller fem räcker. En tom lista går utmärkt att sortera,
-men det syns inget.</p>
+en handfull — fyra eller fem räcker.</p>
 </div>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Kolumnrubriken är redan en länk, och den fungerar redan. Den pekar på
-<code>/todo-app</code> med omvänd sortering, och webbläsaren hämtar hela sidan på nytt.</p>
-<p>Övningen tar inte bort länken. Den tar bort <strong>sidladdningen</strong>.</p>
-<p>Tre attribut räcker:</p>
+<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -935,26 +874,22 @@ men det syns inget.</p>
 </tbody>
 </table>
 <p>Adressen är <code>/todo-app/fragments/table</code>. Den rutten fanns redan innan du
-började — den renderar exakt samma tabell, men utan sidan runt omkring. Den är
-en av <a href="../#det-labbet-redan-ger-dig">fragmentrutterna labbet levereras med</a>;
-du ska inte skriva någon serverkod i den här övningen.</p>
+började — den renderar exakt samma tabell, men utan sidan runt omkring. Du ska
+inte skriva någon serverkod i den här övningen.</p>
 <div class="admonition tip">
 <p class="admonition-title">Öppna den i en flik innan du fortsätter</p>
 <p><a href="http://localhost:4000/todo-app/fragments/table?sort=desc">http://localhost:4000/todo-app/fragments/table?sort=desc</a></p>
-<p>Det som kommer tillbaka är <strong>HTML</strong>, inte JSON. Du får alltså inget som kod
-i webbläsaren måste tolka och rendera — du får en färdig tabell som kan
-sättas in rakt av. Det är halva poängen med hela angreppssättet, och det är
-lättare att se än att läsa sig till.</p>
+<p>Det som kommer tillbaka är <strong>HTML</strong>, inte JSON — en färdig tabell som kan
+sättas in rakt av.</p>
 </div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
 <p>Leta upp länken i kolumnrubriken. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p>Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code>.</p>
-<p>Att det är just <code>outerHTML</code> är inte en detalj: fragmentet som kommer tillbaka
-<strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>. Det ersätter alltså elementet det kom ifrån, inte
-innehållet i det. Hade du använt <code>innerHTML</code> hade du fått en <code>#todo-table</code> inuti
-en <code>#todo-table</code>.</p>
+<p>Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code>. Fragmentet som kommer tillbaka
+<strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom ifrån, inte
+innehållet i det — <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti en
+<code>#todo-table</code>.</p>
 <p>Adressen i <code>hx-get</code> måste bära med sig sorteringen, precis som <code>href</code> gör.</p>
 <details class="warning">
 <summary>Varför räcker det inte med <code>/todo-app/fragments/table</code>?</summary>
@@ -964,8 +899,8 @@ något åt dig, och <code>href</code> är en helt annan sak som htmx inte läser
 ordning. Det ser ut att fungera vid första klicket — du stod på fallande och
 bad om stigande, och fick stigande — och sedan händer ingenting mer, hur
 många gånger du än klickar.</p>
-<p>Regeln är värd att ta med sig: <strong>en htmx-förfrågan innehåller exakt det du
-lägger i den.</strong> Ingenting minns något mellan förfrågningar.</p>
+<p><strong>En htmx-förfrågan innehåller exakt det du lägger i den.</strong> Ingenting minns
+något mellan förfrågningar.</p>
 </details>
 <details class="example">
 <summary>Facit — hela länken</summary>
@@ -975,8 +910,8 @@ lägger i den.</strong> Ingenting minns något mellan förfrågningar.</p>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Och ja — adressen står nu två gånger, nästan likadant. Det är inte snyggt,
-och det är inte tänkt att förbli så. En senare övning tar bort den ena.</p>
+<p>Adressen står nu två gånger, nästan likadant. Det är inte tänkt att förbli
+så — en senare övning tar bort den ena.</p>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
@@ -987,47 +922,23 @@ och det är inte tänkt att förbli så. En senare övning tar bort den ena.</p>
 </ul>
 <details class="question">
 <summary>Det växlar bara en gång — sedan står det still</summary>
-<p>Då saknar <code>hx-get</code> sin query-sträng. Se den fällbara rutan <em>"Varför räcker
-det inte med <code>/todo-app/fragments/table</code>?"</em> ovan.</p>
+<p>Då saknar <code>hx-get</code> sin query-sträng. Se den fällbara rutan i steg 2.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<p><strong>Ingenting ser annorlunda ut.</strong> Sorteringen fungerade innan du rörde filen och
-fungerar likadant nu: samma ordning, samma chevron, samma sida. Det är inget
-tecken på att något gått fel — det är hela poängen.</p>
-<p>Det som ändrades är <em>hur</em> svaret hämtas. I stället för att webbläsaren navigerar
-till en ny sida gör htmx anropet i bakgrunden med <code>fetch</code> och byter ut tabellen
-på plats. Det syns inte i gränssnittet. Det syns i nätverkspanelen.</p>
-<h3 id="titta-i-natverkspanelen">Titta i nätverkspanelen<a class="headerlink" href="#titta-i-natverkspanelen" title="Permanent link">&para;</a></h3>
-<p>Ha den öppen och tryck <code>F5</code>. Panelen fylls med allt sidan består av: dokumentet,
-stilmallen, skripten.</p>
-<p>Klicka sedan på <strong>Created at</strong>. Nu tillkommer en enda rad i panelen — förfrågan
-till <code>/todo-app/fragments/table</code>.</p>
-<p>Samma innehåll i listan som efter en full sidladdning, en bråkdel av antalet
-byte, och det som kom tillbaka är fortfarande HTML. Svaret är alltså inte ett
-JSON-objekt som kod i webbläsaren måste tolka, förstå och rendera till element.
-Det är färdiga tabellrader som går att sätta in som de är.</p>
-<h3 id="titta-pa-tabellen-som-kom-tillbaka">Titta på tabellen som kom tillbaka<a class="headerlink" href="#titta-pa-tabellen-som-kom-tillbaka" title="Permanent link">&para;</a></h3>
-<p>Klicka runt lite och läs den. Den bär <strong>sin egen</strong>
+<h2 id="det-har-har-ett-namn">Det här har ett namn<a class="headerlink" href="#det-har-har-ett-namn" title="Permanent link">&para;</a></h2>
+<p>Klicka runt lite och läs tabellen som kommer tillbaka. Den bär <strong>sin egen</strong>
 chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin
-egen sökterm om du har sökt.</p>
-<p>Ingenting på klienten håller reda på hur listan är sorterad. Det finns ingen
-variabel någonstans som säger <code>sortOrder = 'desc'</code>, ingen kod som vänder en
-pil, inget tillstånd att hålla synkroniserat med något annat.</p>
-<p>Servern renderade en korrekt tabell, och sidan blev den.</p>
-<div class="admonition note">
-<p class="admonition-title">Det här har ett namn</p>
-<p>Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
-vilken ordning den leder till, vilken sökning som gäller — är kärnan i
-<strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet
-drivs av det hypermedia servern skickar, inte av kod som håller reda på
-saker i webbläsaren.</p>
-<p>Värt att notera: <strong>htmx lade inte till det här.</strong> Länken du började med
-gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
-sidladdning hämtade nästa representation.</p>
+egen sökterm om du har sökt. Ingen variabel i webbläsaren säger
+<code>sortOrder = 'desc'</code>, ingen kod vänder en pil.</p>
+<p>Att svaret bär med sig kontrollerna för vad som kan göras härnäst är kärnan i
+<strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet drivs
+av det hypermedia servern skickar, inte av kod som håller reda på saker i
+webbläsaren.</p>
+<p>Värt att notera: <strong>htmx lade inte till det här.</strong> Länken du började med gjorde
+redan samma sak. Den bar sin egen nästa ordning, och en full sidladdning hämtade
+nästa representation.</p>
 <p>Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
 tillstånd i klienten — och då försvinner det. Den här övningen tog bort
 sidladdningen utan att släppa hypermedia.</p>
-</div>
 
 
 

@@ -5,9 +5,7 @@
 När den sista todon bockas av smäller fyrverkerier över sidan. Är det inte den
 sista händer ingenting.
 
-## Bakgrund
-
-Övningen har två halvor, och den första är en repris.
+## Användbara headers
 
 **Ett bibliotek till, genom import map:en.** `fireworks-js` blir en rad till i
 tabellen du skrev i övning 1, och importeras sedan med sitt namn.
@@ -142,23 +140,7 @@ renderar svaret. En rad till: sätt headern när allt är avbockat.
     slutat fungera samtidigt — sortering och avbockning laddar om hela sidan
     igen.
 
-## Det som faktiskt hände
-
-`HX-Trigger` innehöll ordet `fireworks`. Inte JavaScript, inte en instruktion
-att köra något, inte ens en klass att sätta på ett element. Servern rapporterade
-att något hade inträffat — det finns inga todos kvar att bocka av — och frontend
-avgjorde själv vad det skulle betyda.
-
-Byt ut lyssnaren mot en `console.log` och servern märker ingen skillnad. Ta bort
-fyrverkerierna helt och den fortsätter skicka headern. Det som firas är ett
-beslut på servern; hur det firas är ett beslut i frontend, och de två känner
-bara till ett ord gemensamt.
-
-Det är samma uppdelning som i övning 5, en nivå upp. Där bar svaret med sig var
-varje del hörde hemma. Här bär det med sig att något hänt, och ingenting om vad
-som ska ske.
-
-## Och sen?
+## Nästa övning
 
 Öppna `views/todo-app/todo-table.liquid` och titta på sorteringslänken igen.
 Adressen står där två gånger: en gång i `href`, en gång i `hx-get`. Samma

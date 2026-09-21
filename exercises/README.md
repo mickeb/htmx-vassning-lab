@@ -16,22 +16,39 @@ exercises/
 
 Each `README.md` covers, using these Swedish headings:
 
-1. **`Mål`** — what works at the end, in one sentence.
-2. **`Bakgrund`** — the idea being introduced, kept short.
+1. **`Mål`** — what works at the end, in one sentence, from the point of view of
+   someone using the todo app. Not "you add three attributes" but "the list
+   reorders without the page reloading".
+2. **`Användbara attribut`** — the attribute table, plus whatever is needed to
+   act on it: the address to call, what already exists in the lab, a value worth
+   explaining before it is used. Named **`Användbara headers`** where the
+   exercise turns on an HTTP header rather than an attribute (7 and 8).
 3. **`Steg`** — what to change, by file. Numbered `###` subheadings.
 4. **`Klart när`** — how you know it worked. **Checks only:** a task list of
-   things to observe, plus a collapsed troubleshooting entry for the ways it
-   fails. Explanation does not belong here; the reader is ticking boxes.
-5. **`Det som faktiskt hände`** — the idea the exercise exists for, said plainly
-   once it has been done. This is where explanation goes, and where anything
-   worth examining lives, as `###` subheadings — the network panel, the response,
-   whatever the exercise made visible. It replaces a separate "going further"
-   section: the extra material is reading and looking, not more to build, so it
-   belongs with the payoff rather than after it.
+   things to observe, plus collapsed troubleshooting entries for the ways it
+   fails.
+5. **`Nästa övning`** — a short lead-in to the one that follows. Written only
+   where there is something real to say; not every exercise has it yet.
+
+**Restructured 2026-09-21.** Two sections were removed from every exercise:
+`Bakgrund`, which had become a second explanation slot before the work, and
+`Det som faktiskt hände`, which explained the idea after it. The exercises are
+task instructions now. The previous versions are in git at `debee82` — recover
+one with `git show debee82:exercises/<folder>/README.md`.
+
+Three exercises keep a section outside this shape, each for a stated reason:
+
+- **4** opens with **`Vilken bugg?`** instead of an attribute table, because its
+  opening *is* the work — reproduce the bug, read the request body, get the rule.
+- **2** ends with **`Det här har ett namn`**, the only place HATEOAS is
+  introduced and glossed. `CONTEXT.md` and `OUTLINE.md` in the presentation repo
+  both depend on it being here.
+- **5** and **8** end with **`Värt att känna till`** for a pointer the material
+  depends on elsewhere — `hx-partial` as the htmx 4 alternative to
+  `hx-swap-oob`, and why the dead fragment route is left in place.
 
 A section is dropped when an exercise has nothing for it, rather than padded.
-Exercise 1 has no `Det som faktiskt hände`, because installing a library is not
-an idea to land.
+Exercise 1 has no attribute section, because an import map is not an attribute.
 
 ## Extra assignments
 

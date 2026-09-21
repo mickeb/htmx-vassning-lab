@@ -5,22 +5,17 @@
 Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
 extra förfrågan.
 
-## Bakgrund
-
-Att lägga till en todo lämnade två saker trasiga. Den ena lagade du nyss. Den
-andra står kvar: rubriken högst upp renderas aldrig om, så den räknar fortfarande
-som om den nya todon inte fanns. Rubriken ligger utanför `#todo-table`, och bytet
-rör bara det som låg innanför.
-
-Det går inte att lösa med `hx-target`. Det attributet pekar ut **ett** ställe,
-och svaret behöver hamna på två.
-
-Lösningen vänder på frågan. I stället för att förfrågan bestämmer var allt ska
-hamna får en del av **svaret** säga var just den hör hemma.
+## Användbara attribut
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `hx-swap-oob` | Ska det här elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+
+Räknaren går inte att laga med `hx-target`. Det attributet pekar ut **ett**
+ställe, och svaret behöver hamna på två.
+
+Lösningen vänder på frågan: i stället för att förfrågan bestämmer var allt ska
+hamna får en del av **svaret** säga var just den hör hemma.
 
 `oob` står för *out of band* — vid sidan av. Ett element i svaret som är märkt
 `hx-swap-oob="true"` placeras inte där bytet skulle ha lagt det. htmx letar upp
@@ -99,23 +94,7 @@ behöver inte ändra något i `app.ts`.
     `todo-header`, och att attributet hamnar på `<header>`-taggen och inte på
     något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.
 
-## Det som faktiskt hände
-
-Ett svar. En förfrågan. Två ställen på sidan uppdaterade.
-
-Det är värt att stanna vid, för det är inte så det brukar se ut. Det vanliga är
-att klienten vet att "när en todo läggs till måste räknaren också uppdateras" —
-antingen genom en andra förfrågan, eller genom kod som räknar om siffran själv.
-Båda kräver att klienten känner till sambandet.
-
-Här gör den inte det. Servern fick frågan "lägg till den här todon" och svarade
-med **allt som ändrades av det**, där varje del bär med sig var den hör hemma.
-Ingen kod på sidan vet att en ny todo påverkar en räknare. Om rubriken en dag
-visar något annat, eller om det tillkommer fler delar som ändras, är det ett
-serverbeslut och sidan behöver inte röras.
-
-Samma idé som i övning 2, från andra hållet: där skickade servern en korrekt
-representation, här skickar den flera på en gång.
+## Värt att känna till
 
 !!! note "htmx 4 har också ett nyare sätt"
 

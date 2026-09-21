@@ -4,7 +4,7 @@
 
 Sorteringen överlever att du lägger till en todo.
 
-## Bakgrund
+## Vilken bugg?
 
 Den här övningen bygger ingenting nytt. Den lagar något som varit trasigt ett
 tag, och poängen ligger i *varför* det var trasigt.
@@ -76,7 +76,7 @@ Regeln är värd att ta med sig, och den gäller långt utanför det här labbet
     Buggen syntes först när du la till en todo, en övning senare. Så brukar det
     se ut: den kommer fram någon helt annanstans än där den bor.
 
-## Steg
+## Användbara attribut
 
 Fältet måste ligga någonstans som renderas om när du sorterar — alltså **inuti
 `#todo-table`**. Men det måste fortfarande skickas med formuläret, och
@@ -99,6 +99,8 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
 
     Det syns sällan i kod, och det är synd — det löser precis den här sortens
     problem, och det gör det utan en rad JavaScript.
+
+## Steg
 
 ### Flytta fältet
 
@@ -146,32 +148,7 @@ kvar.
     Jo, och då är du tillbaka där du började. Fältet måste ligga i den del av
     sidan som byts ut, annars renderas det aldrig om.
 
-## Det som faktiskt hände
-
-### Färskhet är en fråga om var något bor
-
-Fältet flyttade inte för att det passade bättre där. Det flyttade för att
-`#todo-table` är det enda på sidan som renderas om när du sorterar.
-
-Det är en ny sorts fråga att ställa om en sida. Inte "var ligger det här
-snyggast?" utan **"vad renderar om det här, och när?"** Varje värde på sidan har
-ett svar på den frågan, och det avgör om värdet går att lita på.
-
-### Lösningen var inte htmx
-
-Det är värt att stanna vid. Problemet uppstod i en htmx-app, och det hade gått
-att lösa med htmx — ett attribut som drar in värdet från någon annanstans, eller
-ett svar som renderar om formuläret vid sidan av.
-
-Men det behövdes inte. HTML hade redan ett sätt att säga "det här fältet hör till
-det där formuläret", och det fungerar likadant med eller utan htmx på sidan.
-Stäng av JavaScript och formuläret skickar fortfarande med rätt sortering.
-
-Det är samma tanke som hela sessionen vilar på, fast från andra hållet: htmx
-lägger inte till förmågor som webben saknar. Det tar bort sidladdningen och låter
-resten vara som det var — inklusive det du redan kan.
-
-## Och sen?
+## Nästa övning
 
 Sorteringen överlever ett tillägg. Kvar står räknaren i rubriken, som fortfarande
 inte har räknat om sig sedan du la till något.

@@ -388,10 +388,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -460,60 +460,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#svaret-var-listan-inte-raden" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Svaret var listan, inte raden
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servern-bestamde-var-svaret-skulle-hamna" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Servern bestämde var svaret skulle hamna
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raknaren-stammer-inte-langre" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Räknaren stämmer inte längre
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#extra-tom-textfaltet" class="md-nav__link">
     <span class="md-ellipsis">
       
         Extra: töm textfältet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nasta-ovning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nästa övning
       
     </span>
   </a>
@@ -809,10 +770,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -881,60 +842,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#svaret-var-listan-inte-raden" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Svaret var listan, inte raden
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servern-bestamde-var-svaret-skulle-hamna" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Servern bestämde var svaret skulle hamna
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raknaren-stammer-inte-langre" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Räknaren stämmer inte längre
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#extra-tom-textfaltet" class="md-nav__link">
     <span class="md-ellipsis">
       
         Extra: töm textfältet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nasta-ovning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nästa övning
       
     </span>
   </a>
@@ -962,26 +884,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
 ger ett synligt fel på rätt ställe.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Formuläret postar redan. Det har <code>method="post"</code> och <code>action="/todo-app/todos"</code>,
-och det fungerar. Precis som i förra övningen tar du inte bort det — du lägger
-htmx bredvid det.</p>
-<p><strong>Det här är samma form som sorteringen</strong>, med en <code>POST</code> i stället för en <code>GET</code>.
-Du pekar ut en adress, ett mål och ett byte, och svaret är hela listan i sitt nya
-skick. Ingen ny idé, med andra ord — men två saker skiljer, och båda är värda att
-lägga på minnet.</p>
-<div class="admonition note">
-<p class="admonition-title">En <code>POST</code> bär med sig hela formuläret</p>
-<p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
-skicka — adressen fick bära sorteringen själv.</p>
-<p>Här är det tvärtom. En förfrågan med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
-tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
-<code>q</code>- och <code>sort</code>-fälten, följer med utan att du gör något.</p>
-<p>Reglerna för vad som skickas med står i
-<a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
-</div>
-<p>Den andra skillnaden kommer i steg 2: servern kan behöva säga emot attributen du
-sätter nu.</p>
+<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1008,9 +911,19 @@ sätter nu.</p>
 </tr>
 </tbody>
 </table>
-<p>Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code> — samma två värden som på
-sorteringslänken, och av samma skäl: det som kommer tillbaka <strong>är</strong>
-<code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet, inte hamna inuti det.</p>
+<p>Det är <strong>samma form som sorteringen</strong>, med en <code>POST</code> i stället för en <code>GET</code>.
+Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code>, av samma skäl som förra gången:
+det som kommer tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">En <code>POST</code> bär med sig hela formuläret</p>
+<p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
+skicka — adressen fick bära sorteringen själv.</p>
+<p>Här är det tvärtom. En förfrågan med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
+tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
+<code>q</code>- och <code>sort</code>-fälten, följer med utan att du gör något.</p>
+<p>Reglerna för vad som skickas med står i
+<a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
+</div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-appnew-todo-formliquid">1. Öppna <code>views/todo-app/new-todo-form.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-appnew-todo-formliquid" title="Permanent link">&para;</a></h3>
 <p>Lägg de tre attributen på <code>&lt;form&gt;</code>-taggen. Adressen är
@@ -1084,34 +997,6 @@ handlar om den. Låt den vara så länge.</p>
 <summary>Ingenting händer alls när jag lägger till</summary>
 <p>Kontrollera först om du har något i sökrutan. Se varningen i steg 1.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<h3 id="svaret-var-listan-inte-raden">Svaret var listan, inte raden<a class="headerlink" href="#svaret-var-listan-inte-raden" title="Permanent link">&para;</a></h3>
-<p>Du bad inte om att få en rad tillagd. Du postade en todo och fick tillbaka <strong>hur
-listan ser ut nu</strong>.</p>
-<p>Ingen kod på sidan räknade ut var den nya todon skulle ligga. Ingenting behövde
-veta hur listan var sorterad eller vad som söktes — servern renderade en korrekt
-lista, och sidan blev den.</p>
-<p>Hade svaret varit en rad som lades sist hade den hamnat på fel ställe så fort
-listan gick i någon annan ordning, och webbläsaren hade inte haft något sätt att
-märka det.</p>
-<p>Det förutsätter förstås att servern får veta hur du sorterat. Det är värt att
-hålla i minnet.</p>
-<h3 id="servern-bestamde-var-svaret-skulle-hamna">Servern bestämde var svaret skulle hamna<a class="headerlink" href="#servern-bestamde-var-svaret-skulle-hamna" title="Permanent link">&para;</a></h3>
-<p><code>hx-target</code> står i HTML:en och gäller normalt varje gång. Men elementet kan inte
-veta i förväg att just den här förfrågan skulle misslyckas.</p>
-<p>Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som klienten
-får tolka, skickade den tillbaka <strong>det som skulle visas</strong> plus en header som
-säger var det hör hemma. Klienten behövde ingen felhantering, ingen <code>if</code>-sats och
-ingen kunskap om vad som kunde gå fel.</p>
-<h3 id="raknaren-stammer-inte-langre">Räknaren stämmer inte längre<a class="headerlink" href="#raknaren-stammer-inte-langre" title="Permanent link">&para;</a></h3>
-<p>Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du lade
-till något.</p>
-<p>Det är inte ett misstag i övningen. Du bytte ut en del av sidan, och räknaren är
-en annan del som ingen bad om. Den ligger utanför <code>#todo-table</code>, och den är inte
-det förfrågan siktade på.</p>
-<p>Den lagas snart, men inte härnäst. <strong>Det är nämligen två saker som är trasiga nu</strong>,
-och den andra är svårare att få syn på: sortera nyast först och lägg till en todo.</p>
-<p>Låt båda vara så länge.</p>
 <h2 id="extra-tom-textfaltet">Extra: töm textfältet<a class="headerlink" href="#extra-tom-textfaltet" title="Permanent link">&para;</a></h2>
 <p>Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
 om när allt gick bra — servern skickar listan, inte formuläret — så fältet behåller
@@ -1183,6 +1068,13 @@ formuläret.</p>
 aldrig om. <code>reset()</code> återställer fältets värde men tar inte bort en
 CSS-klass. Det är inget övningen bygger bort.</p>
 </div>
+<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
+<p>Två saker är trasiga nu.</p>
+<p>Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
+ligger utanför <code>#todo-table</code>, så bytet rörde den aldrig. Den lagas — men inte
+härnäst.</p>
+<p>Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.</p>
+<p>Nästa övning handlar om den.</p>
 
 
 

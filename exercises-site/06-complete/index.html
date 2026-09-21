@@ -469,10 +469,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -530,49 +530,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#malet-beskrev-ett-slaktskap-inte-en-adress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Målet beskrev ett släktskap, inte en adress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rubriken-var-inte-en-ny-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rubriken var inte en ny idé
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -787,10 +748,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bakgrund" class="md-nav__link">
+  <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bakgrund
+        Användbara attribut
       
     </span>
   </a>
@@ -848,49 +809,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-som-faktiskt-hande" class="md-nav__link">
+  <a href="#nasta-ovning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det som faktiskt hände
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#malet-beskrev-ett-slaktskap-inte-en-adress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Målet beskrev ett släktskap, inte en adress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rubriken-var-inte-en-ny-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rubriken var inte en ny idé
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
+        Nästa övning
       
     </span>
   </a>
@@ -918,19 +840,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>Ett klick på <strong>Complete</strong> markerar raden som klar och uppdaterar räknaren — utan
 att sidan laddas om.</p>
-<h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Knappen sitter redan i ett formulär som postar. Samma utgångsläge som när du
-lade till en todo, och samma grepp: htmx bredvid det som redan fungerar.</p>
-<p>Två saker skiljer.</p>
-<p><strong>Hela raden byts ut, inte en del av den.</strong> Att bocka av är enkelriktat — när
-todon är klar ska knappen vara borta och en bock stå i stället. Servern skickar
-tillbaka raden i sitt nya skick, och den ska ersätta den gamla.</p>
-<p><strong>Målet är inte ett <code>id</code> den här gången.</strong> Varje rad har visserligen ett eget
-<code>id</code>, men du behöver det inte. <code>hx-target</code> förstår också <em>relativa</em> uttryck:</p>
-<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
-</code></pre></div>
-<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde förfrågan".
-Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
+<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -962,9 +872,16 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
 </tr>
 </tbody>
 </table>
-<p>Inget av attributen är nytt. Det nya är värdet <code>closest tr</code>. Rubriken kan redan
-märkas out of band sedan övning 5 — du använder det utan att röra
-<code>todo-header.liquid</code>.</p>
+<p>Inget av attributen är nytt. Det nya är <strong>värdet</strong> på <code>hx-target</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
+</code></pre></div>
+<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde förfrågan".
+Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
+inte radens <code>id</code>.</p>
+<p>Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
+är klar ska knappen vara borta och en bock stå i stället.</p>
+<p>Rubriken kan redan märkas out of band sedan övning 5 — du använder det utan att
+röra <code>todo-header.liquid</code>.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
@@ -1027,20 +944,7 @@ att adressen innehåller <code>/fragments/</code>.</p>
 <p>Rubriken ligger före raden i <code>complete-response.liquid</code>. Byt plats på dem,
 och se varningen i steg 2.</p>
 </details>
-<h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<h3 id="malet-beskrev-ett-slaktskap-inte-en-adress">Målet beskrev ett släktskap, inte en adress<a class="headerlink" href="#malet-beskrev-ett-slaktskap-inte-en-adress" title="Permanent link">&para;</a></h3>
-<p><code>closest tr</code> pekar inte ut en specifik rad. Det beskriver var raden finns i
-förhållande till knappen, och det stämmer i varje rad utan att någon behöver
-hålla reda på vilken.</p>
-<p>Det är samma tanke som resten av övningarna, en nivå ner: ingenting på klienten
-behöver veta <em>vilken</em> todo som bockades av. Knappen vet var den sitter.</p>
-<h3 id="rubriken-var-inte-en-ny-ide">Rubriken var inte en ny idé<a class="headerlink" href="#rubriken-var-inte-en-ny-ide" title="Permanent link">&para;</a></h3>
-<p>Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
-bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.</p>
-<p>Lägg märke till att <code>oob: true</code> står i svaret, inte i rubriken. Två olika svar
-ber om samma märkning var för sig, och rubriken själv vet ingenting om vare sig
-det ena eller det andra.</p>
-<h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
+<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
 <p>Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
 bockas av.</p>
 <p>Nästa övning gör något av det ögonblicket. Något att fira.</p>
