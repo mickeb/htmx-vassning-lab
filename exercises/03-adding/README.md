@@ -24,13 +24,12 @@ sorteringen vi precis gjorde**, med en `POST` i stället för en `GET`:
 `hx-target` är `#todo-table` och `hx-swap` är återigen `outerHTML`, eftersom det
 som kommer tillbaka är tabellen i sin helhet.
 
-!!! note "En `POST` skickar med hela formuläret"
+!!! note "Formulär postas som vanligt"
 
-    Beskrivningen och de dolda `q`- och `sort`-fälten följer med utan att du gör
-    något. Detsamma gäller allt utom `GET` och `DELETE`.
+    Att posta ett formulär med htmx fungerar som med vanlig HTML: fälten skickas
+    med automatiskt. Undantaget är `GET` och `DELETE`.
 
-    Reglerna för vad som skickas med står i
-    [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
+    [Mer om vad som skickas med](https://four.htmx.org/docs#forms)
 
 ??? example "Facit"
 

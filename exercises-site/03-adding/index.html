@@ -941,11 +941,10 @@ sorteringen vi precis gjorde</strong>, med en <code>POST</code> i stället för 
 <code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är återigen <code>outerHTML</code>, eftersom det
 som kommer tillbaka är tabellen i sin helhet.</p>
 <div class="admonition note">
-<p class="admonition-title">En <code>POST</code> skickar med hela formuläret</p>
-<p>Beskrivningen och de dolda <code>q</code>- och <code>sort</code>-fälten följer med utan att du gör
-något. Detsamma gäller allt utom <code>GET</code> och <code>DELETE</code>.</p>
-<p>Reglerna för vad som skickas med står i
-<a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
+<p class="admonition-title">Formulär postas som vanligt</p>
+<p>Att posta ett formulär med htmx fungerar som med vanlig HTML: fälten skickas
+med automatiskt. Undantaget är <code>GET</code> och <code>DELETE</code>.</p>
+<p><a href="https://four.htmx.org/docs#forms">Mer om vad som skickas med</a></p>
 </div>
 <details class="example">
 <summary>Facit</summary>
