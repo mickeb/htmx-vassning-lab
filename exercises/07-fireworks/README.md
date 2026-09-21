@@ -107,8 +107,7 @@ modulskriptet i `views/layout.liquid` med det här:
 Den enda raden som har med htmx att göra är
 [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 `'fireworks'` där är samma sträng som servern satte som värde för
-`HX-Trigger`-headern. Stavas de olika körs funktionen aldrig, och ingenting
-säger ifrån.
+`HX-Trigger`-headern.
 
 !!! note "Varför lyssna på `document`?"
 
