@@ -933,23 +933,23 @@ ger ett synligt fel på rätt ställe.</p>
 </tr>
 </tbody>
 </table>
-<p>Det är <strong>samma form som sorteringen</strong>, med en <code>POST</code> i stället för en <code>GET</code>.
-<code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, av samma skäl som
-förra gången: det som kommer tillbaka är tabellen i sin helhet.</p>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-oppna-viewstodo-appnew-todo-formliquid">1. Öppna <code>views/todo-app/new-todo-form.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-appnew-todo-formliquid" title="Permanent link">&para;</a></h3>
+<p>Lägg de tre attributen på <code>&lt;form&gt;</code>-taggen.</p>
+<p><code>hx-post</code> postar till <code>/todo-app/fragments/todos</code>. Det är <strong>samma koncept som
+sorteringen vi precis gjorde</strong>, med en <code>POST</code> i stället för en <code>GET</code>:
+<code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, eftersom det som
+kommer tillbaka är tabellen i sin helhet.</p>
 <div class="admonition note">
 <p class="admonition-title">En <code>POST</code> skickar med hela formuläret</p>
 <p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
 skicka — adressen fick skicka med sorteringen själv.</p>
 <p>Här är det tvärtom. En request med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
-tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
+skickar med alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 <code>q</code>- och <code>sort</code>-fälten, följer med utan att du gör något.</p>
 <p>Reglerna för vad som skickas med står i
 <a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
 </div>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-oppna-viewstodo-appnew-todo-formliquid">1. Öppna <code>views/todo-app/new-todo-form.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-appnew-todo-formliquid" title="Permanent link">&para;</a></h3>
-<p>Lägg de tre attributen på <code>&lt;form&gt;</code>-taggen. Adressen är
-<code>/todo-app/fragments/todos</code>.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
@@ -1048,8 +1048,8 @@ eftersom varje htmx-händelse börjar med <code>htmx:</code> går det att utelä
 behålla kolonet:</p>
 <div class="language-text highlight"><pre><span></span><code>hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
 </code></pre></div>
-<p>Det är därifrån det dubbla kolonet kommer. Båda formerna fungerar; den korta är
-den vanliga.</p>
+<p>Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
+är det vanliga.</p>
 <div class="admonition warning">
 <p class="admonition-title">Händelsenamn i htmx 4 har kolon</p>
 <p>Händelsen heter <code>after:swap</code>. Inte <code>afterSwap</code> — det är htmx 2, och det är

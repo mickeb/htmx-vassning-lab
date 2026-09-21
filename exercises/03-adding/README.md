@@ -13,9 +13,16 @@ ger ett synligt fel på rätt ställe.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-Det är **samma form som sorteringen**, med en `POST` i stället för en `GET`.
-`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, av samma skäl som
-förra gången: det som kommer tillbaka är tabellen i sin helhet.
+## Steg
+
+### 1. Öppna `views/todo-app/new-todo-form.liquid`
+
+Lägg de tre attributen på `<form>`-taggen.
+
+`hx-post` postar till `/todo-app/fragments/todos`. Det är **samma koncept som
+sorteringen vi precis gjorde**, med en `POST` i stället för en `GET`:
+`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, eftersom det som
+kommer tillbaka är tabellen i sin helhet.
 
 !!! note "En `POST` skickar med hela formuläret"
 
@@ -23,18 +30,11 @@ förra gången: det som kommer tillbaka är tabellen i sin helhet.
     skicka — adressen fick skicka med sorteringen själv.
 
     Här är det tvärtom. En request med kropp — allt utom `GET` och `DELETE` —
-    tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
+    skickar med alla fält i formuläret automatiskt. Beskrivningen, och de dolda
     `q`- och `sort`-fälten, följer med utan att du gör något.
 
     Reglerna för vad som skickas med står i
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
-
-## Steg
-
-### 1. Öppna `views/todo-app/new-todo-form.liquid`
-
-Lägg de tre attributen på `<form>`-taggen. Adressen är
-`/todo-app/fragments/todos`.
 
 ??? example "Facit"
 
@@ -140,8 +140,8 @@ behålla kolonet:
 
     hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
 
-Det är därifrån det dubbla kolonet kommer. Båda formerna fungerar; den korta är
-den vanliga.
+Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
+är det vanliga.
 
 !!! warning "Händelsenamn i htmx 4 har kolon"
 

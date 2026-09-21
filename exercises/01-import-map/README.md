@@ -37,7 +37,7 @@ Ordningen spelar roll: **import map:en måste stå före det modulskript som
 använder namnet.** Webbläsaren läser tabellen en gång, och har den inte
 kommit än när importen körs går uppslaget inte att göra.
 
-??? tip "Ledtråd — formen på en import map"
+??? tip "Ledtråd — så ser en import map ut"
 
     ```html
     <script type="importmap">
