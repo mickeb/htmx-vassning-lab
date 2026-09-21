@@ -91,21 +91,27 @@ htmx.version
 - [ ] `htmx.version` svarar `'4.0.0'` i konsolen.
 - [ ] Nätverkspanelen visar att `htmx.esm.js` hämtats från jsDelivr.
 
-??? question "Det fungerar inte — vad kan vara fel?"
+## Fungerar det inte?
 
-    **`htmx is not defined` i konsolen.**
+??? question "`htmx is not defined` i konsolen"
+
     Import map:en står antagligen efter modulskriptet, eller så har JSON:en ett
     syntaxfel. Ett fel i tabellen rapporteras inte alltid tydligt — den slutar
     bara gälla.
 
-    **`Failed to resolve module specifier "htmx.org"`.**
+??? question "`Failed to resolve module specifier \"htmx.org\"`"
+
     Webbläsaren hittade ingen import map alls när importen kördes. Kontrollera
     att `type="importmap"` är rätt stavat och att skriptet ligger i `<head>`.
 
-    **`htmx.version` svarar `2.x.x`.**
+??? question "`htmx.version` svarar `2.x.x`"
+
     Då pekar URL:en på en oversionerad adress någonstans. Jämför med URL:en i
     ledtråden ovan — versionen ska stå i den.
 
-    **Ingenting alls händer när du sparar.**
+??? question "Ingenting alls händer när du sparar"
+
     Kontrollera hot reload-indikatorn på [startsidan](http://localhost:4000).
-    Är den röd har sidan tappat kontakten med servern; ladda om manuellt.
+    Står det `connected` är sidan i kontakt med servern. Står det
+    `reconnecting…` startar servern om just nu — vänta någon sekund. Står det
+    `not connected` och blir kvar där, ladda om sidan manuellt.

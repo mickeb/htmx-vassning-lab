@@ -137,6 +137,8 @@ kvar.
 - [ ] Sorteringen fungerar fortfarande som vanligt, fram och tillbaka.
 - [ ] Räknaren i rubriken är fortfarande fel — den lagas inte här.
 
+## Fungerar det inte?
+
 ??? question "Fältet skickas inte alls"
 
     Kontrollera att `form`-attributets värde är exakt samma sträng som

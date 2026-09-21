@@ -85,6 +85,8 @@ behöver inte ändra något i `app.ts`.
 - [ ] Sidan du laddar om innehåller ingen `hx-swap-oob` — bara svaren gör det.
       Titta i sidkällan, och i svaret i nätverkspanelen.
 
+## Fungerar det inte?
+
 ??? question "Räknaren ändras inte"
 
     Titta först på svaret i nätverkspanelen. Står det ingen `hx-swap-oob` i

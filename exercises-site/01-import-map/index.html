@@ -394,6 +394,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fungerar-det-inte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fungerar det inte?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -797,6 +808,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fungerar-det-inte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fungerar det inte?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -884,21 +906,29 @@ webbläsarens utvecklarverktyg och skriv:</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>htmx.version</code> svarar <code>'4.0.0'</code> i konsolen.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar att <code>htmx.esm.js</code> hämtats från jsDelivr.</li>
 </ul>
+<h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
-<summary>Det fungerar inte — vad kan vara fel?</summary>
-<p><strong><code>htmx is not defined</code> i konsolen.</strong>
-Import map:en står antagligen efter modulskriptet, eller så har JSON:en ett
+<summary><code>htmx is not defined</code> i konsolen</summary>
+<p>Import map:en står antagligen efter modulskriptet, eller så har JSON:en ett
 syntaxfel. Ett fel i tabellen rapporteras inte alltid tydligt — den slutar
 bara gälla.</p>
-<p><strong><code>Failed to resolve module specifier "htmx.org"</code>.</strong>
-Webbläsaren hittade ingen import map alls när importen kördes. Kontrollera
+</details>
+<details class="question">
+<summary><code>Failed to resolve module specifier \"htmx.org\"</code></summary>
+<p>Webbläsaren hittade ingen import map alls när importen kördes. Kontrollera
 att <code>type="importmap"</code> är rätt stavat och att skriptet ligger i <code>&lt;head&gt;</code>.</p>
-<p><strong><code>htmx.version</code> svarar <code>2.x.x</code>.</strong>
-Då pekar URL:en på en oversionerad adress någonstans. Jämför med URL:en i
+</details>
+<details class="question">
+<summary><code>htmx.version</code> svarar <code>2.x.x</code></summary>
+<p>Då pekar URL:en på en oversionerad adress någonstans. Jämför med URL:en i
 ledtråden ovan — versionen ska stå i den.</p>
-<p><strong>Ingenting alls händer när du sparar.</strong>
-Kontrollera hot reload-indikatorn på <a href="http://localhost:4000">startsidan</a>.
-Är den röd har sidan tappat kontakten med servern; ladda om manuellt.</p>
+</details>
+<details class="question">
+<summary>Ingenting alls händer när du sparar</summary>
+<p>Kontrollera hot reload-indikatorn på <a href="http://localhost:4000">startsidan</a>.
+Står det <code>connected</code> är sidan i kontakt med servern. Står det
+<code>reconnecting…</code> startar servern om just nu — vänta någon sekund. Står det
+<code>not connected</code> och blir kvar där, ladda om sidan manuellt.</p>
 </details>
 
 

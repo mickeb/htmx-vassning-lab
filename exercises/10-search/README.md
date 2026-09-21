@@ -233,6 +233,8 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
       rutan.
 - [ ] Knappen **Search** fungerar fortfarande, med en vanlig sidladdning.
 
+## Fungerar det inte?
+
 ??? question "Ordningen slår tillbaka så fort jag skriver"
 
     Antingen saknas `hx-include`, eller så pekar den på fältet i formuläret i

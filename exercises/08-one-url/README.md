@@ -98,6 +98,8 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
 - [ ] Öppnar du `href`-adressen i en ny flik kommer **hela sidan** tillbaka,
       sorterad som adressen säger.
 
+## Fungerar det inte?
+
 ??? question "Hela sidan hamnar inne i tabellen"
 
     Då träffade grenen i `app.ts` inte, så htmx fick tillbaka ett helt dokument

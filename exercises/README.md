@@ -25,10 +25,18 @@ Each `README.md` covers, using these Swedish headings:
    exercise turns on an HTTP header rather than an attribute (7 and 8).
 3. **`Steg`** — what to change, by file. Numbered `###` subheadings.
 4. **`Klart när`** — how you know it worked. **Checks only:** a task list of
-   things to observe, plus collapsed troubleshooting entries for the ways it
-   fails.
-5. **`Nästa övning`** — a short lead-in to the one that follows. Written only
+   things to observe, and nothing else.
+5. **`Fungerar det inte?`** — the troubleshooting collapsibles, one `??? question`
+   per symptom, titled with the symptom as the reader would describe it. Moved
+   out of `Klart när` on 2026-09-21 so that section is genuinely checks only, and
+   so a stuck attendee has one place to look.
+6. **`Nästa övning`** — a short lead-in to the one that follows. Written only
    where there is something real to say; not every exercise has it yet.
+
+**`??? question` means troubleshooting.** One `??? question` sits outside
+`Fungerar det inte?` — exercise 4's *"Varför skickar formuläret `asc`?"*, which
+is the diagnosis the exercise is built on rather than a thing that went wrong.
+Hints inside `Steg` are `??? tip` and `??? example`, never `??? question`.
 
 **Restructured 2026-09-21.** Two sections were removed from every exercise:
 `Bakgrund`, which had become a second explanation slot before the work, and

@@ -78,10 +78,6 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 - [ ] Nätverkspanelen visar **en** förfrågan till `/todo-app/fragments/table?sort=…` — och ingen ny dokumentladdning.
 - [ ] Du kan klicka **flera gånger i rad** och ordningen växlar varje gång.
 
-??? question "Det växlar bara en gång — sedan står det still"
-
-    Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
-
 !!! note "Det här har ett namn"
 
     Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
@@ -97,3 +93,10 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
     Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
     tillstånd i klienten — och då försvinner det. Den här övningen tog bort
     sidladdningen utan att släppa hypermedia.
+
+## Fungerar det inte?
+
+??? question "Det växlar bara en gång — sedan står det still"
+
+    Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
+

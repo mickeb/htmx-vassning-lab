@@ -94,6 +94,8 @@ så du behöver inte röra den filen.
 - [ ] Nätverkspanelen visar **en** förfrågan, och inget dokument.
 - [ ] Antalet rader i listan är oförändrat — raden byttes ut, inte tillagd.
 
+## Fungerar det inte?
+
 ??? question "Ingenting händer när jag klickar"
 
     Kontrollera att attributen sitter på `<button>` och inte på `<form>`, och

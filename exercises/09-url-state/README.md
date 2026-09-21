@@ -92,6 +92,8 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 - [ ] Efter bakåt fungerar sidan fortfarande: lägg till en todo och se att
       räknaren uppdateras utan sidladdning.
 
+## Fungerar det inte?
+
 ??? question "Adressen ändras inte"
 
     Kontrollera att attributet sitter på `<a>`-taggen, tillsammans med de andra

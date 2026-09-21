@@ -97,6 +97,8 @@ felrapporten.
 - [ ] Ett tomt fält ger röd ram **på formuläret**, och listan står kvar.
 - [ ] Efter felet går det att skriva något och lägga till som vanligt.
 
+## Fungerar det inte?
+
 ??? question "Formuläret ersatte hela listan"
 
     Då saknas `HX-Retarget`. Se steg 3.

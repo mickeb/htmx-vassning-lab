@@ -126,6 +126,8 @@ renderar svaret. En rad till: sätt headern när allt är avbockat.
 - [ ] Det är fortfarande **en** förfrågan, och raden och räknaren uppdateras som
       förut.
 
+## Fungerar det inte?
+
 ??? question "Fyrverkerierna kommer aldrig"
 
     Titta på svarets headers i nätverkspanelen. Står `HX-Trigger: fireworks`
