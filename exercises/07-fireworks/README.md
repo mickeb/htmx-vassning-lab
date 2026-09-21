@@ -84,9 +84,8 @@ på eventet ännu. 😢
 
 ### 3. Hantera eventet
 
-I `views/layout.liquid`, i modulskriptet som redan importerar htmx. Importera
-`Fireworks`, ge biblioteket en yta att rita på, och starta den när eventet
-`fireworks` kommer.
+Importera `Fireworks`, ge biblioteket en yta att rita på, och starta den när
+eventet `fireworks` kommer.
 
 Ett event i webbläsaren fångas med `addEventListener`
 ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)).
