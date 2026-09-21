@@ -437,6 +437,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#varfor-formularet-skickar-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför formuläret skickar asc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bara-det-som-svaret-ersatter-ar-aktuellt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bara det som svaret ersätter är aktuellt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appen-var-aldrig-fel-forran-sidladdningen-forsvann" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appen var aldrig fel — förrän sidladdningen försvann
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -798,6 +831,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#varfor-formularet-skickar-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför formuläret skickar asc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bara-det-som-svaret-ersatter-ar-aktuellt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bara det som svaret ersätter är aktuellt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appen-var-aldrig-fel-forran-sidladdningen-forsvann" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appen var aldrig fel — förrän sidladdningen försvann
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -910,27 +976,21 @@ iväg när du lägger till todon:</p>
 <p>Servern gjorde alltså inget fel. Den blev ombedd om en lista i stigande ordning
 och renderade en lista i stigande ordning. Felet ligger i requesten, inte i
 svaret.</p>
-<details class="question">
-<summary>Varför skickar formuläret <code>asc</code>?</summary>
+<h3 id="varfor-formularet-skickar-asc">Varför formuläret skickar <code>asc</code><a class="headerlink" href="#varfor-formularet-skickar-asc" title="Permanent link">&para;</a></h3>
 <p>Formuläret har ett dolt fält:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Templaten skrev ut värdet när <strong>sidan</strong> renderades, och då var sorteringen
-<code>asc</code>.</p>
-<p>Sorteringslänken ersätter bara <code>#todo-table</code>. Formuläret ligger utanför, i
-en helt annan del av sidan, och ingenting har renderat om det sedan
-sidladdningen. Fältet säger fortfarande <code>asc</code>, och det kommer att göra det
-hur många gånger du än sorterar.</p>
-</details>
-<div class="admonition warning">
-<p class="admonition-title">Bara det som svaret ersätter är aktuellt</p>
+<p>Templaten skrev ut värdet när <strong>sidan</strong> renderades, och då var sorteringen <code>asc</code>.</p>
+<p>Sorteringslänken ersätter bara <code>#todo-table</code>. Formuläret ligger utanför, i en
+helt annan del av sidan, och ingenting har renderat om det sedan sidladdningen.
+Fältet säger fortfarande <code>asc</code>, och det kommer att göra det hur många gånger du
+än sorterar.</p>
+<h3 id="bara-det-som-svaret-ersatter-ar-aktuellt">Bara det som svaret ersätter är aktuellt<a class="headerlink" href="#bara-det-som-svaret-ersatter-ar-aktuellt" title="Permanent link">&para;</a></h3>
 <p>Allt annat på sidan har kvar det värde det hade när det senast renderades.</p>
-<p>Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt.
-Ett gammalt <code>value="asc"</code> ser exakt ut som ett färskt. Det syns först när
-något skickar iväg det.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Appen var aldrig fel — förrän sidladdningen försvann</p>
+<p>Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt. Ett
+gammalt <code>value="asc"</code> ser exakt ut som ett färskt. Det syns först när något
+skickar iväg det.</p>
+<h3 id="appen-var-aldrig-fel-forran-sidladdningen-forsvann">Appen var aldrig fel — förrän sidladdningen försvann<a class="headerlink" href="#appen-var-aldrig-fel-forran-sidladdningen-forsvann" title="Permanent link">&para;</a></h3>
 <p>Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
 aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
 formuläret om tillsammans med allt annat. Fältet var färskt varje gång, hela
@@ -938,9 +998,8 @@ tiden, ända tills du gjorde något åt sorteringen.</p>
 <p>Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
 sidan ersätts blir "renderas om" plötsligt något som gäller vissa element och
 inte andra — och ingenting i markupen skiljer dem åt.</p>
-<p>Buggen syntes först när du la till en todo, en övning senare. Så brukar det
-se ut: den kommer fram någon helt annanstans än där den bor.</p>
-</div>
+<p>Buggen syntes först när du la till en todo, en övning senare. Så brukar det se
+ut: den kommer fram någon helt annanstans än där den bor.</p>
 <h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <p>Fältet måste ligga någonstans som renderas om när du sorterar — alltså <strong>inuti
 <code>#todo-table</code></strong>. Men det måste fortfarande skickas med formuläret, och

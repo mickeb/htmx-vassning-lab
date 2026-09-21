@@ -26,43 +26,42 @@ Servern gjorde alltså inget fel. Den blev ombedd om en lista i stigande ordning
 och renderade en lista i stigande ordning. Felet ligger i requesten, inte i
 svaret.
 
-??? question "Varför skickar formuläret `asc`?"
+### Varför formuläret skickar `asc`
 
-    Formuläret har ett dolt fält:
+Formuläret har ett dolt fält:
 
-    ```html
-    <input type="hidden" name="sort" value="{{ sort }}">
-    ```
+```html
+<input type="hidden" name="sort" value="{{ sort }}">
+```
 
-    Templaten skrev ut värdet när **sidan** renderades, och då var sorteringen
-    `asc`.
+Templaten skrev ut värdet när **sidan** renderades, och då var sorteringen `asc`.
 
-    Sorteringslänken ersätter bara `#todo-table`. Formuläret ligger utanför, i
-    en helt annan del av sidan, och ingenting har renderat om det sedan
-    sidladdningen. Fältet säger fortfarande `asc`, och det kommer att göra det
-    hur många gånger du än sorterar.
+Sorteringslänken ersätter bara `#todo-table`. Formuläret ligger utanför, i en
+helt annan del av sidan, och ingenting har renderat om det sedan sidladdningen.
+Fältet säger fortfarande `asc`, och det kommer att göra det hur många gånger du
+än sorterar.
 
-!!! warning "Bara det som svaret ersätter är aktuellt"
+### Bara det som svaret ersätter är aktuellt
 
-    Allt annat på sidan har kvar det värde det hade när det senast renderades.
+Allt annat på sidan har kvar det värde det hade när det senast renderades.
 
-    Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt.
-    Ett gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när
-    något skickar iväg det.
+Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt. Ett
+gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när något
+skickar iväg det.
 
-!!! note "Appen var aldrig fel — förrän sidladdningen försvann"
+### Appen var aldrig fel — förrän sidladdningen försvann
 
-    Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
-    aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
-    formuläret om tillsammans med allt annat. Fältet var färskt varje gång, hela
-    tiden, ända tills du gjorde något åt sorteringen.
+Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
+aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
+formuläret om tillsammans med allt annat. Fältet var färskt varje gång, hela
+tiden, ända tills du gjorde något åt sorteringen.
 
-    Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
-    sidan ersätts blir "renderas om" plötsligt något som gäller vissa element och
-    inte andra — och ingenting i markupen skiljer dem åt.
+Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
+sidan ersätts blir "renderas om" plötsligt något som gäller vissa element och
+inte andra — och ingenting i markupen skiljer dem åt.
 
-    Buggen syntes först när du la till en todo, en övning senare. Så brukar det
-    se ut: den kommer fram någon helt annanstans än där den bor.
+Buggen syntes först när du la till en todo, en övning senare. Så brukar det se
+ut: den kommer fram någon helt annanstans än där den bor.
 
 ## Användbara attribut
 
