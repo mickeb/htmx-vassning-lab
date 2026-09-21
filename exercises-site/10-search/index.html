@@ -942,9 +942,11 @@ sökning.</p>
 <p>Sökningen är en <code>GET</code> hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
 lämnade tillbaka till sorteringen i förra övningen.</p>
-<p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg attributen på
-<code>&lt;input class="search__input"&gt;</code>-elementet. Adressen är <code>/todo-app</code> — samma som
-sorteringen hämtar sedan övning 8.</p>
+<p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg de fyra attributen på
+<code>&lt;input class="search__input"&gt;</code>-elementet.</p>
+<p><code>hx-get</code> hämtar <code>/todo-app</code> — samma adress som sorteringen hämtar sedan
+övning 8. <code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, precis
+som vid sortering.</p>
 <p><code>hx-trigger</code> är det nya:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-trigger=&quot;input changed delay:300ms&quot;
 </code></pre></div>

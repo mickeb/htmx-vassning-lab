@@ -32,9 +32,12 @@ Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poä
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
 lämnade tillbaka till sorteringen i förra övningen.
 
-Öppna `views/todo-app/search-form.liquid` och lägg attributen på
-`<input class="search__input">`-elementet. Adressen är `/todo-app` — samma som
-sorteringen hämtar sedan övning 8.
+Öppna `views/todo-app/search-form.liquid` och lägg de fyra attributen på
+`<input class="search__input">`-elementet.
+
+`hx-get` hämtar `/todo-app` — samma adress som sorteringen hämtar sedan
+övning 8. `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, precis
+som vid sortering.
 
 `hx-trigger` är det nya:
 
