@@ -905,8 +905,8 @@ på <code>hx-target</code>:</p>
 <p><code>closest tr</code> är en CSS-selektor
 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">MDN</a>) och
 betyder "närmaste <code>tr</code> uppåt från elementet som gjorde requesten".
-Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
-inte radens <code>id</code>.</p>
+Eftersom värdet är relativt kan alla rader ha exakt samma <code>hx-target</code> — du
+slipper ge varje rad ett unikt <code>id</code>.</p>
 <p>Som vanligt använder vi <code>hx-swap="outerHTML"</code>.</p>
 <details class="example">
 <summary>Facit</summary>
