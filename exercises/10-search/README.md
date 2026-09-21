@@ -144,8 +144,8 @@ Byt ut attributet mot `hx-replace-url="true"`.
 
 ### 4. Extra: visa att något händer
 
-Sökningen sker på en paus, och på en långsam förbindelse hinner det gå en stund
-innan listan byts. Just nu syns ingenting under tiden.
+Sökningen sker först efter att 300ms passerat, och på en långsam förbindelse
+hinner det gå en stund innan listan byts. Just nu syns ingenting under tiden.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
