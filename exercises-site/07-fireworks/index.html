@@ -940,10 +940,9 @@ du de två längre namnen i ett exempel läser du htmx 2-material.</p>
 </div>
 <p>Öppna <code>src/app.ts</code> och leta upp hanteraren för
 <code>POST /fragments/todos/:id/complete</code>. Den hämtar redan <code>stats</code> innan den
-renderar svaret.</p>
+renderar svaret. <code>stats.allComplete</code> är sant när det finns todos och alla är
+klara — en tom lista är inte klar, ingenting är inte allt.</p>
 <p>Lägg till en rad som sätter headern när allt är avbockat.</p>
-<p><code>stats.allComplete</code> är sant när det finns todos och alla är klara. En tom lista
-är inte klar — ingenting är inte allt.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">todos</span><span class="p">.</span><span class="nx">stats</span><span class="p">()</span>
