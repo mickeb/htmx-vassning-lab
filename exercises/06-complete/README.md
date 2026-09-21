@@ -52,8 +52,9 @@ bock — men räknaren står still igen!
 
 Det här kan du redan.
 
-`views/todo-app/complete-response.liquid` renderar bara `todo-app/todo-row`. Rendera `todo-app/todo-header` också, och skicka med
-`oob: true` — precis som du gjorde med svaret för en ny todo.
+`views/todo-app/complete-response.liquid` renderar bara `todo-app/todo-row`.
+Rendera `todo-app/todo-header` också, och skicka med `oob: true` — precis som du
+gjorde med svaret för en ny todo.
 
 `stats` finns redan i templaten, och `todo-header.liquid` renderar redan
 `hx-swap-oob` när den får `oob: true` sedan övning 5 — så du behöver inte röra
