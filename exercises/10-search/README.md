@@ -21,8 +21,9 @@ Sökrutan är nu det sista som laddar om sidan. Den är ett vanligt formulär me
 en knapp.
 
 Kanske lite oväntat är det input-fältet som kommer få de nya attributen, och
-inte själva form-elementet. Requesten ska triggas av att du skriver, inte av
-att formuläret submittas.
+inte själva form-elementet. Detta beror på att det är interaktionen med
+sökfältet och inte själva formuläret (via dess submit-knapp) som ska trigga en
+sökning.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 **Search** kommer fortsätta submitta formuläret precis som vanligt. Det är inte
