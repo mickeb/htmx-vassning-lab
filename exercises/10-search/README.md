@@ -32,8 +32,8 @@ Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 `<input class="search__input">`-elementet.
 
 `hx-get` hämtar `/todo-app` — samma adress som sorteringen hämtar sedan
-övning 8. `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, precis
-som vid sortering.
+övning 8. `hx-target` är `#todo-table`, och sätt `hx-swap` till `outerHTML`:
+svaret är tabellen i sin helhet, inte innehållet i den.
 
 `hx-trigger` är det nya:
 
@@ -46,13 +46,6 @@ hx-trigger="input changed delay:300ms"
 iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
 värdet inte ändrats — pilknappar och liknande ger `input` utan att
 texten blir en annan.
-
-!!! warning "Glöm inte `hx-swap`"
-
-    Svaret är tabellen i sin helhet, inte innehållet i den. Standardvärdet för
-    `hx-swap` i htmx 4 är `innerHTML`, så utan
-    `hx-swap="outerHTML"` hamnar en ny `#todo-table` *inuti* den gamla. Listan
-    ser rätt ut, men sidan har nu två element med samma `id`.
 
 ??? example "Facit"
 

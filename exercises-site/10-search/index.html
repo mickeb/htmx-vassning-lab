@@ -942,8 +942,8 @@ sökning.</p>
 <p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg de fyra attributen på
 <code>&lt;input class="search__input"&gt;</code>-elementet.</p>
 <p><code>hx-get</code> hämtar <code>/todo-app</code> — samma adress som sorteringen hämtar sedan
-övning 8. <code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, precis
-som vid sortering.</p>
+övning 8. <code>hx-target</code> är <code>#todo-table</code>, och sätt <code>hx-swap</code> till <code>outerHTML</code>:
+svaret är tabellen i sin helhet, inte innehållet i den.</p>
 <p><code>hx-trigger</code> är det nya:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-trigger=&quot;input changed delay:300ms&quot;
 </code></pre></div>
@@ -952,13 +952,6 @@ som vid sortering.</p>
 iväg när du <strong>pausar</strong>, inte per tecken. <code>changed</code> hoppar över requesten om
 värdet inte ändrats — pilknappar och liknande ger <code>input</code> utan att
 texten blir en annan.</p>
-<div class="admonition warning">
-<p class="admonition-title">Glöm inte <code>hx-swap</code></p>
-<p>Svaret är tabellen i sin helhet, inte innehållet i den. Standardvärdet för
-<code>hx-swap</code> i htmx 4 är <code>innerHTML</code>, så utan
-<code>hx-swap="outerHTML"</code> hamnar en ny <code>#todo-table</code> <em>inuti</em> den gamla. Listan
-ser rätt ut, men sidan har nu två element med samma <code>id</code>.</p>
-</div>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;search__input&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;search&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;q&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ q }}&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search todos&quot;</span>
