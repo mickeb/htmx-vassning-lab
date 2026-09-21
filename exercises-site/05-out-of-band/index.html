@@ -891,7 +891,8 @@ upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersä
 <p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.</p>
 <p>Samma template renderas på två ställen: en gång när hela sidan <code>/todo-app</code>
 renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
-todo. <code>hx-swap-oob="true"</code> ska bara komma med i fragmentet, inte i sidan.</p>
+todo. <code>hx-swap-oob="true"</code> ska bara komma med när fragmentet renderas enskilt,
+inte som en del av hela sidan.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;header class=&quot;todo-header&quot; id=&quot;todo-header&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">oob</span><span class="w"> </span><span class="p">%}</span> hx-swap-oob=&quot;true&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;

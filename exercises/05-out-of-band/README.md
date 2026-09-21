@@ -30,7 +30,8 @@ upp elementet på sidan som har **samma `id`** och ersätter det.
 
 Samma template renderas på två ställen: en gång när hela sidan `/todo-app`
 renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
-todo. `hx-swap-oob="true"` ska bara komma med i fragmentet, inte i sidan.
+todo. `hx-swap-oob="true"` ska bara komma med när fragmentet renderas enskilt,
+inte som en del av hela sidan.
 
 ??? example "Facit"
 
