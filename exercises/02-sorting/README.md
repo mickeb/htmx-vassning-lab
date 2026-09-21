@@ -62,9 +62,6 @@ här fallet som en query-parameter.
        hx-swap="outerHTML">
     ```
 
-    Adressen står nu två gånger, nästan likadant. Det är inte tänkt att förbli
-    så — en senare övning tar bort den ena.
-
 ## Klart när
 
 - [ ] Sorteringen beter sig **precis som förut** — ett klick vänder ordningen och chevronen pekar åt andra hållet.
