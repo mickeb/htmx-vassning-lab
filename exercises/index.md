@@ -38,36 +38,6 @@ Allt körs i en Docker-container, så du behöver inte installera något själv.
 Du behöver inte kunna något av det för att göra övningarna. Det mesta du gör
 sker i en template, och ett par övningar lägger till några rader i `src/app.ts`.
 
-## Två uppsättningar routes över samma data
-
-Appen har **två uppsättningar routes över samma data**.
-
-De vanliga — `/todo-app`, och formulären som postar till den — returnerar hela
-sidor, precis som webben fungerade innan JavaScript blev inblandat.
-
-Vid sidan av dem ligger en andra uppsättning **routes**, under
-`/todo-app/fragments/...`. De
-renderar exakt samma templates, men utan sidan runt omkring. De fanns med
-redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
-någon serverkod för att använda dem.
-
-Det är ett medvetet val. Sessionen handlar om hypermedia och htmx, inte om
-routing i Express. Varje övning pekar ut den route den behöver.
-
-Två av dem går att öppna direkt i en flik:
-
-- [`/todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table)
-  — hela listan
-- [`/todo-app/fragments/header`](http://localhost:4000/todo-app/fragments/header)
-  — räknaren överst
-
-Gör det en gång innan du börjar. Det som kommer tillbaka är **HTML**. Ingen kod
-i webbläsaren behöver tolka svaret och bygga element av det — det är en färdig
-tabell som kan sättas in rakt av. Det är halva poängen med hela angreppssättet,
-och det är lättare att se än att läsa sig till.
-
-Resten svarar bara på `POST` och dyker upp i senare övningar.
-
 ## Övningarna
 
 1. [**Installera htmx med en import map**](01-import-map/README.md) — få in htmx

@@ -316,17 +316,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tva-uppsattningar-routes-over-samma-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Två uppsättningar routes över samma data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -718,17 +707,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tva-uppsattningar-routes-over-samma-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Två uppsättningar routes över samma data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ovningarna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -805,29 +783,6 @@ arbetsflödet. Behöver en övning ett terminalkommando utöver
 </table>
 <p>Du behöver inte kunna något av det för att göra övningarna. Det mesta du gör
 sker i en template, och ett par övningar lägger till några rader i <code>src/app.ts</code>.</p>
-<h2 id="tva-uppsattningar-routes-over-samma-data">Två uppsättningar routes över samma data<a class="headerlink" href="#tva-uppsattningar-routes-over-samma-data" title="Permanent link">&para;</a></h2>
-<p>Appen har <strong>två uppsättningar routes över samma data</strong>.</p>
-<p>De vanliga — <code>/todo-app</code>, och formulären som postar till den — returnerar hela
-sidor, precis som webben fungerade innan JavaScript blev inblandat.</p>
-<p>Vid sidan av dem ligger en andra uppsättning <strong>routes</strong>, under
-<code>/todo-app/fragments/...</code>. De
-renderar exakt samma templates, men utan sidan runt omkring. De fanns med
-redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
-någon serverkod för att använda dem.</p>
-<p>Det är ett medvetet val. Sessionen handlar om hypermedia och htmx, inte om
-routing i Express. Varje övning pekar ut den route den behöver.</p>
-<p>Två av dem går att öppna direkt i en flik:</p>
-<ul>
-<li><a href="http://localhost:4000/todo-app/fragments/table"><code>/todo-app/fragments/table</code></a>
-  — hela listan</li>
-<li><a href="http://localhost:4000/todo-app/fragments/header"><code>/todo-app/fragments/header</code></a>
-  — räknaren överst</li>
-</ul>
-<p>Gör det en gång innan du börjar. Det som kommer tillbaka är <strong>HTML</strong>. Ingen kod
-i webbläsaren behöver tolka svaret och bygga element av det — det är en färdig
-tabell som kan sättas in rakt av. Det är halva poängen med hela angreppssättet,
-och det är lättare att se än att läsa sig till.</p>
-<p>Resten svarar bara på <code>POST</code> och dyker upp i senare övningar.</p>
 <h2 id="ovningarna">Övningarna<a class="headerlink" href="#ovningarna" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="01-import-map/"><strong>Installera htmx med en import map</strong></a> — få in htmx
