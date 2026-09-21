@@ -42,7 +42,7 @@ todo. `hx-swap-oob="true"` ska bara komma med i fragmentet, inte i sidan.
     template-fragmentet skickar med. Gör ingen det blir villkoret falskt och
     attributet uteblir.
 
-!!! note "Varför inte sätta attributet rakt av?"
+!!! note "Varför inte alltid rendera attributet?"
 
     För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
     Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
