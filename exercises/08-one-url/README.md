@@ -2,8 +2,8 @@
 
 ## Mål
 
-Sorteringslänken har bara en adress kvar: `href` och `hx-get` innehåller samma
-sträng.
+En och samma adress används både när webbläsaren hämtar hela sidan och när htmx
+hämtar bara tabellen.
 
 ## Varför två adresser?
 
