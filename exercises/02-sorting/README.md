@@ -18,16 +18,14 @@ listan byter ordning utan att sidan laddas om.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-Svaren, i tur och ordning: `/todo-app/fragments/table`, `#todo-table` och
-`outerHTML`.
+`hx-get` hämtar `/todo-app/fragments/table`. Den routen finns redan och renderar
+ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring — så
+du ska inte skriva någon serverkod i den här övningen.
 
-Adressen är en route som redan finns. Den renderar ett färdigt fragment — samma
-tabell som sidan visar, utan sidan runt omkring — så du ska inte skriva någon
-serverkod i den här övningen.
-
-`outerHTML` för att fragmentet som kommer tillbaka **är**
-`<div id="todo-table">`. Det ska ersätta elementet det kom ifrån, inte innehållet
-i det; `innerHTML` hade gett dig en `#todo-table` inuti en `#todo-table`.
+`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
+tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
+ifrån, inte innehållet i det; `innerHTML` hade gett dig en `#todo-table` inuti en
+`#todo-table`.
 
 ## Steg
 
