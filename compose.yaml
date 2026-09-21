@@ -4,8 +4,13 @@ services:
     image: htmx-vassning-lab
     container_name: htmx-vassning-lab
     init: true
+    # Dependencies are installed into the bind mount, not baked into the image,
+    # so that node_modules lands on the host where the editor can see it. Doing
+    # it here rather than in a setup script is what makes `docker compose up`
+    # the only command an attendee needs. npm is a no-op once it is installed.
+    command: sh -c "npm install --no-audit --no-fund && npm run dev"
     ports:
-      # Host port is overridable (LAB_PORT=4002 ./setup.sh) for when 4000 is taken.
+      # Host port is overridable (LAB_PORT=4002 docker compose up) when 4000 is taken.
       - "${LAB_PORT:-4000}:4000"
     volumes:
       # Whole project root, so edits on the host are live in the container.
@@ -13,6 +18,9 @@ services:
     environment:
       NODE_ENV: development
       PORT: "4000"
+      # Otherwise the first run tells the attendee to upgrade npm globally,
+      # which is the one thing this lab exists to avoid them needing to do.
+      NPM_CONFIG_UPDATE_NOTIFIER: "false"
       DATABASE_URL: postgres://lab:lab@db:5432/lab
     depends_on:
       db:

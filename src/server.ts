@@ -39,7 +39,7 @@ app.use(express.static(join(projectRoot, 'public')))
 // session, buys nothing. See mkdocs.yml for how it is built.
 app.use('/exercises', express.static(join(projectRoot, 'exercises-site')))
 
-// Used by setup.sh to decide when the server is actually ready. It checks the
+// Reports when the server is actually ready. It checks the
 // database too, so "the server responds" cannot be true while the todo app is
 // broken underneath.
 app.get('/healthz', async (_req, res) => {
