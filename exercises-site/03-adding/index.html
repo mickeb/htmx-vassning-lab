@@ -942,13 +942,9 @@ sorteringen vi precis gjorde</strong>, med en <code>POST</code> i stället för 
 som kommer tillbaka är tabellen i sin helhet.</p>
 <div class="admonition note">
 <p class="admonition-title">En <code>POST</code> skickar med hela formuläret</p>
-<p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>. En länk har inga fält, så det
-fanns ingenting att skicka automatiskt — du fick lägga sorteringen i
-adressen själv.</p>
-<p>Här sitter attributen på ett <code>&lt;form&gt;</code> i stället. En request med kropp — allt
-utom <code>GET</code> och <code>DELETE</code> — skickar med formulärets alla fält automatiskt.
-Beskrivningen och de dolda <code>q</code>- och <code>sort</code>-fälten följer med utan att du gör
-något.</p>
+<p>En request med kropp — allt utom <code>GET</code> och <code>DELETE</code> — skickar med
+formulärets alla fält automatiskt. Beskrivningen och de dolda <code>q</code>- och
+<code>sort</code>-fälten följer med utan att du gör något.</p>
 <p>Reglerna för vad som skickas med står i
 <a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
 </div>
