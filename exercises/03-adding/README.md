@@ -26,9 +26,8 @@ som kommer tillbaka är tabellen i sin helhet.
 
 !!! note "En `POST` skickar med hela formuläret"
 
-    En request med kropp — allt utom `GET` och `DELETE` — skickar med
-    formulärets alla fält automatiskt. Beskrivningen och de dolda `q`- och
-    `sort`-fälten följer med utan att du gör något.
+    Beskrivningen och de dolda `q`- och `sort`-fälten följer med utan att du gör
+    något. Detsamma gäller allt utom `GET` och `DELETE`.
 
     Reglerna för vad som skickas med står i
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
