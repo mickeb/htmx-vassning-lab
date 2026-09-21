@@ -98,8 +98,8 @@ document.addEventListener('fireworks', () => {
 })
 ```
 
-Namnet är samma sträng som servern satte i `HX-Trigger`. Stavas de olika körs
-funktionen aldrig, och ingenting säger ifrån.
+Namnet är samma sträng som servern satte som värde för `HX-Trigger`-headern.
+Stavas de olika körs funktionen aldrig, och ingenting säger ifrån.
 
 !!! note "Lyssna på `document`"
 
