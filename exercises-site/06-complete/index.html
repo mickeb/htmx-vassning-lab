@@ -898,7 +898,8 @@ rubriken — utan att sidan laddas om.</p>
 <h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
 <code>/todo-app/fragments/todos/{{ todo.id }}/complete</code>.</p>
-<p>Inga av attributen vi använder är nya. Det nya är <strong>värdet</strong> på <code>hx-target</code>:</p>
+<p>Inga av attributen vi använder är nya. Däremot använder vi en ny typ av värde
+på <code>hx-target</code>:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
 </code></pre></div>
 <p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde requesten".
