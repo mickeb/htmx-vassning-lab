@@ -84,9 +84,6 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
     räknar fältet till formuläret när den bygger requesten, oavsett vem som
     skickar den.
 
-    Det syns sällan i kod, och det är synd — det löser precis den här sortens
-    problem, och det gör det utan en rad JavaScript.
-
 ## Steg
 
 ### Flytta fältet
