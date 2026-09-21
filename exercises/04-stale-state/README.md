@@ -6,20 +6,10 @@ Sorteringen överlever att du lägger till en todo.
 
 ## Vilken bugg?
 
-Den här övningen bygger ingenting nytt. Den lagar något som varit trasigt ett
-tag, och poängen ligger i *varför* det var trasigt.
+1. Sortera **nyast först** — klicka på **Created at**.
+2. Lägg till en todo.
 
-Börja med att se det hända.
-
-!!! note "Gör det här först"
-
-    1. Sortera **nyast först** — klicka på **Created at**.
-    2. Lägg till en todo.
-
-    Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
-
-Ingen sidladdning, inget felmeddelande, ingenting i konsolen. Servern svarade
-`200` och htmx satte in svaret precis som den skulle. Ändå är resultatet fel.
+Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
 
 ### Vad som faktiskt skickades
 
