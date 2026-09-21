@@ -96,26 +96,20 @@ fråga.
     sorteringsfältet ligger i samma formulär och följer ändå inte med.
 
 Lösningen är `hx-include`, som ger dig möjlighet att specificera ytterligare
-data som ska inkluderas i requesten. Men den kräver en sak till, och det är
-den intressanta halvan.
+data som ska inkluderas i requesten. Peka den på det dolda sorteringsfältet som
+redan ligger inuti `#todo-table` — det du flyttade dit i övning 4. Ge det ett
+`id` först.
 
-!!! warning "Fältet måste ligga där det renderas om"
+!!! warning "Inte fältet i sökformuläret"
 
-    Sökformuläret har redan ett dolt sorteringsfält. Pekar du `hx-include` på
-    det får du **fel svar på ett nytt sätt**: sökrutan ligger utanför
-    `#todo-table`, så en sortering renderar aldrig om den. Fältet står kvar på
-    det värde det hade när sidan laddades, och `hx-include` skickar lydigt det
-    gamla värdet.
-
-    Resultatet ser exakt ut som buggen du just tittade på.
+    Sökformuläret har också ett dolt sorteringsfält, men det ligger utanför
+    `#todo-table` och renderas aldrig om när du sorterar. Pekar du `hx-include`
+    på det skickas värdet som stod där när sidan laddades, och resultatet ser
+    exakt ut som buggen du just tittade på.
 
     Samma sak händer om du bakar in sorteringen i adressen —
     `hx-get="/todo-app?sort={{ sort }}"`. Templaten skriver ut värdet när sidan
     renderas, och formuläret renderas aldrig om.
-
-Fältet måste alltså ligga **inuti** `#todo-table`, som renderas om varje gång
-tabellen ersätts. Där ligger det redan: det var dit du flyttade det i övning 4.
-Ge det ett `id` och peka `hx-include` på det.
 
 ??? example "Facit — `views/todo-app/todo-table.liquid`"
 
