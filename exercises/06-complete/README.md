@@ -46,7 +46,7 @@ Som vanligt använder vi `hx-swap="outerHTML"`.
     ```
 
 Klicka på **Complete** på någon rad. Den stryks över och knappen byts mot en
-bock — men räknaren står still igen.
+bock — men räknaren står still igen!
 
 ### 2. Räkna om rubriken
 
