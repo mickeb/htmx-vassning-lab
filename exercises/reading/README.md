@@ -45,25 +45,11 @@ DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript.
 - [`hx-live`](https://four.htmx.org/extensions/hx-live) — tillägget, med
   beslutsträdet, `q()`, delad `data`-state och de asynkrona hjälpmedlen
 
-## Alpine.js, och htmx-teamets integration
+## Alpine.js
 
 [Alpine.js](https://alpinejs.dev/) är det ramverk som oftast dyker upp bredvid
 htmx när något ska hållas på klienten. De två krockar på ett par ställen, och
 htmx-teamet har skrivit ett officiellt tillägg som löser det.
-
-Tre saker som annars går sönder, enligt tilläggets dokumentation:
-
-- **Alpine initierar för tidigt.** htmx pausar kort efter att ha satt in ett
-  svar, för att låta CSS-övergångar hinna. Alpines observatör hinner se DOM:en
-  mitt i det. Tillägget håller tillbaka den tills svaret lagt sig.
-- **Morph tappar Alpines tillstånd.** Vid `innerMorph` och `outerMorph` flyttar
-  tillägget Alpines reaktiva data från det gamla elementet till det nya innan
-  morphen körs.
-- **Alpine kan binda `id` reaktivt**, vilket får morph-algoritmen att tro att
-  två element är olika. Tillägget får den att bortse från det.
-
-Värt att veta även om du inte tänker blanda in Alpine: det säger något om vad
-som händer när två bibliotek båda vill äga DOM:en.
 
 - [`hx-alpine-compat`](https://four.htmx.org/extensions/hx-alpine-compat) —
   tillägget och vad det gör

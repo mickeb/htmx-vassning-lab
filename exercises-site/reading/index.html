@@ -640,10 +640,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alpinejs-och-htmx-teamets-integration" class="md-nav__link">
+  <a href="#alpinejs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Alpine.js, och htmx-teamets integration
+        Alpine.js
       
     </span>
   </a>
@@ -707,10 +707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alpinejs-och-htmx-teamets-integration" class="md-nav__link">
+  <a href="#alpinejs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Alpine.js, och htmx-teamets integration
+        Alpine.js
       
     </span>
   </a>
@@ -772,23 +772,10 @@ DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript.</p>
 <li><a href="https://four.htmx.org/extensions/hx-live"><code>hx-live</code></a> — tillägget, med
   beslutsträdet, <code>q()</code>, delad <code>data</code>-state och de asynkrona hjälpmedlen</li>
 </ul>
-<h2 id="alpinejs-och-htmx-teamets-integration">Alpine.js, och htmx-teamets integration<a class="headerlink" href="#alpinejs-och-htmx-teamets-integration" title="Permanent link">&para;</a></h2>
+<h2 id="alpinejs">Alpine.js<a class="headerlink" href="#alpinejs" title="Permanent link">&para;</a></h2>
 <p><a href="https://alpinejs.dev/">Alpine.js</a> är det ramverk som oftast dyker upp bredvid
 htmx när något ska hållas på klienten. De två krockar på ett par ställen, och
 htmx-teamet har skrivit ett officiellt tillägg som löser det.</p>
-<p>Tre saker som annars går sönder, enligt tilläggets dokumentation:</p>
-<ul>
-<li><strong>Alpine initierar för tidigt.</strong> htmx pausar kort efter att ha satt in ett
-  svar, för att låta CSS-övergångar hinna. Alpines observatör hinner se DOM:en
-  mitt i det. Tillägget håller tillbaka den tills svaret lagt sig.</li>
-<li><strong>Morph tappar Alpines tillstånd.</strong> Vid <code>innerMorph</code> och <code>outerMorph</code> flyttar
-  tillägget Alpines reaktiva data från det gamla elementet till det nya innan
-  morphen körs.</li>
-<li><strong>Alpine kan binda <code>id</code> reaktivt</strong>, vilket får morph-algoritmen att tro att
-  två element är olika. Tillägget får den att bortse från det.</li>
-</ul>
-<p>Värt att veta även om du inte tänker blanda in Alpine: det säger något om vad
-som händer när två bibliotek båda vill äga DOM:en.</p>
 <ul>
 <li><a href="https://four.htmx.org/extensions/hx-alpine-compat"><code>hx-alpine-compat</code></a> —
   tillägget och vad det gör</li>
