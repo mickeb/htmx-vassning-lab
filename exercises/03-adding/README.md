@@ -26,12 +26,14 @@ som kommer tillbaka är tabellen i sin helhet.
 
 !!! note "En `POST` skickar med hela formuläret"
 
-    I förra övningen satt `hx-get` på en `<a>`, och länken hade inget värde att
-    skicka — adressen fick skicka med sorteringen själv.
+    I förra övningen satt `hx-get` på en `<a>`. En länk har inga fält, så det
+    fanns ingenting att skicka automatiskt — du fick lägga sorteringen i
+    adressen själv.
 
-    Här är det tvärtom. En request med kropp — allt utom `GET` och `DELETE` —
-    skickar med alla fält i formuläret automatiskt. Beskrivningen, och de dolda
-    `q`- och `sort`-fälten, följer med utan att du gör något.
+    Här sitter attributen på ett `<form>` i stället. En request med kropp — allt
+    utom `GET` och `DELETE` — skickar med formulärets alla fält automatiskt.
+    Beskrivningen och de dolda `q`- och `sort`-fälten följer med utan att du gör
+    något.
 
     Reglerna för vad som skickas med står i
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
