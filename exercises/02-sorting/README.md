@@ -7,9 +7,8 @@ listan byter ordning utan att sidan laddas om.
 
 !!! note "Du behöver några todos att sortera"
 
-    Har du inte lagt in några än, gå till
-    [http://localhost:4000/todo-app](http://localhost:4000/todo-app) och lägg in
-    en handfull — fyra eller fem räcker.
+    Har du inga än, lägg in en handfull på
+    [http://localhost:4000/todo-app](http://localhost:4000/todo-app).
 
 ## Användbara attribut
 
@@ -19,16 +18,9 @@ listan byter ordning utan att sidan laddas om.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-Adressen är `/todo-app/fragments/table`. Den rutten fanns redan innan du
-började — den renderar exakt samma tabell, men utan sidan runt omkring. Du ska
-inte skriva någon serverkod i den här övningen.
-
-!!! tip "Öppna den i en flik innan du fortsätter"
-
-    [http://localhost:4000/todo-app/fragments/table?sort=desc](http://localhost:4000/todo-app/fragments/table?sort=desc)
-
-    Det som kommer tillbaka är **HTML**, inte JSON — en färdig tabell som kan
-    sättas in rakt av.
+`hx-get` ska hämta `/todo-app/fragments/table`. Den routen fanns redan innan du
+började: den renderar ett färdigt fragment — samma tabell som sidan visar, utan
+sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.
 
 ## Steg
 
@@ -38,10 +30,10 @@ Leta upp länken i kolumnrubriken. Den börjar med `<a class="sort sort--{{ sort
 
 ### 2. Lägg till de tre attributen
 
-Målet är `#todo-table` och bytet är `outerHTML`. Fragmentet som kommer tillbaka
-**är** `<div id="todo-table">`, så det ska ersätta elementet det kom ifrån, inte
-innehållet i det — `innerHTML` hade gett dig en `#todo-table` inuti en
-`#todo-table`.
+`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
+tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
+ifrån, inte innehållet i det — `innerHTML` hade gett dig en `#todo-table` inuti
+en `#todo-table`.
 
 Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
@@ -55,8 +47,8 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
     bad om stigande, och fick stigande — och sedan händer ingenting mer, hur
     många gånger du än klickar.
 
-    **En htmx-förfrågan innehåller exakt det du lägger i den.** Ingenting minns
-    något mellan förfrågningar.
+    **En htmx-request innehåller exakt det du lägger i den.** Ingenting minns
+    något mellan requests.
 
 ??? example "Facit — hela länken"
 
@@ -74,8 +66,8 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 ## Klart när
 
 - [ ] Sorteringen beter sig **precis som förut** — ett klick vänder ordningen och chevronen pekar åt andra hållet.
-- [ ] **Sidan laddas inte om.** Ingen blinkning, ingen laddningssnurra i fliken, och rullningsläget står kvar där du lämnade det.
-- [ ] Nätverkspanelen visar **en** förfrågan till `/todo-app/fragments/table?sort=…` — och ingen ny dokumentladdning.
+- [ ] **Sidan laddas inte om.** Ingen blinkning, och rullningsläget står kvar där du lämnade det.
+- [ ] Nätverkspanelen visar **en** request till `/todo-app/fragments/table?sort=…`, och ingen ny dokumentladdning.
 - [ ] Du kan klicka **flera gånger i rad** och ordningen växlar varje gång.
 
 !!! note "Det här har ett namn"
@@ -86,11 +78,11 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
     drivs av det hypermedia servern skickar, inte av kod som håller reda på
     saker i webbläsaren.
 
-    Värt att notera: **htmx lade inte till det här.** Länken du började med
-    gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
-    sidladdning hämtade nästa representation.
+    **htmx lade inte till det här.** Länken du började med gjorde redan samma
+    sak: den bar sin egen nästa ordning, och en full sidladdning hämtade nästa
+    representation.
 
-    Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
+    Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och
     tillstånd i klienten — och då försvinner det. Den här övningen tog bort
     sidladdningen utan att släppa hypermedia.
 
@@ -98,5 +90,4 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
 ??? question "Det växlar bara en gång — sedan står det still"
 
-    Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
-
+    Då saknar `hx-get` sin `?sort=…`. Se den fällbara rutan i steg 2.

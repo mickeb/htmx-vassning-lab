@@ -842,9 +842,8 @@
 listan byter ordning utan att sidan laddas om.</p>
 <div class="admonition note">
 <p class="admonition-title">Du behöver några todos att sortera</p>
-<p>Har du inte lagt in några än, gå till
-<a href="http://localhost:4000/todo-app">http://localhost:4000/todo-app</a> och lägg in
-en handfull — fyra eller fem räcker.</p>
+<p>Har du inga än, lägg in en handfull på
+<a href="http://localhost:4000/todo-app">http://localhost:4000/todo-app</a>.</p>
 </div>
 <h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
@@ -873,23 +872,17 @@ en handfull — fyra eller fem räcker.</p>
 </tr>
 </tbody>
 </table>
-<p>Adressen är <code>/todo-app/fragments/table</code>. Den rutten fanns redan innan du
-började — den renderar exakt samma tabell, men utan sidan runt omkring. Du ska
-inte skriva någon serverkod i den här övningen.</p>
-<div class="admonition tip">
-<p class="admonition-title">Öppna den i en flik innan du fortsätter</p>
-<p><a href="http://localhost:4000/todo-app/fragments/table?sort=desc">http://localhost:4000/todo-app/fragments/table?sort=desc</a></p>
-<p>Det som kommer tillbaka är <strong>HTML</strong>, inte JSON — en färdig tabell som kan
-sättas in rakt av.</p>
-</div>
+<p><code>hx-get</code> ska hämta <code>/todo-app/fragments/table</code>. Den routen fanns redan innan du
+började: den renderar ett färdigt fragment — samma tabell som sidan visar, utan
+sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
 <p>Leta upp länken i kolumnrubriken. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p>Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code>. Fragmentet som kommer tillbaka
-<strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom ifrån, inte
-innehållet i det — <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti en
-<code>#todo-table</code>.</p>
+<p><code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>. Fragmentet som kommer
+tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom
+ifrån, inte innehållet i det — <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti
+en <code>#todo-table</code>.</p>
 <p>Adressen i <code>hx-get</code> måste bära med sig sorteringen, precis som <code>href</code> gör.</p>
 <details class="warning">
 <summary>Varför räcker det inte med <code>/todo-app/fragments/table</code>?</summary>
@@ -899,8 +892,8 @@ något åt dig, och <code>href</code> är en helt annan sak som htmx inte läser
 ordning. Det ser ut att fungera vid första klicket — du stod på fallande och
 bad om stigande, och fick stigande — och sedan händer ingenting mer, hur
 många gånger du än klickar.</p>
-<p><strong>En htmx-förfrågan innehåller exakt det du lägger i den.</strong> Ingenting minns
-något mellan förfrågningar.</p>
+<p><strong>En htmx-request innehåller exakt det du lägger i den.</strong> Ingenting minns
+något mellan requests.</p>
 </details>
 <details class="example">
 <summary>Facit — hela länken</summary>
@@ -916,8 +909,8 @@ så — en senare övning tar bort den ena.</p>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sorteringen beter sig <strong>precis som förut</strong> — ett klick vänder ordningen och chevronen pekar åt andra hållet.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Sidan laddas inte om.</strong> Ingen blinkning, ingen laddningssnurra i fliken, och rullningsläget står kvar där du lämnade det.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan till <code>/todo-app/fragments/table?sort=…</code> — och ingen ny dokumentladdning.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Sidan laddas inte om.</strong> Ingen blinkning, och rullningsläget står kvar där du lämnade det.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> request till <code>/todo-app/fragments/table?sort=…</code>, och ingen ny dokumentladdning.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Du kan klicka <strong>flera gånger i rad</strong> och ordningen växlar varje gång.</li>
 </ul>
 <div class="admonition note">
@@ -927,17 +920,17 @@ vilken ordning den leder till, vilken sökning som gäller — är kärnan i
 <strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet
 drivs av det hypermedia servern skickar, inte av kod som håller reda på
 saker i webbläsaren.</p>
-<p>Värt att notera: <strong>htmx lade inte till det här.</strong> Länken du började med
-gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
-sidladdning hämtade nästa representation.</p>
-<p>Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
+<p><strong>htmx lade inte till det här.</strong> Länken du började med gjorde redan samma
+sak: den bar sin egen nästa ordning, och en full sidladdning hämtade nästa
+representation.</p>
+<p>Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och
 tillstånd i klienten — och då försvinner det. Den här övningen tog bort
 sidladdningen utan att släppa hypermedia.</p>
 </div>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>Det växlar bara en gång — sedan står det still</summary>
-<p>Då saknar <code>hx-get</code> sin query-sträng. Se den fällbara rutan i steg 2.</p>
+<p>Då saknar <code>hx-get</code> sin <code>?sort=…</code>. Se den fällbara rutan i steg 2.</p>
 </details>
 
 
