@@ -33,9 +33,7 @@ Konsekvenserna märks först när någon gör något vanligt:
 
 ### 1. Lägg till attributet
 
-`hx-push-url="true"` betyder "lägg adressen du hämtade i historiken". Läs den
-meningen en gång till, för det är just *den adressen* som hamnar där — inte
-sidans nuvarande adress, inte något du skriver.
+`hx-push-url="true"` betyder "lägg adressen du hämtade i historiken".
 
 !!! note "Det här hade inte fungerat före förra övningen"
 
