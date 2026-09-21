@@ -1,189 +1,212 @@
 # htmx-vassning-lab — notes for AI agents
 
-Lab environment for an HTMX presentation. Attendees clone this, run
-`./setup.sh`, and work through exercises in their own editor while Node runs in
-Docker.
+This is the lab for an htmx presentation. If you are reading this, you are most
+likely helping an attendee work through the exercises. Read it before writing
+any code here.
 
-## Audience
+The exercises are at <http://localhost:4000/exercises> once the lab is running.
+They are the source of truth for what to build; this file is the source of truth
+for how this codebase works.
 
-Mixed programming backgrounds — many attendees do not work with Node day to day
-and are not expected to have it installed. Everything Node-related happens inside
-the container. Keep explanations and error messages free of Node-specific jargon.
+## Who you are helping
 
-**Language: only the teaching material is Swedish.** Exercise prose is written in
-**Swedish**. Everything else in this repo is **English**, including things
-attendees see:
+An experienced developer who is probably not a Node developer. The typical
+attendee writes Java day to day and has solid fundamentals — they know how HTTP
+works, what HTML is, and what JavaScript does.
+What they have not got is Node, npm, TypeScript's toolchain, or the habits of
+the JavaScript ecosystem.
 
-- the web UI — every string the app renders, all of `views/` and `public/`
-- `README.md`, the setup guide
-- folder and file names, including exercise folders
-- code, identifiers, htmx attributes, comments, this file
+So explain the Node and TypeScript parts, and do not explain a `GET` request, a
+form post, a status code or the DOM. Running `npm run typecheck` inside the
+container is worth a sentence. `hx-post` sending a form is not — they know what
+a form post is. What is new is that the response replaces part of the page
+instead of the whole document.
 
-An exercise is an English path containing Swedish prose, instructing the reader
-to add English UI text. That is intended.
+The same cut applies to mistakes. An attendee is far more likely to be tripped
+by "the package manager gave me the wrong major version" than by anything about
+hypermedia.
+
+## htmx here means htmx 4
+
+Every unqualified mention of htmx in this repo, in the exercises and in anything
+you write means **version 4**. Write "htmx 2" explicitly if you ever mean the
+older one. The reference is <https://four.htmx.org/>.
+
+Two traps, and both of them look like success:
+
+1. **`npm install htmx.org` installs 2.0.10, not 4**, and an unversioned CDN
+   link serves v2 as well. htmx 4 sits on the `next` dist-tag until early 2027.
+   Always pin `htmx.org@4.0.0`.
+2. **Almost all htmx material in circulation is v2** — tutorials, forum answers,
+   and the training data of any AI assistant, including yours. v2 idioms will
+   feel right and be wrong. Check the v4 reference rather than recalling.
+
+htmx 4 is a major version with breaking changes from htmx 2. The ones that bite
+most often:
+
+- attribute inheritance is explicit now — `hx-confirm:inherited`, not implicit
+  inheritance down the tree
+- event names were restructured to `htmx:before:request` style
+- `hx-vars`, `hx-prompt` and `hx-disinherit` are gone
+- back-button navigation **re-fetches** the page instead of restoring a
+  `localStorage` snapshot
+
+That last one has a consequence worth holding on to: from the history exercises
+onward, a page is also a *response*. Anything that is only safe in a fresh page
+load — an out-of-band swap marker, for instance — breaks when Back re-fetches
+and swaps that page into `<body>`, and it breaks silently.
+
+htmx is loaded with an **import map**, so the version pin lives in exactly one
+line:
+
+```html
+<script type="importmap">
+{ "imports": { "htmx.org": "https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js" } }
+</script>
+```
+
+## The app ships without htmx. That is the point.
+
+The lab starts as a plain multi-page application: every search, sort, tick and
+post is a full page load. The attendee converts it to htmx themselves, exercise
+by exercise, starting with the import map above.
+
+So if the codebase looks like it is missing htmx, it is not broken — the
+exercises put it there.
 
 ## Hard constraints
 
 **No build step.** No bundler, no transpile step, no framework CLI. The value of
-this lab is that you edit a file and reload. TypeScript is allowed only because
-Node 24 strips types at runtime — `erasableSyntaxOnly` is on in `tsconfig.json`
-to keep it that way.
+this lab is that you edit a file and reload the page. TypeScript works only
+because Node 24 strips types at runtime, which is why `erasableSyntaxOnly` is on
+in `tsconfig.json` — anything needing real compilation (enums, decorators,
+parameter properties) will not run.
 
-**No dependency may ship a compiled binary.** `node_modules` lives in the
-bind-mounted project root so the host editor gets IntelliSense. A dependency with
-a native binary would be built for Linux in the container and break on the host.
-Adding one means moving `node_modules` into a named volume and giving up editor
-support — do not do it without asking.
+**Node runs in Docker. Nothing is installed on the host.** The attendee edits
+files in their own editor; the server runs in a container with the project root
+bind-mounted. Never tell someone to run `npm install`, `node` or `npx` on their
+machine — it may not be there at all.
 
-Verified 2026-09-18: zero `.node` files after `./setup.sh`. Known exception,
-benign: `nodemon` -> chokidar 3 lists `fsevents` as an optional macOS-only
-dependency. The container install skips it (`os: ["darwin"]`); a host `npm
-install` picks it up, and chokidar guards the import in a try/catch. Do not
-treat its presence as a breakage.
-
-Re-verified 2026-09-19 after adding `pg` 8.23: still zero `.node` files. `pg` is
-pure JavaScript — `pg-native` is an *optional peer* dependency and is not
-installed.
-
-One caveat the `.node` check does not catch: **TypeScript 7 ships a
-platform-specific executable**, pulled in as an optional dependency
-(`@typescript/typescript-<os>-<arch>`). Installing in the container resolves the
-Linux one, so `npx tsc` on a macOS host fails with "Unable to resolve
-@typescript/typescript-darwin-arm64". That is expected, not a broken install —
-run `docker compose run --rm --no-deps lab npm run typecheck` instead. It is a
-devDependency and never runs in the browser or the server, so it does not
-threaten the bind-mount constraint; it just means the `.node` file count is not
-the whole test.
-
-**No htmx in the base environment.** The lab ships as a plain MPA baseline on
-purpose: attendees see it without htmx first, then add htmx themselves during the
-exercises. Do not add `htmx.org` as a dependency or vendor it into `public/`.
-
-**"htmx" always means htmx 4 here** — <https://four.htmx.org/>. Any unqualified
-mention of htmx means version 4; write "htmx 2" explicitly if you ever mean the
-older one. Two traps:
-
-1. `npm install htmx.org` installs **2.0.10**, not 4, and an unversioned CDN link
-   serves v2. htmx 4 is on the `next` dist-tag until early 2027. Always pin
-   `htmx.org@4.0.0`. It is loaded via an import map pointing at jsDelivr, so
-   that pin lives in exactly one line.
-2. Almost all htmx material in circulation is v2 — including your training data
-   if you are an AI assistant. v2 idioms will feel right and be wrong. Check the
-   v4 reference rather than recalling.
-
-htmx 4 is a major version with breaking changes: attribute inheritance is now
-explicit (`hx-confirm:inherited`), event names were restructured to
-`htmx:before:request` style, `hx-vars` / `hx-prompt` / `hx-disinherit` are gone,
-and back-button navigation re-fetches instead of restoring a `localStorage`
-snapshot. Full notes: `state/research/htmx-4.md` in the presentation repo.
-
-**Hot reload polls by default, deliberately.** Not because macOS needs it —
-measured 2026-09-18, native watching works fine on macOS with VirtioFS. The
-reason is hosts where inotify does *not* cross the bind mount: Windows with the
-project on the Windows filesystem rather than inside WSL2, and older Docker
-Desktop using gRPC-FUSE. Native failing there is a nasty failure mode, because
-the page still reports hot reload as "connected" while nothing actually reloads.
-
-Cost of polling, measured: ~520ms mean and jittery, versus ~160ms and steady for
-native. Imperceptible for save-and-look.
-
-`LAB_WATCH_POLL=false` opts into native watching. Do not change the default, and
-do not remove `legacyWatch` from `nodemon.json` (server restarts are rarer and
-not latency-sensitive, so that one stays on polling unconditionally).
-
-## Layout
-
-| Path | Purpose |
-| --- | --- |
-| `setup.sh` | One-command setup. Must fail with sentences, never a stack trace. |
-| `src/server.ts` | Setup and configuration only — Liquid, static files, startup. Attendees should never need to open it. |
-| `src/app.ts` | The todo app's request handlers. Parse input, call a lib function, render a template. Nothing else. |
-| `src/lib/db.ts` | Pool and `migrate()`. |
-| `src/lib/todos.ts` | Every SQL statement in the app. Attendees never touch this. |
-| `src/sql/schema.sql` | The whole database. |
-| `src/dev-reload.ts` | SSE hot reload. Development only. |
-| `views/` | Liquid templates. `layout.liquid` is the shell; `views/todo-app/` is the app. |
-| `public/` | CSS and browser JS, served as-is. |
-| `exercises/` | Exercise material, in Markdown. See `exercises/README.md` for the convention and the build. |
-| `exercises-site/` | The exercise site, generated from `exercises/` and committed. Never edit by hand. |
-| `mkdocs.yml` | Material for MkDocs config for that site. Pinned to 9.7.7, run from Docker. |
-
-`views/index.liquid` is an environment self-check with four indicators (server,
-stylesheet, JavaScript, hot reload). Keep all four working — it is the first
-thing an attendee sees and how they diagnose a broken setup.
+**Do not add a dependency without asking.** The constraints that keep this lab
+turnkey are easy to break from the inside, and the reasons live in the
+presentation repo (see the bottom of this file).
 
 ## The todo app
 
-`/todo-app` is the application the exercises operate on. It is a plain
-multi-page app: every search, sort, tick and post is a full page load. That is
-the point — attendees convert it to htmx themselves.
+`/todo-app` is the application the exercises operate on.
 
 The table has three columns: created at (sortable), description, and complete.
-The last one holds the Complete button while there is something to do and a tick
-once there is not — one column, not a status column plus an action column.
+The last one holds the Complete button while there is something to do, and a
+tick once there is not — one column, not a status column plus an action column.
 
-**Every template under `views/todo-app/` renders standalone.** They use
-`{% render %}`, which is scope-isolated, so each partial has to declare what it
-needs and can therefore be returned on its own. Do not convert them to
-`{% include %}`; that is what would couple them to the page.
+### Where you work
 
-**Fragment routes ship in the baseline.** `/todo-app/fragments/...` returns the
-same partials without the page around them. Nothing uses them until an exercise
-points at them, and that is deliberate: attendees should spend the session
-thinking about htmx, not about Express routing. Exercises name these URLs so
-attendees can open one in a browser and see that HTML, not JSON, comes back.
-This supersedes the "no fragment routes" clause in the presentation repo's
-`DECISIONS.md` entry of 2026-09-18; the rest of that decision stands.
+| Path | What it is |
+| --- | --- |
+| `views/layout.liquid` | The page shell. The import map goes here. |
+| `views/todo-app/` | The app's templates. **Most exercise work is here.** |
+| `public/css/app.css` | Styles. |
+| `public/js/app.js` | Browser JavaScript. |
+| `src/app.ts` | The todo app's request handlers: parse input, call a lib function, render a template. Some exercises add a branch here. |
 
-**`src/sql/schema.sql` is applied on every boot** — which means every time a
-file under `src/` is saved, because nodemon restarts the server. Every statement
-in it must be safe to re-run. There is no migration table, no migration tool and
-no seed data. The app starts empty on purpose.
+And where you do not:
 
-**The empty list is handled in CSS, not on the server.** `todo-table.liquid`
-always emits both the table and the "No todos to show." message, and a `:has()`
-rule in `app.css` picks which is visible. The table is hidden rather than
-removed so `#todo-rows` is always there to append to — an exercise appends a row
-client-side, and the message has to get out of the way without a round trip.
+| Path | Why not |
+| --- | --- |
+| `src/lib/todos.ts` | Every SQL statement in the app. No exercise touches it. |
+| `src/server.ts` | Setup and configuration — Liquid, static files, startup. An attendee should never need to open it. |
+| `src/lib/db.ts`, `src/sql/schema.sql` | The pool and the schema. |
+| `src/dev-reload.ts` | Hot reload. Development only. |
+| `exercises-site/` | Generated. Never edit it by hand. |
+
+If a suggestion requires editing something in the second table, that is a
+signal the suggestion is wrong. The session is about hypermedia, not about
+Express routing or SQL.
+
+### Templates are standalone, on purpose
+
+Every template under `views/todo-app/` renders on its own. They use
+`{% render %}`, which is **scope-isolated** in LiquidJS: a partial sees only
+what it is passed, so it has to declare what it needs — and can therefore be
+returned as a response by itself.
+
+Do not convert them to `{% include %}`. That is exactly what would couple them
+to the surrounding page and stop them working as fragments.
+
+### Fragment routes already exist
+
+`/todo-app/fragments/...` returns those same partials without the page around
+them. Nothing points at them until an exercise does, and that is deliberate:
+attendees should spend the session thinking about htmx, not about wiring up
+routes.
+
+They are worth opening directly in a browser. Seeing HTML come back rather than
+JSON is most of the idea.
+
+### The empty list is CSS, not a server branch
+
+`todo-table.liquid` always emits **both** the table and the "No todos to show."
+message; a `:has()` rule in `app.css` picks which one is visible. The table is
+hidden rather than removed, so there is always something in the DOM to target.
+
 Do not replace this with a Liquid conditional.
 
-## Commands
+### The database starts empty
+
+`src/sql/schema.sql` is applied on every boot — and the server reboots every
+time a file under `src/` is saved. There is no migration table, no migration
+tool and no seed data, so every statement in that file has to be safe to re-run.
+
+## Running it
 
 ```bash
 ./setup.sh                    # build, install, start, verify
 docker compose logs -f lab    # server logs
 docker compose down           # stop
-npm run typecheck             # tsc --noEmit (needs deps installed)
 ```
 
-The server runs in the container, not on the host. To run something against it:
-`docker compose exec lab <command>`.
+The server runs in the container. To run anything against it:
 
-## Status
+```bash
+docker compose exec lab <command>
+```
 
-The environment and the todo app are complete and verified.
+**Typechecking** is a container job too:
 
-**All nine exercises are written.** The progression they follow is
-written up in the presentation repo, in `state/EXERCISES.md`, and that file is the
-source of truth for it — but it is not frozen. Sections 1 and 2 both moved while
-their prose was being written, the whole running order was restructured once, and
-four sections turned out to specify something that does not work.
+```bash
+docker compose run --rm --no-deps lab npm run typecheck
+```
 
-The conventions the written ones follow are in `exercises/README.md`: section
-shape, the `???` and `!!!` hint syntax, "Klart när" being checks only, and the
-`Dokumentation` column on attribute tables.
+Running `npx tsc` on the host fails with "Unable to resolve
+`@typescript/typescript-darwin-arm64`". That is expected, not a broken install:
+TypeScript 7 ships a platform-specific executable and the one installed here was
+resolved for Linux, inside the container.
 
-**Run an exercise against the lab before writing its prose.** That is how the
-section 2 error surfaced, and it had survived because the failure looked like
-success: the first click did the right thing and every click after it did
-nothing.
+**Hot reload.** Save a file under `views/` or `public/` and the page reloads by
+itself — no build, no manual refresh. Saving under `src/` restarts the server
+first, so it takes a moment longer.
 
-**Exercises are read as a site, not as raw Markdown.** Material for MkDocs
-builds `exercises/` into `exercises-site/`, which is committed and served at
-`http://localhost:4000/exercises`. The build runs from a Docker image and never
-touches an attendee's machine, which is what keeps the no-build-step constraint
-intact — see `exercises/README.md` for the commands and the hint syntax, and the
-presentation repo's `DECISIONS.md` for why Material and what was rejected.
+The page at <http://localhost:4000/> is an environment self-check with four
+indicators. The hot reload one reads `connected` in normal operation, drops to
+`reconnecting…` while the server restarts, and comes back on its own. If it says
+`not connected` and stays there, the SSE stream never opened — check that the
+container is running before looking at anything else.
 
-**Rebuild and commit `exercises-site/` whenever `exercises/` changes.** It is
-generated output, so it goes stale silently if that step is skipped.
+## Language
+
+**The app's UI is English.** Every string the app renders — headings, labels,
+buttons, status text, error messages, everything in `views/` and `public/` — is
+English, as is all code, every identifier and this file.
+
+**The exercise prose is Swedish.** So an exercise is an English path containing
+Swedish prose that tells the reader to add English UI text. That is intended,
+not an oversight. Keep it that way.
+
+## Authoring this lab
+
+Instructions for *building* the lab — its constraints, the conventions the
+exercises follow, and how the exercise site is generated — live in the
+presentation repo, in `state/LAB-AUTHORING.md`.
+
+If you are an attendee, you do not need them and you do not have that repo.
+Nothing in this file depends on it.
