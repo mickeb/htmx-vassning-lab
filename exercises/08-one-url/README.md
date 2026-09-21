@@ -14,12 +14,13 @@ href="/todo-app?sort=desc"
 hx-get="/todo-app/fragments/table?sort=desc"
 ```
 
-En för ett vanligt klick, en för htmx. Övningen sa att det inte var tänkt att
-förbli så.
+En för ett vanligt klick, en för htmx.
 
-Anledningen till att det blev två var att sidan och tabellen har haft var sin
-adress. Men de är inte två olika saker — de är **samma sak i två utföranden**.
-Hela listan, med eller utan sidan runt omkring.
+Det var för att förenkla de tidigare övningarna: routen under `/fragments/` fanns
+färdig, så du kunde peka `hx-get` på den utan att skriva någon serverkod.
+
+Men sidan och tabellen är inte två olika saker — de är **samma sak i två
+utföranden**. Hela listan, med eller utan sidan runt omkring.
 
 ## Användbara headers
 

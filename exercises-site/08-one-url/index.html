@@ -911,11 +911,11 @@ hämtar bara tabellen.</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>href=&quot;/todo-app?sort=desc&quot;
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>hx-get=&quot;/todo-app/fragments/table?sort=desc&quot;
 </code></pre></div>
-<p>En för ett vanligt klick, en för htmx. Övningen sa att det inte var tänkt att
-förbli så.</p>
-<p>Anledningen till att det blev två var att sidan och tabellen har haft var sin
-adress. Men de är inte två olika saker — de är <strong>samma sak i två utföranden</strong>.
-Hela listan, med eller utan sidan runt omkring.</p>
+<p>En för ett vanligt klick, en för htmx.</p>
+<p>Det var för att förenkla de tidigare övningarna: routen under <code>/fragments/</code> fanns
+färdig, så du kunde peka <code>hx-get</code> på den utan att skriva någon serverkod.</p>
+<p>Men sidan och tabellen är inte två olika saker — de är <strong>samma sak i två
+utföranden</strong>. Hela listan, med eller utan sidan runt omkring.</p>
 <h2 id="anvandbara-headers">Användbara headers<a class="headerlink" href="#anvandbara-headers" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
