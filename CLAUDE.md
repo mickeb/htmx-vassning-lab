@@ -161,10 +161,14 @@ tool and no seed data, so every statement in that file has to be safe to re-run.
 ## Running it
 
 ```bash
-./setup.sh                    # build, install, start, verify
+docker compose up             # build, install, start
 docker compose logs -f lab    # server logs
 docker compose down           # stop
 ```
+
+Dependencies are installed by the compose `command`, into the bind mount rather
+than the image, so `node_modules` is on the host where the editor can see it.
+That is why `docker compose up` is enough and there is no setup script.
 
 The server runs in the container. To run anything against it:
 

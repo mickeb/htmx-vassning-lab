@@ -742,7 +742,7 @@ skickar om hela sidan. Övningarna tar bort de sidladdningarna, en i taget.</p>
 förra slutade, så det finns inget att kopiera mellan mappar.</p>
 <h2 id="innan-du-borjar">Innan du börjar<a class="headerlink" href="#innan-du-borjar" title="Permanent link">&para;</a></h2>
 <p>Labbet ska vara igång. Om du inte har startat det än:</p>
-<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./setup.sh
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up
 </code></pre></div>
 <p>Öppna sedan <a href="http://localhost:4000">http://localhost:4000</a>. Sidan är en
 självkontroll med fyra indikatorer — server, stylesheet, JavaScript och hot
@@ -751,8 +751,8 @@ reload. Alla fyra ska vara gröna innan du går vidare.</p>
 <p class="admonition-title">Du behöver inte kunna Node</p>
 <p>Allt som har med Node att göra körs inne i Docker-containern. Du redigerar
 filer i din egen editor och laddar om sidan i webbläsaren — det är hela
-arbetsflödet. Behöver en övning ett terminalkommando utöver <code>./setup.sh</code> är
-det ett misstag i övningen, inte i din miljö.</p>
+arbetsflödet. Behöver en övning ett terminalkommando utöver
+<code>docker compose up</code> är det ett misstag i övningen, inte i din miljö.</p>
 </div>
 <h2 id="det-labbet-redan-ger-dig">Det labbet redan ger dig<a class="headerlink" href="#det-labbet-redan-ger-dig" title="Permanent link">&para;</a></h2>
 <p>Appen har <strong>två uppsättningar routes över samma data</strong>.</p>

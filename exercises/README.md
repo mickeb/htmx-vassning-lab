@@ -156,7 +156,8 @@ Do not mix the two within the prose itself.
 Attendees come from mixed programming backgrounds and many do not work with Node.
 Exercises
 should be about hypermedia and HTMX, not about Node, npm or tooling. Anything
-requiring a terminal command beyond `./setup.sh` probably needs rethinking.
+requiring a terminal command beyond `docker compose up` probably needs
+rethinking.
 
 ## The exercise site
 
@@ -183,7 +184,7 @@ no-build-step rule intact for attendees.
 
 **Commit the generated `exercises-site/`.** `src/server.ts` serves it at
 <http://localhost:4000/exercises>, so attendees get the site by cloning and
-running `./setup.sh`, with no extra tooling and no second server.
+running `docker compose up`, with no extra tooling and no second server.
 
 The output goes to `exercises-site/` rather than `public/` on purpose: the hot
 reload watcher polls `public/` every 300ms, and the generated site is 49 files
