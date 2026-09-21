@@ -2,8 +2,7 @@
 
 ## Mål
 
-När den sista todon bockas av smäller fyrverkerier över sidan. Är det inte den
-sista händer ingenting.
+När den sista todon bockas av smäller fyrverkerier över sidan.
 
 ## Användbara headers
 
