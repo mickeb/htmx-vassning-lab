@@ -10,7 +10,7 @@ förra slutade, så det finns inget att kopiera mellan mappar.
 ## Innan du börjar
 
 Öppna [labbmiljön](http://localhost:4000/todo-app){:target="_blank" rel="noopener"}
-i en egen flik — du kommer att växla mellan den och de här sidorna hela vägen.
+— du kommer att växla mellan den och de här sidorna hela vägen.
 
 ## Labbet bygger på
 
