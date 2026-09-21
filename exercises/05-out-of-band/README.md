@@ -27,11 +27,10 @@ upp elementet på sidan som har **samma `id`** och ersätter det.
 ### 1. Öppna `views/todo-app/todo-header.liquid`
 
 `<header>`-taggen har redan `id="todo-header"`, vilket är det htmx matchar på.
-Nu ska templaten rendera `hx-swap-oob="true"` på den, men bara när rubriken
-skickas som en del av ett svar.
 
-Samma template renderas nämligen på två ställen: som en del av hela sidan, och som
-en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
+Samma template renderas på två ställen: en gång när hela sidan `/todo-app`
+renderas, och en gång inuti svaret du bygger i nästa steg. `hx-swap-oob="true"`
+ska bara komma med i det andra fallet — attributet hör till svaret, inte till
 elementet.
 
 ??? example "Facit"

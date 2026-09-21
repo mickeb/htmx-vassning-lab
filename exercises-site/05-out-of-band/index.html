@@ -888,11 +888,10 @@ upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersä
 <p><a href="https://four.htmx.org/docs#out-of-band-swaps">Mer om out-of-band swaps</a></p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-headerliquid">1. Öppna <code>views/todo-app/todo-header.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-headerliquid" title="Permanent link">&para;</a></h3>
-<p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.
-Nu ska templaten rendera <code>hx-swap-oob="true"</code> på den, men bara när rubriken
-skickas som en del av ett svar.</p>
-<p>Samma template renderas nämligen på två ställen: som en del av hela sidan, och som
-en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
+<p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.</p>
+<p>Samma template renderas på två ställen: en gång när hela sidan <code>/todo-app</code>
+renderas, och en gång inuti svaret du bygger i nästa steg. <code>hx-swap-oob="true"</code>
+ska bara komma med i det andra fallet — attributet hör till svaret, inte till
 elementet.</p>
 <details class="example">
 <summary>Facit</summary>
