@@ -56,10 +56,6 @@ Det här kan du redan.
 Rendera `todo-app/todo-header` också, och skicka med `oob: true` — precis som du
 gjorde med svaret för en ny todo.
 
-`stats` finns redan i templaten, och `todo-header.liquid` renderar redan
-`hx-swap-oob` när den får `oob: true` sedan övning 5 — så du behöver inte röra
-den filen.
-
 !!! warning "Ordningen är inte valfri här: raden måste komma först"
 
     Förra övningens svar var en tabell, och då kvittade ordningen. Det här svaret
