@@ -60,7 +60,7 @@ texten blir en annan.
 Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge **en** request,
 inte fem.
 
-### 2. Inkludera sorteringen
+### 2. Ta hänsyn till sorteringen
 
 Sortera nyast först. Skriv sedan något i sökrutan.
 
