@@ -44,9 +44,7 @@ beteende, skrivet i ett `_`-attribut.
 htmx när något ska hållas på klienten. De två krockar på ett par ställen, och
 htmx-teamet har skrivit ett officiellt tillägg som löser det.
 
-- [`hx-alpine-compat`](https://four.htmx.org/extensions/hx-alpine-compat) —
-  tillägget och vad det gör
-- [Alpine.js](https://alpinejs.dev/) — ramverket självt
+- [Dokumentation](https://four.htmx.org/extensions/hx-alpine-compat)
 
 !!! note "Tillägg laddas för sig"
 
