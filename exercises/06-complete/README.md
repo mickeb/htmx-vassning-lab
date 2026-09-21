@@ -34,13 +34,7 @@ betyder "närmaste `tr` uppåt från elementet som gjorde requesten".
 Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
 inte radens `id`.
 
-Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
-är klar ska knappen vara borta och en bock stå i stället.
-
-??? tip "Ledtråd — vilket `hx-swap`?"
-
-    Raden som kommer tillbaka ska *ersätta* den gamla raden, inte hamna inuti
-    den. Samma värde som du satte på tabellen i övning 2.
+Som vanligt använder vi `hx-swap="outerHTML"`.
 
 ??? example "Facit"
 
