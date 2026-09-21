@@ -40,27 +40,7 @@ sanningen: en knapp som ska bli avstängd medan fältet bredvid är tomt behöve
 ingen request till servern, och att skicka en för att få det vore fel väg.
 
 `hx-live` är ett tillägg till htmx 4 för precis det — att binda ihop läget i
-DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript:
-
-```html
-<input id="name">
-<button :disabled="!q('#name').value">Submit</button>
-```
-
-Dokumentationen inleder med ett beslutsträd som är värt att läsa även om du
-aldrig använder tillägget:
-
-```text
-Kan HTML lösa det?
-├─ ja  → använd HTML
-└─ nej
-   Kan CSS härleda det?
-   ├─ ja  → använd HTML + CSS
-   └─ nej → använd hx-live
-```
-
-Det är samma hållning som resten av dagen, ett steg längre ut: ta till det
-minsta som räcker, och ta till klienten sist.
+DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript.
 
 - [`hx-live`](https://four.htmx.org/extensions/hx-live) — tillägget, med
   beslutsträdet, `q()`, delad `data`-state och de asynkrona hjälpmedlen
