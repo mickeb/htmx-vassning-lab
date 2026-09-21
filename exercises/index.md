@@ -63,11 +63,11 @@ Resten svarar bara på `POST` och dyker upp i senare övningar.
 2. [**Sortera utan sidladdning**](02-sorting/README.md) — tre attribut på en
    länk, och en sidladdning försvinner.
 3. [**Lägg till en todo utan sidladdning**](03-adding/README.md) — en `POST`
-   som bär med sig formuläret, och ett fel som servern placerar själv.
+   som skickar med formuläret, och ett fel som servern placerar själv.
 4. [**Ser du buggen?**](04-stale-state/README.md) — ett värde som blivit
    gammalt utan att synas, och ett HTML-attribut som löser det.
 5. [**Uppdatera två ställen med ett svar**](05-out-of-band/README.md) — ett svar
-   där varje del bär med sig var den hör hemma.
+   där varje del säger var den hör hemma.
 6. [**Bocka av en todo**](06-complete/README.md) — ett mål som beskriver ett
    släktskap i stället för en adress.
 7. [**Fyrverkerier när allt är klart**](07-fireworks/README.md) — en HTTP-header
@@ -76,7 +76,7 @@ Resten svarar bara på `POST` och dyker upp i senare övningar.
    svarar olika beroende på vem som frågar.
 9. [**Ge tillbaka adressen**](09-url-state/README.md) — ett attribut som lämnar
    tillbaka något webben alltid har haft.
-10. [**Sök medan du skriver**](10-search/README.md) — en request bär exakt det
+10. [**Sök medan du skriver**](10-search/README.md) — en request innehåller exakt det
     du lägger i den, och det du lägger i den måste renderas om.
 
 Blir det tid över finns [**extrauppgifter**](extra/README.md) — uppgifter utan

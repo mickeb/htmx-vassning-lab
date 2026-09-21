@@ -17,10 +17,10 @@ Det är **samma form som sorteringen**, med en `POST` i stället för en `GET`.
 `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, av samma skäl som
 förra gången: det som kommer tillbaka **är** `<div id="todo-table">`.
 
-!!! note "En `POST` bär med sig hela formuläret"
+!!! note "En `POST` skickar med hela formuläret"
 
     I förra övningen satt `hx-get` på en `<a>`, och länken hade inget värde att
-    skicka — adressen fick bära sorteringen själv.
+    skicka — adressen fick skicka med sorteringen själv.
 
     Här är det tvärtom. En request med kropp — allt utom `GET` och `DELETE` —
     tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda

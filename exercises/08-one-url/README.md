@@ -7,7 +7,7 @@ sträng.
 
 ## Användbara headers
 
-Sedan övning 2 har sorteringslänken burit samma frågesträng två gånger:
+Sedan övning 2 har sorteringslänken haft samma frågesträng två gånger:
 
 ```html
 href="/todo-app?sort=desc"

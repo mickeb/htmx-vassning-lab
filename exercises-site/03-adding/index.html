@@ -937,9 +937,9 @@ ger ett synligt fel på rätt ställe.</p>
 <code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, av samma skäl som
 förra gången: det som kommer tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>.</p>
 <div class="admonition note">
-<p class="admonition-title">En <code>POST</code> bär med sig hela formuläret</p>
+<p class="admonition-title">En <code>POST</code> skickar med hela formuläret</p>
 <p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
-skicka — adressen fick bära sorteringen själv.</p>
+skicka — adressen fick skicka med sorteringen själv.</p>
 <p>Här är det tvärtom. En request med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
 tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 <code>q</code>- och <code>sort</code>-fälten, följer med utan att du gör något.</p>

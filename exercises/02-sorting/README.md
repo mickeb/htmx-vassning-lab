@@ -37,7 +37,8 @@ Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort 
 
 ### 2. Lägg till de tre attributen
 
-Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
+Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
+här fallet som en query-parameter.
 
 ??? warning "Varför räcker det inte med `/todo-app/fragments/table`?"
 
@@ -74,14 +75,14 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
 !!! note "Det här har ett namn"
 
-    Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
+    Att svaret innehåller kontrollerna för vad som kan göras härnäst — länken,
     vilken ordning den leder till, vilken sökning som gäller — är kärnan i
     **HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet
     drivs av det hypermedia servern skickar, inte av kod som håller reda på
     saker i webbläsaren.
 
     **htmx lade inte till det här.** Länken du började med gjorde redan samma
-    sak: den bar sin egen nästa ordning, och en full sidladdning hämtade nästa
+    sak: den innehöll sin egen nästa ordning, och en full sidladdning hämtade nästa
     representation.
 
     Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och

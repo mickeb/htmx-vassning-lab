@@ -86,7 +86,7 @@ Sorteringen är inte med. Servern har ingen aning om vad du valde, faller
 tillbaka på sin standardordning och svarar med en helt korrekt lista — på fel
 fråga.
 
-!!! note "En `GET` bär inte med sig sitt formulär"
+!!! note "En `GET` skickar inte med sitt formulär"
 
     I övning 3 följde hela formuläret med av sig självt. Det gjorde det för att
     en `POST` har en kropp. Regeln, från
@@ -130,7 +130,7 @@ gång tabellen ersätts, och peka `hx-include` på det.
     ```
 
 Sortera nyast först och skriv igen. Ordningen ligger kvar. Sortera medan en
-sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har burit
+sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har haft
 `q` i adressen sedan övning 2.
 
 !!! note "Nu finns det två dolda sorteringsfält"

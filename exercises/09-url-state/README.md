@@ -109,6 +109,6 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 Sortering har adressen tillbaka. Sökrutan har den inte — skriv något i den och
 se efter.
 
-Nästa övning tar sökningen hela vägen: den ska söka medan du skriver, bära med
-sig sorteringen, och lägga sökordet i adressen utan att fylla historiken med ett
+Nästa övning tar sökningen hela vägen: den ska söka medan du skriver, skicka med
+sorteringen, och lägga sökordet i adressen utan att fylla historiken med ett
 steg per tangenttryckning.

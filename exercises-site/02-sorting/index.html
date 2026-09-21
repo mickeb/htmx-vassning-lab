@@ -884,7 +884,8 @@ i det; <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti en
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
 <p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p>Adressen i <code>hx-get</code> måste bära med sig sorteringen, precis som <code>href</code> gör.</p>
+<p>Adressen i <code>hx-get</code> måste skicka med sorteringen, precis som <code>href</code> gör — i det
+här fallet som en query-parameter.</p>
 <details class="warning">
 <summary>Varför räcker det inte med <code>/todo-app/fragments/table</code>?</summary>
 <p>För att en <code>&lt;a&gt;</code> inte har något värde att skicka. htmx lägger inte till
@@ -916,13 +917,13 @@ så — en senare övning tar bort den ena.</p>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Det här har ett namn</p>
-<p>Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
+<p>Att svaret innehåller kontrollerna för vad som kan göras härnäst — länken,
 vilken ordning den leder till, vilken sökning som gäller — är kärnan i
 <strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet
 drivs av det hypermedia servern skickar, inte av kod som håller reda på
 saker i webbläsaren.</p>
 <p><strong>htmx lade inte till det här.</strong> Länken du började med gjorde redan samma
-sak: den bar sin egen nästa ordning, och en full sidladdning hämtade nästa
+sak: den innehöll sin egen nästa ordning, och en full sidladdning hämtade nästa
 representation.</p>
 <p>Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och
 tillstånd i klienten — och då försvinner det. Den här övningen tog bort
