@@ -21,8 +21,8 @@ Lägg de tre attributen på `<form>`-taggen.
 
 `hx-post` postar till `/todo-app/fragments/todos`. Det är **samma koncept som
 sorteringen vi precis gjorde**, med en `POST` i stället för en `GET`:
-`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, eftersom det som
-kommer tillbaka är tabellen i sin helhet.
+`hx-target` är `#todo-table` och `hx-swap` är återigen `outerHTML`, eftersom det
+som kommer tillbaka är tabellen i sin helhet.
 
 !!! note "En `POST` skickar med hela formuläret"
 
