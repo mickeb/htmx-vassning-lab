@@ -80,8 +80,6 @@ Sätt den i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
     }
     ```
 
-Textfältet kommer tillbaka med röd ram.
-
 ## Klart när
 
 - [ ] En ny todo dyker upp i listan utan att sidan laddas om.
