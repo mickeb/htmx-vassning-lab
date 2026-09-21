@@ -45,7 +45,7 @@ hx-trigger="input changed delay:300ms"
 `input` är webbläsarens egen händelse: den kommer vid varje tangenttryckning.
 `delay:300ms` startar om nedräkningen vid varje ny händelse, så en request går
 iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
-värdet inte faktiskt ändrats — pilknappar och liknande ger `input` utan att
+värdet inte ändrats — pilknappar och liknande ger `input` utan att
 texten blir en annan.
 
 !!! warning "Glöm inte `hx-swap`"

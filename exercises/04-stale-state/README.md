@@ -11,7 +11,7 @@ Sorteringen överlever att du lägger till en todo.
 
 Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
 
-### Vad som faktiskt skickades
+### Vad som skickades
 
 Öppna nätverkspanelen och gör om det. Titta på kroppen i den `POST` som går
 iväg när du lägger till todon:
