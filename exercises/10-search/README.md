@@ -62,7 +62,6 @@ texten blir en annan.
 
     ```html
     <input class="search__input" type="search" name="q" value="{{ q }}" placeholder="Search todos"
-           id="search-q"
            hx-get="/todo-app"
            hx-trigger="input changed delay:300ms"
            hx-target="#todo-table"
