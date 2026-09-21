@@ -82,11 +82,24 @@ Bocka av den sista todon och titta på svarets headers i nätverkspanelen.
 `HX-Trigger: fireworks` ska stå där. På sidan händer ingenting — ingen lyssnar
 på eventet ännu. 😢
 
-### 3. Lyssna på eventet
+### 3. Hantera eventet
 
 I `views/layout.liquid`, i modulskriptet som redan importerar htmx. Importera
-`Fireworks`, ge biblioteket en yta att rita på, och starta när eventet
+`Fireworks`, ge biblioteket en yta att rita på, och starta den när eventet
 `fireworks` kommer.
+
+Ett event i webbläsaren fångas med `addEventListener`
+([MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)).
+Den tar namnet på eventet och en funktion som körs varje gång det kommer:
+
+```js
+document.addEventListener('fireworks', () => {
+  // körs varje gång ett fireworks-event når document
+})
+```
+
+Namnet är samma sträng som servern satte i `HX-Trigger`. Stavas de olika körs
+funktionen aldrig, och ingenting säger ifrån.
 
 !!! note "Lyssna på `document`"
 
