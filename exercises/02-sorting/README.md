@@ -2,7 +2,7 @@
 
 ## Mål
 
-Ett klick på kolumnrubriken **Created at** vänder sorteringsordningen, och
+Ett klick på kolumnheadern **Created at** vänder sorteringsordningen, och
 listan byter ordning utan att sidan laddas om.
 
 !!! note "Du behöver några todos att sortera"
@@ -26,7 +26,7 @@ sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.
 
 ### 1. Öppna `views/todo-app/todo-table.liquid`
 
-Leta upp länken i kolumnrubriken. Den börjar med `<a class="sort sort--{{ sort }}"`.
+Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
 
 ### 2. Lägg till de tre attributen
 

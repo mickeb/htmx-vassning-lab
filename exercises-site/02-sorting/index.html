@@ -838,7 +838,7 @@
 
 <h1 id="2-sortera-utan-sidladdning">2. Sortera utan sidladdning<a class="headerlink" href="#2-sortera-utan-sidladdning" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>Ett klick på kolumnrubriken <strong>Created at</strong> vänder sorteringsordningen, och
+<p>Ett klick på kolumnheadern <strong>Created at</strong> vänder sorteringsordningen, och
 listan byter ordning utan att sidan laddas om.</p>
 <div class="admonition note">
 <p class="admonition-title">Du behöver några todos att sortera</p>
@@ -877,7 +877,7 @@ började: den renderar ett färdigt fragment — samma tabell som sidan visar, u
 sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
-<p>Leta upp länken i kolumnrubriken. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
+<p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
 <p><code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>. Fragmentet som kommer
 tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom
