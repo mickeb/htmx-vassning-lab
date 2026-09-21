@@ -2,8 +2,7 @@
 
 ## Mål
 
-Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
-extra request.
+Räknaren i rubriken stämmer igen direkt när du lägger till en todo.
 
 ## Användbara attribut
 
