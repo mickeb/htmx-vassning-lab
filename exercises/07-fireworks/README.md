@@ -8,7 +8,7 @@ När den sista todon bockas av smäller fyrverkerier över sidan.
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `HX-Trigger` | Vilken händelse ska utlösas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
+| `HX-Trigger` | Vilket event ska utlösas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
 
 ## Steg
 
@@ -40,7 +40,7 @@ https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js
     JSON igen, med samma fälla som i övning 1: ett kommatecken för mycket efter
     sista raden och hela tabellen slutar gälla — även raden för htmx.
 
-### 2. Lyssna på händelsen
+### 2. Trigga eventet
 
 Servern bestämmer när det ska firas. Hittills har varje svar varit HTML som
 satts in någonstans på sidan. Nu ska ett svar också kunna säga *att något har
@@ -53,7 +53,7 @@ Det görs med en HTTP-header i svaret:
 HX-Trigger: fireworks
 ```
 
-htmx läser headern när svaret är insatt och utlöser en händelse med det namnet.
+htmx läser headern när svaret är insatt och utlöser ett event med det namnet.
 Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 
 !!! warning "I htmx 2 fanns tre headers"
@@ -62,15 +62,38 @@ Vad `fireworks` betyder är upp till webbläsaren att avgöra.
     har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser
     du de två längre namnen i ett exempel läser du htmx 2-material.
 
-I samma fil, i modulskriptet som redan importerar htmx. Importera `Fireworks`,
-ge biblioteket en yta att rita på, och starta när händelsen `fireworks` kommer.
+Öppna `src/app.ts` och leta upp hanteraren för
+`POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
+renderar svaret. En rad till: sätt headern när allt är avbockat.
+
+`stats.allComplete` är sant när det finns todos och alla är klara. En tom lista
+är inte klar — ingenting är inte allt.
+
+??? example "Facit"
+
+    ```ts
+    const stats = await todos.stats()
+    if (stats.allComplete) res.set('HX-Trigger', 'fireworks')
+
+    res.render('todo-app/complete-response', { todo, q, sort, stats })
+    ```
+
+Bocka av den sista todon och titta på svarets headers i nätverkspanelen.
+`HX-Trigger: fireworks` ska stå där. På sidan händer ingenting — ingen lyssnar
+på eventet ännu. 😢
+
+### 3. Lyssna på eventet
+
+I `views/layout.liquid`, i modulskriptet som redan importerar htmx. Importera
+`Fireworks`, ge biblioteket en yta att rita på, och starta när eventet
+`fireworks` kommer.
 
 !!! note "Lyssna på `document`"
 
-    Knappen som skickade requesten finns inte kvar när händelsen kommer — hela
-    raden byttes ju ut. htmx utlöser händelsen på det element som gjorde
-    requesten om det finns kvar, annars på dokumentet. Händelsen bubblar, så
-    `document` hör den i båda fallen.
+    Knappen som skickade requesten finns inte kvar när eventet kommer — hela
+    raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
+    om det finns kvar, annars på dokumentet. Eventet bubblar, så `document` hör
+    det i båda fallen.
 
 ??? example "Facit"
 
@@ -94,27 +117,6 @@ ge biblioteket en yta att rita på, och starta när händelsen `fireworks` komme
     `stage` är ytan fyrverkerierna ritas på: den täcker rutan, ligger still när
     sidan rullas och tar inte emot klick. Resten är `fireworks-js` eget API och
     har ingenting med htmx att göra.
-
-Ladda om och bocka av den sista todon. Ingenting händer — inget svar har
-skickat headern ännu. 😢
-
-### 3. Låt servern skicka headern
-
-Öppna `src/app.ts` och leta upp hanteraren för
-`POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
-renderar svaret. En rad till: sätt headern när allt är avbockat.
-
-`stats.allComplete` är sant när det finns todos och alla är klara. En tom lista
-är inte klar — ingenting är inte allt.
-
-??? example "Facit"
-
-    ```ts
-    const stats = await todos.stats()
-    if (stats.allComplete) res.set('HX-Trigger', 'fireworks')
-
-    res.render('todo-app/complete-response', { todo, q, sort, stats })
-    ```
 
 ## Klart när
 
