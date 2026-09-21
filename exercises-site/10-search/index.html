@@ -955,8 +955,8 @@ värdet inte faktiskt ändrats — pilknappar och liknande ger <code>input</code
 texten blir en annan.</p>
 <div class="admonition warning">
 <p class="admonition-title">Glöm inte <code>hx-swap</code></p>
-<p>Svaret <strong>är</strong> <code>#todo-table</code>. Standardvärdet för <code>hx-swap</code> i htmx 4 är
-<code>innerHTML</code>, så utan
+<p>Svaret är tabellen i sin helhet, inte innehållet i den. Standardvärdet för
+<code>hx-swap</code> i htmx 4 är <code>innerHTML</code>, så utan
 <code>hx-swap="outerHTML"</code> hamnar en ny <code>#todo-table</code> <em>inuti</em> den gamla. Listan
 ser rätt ut, men sidan har nu två element med samma <code>id</code>.</p>
 </div>

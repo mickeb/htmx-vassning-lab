@@ -15,7 +15,7 @@ ger ett synligt fel på rätt ställe.
 
 Det är **samma form som sorteringen**, med en `POST` i stället för en `GET`.
 `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, av samma skäl som
-förra gången: det som kommer tillbaka **är** `<div id="todo-table">`.
+förra gången: det som kommer tillbaka är tabellen i sin helhet.
 
 !!! note "En `POST` skickar med hela formuläret"
 

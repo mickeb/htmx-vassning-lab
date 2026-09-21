@@ -30,9 +30,9 @@ Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort 
 ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring.
 
 `hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
-tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
-ifrån, inte innehållet i det; `innerHTML` hade gett dig en `#todo-table` inuti en
-`#todo-table`.
+tillbaka är tabellen i sin helhet — samma `<div id="todo-table">` som redan står
+på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; `innerHTML`
+hade gett dig en `#todo-table` inuti en `#todo-table`.
 
 Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
 här fallet som en query-parameter.

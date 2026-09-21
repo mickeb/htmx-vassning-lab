@@ -50,8 +50,8 @@ texten blir en annan.
 
 !!! warning "Glöm inte `hx-swap`"
 
-    Svaret **är** `#todo-table`. Standardvärdet för `hx-swap` i htmx 4 är
-    `innerHTML`, så utan
+    Svaret är tabellen i sin helhet, inte innehållet i den. Standardvärdet för
+    `hx-swap` i htmx 4 är `innerHTML`, så utan
     `hx-swap="outerHTML"` hamnar en ny `#todo-table` *inuti* den gamla. Listan
     ser rätt ut, men sidan har nu två element med samma `id`.
 
