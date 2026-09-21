@@ -149,10 +149,6 @@ Byt ut attributet mot `hx-replace-url="true"`.
            hx-replace-url="true"
     ```
 
-Regeln, rakt ut: **push för beslut, replace för förfining.** Att sortera är ett
-beslut — du vill kunna gå tillbaka till det. Att skriva ett tecken till i en
-sökruta är det inte.
-
 ### 4. Extra: visa att något händer
 
 Sökningen sker på en paus, och på en långsam förbindelse hinner det gå en stund
