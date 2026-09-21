@@ -26,8 +26,7 @@ sökfältet och inte själva formuläret (via dess submit-knapp) som ska trigga 
 sökning.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
-**Search** kommer fortsätta submitta formuläret precis som vanligt. Det är inte
-något som ska byggas bort; det är reservvägen, synlig.
+**Search** kommer fortsätta submitta formuläret precis som vanligt.
 
 Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
