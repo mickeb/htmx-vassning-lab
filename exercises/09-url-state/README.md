@@ -70,7 +70,7 @@ tryck sedan bakåt.
 Du ser en request gå iväg — och den är **större** än de som sorteringen gör.
 Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 
-!!! note "htmx 4 hämtar om sidan i stället för att komma ihåg den"
+!!! note "Till dig som tidigare använt v2"
 
     htmx 2 sparade en kopia av sidan i `localStorage` och lade tillbaka den vid
     bakåtnavigering. Det gav en snabb återgång och ett obehagligt fel: kopian

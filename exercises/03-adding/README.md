@@ -135,7 +135,7 @@ behålla kolonet:
 Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
 är det vanliga.
 
-!!! warning "Eventnamn i htmx 4 har kolon"
+!!! warning "Till dig som tidigare använt v2"
 
     Eventet heter `after:swap`. Inte `afterSwap` — det är htmx 2, och det är
     vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger

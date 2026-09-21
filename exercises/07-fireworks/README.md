@@ -56,7 +56,7 @@ HX-Trigger: fireworks
 htmx läser headern när svaret är insatt och utlöser ett event med det namnet.
 Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 
-!!! warning "I htmx 2 fanns tre headers"
+!!! warning "Till dig som tidigare använt v2"
 
     `HX-Trigger`, `HX-Trigger-After-Swap` och `HX-Trigger-After-Settle`. htmx 4
     har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser
