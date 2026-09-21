@@ -65,10 +65,10 @@ svar formuläret får — även felsvar.
 
 ### 3. Låt servern styra var svaret ska visas
 
-En HTTP-header i svaret, satt i `src/app.ts`, i felgrenen för
-`POST /fragments/todos`.
+Med HTTP-headern `HX-Retarget` i svaret kan servern åsidosätta det `hx-target`
+som står i markupen — för det här ena svaret.
 
-`HX-Retarget` byter ut `hx-target` för det här ena svaret.
+Sätt den i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
 
 ??? example "Facit"
 
