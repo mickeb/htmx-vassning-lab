@@ -80,8 +80,7 @@ Sätt den i `src/app.ts`, i felgrenen för `POST /fragments/todos`.
     }
     ```
 
-Textfältet kommer tillbaka med röd ram. Inget felmeddelande — ramen är hela
-felrapporten.
+Textfältet kommer tillbaka med röd ram.
 
 ## Klart när
 
