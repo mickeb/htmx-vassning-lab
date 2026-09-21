@@ -9,13 +9,7 @@ förra slutade, så det finns inget att kopiera mellan mappar.
 
 ## Innan du börjar
 
-Labbet ska vara igång. Om du inte har startat det än:
-
-```bash
-docker compose up
-```
-
-Öppna sedan [labbmiljön](http://localhost:4000/todo-app){:target="_blank" rel="noopener"}
+Öppna [labbmiljön](http://localhost:4000/todo-app){:target="_blank" rel="noopener"}
 i en egen flik — du kommer att växla mellan den och de här sidorna hela vägen.
 
 ## Labbet bygger på
