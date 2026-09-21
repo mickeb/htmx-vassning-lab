@@ -14,11 +14,12 @@ När den sista todon bockas av smäller fyrverkerier över sidan.
 
 ### 1. Lägg till fireworks-js i import map:en
 
-`fireworks-js` blir en rad till i tabellen du skrev i övning 1, och importeras
-sedan med sitt namn.
+Fyrverkerierna ritas av ett färdigt bibliotek,
+[`fireworks-js`](https://fireworks.js.org/) — du skriver ingen
+animationskod själv. Det blir en rad till i import map:en du skrev i övning 1,
+och importeras sedan med sitt namn.
 
-Lägg till filen i import map:en i `views/layout.liquid`, under namnet
-`fireworks-js`:
+Lägg till filen i `views/layout.liquid`, under namnet `fireworks-js`:
 
 ```
 https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js
