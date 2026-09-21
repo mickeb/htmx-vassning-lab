@@ -14,7 +14,7 @@ När den sista todon bockas av smäller fyrverkerier över sidan.
 
 ### 1. Lägg till fireworks-js i import map:en
 
-Fyrverkerierna ritas av ett färdigt bibliotek,
+Fyrverkerierna genereras av ett färdigt bibliotek,
 [`fireworks-js`](https://fireworks.js.org/) — du skriver ingen
 animationskod själv. Det blir en rad till i import map:en du skrev i övning 1,
 och importeras sedan med sitt namn.
