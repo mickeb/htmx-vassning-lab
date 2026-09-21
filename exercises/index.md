@@ -1,6 +1,8 @@
 # Övningar
 
 Labbmiljön serverar en todo-app på [http://localhost:4000/todo-app](http://localhost:4000/todo-app).
+Den är en helt vanlig flersidesapp. Målet med övningarna är att ge den en
+modernare användarupplevelse.
 
 ## Innan du börjar
 
