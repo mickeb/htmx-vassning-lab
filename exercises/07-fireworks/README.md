@@ -84,51 +84,38 @@ på eventet ännu. 😢
 
 ### 3. Hantera eventet
 
-I modulskriptet i `views/layout.liquid`: importera `Fireworks`, ge biblioteket
-en yta att rita på, och starta den när eventet `fireworks` kommer.
+Själva fyrverkerierna är vanlig JavaScript och inte poängen med övningen. Ersätt
+modulskriptet i `views/layout.liquid` med det här:
 
-Ett event i webbläsaren fångas med `addEventListener`
-([MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)).
-Den tar namnet på eventet och en funktion som körs varje gång det kommer:
+```html
+<script type="module">
+  import htmx from 'htmx.org'
+  import { Fireworks } from 'fireworks-js'
 
-```js
-document.addEventListener('fireworks', () => {
-  // körs varje gång ett fireworks-event når document
-})
+  const stage = document.createElement('div')
+  stage.style.cssText = 'position: fixed; inset: 0; pointer-events: none'
+  document.body.append(stage)
+  const fireworks = new Fireworks(stage)
+
+  document.addEventListener('fireworks', () => {
+    fireworks.start()
+    setTimeout(() => fireworks.stop(), 5000)
+  })
+</script>
 ```
 
-Namnet är samma sträng som servern satte som värde för `HX-Trigger`-headern.
-Stavas de olika körs funktionen aldrig, och ingenting säger ifrån.
+Den enda raden som har med htmx att göra är
+[`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+`'fireworks'` där är samma sträng som servern satte som värde för
+`HX-Trigger`-headern. Stavas de olika körs funktionen aldrig, och ingenting
+säger ifrån.
 
-!!! note "Lyssna på `document`"
+!!! note "Varför `document`?"
 
     Knappen som skickade requesten finns inte kvar när eventet kommer — hela
     raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
     om det finns kvar, annars på dokumentet. Eventet bubblar, så `document` hör
     det i båda fallen.
-
-??? example "Facit"
-
-    ```html
-    <script type="module">
-      import htmx from 'htmx.org'
-      import { Fireworks } from 'fireworks-js'
-
-      const stage = document.createElement('div')
-      stage.style.cssText = 'position: fixed; inset: 0; pointer-events: none'
-      document.body.append(stage)
-      const fireworks = new Fireworks(stage)
-
-      document.addEventListener('fireworks', () => {
-        fireworks.start()
-        setTimeout(() => fireworks.stop(), 5000)
-      })
-    </script>
-    ```
-
-    `stage` är ytan fyrverkerierna ritas på: den täcker rutan, ligger still när
-    sidan rullas och tar inte emot klick. Resten är `fireworks-js` eget API och
-    har ingenting med htmx att göra.
 
 ## Klart när
 

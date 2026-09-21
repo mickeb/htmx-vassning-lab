@@ -955,45 +955,35 @@ klara — en tom lista ger alltså inga fyrverkerier.</p>
 <code>HX-Trigger: fireworks</code> ska stå där. På sidan händer ingenting — ingen lyssnar
 på eventet ännu. 😢</p>
 <h3 id="3-hantera-eventet">3. Hantera eventet<a class="headerlink" href="#3-hantera-eventet" title="Permanent link">&para;</a></h3>
-<p>I modulskriptet i <code>views/layout.liquid</code>: importera <code>Fireworks</code>, ge biblioteket
-en yta att rita på, och starta den när eventet <code>fireworks</code> kommer.</p>
-<p>Ett event i webbläsaren fångas med <code>addEventListener</code>
-(<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">MDN</a>).
-Den tar namnet på eventet och en funktion som körs varje gång det kommer:</p>
-<div class="language-js highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fireworks&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="c1">// körs varje gång ett fireworks-event når document</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">})</span>
+<p>Själva fyrverkerierna är vanlig JavaScript och inte poängen med övningen. Ersätt
+modulskriptet i <code>views/layout.liquid</code> med det här:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">htmx</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;htmx.org&#39;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Fireworks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fireworks-js&#39;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nx">stage</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;position: fixed; inset: 0; pointer-events: none&#39;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fireworks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fireworks</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fireworks&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nx">fireworks</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fireworks</span><span class="p">.</span><span class="nx">stop</span><span class="p">(),</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="p">})</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Namnet är samma sträng som servern satte som värde för <code>HX-Trigger</code>-headern.
-Stavas de olika körs funktionen aldrig, och ingenting säger ifrån.</p>
+<p>Den enda raden som har med htmx att göra är
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code>addEventListener</code></a>.
+<code>'fireworks'</code> där är samma sträng som servern satte som värde för
+<code>HX-Trigger</code>-headern. Stavas de olika körs funktionen aldrig, och ingenting
+säger ifrån.</p>
 <div class="admonition note">
-<p class="admonition-title">Lyssna på <code>document</code></p>
+<p class="admonition-title">Varför <code>document</code>?</p>
 <p>Knappen som skickade requesten finns inte kvar när eventet kommer — hela
 raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
 om det finns kvar, annars på dokumentet. Eventet bubblar, så <code>document</code> hör
 det i båda fallen.</p>
 </div>
-<details class="example">
-<summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">htmx</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;htmx.org&#39;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Fireworks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fireworks-js&#39;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nx">stage</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;position: fixed; inset: 0; pointer-events: none&#39;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fireworks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fireworks</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fireworks&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nx">fireworks</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fireworks</span><span class="p">.</span><span class="nx">stop</span><span class="p">(),</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="p">})</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><code>stage</code> är ytan fyrverkerierna ritas på: den täcker rutan, ligger still när
-sidan rullas och tar inte emot klick. Resten är <code>fireworks-js</code> eget API och
-har ingenting med htmx att göra.</p>
-</details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Att bocka av den sista todon ger fyrverkerier.</li>
