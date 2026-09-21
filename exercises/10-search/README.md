@@ -18,8 +18,9 @@ tangenttryckning.
 ### 1. Sök medan du skriver
 
 Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
-knapp. Attributen hamnar på **fältet**, inte på formuläret, så att söka medan
-man skriver läggs ovanpå det som redan fungerar.
+knapp. Lite oväntat kommer attributen att hamna på själva input-fältet, inte på
+formuläret. Det beror på vilket event som ska utlösa requesten: fältets `input`.
+Formuläret får inget event förrän någon trycker på **Search**.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 **Search** gör fortfarande en vanlig sidladdning till samma adress. Det är inte
