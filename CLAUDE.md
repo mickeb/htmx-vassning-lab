@@ -191,11 +191,13 @@ resolved for Linux, inside the container.
 itself — no build, no manual refresh. Saving under `src/` restarts the server
 first, so it takes a moment longer.
 
-The page at <http://localhost:4000/> is an environment self-check with four
-indicators. The hot reload one reads `connected` in normal operation, drops to
-`reconnecting…` while the server restarts, and comes back on its own. If it says
-`not connected` and stays there, the SSE stream never opened — check that the
-container is running before looking at anything else.
+The page at <http://localhost:4000/> is a welcome page linking the exercises
+and the todo app. **It used to be an environment self-check with four
+indicators; that was removed 2026-09-21.** Nothing in the lab reports on its own
+health any more, so a broken stylesheet or a dead SSE stream now looks like the
+app behaving oddly. `public/js/app.js` and `public/js/dev-reload.js` still write
+to `[data-check]` elements and guard on their absence, so restoring the
+indicators means putting the markup back and nothing else.
 
 ## Language
 

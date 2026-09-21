@@ -3,56 +3,18 @@
 {% block content %}
 <main class="page">
   <header class="page__header">
-    <h1 class="page__title">Your lab environment is running</h1>
+    <h1 class="page__title">Welcome to the htmx lab</h1>
     <p class="page__lede">
-      Every part of the setup reports in below. If all four say OK, you are ready
-      to start.
+      Work through the exercises, and build them into the todo app.
     </p>
   </header>
 
-  <section class="checks" aria-label="Environment self-check">
-    <div class="check">
-      <span class="check__label">Server &amp; templates</span>
-      <span class="check__value check__value--ok">
-        Node {{ nodeVersion }} · started {{ bootTime }} UTC
-      </span>
-      <span class="check__note">
-        This line was rendered on the server, so Express and Liquid both work.
-      </span>
-    </div>
-
-    <div class="check">
-      <span class="check__label">Stylesheet</span>
-      <!-- Confirmed by app.js reading a custom property that app.css defines,
-           so it reports that the stylesheet actually applied, not just that the
-           request was made. Stays "checking" if scripts never run. -->
-      <span class="check__value" data-check="css">checking…</span>
-      <span class="check__note">Served from <code>public/css/app.css</code>.</span>
-    </div>
-
-    <div class="check">
-      <span class="check__label">JavaScript</span>
-      <span class="check__value" data-check="js">did not run</span>
-      <span class="check__note">Served from <code>public/js/app.js</code>.</span>
-    </div>
-
-    <div class="check">
-      <span class="check__label">Hot reload</span>
-      <span class="check__value" data-check="reload">not connected</span>
-      <span class="check__note">
-        Save any file under <code>views/</code> or <code>public/</code> and this
-        page reloads by itself.
-      </span>
-    </div>
-  </section>
-
   <section class="next">
-    <h2 class="next__title">Try it</h2>
-    <ol class="next__list">
-      <li>Open this folder in your editor.</li>
-      <li>Change this heading in <code>views/index.liquid</code> and save.</li>
-      <li>Watch the browser reload on its own — no build step, no refresh.</li>
-    </ol>
+    <h2 class="next__title">Where to go</h2>
+    <ul class="next__list">
+      <li><a href="/exercises/">Exercises</a> — start here</li>
+      <li><a href="/todo-app">Todo app</a> — what you will be changing</li>
+    </ul>
   </section>
 </main>
 {% endblock %}

@@ -15,9 +15,8 @@ Labbet ska vara igång. Om du inte har startat det än:
 docker compose up
 ```
 
-Öppna sedan [http://localhost:4000](http://localhost:4000). Sidan är en
-självkontroll med fyra indikatorer — server, stylesheet, JavaScript och hot
-reload. Alla fyra ska vara gröna innan du går vidare.
+Öppna sedan [http://localhost:4000](http://localhost:4000). Därifrån når du
+både övningarna och todo-appen.
 
 !!! tip "Du behöver inte kunna Node"
 

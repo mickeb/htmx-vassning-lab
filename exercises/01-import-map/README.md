@@ -105,7 +105,5 @@ htmx.version
 
 ??? question "Ingenting alls händer när du sparar"
 
-    Kontrollera hot reload-indikatorn på [startsidan](http://localhost:4000).
-    Står det `connected` är sidan i kontakt med servern. Står det
-    `reconnecting…` startar servern om just nu — vänta någon sekund. Står det
-    `not connected` och blir kvar där, ladda om sidan manuellt.
+    Ladda om sidan manuellt. Händer det fortfarande ingenting har sidan tappat
+    kontakten med servern — starta om den med `docker compose restart lab`.
