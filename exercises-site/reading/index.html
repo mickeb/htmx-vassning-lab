@@ -744,7 +744,8 @@ hittar inte handlar om htmx 2.</p>
 <p>Där <code>outerHTML</code> kastar bort det gamla elementet och sätter dit ett nytt,
 <em>jämför</em> en morph det nya innehållet med det som redan står i DOM:en och
 ändrar bara det som skiljer. Element som inte ändrats behåller sin identitet,
-och därmed fokus, textmarkering och rullningsläge.</p>
+och därmed fokus, textmarkering och rullningsläge. Det är nytt i htmx 4 och
+inbyggt: <code>hx-swap</code>-värdena heter <code>innerMorph</code> och <code>outerMorph</code>.</p>
 <ul>
 <li><a href="https://four.htmx.org/docs/morphing-swaps-guide">Morphing Guide</a> — vad en
   morph gör, när det är värt det, och hur man styr det</li>

@@ -12,7 +12,8 @@ hittar inte handlar om htmx 2.
 Där `outerHTML` kastar bort det gamla elementet och sätter dit ett nytt,
 *jämför* en morph det nya innehållet med det som redan står i DOM:en och
 ändrar bara det som skiljer. Element som inte ändrats behåller sin identitet,
-och därmed fokus, textmarkering och rullningsläge.
+och därmed fokus, textmarkering och rullningsläge. Det är nytt i htmx 4 och
+inbyggt: `hx-swap`-värdena heter `innerMorph` och `outerMorph`.
 
 - [Morphing Guide](https://four.htmx.org/docs/morphing-swaps-guide) — vad en
   morph gör, när det är värt det, och hur man styr det
