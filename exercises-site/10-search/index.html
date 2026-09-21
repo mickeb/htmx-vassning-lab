@@ -1002,8 +1002,8 @@ så en sortering renderar aldrig om den. Fältet står kvar på det värde det
 hade när sidan laddades, och <code>hx-include</code> skickar lydigt det gamla värdet.</p>
 <p>Resultatet ser exakt ut som buggen du just tittade på.</p>
 <p>Samma sak händer om du bakar in sorteringen i adressen —
-<code>hx-get="/todo-app?sort={{ sort }}"</code>. Templaten skriver in värdet när sidan
-renderas, och formuläret renderas inte om.</p>
+<code>hx-get="/todo-app?sort={{ sort }}"</code>. Templaten renderar värdet när sidan
+laddas, och formuläret renderas aldrig om.</p>
 </div>
 <p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som renderas om varje
 gång tabellen ersätts, och peka <code>hx-include</code> på det.</p>
