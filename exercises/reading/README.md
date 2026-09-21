@@ -14,16 +14,8 @@ Där `outerHTML` kastar bort det gamla elementet och sätter dit ett nytt,
 ändrar bara det som skiljer. Element som inte ändrats behåller sin identitet,
 och därmed fokus, textmarkering och rullningsläge.
 
-Algoritmen heter **idiomorph**. I htmx 2 var den ett tillägg man fick
-installera; i htmx 4 ligger den i kärnan, som `hx-swap`-värdena `innerMorph`
-och `outerMorph`.
-
 - [Morphing Guide](https://four.htmx.org/docs/morphing-swaps-guide) — vad en
   morph gör, när det är värt det, och hur man styr det
-- [`hx-swap`](https://four.htmx.org/reference/attributes/hx-swap) — alla
-  värden bredvid varandra
-- [idiomorph](https://github.com/bigskysoftware/idiomorph) — algoritmen, om du
-  vill veta hur den matchar ihop gammalt och nytt
 
 ## `hx-live` — när något ändå måste vara på klienten
 
