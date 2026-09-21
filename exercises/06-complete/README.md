@@ -50,8 +50,9 @@ bock — men räknaren står still igen!
 
 ### 2. Rendera om rubriken
 
-Det här kan du redan. `views/todo-app/complete-response.liquid` renderar bara
-`todo-app/todo-row`. Rendera `todo-app/todo-header` också, och skicka med
+Det här kan du redan.
+
+`views/todo-app/complete-response.liquid` renderar bara `todo-app/todo-row`. Rendera `todo-app/todo-header` också, och skicka med
 `oob: true` — precis som du gjorde med svaret för en ny todo.
 
 `stats` finns redan i templaten, och `todo-header.liquid` renderar redan
