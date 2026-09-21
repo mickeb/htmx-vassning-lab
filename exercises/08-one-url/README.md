@@ -111,15 +111,6 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
     Då slog `if`-satsen i `app.ts` inte till, så htmx fick tillbaka ett helt
     dokument och satte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
 
-## Värt att känna till
-
-`/todo-app/fragments/table` finns kvar i labbet, men ingenting använder den
-längre. I en riktig kodbas hade den tagits bort i den här commiten.
-
-Kvar finns idén den fanns till för: **servern bestämmer vad ett svar
-innehåller.** Först utifrån vad som hände — en rad, en rubrik, ett event — och
-nu också utifrån vem som frågar.
-
 ## Nästa övning
 
 Sortera så att nyast ligger först. Titta sedan på adressfältet.
