@@ -11,7 +11,7 @@ Räknaren i rubriken stämmer igen direkt när du lägger till en todo.
 | `hx-swap-oob` | Ska det här elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
 Räknaren går inte att laga med `hx-target`. Det attributet pekar ut **ett**
-ställe, och svaret behöver hamna på två.
+ställe, och svaret behöver på något sätt uppdatera två ställen på sidan.
 
 Återigen låter vi servern bestämma var svaret ska hamna — den här gången varje
 del för sig.
