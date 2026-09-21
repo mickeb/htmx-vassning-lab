@@ -35,9 +35,9 @@ adress — av skäl vi tittar på i nästa övning.
 
 ### 1. Låt `/todo-app` svara på två sätt
 
-En adress kan svara olika beroende på vem som frågar. htmx skickar en header som
-heter `HX-Request` i varje request den gör: den är alltid `true` när den finns,
-och saknas när webbläsaren hämtar sidan själv. Det räcker för att servern ska
+En adress kan svara olika beroende på vem som frågar. htmx skickar headern
+`HX-Request` i varje request den gör: den är alltid `true` när den finns, och
+saknas när webbläsaren hämtar sidan själv. Det räcker för att servern ska
 kunna svara på samma adress på två sätt.
 
 !!! note "Den här gången *läser* servern en header"
