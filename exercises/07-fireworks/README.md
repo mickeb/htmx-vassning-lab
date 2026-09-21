@@ -6,36 +6,16 @@ När den sista todon bockas av smäller fyrverkerier över sidan.
 
 ## Användbara headers
 
-**Ett bibliotek till, genom import map:en.** `fireworks-js` blir en rad till i
-tabellen du skrev i övning 1, och importeras sedan med sitt namn.
-
-**Servern bestämmer när det ska firas.** Hittills har varje svar varit HTML som
-bytts in någonstans på sidan. Nu ska ett svar också kunna säga *att något har
-inträffat* — att det inte finns några todos kvar att bocka av — utan att säga
-vad sidan ska göra åt det.
-
-Det görs med en HTTP-header i svaret:
-
-```http
-HX-Trigger: fireworks
-```
-
-htmx läser headern när svaret är insatt och utlöser en händelse med det namnet.
-Vad `fireworks` betyder är upp till webbläsaren att avgöra.
-
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `HX-Trigger` | Vilken händelse ska utlösas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
 
-!!! warning "I htmx 2 fanns tre headers"
-
-    `HX-Trigger`, `HX-Trigger-After-Swap` och `HX-Trigger-After-Settle`. htmx 4
-    har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser du de
-    två längre namnen i ett exempel läser du htmx 2-material.
-
 ## Steg
 
 ### 1. Lägg till fireworks-js i import map:en
+
+`fireworks-js` blir en rad till i tabellen du skrev i övning 1, och importeras
+sedan med sitt namn.
 
 Lägg till filen i import map:en i `views/layout.liquid`, under namnet
 `fireworks-js`:
@@ -61,6 +41,26 @@ https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js
     sista raden och hela tabellen slutar gälla — även raden för htmx.
 
 ### 2. Lyssna på händelsen
+
+Servern bestämmer när det ska firas. Hittills har varje svar varit HTML som
+satts in någonstans på sidan. Nu ska ett svar också kunna säga *att något har
+inträffat* — att det inte finns några todos kvar att bocka av — utan att säga
+vad sidan ska göra åt det.
+
+Det görs med en HTTP-header i svaret:
+
+```http
+HX-Trigger: fireworks
+```
+
+htmx läser headern när svaret är insatt och utlöser en händelse med det namnet.
+Vad `fireworks` betyder är upp till webbläsaren att avgöra.
+
+!!! warning "I htmx 2 fanns tre headers"
+
+    `HX-Trigger`, `HX-Trigger-After-Swap` och `HX-Trigger-After-Settle`. htmx 4
+    har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser
+    du de två längre namnen i ett exempel läser du htmx 2-material.
 
 I samma fil, i modulskriptet som redan importerar htmx. Importera `Fireworks`,
 ge biblioteket en yta att rita på, och starta när händelsen `fireworks` kommer.
