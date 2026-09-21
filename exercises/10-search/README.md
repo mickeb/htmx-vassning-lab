@@ -221,9 +221,9 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 
 ## Och sen då?
 
-Det var den sista övningen. Appen du började med laddade om sidan vid varje
-sortering, varje tillagd todo, varje bock och varje sökning. Nu gör den inget av
-det — och du har inte skrivit en rad kod som bygger HTML i webbläsaren.
+Det var den sista övningen. Appen du började med har nu blivit något många
+skulle tro är skrivet med React eller Vue — och du har inte skrivit en rad kod
+som bygger HTML i webbläsaren.
 
 Det som togs bort var sidladdningarna. Det som fick vara kvar var allt annat:
 länkar med adresser, formulär som postar, svar som är HTML, och en server som
