@@ -927,7 +927,7 @@ sista raden och hela tabellen slutar gälla — även raden för htmx.</p>
 satts in någonstans på sidan. Nu ska ett svar också kunna säga <em>att något har
 inträffat</em> — att det inte finns några todos kvar att bocka av — utan att säga
 vad sidan ska göra åt det.</p>
-<p>Det görs med en HTTP-header i svaret:</p>
+<p>Det görs med HTTP-headern <code>HX-Trigger</code> i svaret:</p>
 <div class="language-http highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">HX-Trigger: fireworks</span>
 </code></pre></div>
 <p>htmx läser headern när svaret är insatt och utlöser ett event med det namnet.

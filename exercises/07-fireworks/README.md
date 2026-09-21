@@ -47,7 +47,7 @@ satts in någonstans på sidan. Nu ska ett svar också kunna säga *att något h
 inträffat* — att det inte finns några todos kvar att bocka av — utan att säga
 vad sidan ska göra åt det.
 
-Det görs med en HTTP-header i svaret:
+Det görs med HTTP-headern `HX-Trigger` i svaret:
 
 ```http
 HX-Trigger: fireworks
