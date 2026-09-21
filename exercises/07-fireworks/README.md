@@ -65,7 +65,7 @@ Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 Öppna `src/app.ts` och leta upp hanteraren för
 `POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
 renderar svaret. `stats.allComplete` är sant när det finns todos och alla är
-klara — en tom lista är inte klar, ingenting är inte allt.
+klara — en tom lista ger alltså inga fyrverkerier.
 
 Lägg till en rad som sätter headern när allt är avbockat.
 
