@@ -18,13 +18,6 @@ docker compose up
 Öppna sedan [http://localhost:4000](http://localhost:4000). Därifrån når du
 både övningarna och labbmiljön.
 
-!!! tip "Du behöver inte kunna Node"
-
-    Allt som har med Node att göra körs inne i Docker-containern. Du redigerar
-    filer i din egen editor och laddar om sidan i webbläsaren — det är hela
-    arbetsflödet. Behöver en övning ett terminalkommando utöver
-    `docker compose up` är det ett misstag i övningen, inte i din miljö.
-
 ## Det labbet redan ger dig
 
 Allt körs i en Docker-container, så du behöver inte installera något själv.
