@@ -37,10 +37,6 @@ hända i sidan utan att servern blandas in. Skillnaden är formen. `hx-live`
 binder ett attribut till ett uttryck; _hyperscript är ett litet språk för
 beteende, skrivet i ett `_`-attribut.
 
-Dokumentationssajten för htmx 4 är byggd med det. Öppnar du dess HTML hittar du
-rader som `_="install Scrollspy"` och
-`_="on click set #mobile-navigation-toggle.checked to false"`.
-
 - [_hyperscript](https://hyperscript.org/) — språket och dess dokumentation
 
 ## Alpine.js
