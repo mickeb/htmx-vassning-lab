@@ -14,6 +14,13 @@ rubriken — utan att sidan laddas om.
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 | `hx-swap-oob` | Ska elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
+## Steg
+
+### 1. Lägg attributen på Complete-knappen
+
+Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
+`/todo-app/fragments/todos/{{ todo.id }}/complete`.
+
 Inget av attributen är nytt. Det nya är **värdet** på `hx-target`:
 
 ```
@@ -26,16 +33,6 @@ inte radens `id`.
 
 Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
 är klar ska knappen vara borta och en bock stå i stället.
-
-`todo-header.liquid` renderar redan `hx-swap-oob` när den får `oob: true`,
-sedan övning 5 — du använder det utan att röra filen.
-
-## Steg
-
-### 1. Lägg attributen på Complete-knappen
-
-Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
-`/todo-app/fragments/todos/{{ todo.id }}/complete`.
 
 ??? tip "Ledtråd — vilket `hx-swap`?"
 
@@ -56,12 +53,13 @@ bock — men räknaren står still igen.
 
 ### 2. Räkna om rubriken
 
-Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
-raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
-skicka med `oob: true` på samma sätt.
+Det här kan du redan. `views/todo-app/complete-response.liquid` renderar bara
+`todo-app/todo-row`. Rendera `todo-app/todo-header` också, och skicka med
+`oob: true` — precis som du gjorde med svaret för en ny todo.
 
-`stats` finns redan i templaten, och `todo-header.liquid` förbereddes i övning 5,
-så du behöver inte röra den filen.
+`stats` finns redan i templaten, och `todo-header.liquid` renderar redan
+`hx-swap-oob` när den får `oob: true` sedan övning 5 — så du behöver inte röra
+den filen.
 
 !!! warning "Ordningen är inte valfri här: raden måste komma först"
 
