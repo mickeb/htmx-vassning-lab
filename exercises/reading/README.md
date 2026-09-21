@@ -9,22 +9,14 @@ hittar inte handlar om htmx 2.
 
 ## Morph — ändrar i stället för att ersätta
 
-Hittills har allt htmx satt in i labbet kastat bort det gamla innehållet och
-satt dit nytt. `outerHTML` betyder just det: elementet byts ut.
+Där `outerHTML` kastar bort det gamla elementet och sätter dit ett nytt,
+*jämför* en morph det nya innehållet med det som redan står i DOM:en och
+ändrar bara det som skiljer. Element som inte ändrats behåller sin identitet,
+och därmed fokus, textmarkering och rullningsläge.
 
-htmx 4 har två `hx-swap`-värden till, `innerMorph` och `outerMorph`. De *jämför*
-det nya innehållet med det som redan står i DOM:en och ändrar bara det som
-skiljer. Element som inte ändrats behåller sin identitet — och därmed fokus,
-textmarkering, rullningsläge, pågående videouppspelning och allt annat som
-hänger på just det elementet.
-
-Algoritmen heter **idiomorph** och är skriven av samma personer som htmx. I htmx
-2 var den ett tillägg man fick installera; i htmx 4 ligger den i kärnan.
-
-Det går att prova direkt i labbet: byt `hx-swap="outerHTML"` mot
-`hx-swap="outerMorph"` på sökfältet. Listan beter sig likadant — skillnaden är
-att raderna som blir kvar efter en filtrering är *samma* element som förut,
-inte nya med samma innehåll.
+Algoritmen heter **idiomorph**. I htmx 2 var den ett tillägg man fick
+installera; i htmx 4 ligger den i kärnan, som `hx-swap`-värdena `innerMorph`
+och `outerMorph`.
 
 - [Morphing Guide](https://four.htmx.org/docs/morphing-swaps-guide) — vad en
   morph gör, när det är värt det, och hur man styr det

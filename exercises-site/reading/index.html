@@ -741,19 +741,13 @@ bocka av.</p>
 <p>Allt nedan gäller <strong>htmx 4</strong>. Söker du på egen hand: kontrollera att det du
 hittar inte handlar om htmx 2.</p>
 <h2 id="morph-andrar-i-stallet-for-att-ersatta">Morph — ändrar i stället för att ersätta<a class="headerlink" href="#morph-andrar-i-stallet-for-att-ersatta" title="Permanent link">&para;</a></h2>
-<p>Hittills har allt htmx satt in i labbet kastat bort det gamla innehållet och
-satt dit nytt. <code>outerHTML</code> betyder just det: elementet byts ut.</p>
-<p>htmx 4 har två <code>hx-swap</code>-värden till, <code>innerMorph</code> och <code>outerMorph</code>. De <em>jämför</em>
-det nya innehållet med det som redan står i DOM:en och ändrar bara det som
-skiljer. Element som inte ändrats behåller sin identitet — och därmed fokus,
-textmarkering, rullningsläge, pågående videouppspelning och allt annat som
-hänger på just det elementet.</p>
-<p>Algoritmen heter <strong>idiomorph</strong> och är skriven av samma personer som htmx. I htmx
-2 var den ett tillägg man fick installera; i htmx 4 ligger den i kärnan.</p>
-<p>Det går att prova direkt i labbet: byt <code>hx-swap="outerHTML"</code> mot
-<code>hx-swap="outerMorph"</code> på sökfältet. Listan beter sig likadant — skillnaden är
-att raderna som blir kvar efter en filtrering är <em>samma</em> element som förut,
-inte nya med samma innehåll.</p>
+<p>Där <code>outerHTML</code> kastar bort det gamla elementet och sätter dit ett nytt,
+<em>jämför</em> en morph det nya innehållet med det som redan står i DOM:en och
+ändrar bara det som skiljer. Element som inte ändrats behåller sin identitet,
+och därmed fokus, textmarkering och rullningsläge.</p>
+<p>Algoritmen heter <strong>idiomorph</strong>. I htmx 2 var den ett tillägg man fick
+installera; i htmx 4 ligger den i kärnan, som <code>hx-swap</code>-värdena <code>innerMorph</code>
+och <code>outerMorph</code>.</p>
 <ul>
 <li><a href="https://four.htmx.org/docs/morphing-swaps-guide">Morphing Guide</a> — vad en
   morph gör, när det är värt det, och hur man styr det</li>
