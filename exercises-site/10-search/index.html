@@ -908,14 +908,6 @@
 sökordet hamnar i adressen utan att fylla historiken med ett steg per
 tangenttryckning.</p>
 <h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
-<p>Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
-knapp, precis som den alltid har varit — och den får förbli det. Attributen
-hamnar på <strong>fältet</strong>, inte på formuläret, så att söka medan man skriver läggs
-ovanpå det som redan fungerar.</p>
-<p>Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
-<strong>Search</strong> gör fortfarande en vanlig sidladdning till samma adress. Det är inte
-något som ska byggas bort; det är reservvägen, synlig.</p>
-<p>Två nya attribut, och två till längre fram i övningen:</p>
 <table>
 <thead>
 <tr>
@@ -937,11 +929,18 @@ något som ska byggas bort; det är reservvägen, synlig.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-sok-medan-du-skriver">1. Sök medan du skriver<a class="headerlink" href="#1-sok-medan-du-skriver" title="Permanent link">&para;</a></h3>
+<p>Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
+knapp, precis som den alltid har varit — och den får förbli det. Attributen
+hamnar på <strong>fältet</strong>, inte på formuläret, så att söka medan man skriver läggs
+ovanpå det som redan fungerar.</p>
+<p>Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
+<strong>Search</strong> gör fortfarande en vanlig sidladdning till samma adress. Det är inte
+något som ska byggas bort; det är reservvägen, synlig.</p>
 <p>Sökningen är en <code>GET</code> hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
 lämnade tillbaka till sorteringen i förra övningen.</p>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-sok-medan-du-skriver">1. Sök medan du skriver<a class="headerlink" href="#1-sok-medan-du-skriver" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg attributen på
 <code>&lt;input class="search__input"&gt;</code>. Adressen är <code>/todo-app</code> — samma som
 sorteringen hämtar sedan övning 8.</p>

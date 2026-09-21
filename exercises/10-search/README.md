@@ -8,6 +8,15 @@ tangenttryckning.
 
 ## Användbara attribut
 
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `hx-trigger` | Vad ska utlösa requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
+| `hx-include` | Vad mer än elementets eget värde ska skickas med? | [Referens](https://four.htmx.org/reference/attributes/hx-include) |
+
+## Steg
+
+### 1. Sök medan du skriver
+
 Sökrutan är det sista som laddar om sidan. Den är ett vanligt formulär med en
 knapp, precis som den alltid har varit — och den får förbli det. Attributen
 hamnar på **fältet**, inte på formuläret, så att söka medan man skriver läggs
@@ -17,20 +26,9 @@ Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 **Search** gör fortfarande en vanlig sidladdning till samma adress. Det är inte
 något som ska byggas bort; det är reservvägen, synlig.
 
-Två nya attribut, och två till längre fram i övningen:
-
-| Attribut | Svarar på | Dokumentation |
-| --- | --- | --- |
-| `hx-trigger` | Vad ska utlösa requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
-| `hx-include` | Vad mer än elementets eget värde ska skickas med? | [Referens](https://four.htmx.org/reference/attributes/hx-include) |
-
 Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
 lämnade tillbaka till sorteringen i förra övningen.
-
-## Steg
-
-### 1. Sök medan du skriver
 
 Öppna `views/todo-app/search-form.liquid` och lägg attributen på
 `<input class="search__input">`. Adressen är `/todo-app` — samma som
