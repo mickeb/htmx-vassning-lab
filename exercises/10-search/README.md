@@ -1,4 +1,4 @@
-# 9. Sök medan du skriver
+# 10. Sök medan du skriver
 
 ## Mål
 
@@ -34,7 +34,7 @@ lämnade tillbaka till sorteringen i förra övningen.
 
 Öppna `views/todo-app/search-form.liquid` och lägg attributen på
 `<input class="search__input">`. Adressen är `/todo-app` — samma som
-sorteringen hämtar sedan övning 7.
+sorteringen hämtar sedan övning 8.
 
 Utlösaren är det nya:
 
@@ -269,7 +269,7 @@ Sorteringsfältet i formuläret låg utanför det som byttes. Det var korrekt n�
 sidan laddades och blev inaktuellt vid första sorteringen, utan att någonting
 såg fel ut.
 
-Det är samma idé som räknaren i övning 4, en nivå ner: där skickade servern med
+Det är samma idé som räknaren i övning 5, en nivå ner: där skickade servern med
 det som ändrades så att sidan inte behövde räkna själv. Här måste den skicka med
 det som ändrades så att nästa förfrågan kan citera tillbaka det rätt.
 

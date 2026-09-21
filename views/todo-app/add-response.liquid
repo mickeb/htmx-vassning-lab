@@ -1,8 +1,8 @@
 {% comment %}
-  The answer to "a todo was added": the new row, on its own.
+  The answer to "a todo was added": the whole list, in its new state.
 
-  It is a file of its own rather than rendering todo-row directly, so that what
-  this action returns can change without touching every other place a row is
+  It is a file of its own rather than rendering todo-table directly, so that what
+  this action returns can change without touching every other place the list is
   drawn.
 {% endcomment %}
-{% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
+{% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}

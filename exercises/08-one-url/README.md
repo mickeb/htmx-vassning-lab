@@ -1,4 +1,4 @@
-# 7. En adress, två svar
+# 8. En adress, två svar
 
 ## Mål
 
@@ -33,8 +33,8 @@ själv. Det räcker för att servern ska kunna svara på samma adress på två s
 
 !!! note "Den här gången *läser* servern en header"
 
-    I övning 3 satte servern `HX-Retarget` och `HX-Reswap` i svaret, och i
-    övning 6 `HX-Trigger`. Det var servern som talade om något för htmx.
+    I övning 3 satte servern `HX-Retarget` i svaret, och i övning 7
+    `HX-Trigger`. Det var servern som talade om något för htmx.
 
     Nu går det åt andra hållet: htmx talar om något för servern, och servern
     väljer vad den skickar tillbaka. Samma sorts mekanism, motsatt riktning.

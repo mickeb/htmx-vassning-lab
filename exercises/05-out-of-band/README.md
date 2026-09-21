@@ -1,4 +1,4 @@
-# 4. Uppdatera två ställen med ett svar
+# 5. Uppdatera två ställen med ett svar
 
 ## Mål
 
@@ -7,9 +7,10 @@ extra förfrågan.
 
 ## Bakgrund
 
-Förra övningen lämnade något trasigt. Du lade till en rad, men rubriken högst
-upp renderades aldrig om, så den räknar fortfarande som om den nya todon inte
-fanns.
+Att lägga till en todo lämnade två saker trasiga. Den ena lagade du nyss. Den
+andra står kvar: rubriken högst upp renderas aldrig om, så den räknar fortfarande
+som om den nya todon inte fanns. Rubriken ligger utanför `#todo-table`, och bytet
+rör bara det som låg innanför.
 
 Det går inte att lösa med `hx-target`. Det attributet pekar ut **ett** ställe,
 och svaret behöver hamna på två.
@@ -59,30 +60,24 @@ elementet.
 
 ### 2. Skicka med rubriken i svaret
 
-Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara den nya
-raden. Rendera rubriken också, **efter** raden, och be om märkningen med
-`oob: true`.
+Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara listan.
+Rendera rubriken också, och be om märkningen med `oob: true`.
 
 `stats` finns redan tillgängligt i mallen — hanteraren skickar med det — så du
 behöver inte ändra något i `app.ts`.
 
-!!! warning "Ordningen är inte valfri: raden måste komma först"
+!!! note "Ordningen spelar ingen roll här"
 
-    Svaret innehåller ett `<tr>` och en `<header>`. Lägger du rubriken först
-    försvinner raden — och den försvinner **tyst**.
+    Svaret innehåller en `<div>` och en `<header>`, och båda två är giltig HTML
+    var som helst. Lägg dem i vilken ordning du vill.
 
-    Det är inte htmx som är kinkig, utan webbläsarens HTML-tolk. Ett `<tr>` som
-    inte står i ett tabellsammanhang är ogiltigt, så tolken kastar taggarna och
-    behåller texten. Det som hamnar i listan blir en lös textsnutt:
-    `2026-09-19 16:27:38 Köp mjölk`. Inget felmeddelande, ingenting i konsolen.
-
-    htmx plockar ut out-of-band-elementen ur svaret innan det byts in — men då
-    är raden redan förstörd, ett steg tidigare.
+    Det är värt att nämna, för det gäller inte alltid. Nästa övning skickar
+    tillbaka ett `<tr>`, och där är ordningen plötsligt inte valfri.
 
 ??? example "Facit"
 
     ```liquid
-    {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
+    {% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}
     {% render 'todo-app/todo-header', stats: stats, oob: true %}
     ```
 
@@ -94,10 +89,6 @@ behöver inte ändra något i `app.ts`.
 - [ ] Det finns fortfarande bara en rubrik på sidan.
 - [ ] Sidan du laddar om innehåller ingen `hx-swap-oob` — bara svaren gör det.
       Titta i sidkällan, och i svaret i nätverkspanelen.
-
-??? question "Raden försvann, och det står lös text i listan"
-
-    Rubriken ligger före raden i `add-response.liquid`. Byt plats på dem.
 
 ??? question "Räknaren ändras inte"
 

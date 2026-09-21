@@ -16,7 +16,7 @@
         <link rel="prev" href="../02-sorting/">
       
       
-        <link rel="next" href="../04-out-of-band/">
+        <link rel="next" href="../04-stale-state/">
       
       
         
@@ -472,6 +472,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#svaret-var-listan-inte-raden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Svaret var listan, inte raden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#servern-bestamde-var-svaret-skulle-hamna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -524,14 +535,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-out-of-band/" class="md-nav__link">
+      <a href="../04-stale-state/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Out-of-band-byten
+    4. Ser du buggen?
   
 
     
@@ -551,14 +562,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-complete/" class="md-nav__link">
+      <a href="../05-out-of-band/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Bocka av en todo
+    5. Out-of-band-byten
   
 
     
@@ -578,14 +589,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-fireworks/" class="md-nav__link">
+      <a href="../06-complete/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Fyrverkerier
+    6. Bocka av en todo
   
 
     
@@ -605,14 +616,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-one-url/" class="md-nav__link">
+      <a href="../07-fireworks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. En adress, två svar
+    7. Fyrverkerier
   
 
     
@@ -632,14 +643,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-url-state/" class="md-nav__link">
+      <a href="../08-one-url/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Ge tillbaka adressen
+    8. En adress, två svar
   
 
     
@@ -659,14 +670,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-search/" class="md-nav__link">
+      <a href="../09-url-state/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Sök medan du skriver
+    9. Ge tillbaka adressen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sök medan du skriver
   
 
     
@@ -855,6 +893,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#svaret-var-listan-inte-raden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Svaret var listan, inte raden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#servern-bestamde-var-svaret-skulle-hamna" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -911,13 +960,16 @@
 
 <h1 id="3-lagg-till-en-todo-utan-sidladdning">3. Lägg till en todo utan sidladdning<a class="headerlink" href="#3-lagg-till-en-todo-utan-sidladdning" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>En ny todo hamnar längst ned i listan utan att sidan laddas om, och ett tomt
-formulär ger ett synligt fel på rätt ställe.</p>
+<p>En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
+ger ett synligt fel på rätt ställe.</p>
 <h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
 <p>Formuläret postar redan. Det har <code>method="post"</code> och <code>action="/todo-app/todos"</code>,
 och det fungerar. Precis som i förra övningen tar du inte bort det — du lägger
 htmx bredvid det.</p>
-<p>En sak skiljer sig från sorteringen, och den är värd att lägga på minnet:</p>
+<p><strong>Det här är samma form som sorteringen</strong>, med en <code>POST</code> i stället för en <code>GET</code>.
+Du pekar ut en adress, ett mål och ett byte, och svaret är hela listan i sitt nya
+skick. Ingen ny idé, med andra ord — men två saker skiljer, och båda är värda att
+lägga på minnet.</p>
 <div class="admonition note">
 <p class="admonition-title">En <code>POST</code> bär med sig hela formuläret</p>
 <p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
@@ -928,7 +980,8 @@ tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 <p>Reglerna för vad som skickas med står i
 <a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>.</p>
 </div>
-<p>Två attribut känner du igen. Ett är nytt, och ett värde är nytt:</p>
+<p>Den andra skillnaden kommer i steg 2: servern kan behöva säga emot attributen du
+sätter nu.</p>
 <table>
 <thead>
 <tr>
@@ -955,9 +1008,9 @@ tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 </tr>
 </tbody>
 </table>
-<p>Målet är <code>#todo-rows</code> — <code>&lt;tbody&gt;</code>, inte hela tabellen — och bytet är
-<code>beforeend</code>, som lägger svaret sist bland det som redan finns i stället för att
-ersätta något.</p>
+<p>Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code> — samma två värden som på
+sorteringslänken, och av samma skäl: det som kommer tillbaka <strong>är</strong>
+<code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet, inte hamna inuti det.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-appnew-todo-formliquid">1. Öppna <code>views/todo-app/new-todo-form.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-appnew-todo-formliquid" title="Permanent link">&para;</a></h3>
 <p>Lägg de tre attributen på <code>&lt;form&gt;</code>-taggen. Adressen är
@@ -966,59 +1019,53 @@ ersätta något.</p>
 <summary>Facit</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-rows&quot;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;beforeend&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 </details>
-<p>Lägg till en todo. Den dyker upp längst ned, utan att sidan laddas om.</p>
+<p>Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.</p>
 <div class="admonition warning">
-<p class="admonition-title">Det här förutsätter en sak</p>
-<p>Att listan är sorterad äldst först och att ingen sökning är aktiv. Att
-lägga något sist är bara rätt om listan går i den ordningen. Sortera
-nyast först och lägg till en todo till, så ser du vad som händer.</p>
-<p>Övningen rättar inte det. Det är värt att veta att det är så, inte att
-bygga bort här.</p>
+<p class="admonition-title">Har du en sökning igång händer ingenting synligt</p>
+<p>Svaret är <strong>listan</strong>, inte raden. Servern renderar den lista du tittar på —
+och söker du efter något som den nya todon inte matchar, så ingår den inte i
+listan. Den skapas, men den syns inte.</p>
+<p>Och räknaren högst upp rör sig inte heller, eftersom ingenting uppdaterar den
+ännu. Resultatet är att du trycker <strong>Add</strong> och absolut ingenting på sidan
+ändras, trots att allt gick rätt till.</p>
+<p>Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
+det är vad det innebär att svaret är en lista och inte en rad.</p>
 </div>
 <h3 id="2-skicka-in-ett-tomt-falt">2. Skicka in ett tomt fält<a class="headerlink" href="#2-skicka-in-ett-tomt-falt" title="Permanent link">&para;</a></h3>
 <p>Töm textfältet och tryck <strong>Add</strong>.</p>
 <p>Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
-Problemet är var svaret hamnar. Titta noga — formuläret dyker upp <strong>inne i
-listan</strong>, som en ny rad.</p>
-<p>Det är väntat. Attributen du nyss satte säger "lägg svaret sist i <code>#todo-rows</code>",
+Problemet är var svaret hamnar. Titta noga — formuläret ersätter <strong>hela listan</strong>.</p>
+<p>Det är väntat. Attributen du nyss satte säger "byt ut <code>#todo-table</code> mot svaret",
 och servern har inget sätt att säga emot dem från HTML:en.</p>
 <h3 id="3-lat-servern-styra-svaret">3. Låt servern styra svaret<a class="headerlink" href="#3-lat-servern-styra-svaret" title="Permanent link">&para;</a></h3>
-<p>Två HTTP-headers i svaret, satta i <code>src/app.ts</code>, i felgrenen för
+<p>En HTTP-header i svaret, satt i <code>src/app.ts</code>, i felgrenen för
 <code>POST /fragments/todos</code>.</p>
-<p><code>HX-Retarget</code> byter ut <code>hx-target</code> för det här ena svaret. <code>HX-Reswap</code> byter ut
-<code>hx-swap</code>.</p>
-<details class="tip">
-<summary>Varför räcker det inte med <code>HX-Retarget</code>?</summary>
-<p>För att <code>hx-swap="beforeend"</code> fortfarande gäller. Du pekar om svaret till
-formuläret och lägger det sedan <strong>sist inuti</strong> formuläret — ett formulär
-inuti ett formulär. Du behöver båda: en för vart, en för hur.</p>
-</details>
+<p><code>HX-Retarget</code> byter ut <code>hx-target</code> för det här ena svaret.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;HX-Retarget&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#new-todo-form&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;HX-Reswap&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;outerHTML&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">422</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/new-todo-form&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">return</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">422</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/new-todo-form&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="k">return</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
 </code></pre></div>
 </details>
 <p>Textfältet kommer tillbaka med röd ram. Inget felmeddelande — ramen är hela
 felrapporten.</p>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> En ny todo läggs till sist i listan utan att sidan laddas om.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> En ny todo dyker upp i listan utan att sidan laddas om.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar en <code>POST</code> till <code>/todo-app/fragments/todos</code>, och inget dokument.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ett tomt fält ger röd ram <strong>på formuläret</strong>, inte ett formulär inne i listan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ett tomt fält ger röd ram <strong>på formuläret</strong>, och listan står kvar.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Efter felet går det att skriva något och lägga till som vanligt.</li>
 </ul>
 <details class="question">
-<summary>Formuläret hamnar fortfarande i listan</summary>
-<p>Då saknas <code>HX-Reswap</code>. Se den fällbara rutan i steg 3.</p>
+<summary>Formuläret ersatte hela listan</summary>
+<p>Då saknas <code>HX-Retarget</code>. Se steg 3.</p>
 </details>
 <details class="question">
 <summary>Ingenting händer alls vid tomt fält</summary>
@@ -1026,24 +1073,48 @@ felrapporten.</p>
 byter innehåll även på felsvar. Om du har läst att htmx hoppar över svar
 som inte är <code>2xx</code> så stämmer det för htmx 2, inte för htmx 4.</p>
 </details>
+<details class="question">
+<summary>Sorteringen försvinner när jag lägger till något</summary>
+<p>Den gör det, och det är inget du har gjort fel. Sortera nyast först, lägg
+till en todo, och listan hoppar tillbaka till äldst först.</p>
+<p>Det är en riktig bugg, den är äldre än den här övningen, och nästa övning
+handlar om den. Låt den vara så länge.</p>
+</details>
+<details class="question">
+<summary>Ingenting händer alls när jag lägger till</summary>
+<p>Kontrollera först om du har något i sökrutan. Se varningen i steg 1.</p>
+</details>
 <h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
+<h3 id="svaret-var-listan-inte-raden">Svaret var listan, inte raden<a class="headerlink" href="#svaret-var-listan-inte-raden" title="Permanent link">&para;</a></h3>
+<p>Du bad inte om att få en rad tillagd. Du postade en todo och fick tillbaka <strong>hur
+listan ser ut nu</strong>.</p>
+<p>Ingen kod på sidan räknade ut var den nya todon skulle ligga. Ingenting behövde
+veta hur listan var sorterad eller vad som söktes — servern renderade en korrekt
+lista, och sidan blev den.</p>
+<p>Hade svaret varit en rad som lades sist hade den hamnat på fel ställe så fort
+listan gick i någon annan ordning, och webbläsaren hade inte haft något sätt att
+märka det.</p>
+<p>Det förutsätter förstås att servern får veta hur du sorterat. Det är värt att
+hålla i minnet.</p>
 <h3 id="servern-bestamde-var-svaret-skulle-hamna">Servern bestämde var svaret skulle hamna<a class="headerlink" href="#servern-bestamde-var-svaret-skulle-hamna" title="Permanent link">&para;</a></h3>
-<p><code>hx-target</code> och <code>hx-swap</code> står i HTML:en och gäller normalt varje gång. Men
-elementet kan inte veta i förväg att just den här förfrågan skulle misslyckas.</p>
-<p>Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som
-klienten får tolka, skickade den tillbaka <strong>det som skulle visas</strong> plus två
-headers som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
-<code>if</code>-sats och ingen kunskap om vad som kunde gå fel.</p>
+<p><code>hx-target</code> står i HTML:en och gäller normalt varje gång. Men elementet kan inte
+veta i förväg att just den här förfrågan skulle misslyckas.</p>
+<p>Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som klienten
+får tolka, skickade den tillbaka <strong>det som skulle visas</strong> plus en header som
+säger var det hör hemma. Klienten behövde ingen felhantering, ingen <code>if</code>-sats och
+ingen kunskap om vad som kunde gå fel.</p>
 <h3 id="raknaren-stammer-inte-langre">Räknaren stämmer inte längre<a class="headerlink" href="#raknaren-stammer-inte-langre" title="Permanent link">&para;</a></h3>
-<p>Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du
-lade till något.</p>
+<p>Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du lade
+till något.</p>
 <p>Det är inte ett misstag i övningen. Du bytte ut en del av sidan, och räknaren är
-en annan del som ingen bad om. Den ligger inte i närheten av raden som ändrades,
-och den är inte det förfrågan siktade på.</p>
-<p><strong>Nästa övning handlar om precis det.</strong> Låt den vara trasig så länge.</p>
+en annan del som ingen bad om. Den ligger utanför <code>#todo-table</code>, och den är inte
+det förfrågan siktade på.</p>
+<p>Den lagas snart, men inte härnäst. <strong>Det är nämligen två saker som är trasiga nu</strong>,
+och den andra är svårare att få syn på: sortera nyast först och lägg till en todo.</p>
+<p>Låt båda vara så länge.</p>
 <h2 id="extra-tom-textfaltet">Extra: töm textfältet<a class="headerlink" href="#extra-tom-textfaltet" title="Permanent link">&para;</a></h2>
-<p>Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas
-aldrig om när allt gick bra — servern skickar bara raden — så fältet behåller
+<p>Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
+om när allt gick bra — servern skickar listan, inte formuläret — så fältet behåller
 det du skrev.</p>
 <p>Ett attribut på formuläret räcker.</p>
 <table>
@@ -1062,8 +1133,8 @@ det du skrev.</p>
 </tr>
 </tbody>
 </table>
-<p><code>hx-on</code> kopplar JavaScript till en händelse direkt på elementet. Attributet
-heter <code>hx-on:</code> plus händelsens namn — <code>hx-on:click</code> för ett vanligt klick.</p>
+<p><code>hx-on</code> kopplar JavaScript till en händelse direkt på elementet. Attributet heter
+<code>hx-on:</code> plus händelsens namn — <code>hx-on:click</code> för ett vanligt klick.</p>
 <p>htmx egna händelser heter i sin tur <code>htmx:after:swap</code>, <code>htmx:before:request</code> och
 så vidare. Fullt utskrivet blir attributet alltså <code>hx-on:htmx:after:swap</code>. Och
 eftersom varje htmx-händelse börjar med <code>htmx:</code> går det att utelämna ordet men
@@ -1082,8 +1153,8 @@ inget felmeddelande. Koden körs bara aldrig.</p>
 <summary>Facit</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>      <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-rows&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;beforeend&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>      <span class="na">hx-on::after:swap</span><span class="o">=</span><span class="s">&quot;this.reset()&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><code>this</code> är formuläret och <code>reset()</code> är vanlig DOM — ingenting htmx-specifikt.</p>
@@ -1091,8 +1162,8 @@ inget felmeddelande. Koden körs bara aldrig.</p>
 <div class="admonition note">
 <p class="admonition-title">htmx 4 har också en längre form</p>
 <p><code>hx-on:&lt;händelse&gt;="kod"</code> är den enkla formen, och den du kommer se mest.
-htmx 4 lade till en längre som bygger på <code>hx-trigger</code>:s grammatik och
-skiljer händelsen från koden med <code>-&gt;</code>:</p>
+htmx 4 lade till en längre som bygger på <code>hx-trigger</code>:s grammatik och skiljer
+händelsen från koden med <code>-&gt;</code>:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>hx-on=&quot;<span class="p">&lt;</span><span class="nt">händelse</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">filter</span><span class="p">&gt;</span>] <span class="p">&lt;</span><span class="nt">modifierare</span><span class="p">&gt;</span> -&gt; <span class="p">&lt;</span><span class="nt">kod</span><span class="p">&gt;</span>&quot;
 </code></pre></div>
 <p>Den kan filtrera på händelsen, lyssna på ett annat element med <code>from:</code>, köra
@@ -1102,10 +1173,16 @@ Inget av det behövs här. Formerna står bredvid varandra i
 </div>
 <p>Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
 Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
-det här fältet. Hade du i stället lagt en lyssnare på <code>document</code> hade
-halvskriven text försvunnit varje gång någon sorterade.</p>
+det här fältet. Hade du i stället lagt en lyssnare på <code>document</code> hade halvskriven
+text försvunnit varje gång någon sorterade.</p>
 <p>Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
 formuläret.</p>
+<div class="admonition note">
+<p class="admonition-title">Den röda ramen då?</p>
+<p>Den ligger kvar efter ett lyckat tillägg, av samma skäl: formuläret renderas
+aldrig om. <code>reset()</code> återställer fältets värde men tar inte bort en
+CSS-klass. Det är inget övningen bygger bort.</p>
+</div>
 
 
 
@@ -1158,13 +1235,13 @@ formuläret.</p>
         
         
           
-          <a href="../04-out-of-band/" class="md-footer__link md-footer__link--next" aria-label="Nästa: 4. Out-of-band-byten">
+          <a href="../04-stale-state/" class="md-footer__link md-footer__link--next" aria-label="Nästa: 4. Ser du buggen?">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Nästa
               </span>
               <div class="md-ellipsis">
-                4. Out-of-band-byten
+                4. Ser du buggen?
               </div>
             </div>
             <div class="md-footer__button md-icon">

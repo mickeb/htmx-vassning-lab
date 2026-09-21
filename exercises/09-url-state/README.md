@@ -1,4 +1,4 @@
-# 8. Ge tillbaka adressen
+# 9. Ge tillbaka adressen
 
 ## Mål
 
@@ -33,7 +33,7 @@ sidans nuvarande adress, inte något du skriver.
 
 !!! note "Det här hade inte fungerat före förra övningen"
 
-    Fram till övning 7 hämtade sorteringslänken
+    Fram till övning 8 hämtade sorteringslänken
     `/todo-app/fragments/table?sort=desc`. Den adressen fungerar — men det som
     kommer tillbaka är en naken tabell utan sida omkring. Att lägga den i
     adressfältet hade gett en kollega en ostylad tabell.

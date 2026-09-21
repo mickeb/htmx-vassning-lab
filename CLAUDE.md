@@ -147,7 +147,8 @@ JSON is most of the idea.
 
 `todo-table.liquid` always emits **both** the table and the "No todos to show."
 message; a `:has()` rule in `app.css` picks which one is visible. The table is
-hidden rather than removed, so there is always something in the DOM to target.
+hidden rather than removed so that `#todo-table` survives an empty result — it is
+what swaps target, and an element that disappears cannot be swapped into.
 
 Do not replace this with a Liquid conditional.
 

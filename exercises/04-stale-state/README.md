@@ -1,0 +1,179 @@
+# 4. Ser du buggen?
+
+## Mål
+
+Sorteringen överlever att du lägger till en todo.
+
+## Bakgrund
+
+Den här övningen bygger ingenting nytt. Den lagar något som varit trasigt ett
+tag, och poängen ligger i *varför* det var trasigt.
+
+Börja med att se det hända.
+
+!!! note "Gör det här först"
+
+    1. Sortera **nyast först** — klicka på **Created at**.
+    2. Lägg till en todo.
+
+    Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
+
+Ingen sidladdning, inget felmeddelande, ingenting i konsolen. Servern svarade
+`200` och htmx bytte in svaret precis som den skulle. Ändå är resultatet fel.
+
+### Vad som faktiskt skickades
+
+Öppna nätverkspanelen och gör om det. Titta på kroppen i `POST`-förfrågan när du
+lägger till todon:
+
+```
+sort=asc&q=&description=Köp mjölk
+```
+
+`asc` — trots att tabellen framför dig är sorterad fallande.
+
+Servern gjorde alltså inget fel. Den blev ombedd om en lista i stigande ordning
+och renderade en lista i stigande ordning. Felet ligger i förfrågan, inte i
+svaret.
+
+??? question "Varför skickar formuläret `asc`?"
+
+    Formuläret har ett dolt fält:
+
+    ```html
+    <input type="hidden" name="sort" value="{{ sort }}">
+    ```
+
+    Liquid skrev in värdet när **sidan** renderades, och då var sorteringen
+    `asc`.
+
+    Sorteringslänken byter bara ut `#todo-table`. Formuläret ligger utanför, i
+    en helt annan del av sidan, och ingenting har renderat om det sedan
+    sidladdningen. Fältet säger fortfarande `asc`, och det kommer att göra det
+    hur många gånger du än sorterar.
+
+Regeln är värd att ta med sig, och den gäller långt utanför det här labbet:
+
+!!! warning "Bara det som bytet renderar om är aktuellt"
+
+    Allt annat på sidan bär kvar det värde det hade när det senast renderades.
+
+    Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt.
+    Ett gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när
+    något skickar iväg det.
+
+!!! note "Appen var aldrig fel — förrän sidladdningen försvann"
+
+    Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
+    aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
+    formuläret om tillsammans med allt annat. Fältet var färskt varje gång, hela
+    tiden, ända tills du gjorde något åt sorteringen.
+
+    Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
+    sidan byts ut blir "renderas om" plötsligt något som gäller vissa element och
+    inte andra — och ingenting i markupen säger vilka.
+
+    Buggen syntes först när du la till en todo, en övning senare. Så brukar det
+    se ut: den kommer fram någon helt annanstans än där den bor.
+
+## Steg
+
+Fältet måste ligga någonstans som renderas om när du sorterar — alltså **inuti
+`#todo-table`**. Men det måste fortfarande skickas med formuläret, och
+formuläret ligger någon annanstans på sidan.
+
+Det finns ett HTML-attribut för precis det.
+
+| Attribut | Svarar på | Dokumentation |
+| --- | --- | --- |
+| `form` | Vilket formulär hör det här fältet till? | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#form) |
+
+Ett fält med `form="nånting"` tillhör formuläret vars `id` är `nånting` — var i
+dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls.
+
+!!! tip "Det här är inte htmx"
+
+    `form` är ett vanligt HTML-attribut och har funnits sedan HTML5. Webbläsaren
+    räknar fältet till formuläret när den bygger förfrågan, oavsett vem som
+    skickar den.
+
+    Det syns sällan i kod, och det är synd — det löser precis den här sortens
+    problem, och det gör det utan en rad JavaScript.
+
+### Flytta fältet
+
+Öppna `views/todo-app/new-todo-form.liquid` och ta bort raden:
+
+```html
+<input type="hidden" name="sort" value="{{ sort }}">
+```
+
+Öppna sedan `views/todo-app/todo-table.liquid` och lägg in den överst inuti
+`<div class="todo-table" id="todo-table">` — med `form`-attributet som säger
+vilket formulär fältet hör till.
+
+??? tip "Ledtråd"
+
+    `id`:t på formuläret står i `new-todo-form.liquid`. Det är det värdet
+    `form`-attributet ska ha.
+
+??? example "Facit"
+
+    ```html
+    <div class="todo-table" id="todo-table">
+      <input type="hidden" name="sort" value="{{ sort }}" form="new-todo-form">
+    ```
+
+Sortera nyast först och lägg till en todo. Den hamnar överst, och ordningen står
+kvar.
+
+## Klart när
+
+- [ ] Sortera nyast först, lägg till en todo: den hamnar **överst**, och listan
+      står kvar i fallande ordning.
+- [ ] Nätverkspanelen visar `sort=desc` i kroppen på `POST`-förfrågan.
+- [ ] Sorteringen fungerar fortfarande som vanligt, fram och tillbaka.
+- [ ] Räknaren i rubriken är fortfarande fel — den lagas inte här.
+
+??? question "Fältet skickas inte alls"
+
+    Kontrollera att `form`-attributets värde är exakt samma sträng som
+    formulärets `id`. Matchar de inte tillhör fältet inget formulär, och då
+    skickas det med ingenting — tyst.
+
+??? question "Kan jag inte bara lägga fältet inuti formuläret igen?"
+
+    Jo, och då är du tillbaka där du började. Fältet måste ligga i den del av
+    sidan som byts ut, annars renderas det aldrig om.
+
+## Det som faktiskt hände
+
+### Färskhet är en fråga om var något bor
+
+Fältet flyttade inte för att det passade bättre där. Det flyttade för att
+`#todo-table` är det enda på sidan som renderas om när du sorterar.
+
+Det är en ny sorts fråga att ställa om en sida. Inte "var ligger det här
+snyggast?" utan **"vad renderar om det här, och när?"** Varje värde på sidan har
+ett svar på den frågan, och det avgör om värdet går att lita på.
+
+### Lösningen var inte htmx
+
+Det är värt att stanna vid. Problemet uppstod i en htmx-app, och det hade gått
+att lösa med htmx — ett attribut som drar in värdet från någon annanstans, eller
+ett svar som renderar om formuläret vid sidan av.
+
+Men det behövdes inte. HTML hade redan ett sätt att säga "det här fältet hör till
+det där formuläret", och det fungerar likadant med eller utan htmx på sidan.
+Stäng av JavaScript och formuläret skickar fortfarande med rätt sortering.
+
+Det är samma tanke som hela sessionen vilar på, fast från andra hållet: htmx
+lägger inte till förmågor som webben saknar. Det tar bort sidladdningen och låter
+resten vara som det var — inklusive det du redan kan.
+
+## Och sen?
+
+Sorteringen överlever ett tillägg. Kvar står räknaren i rubriken, som fortfarande
+inte har räknat om sig sedan du la till något.
+
+Nästa övning tar den — och svaret på den är inte HTML den här gången.

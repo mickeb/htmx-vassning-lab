@@ -20,4 +20,4 @@ länkarna och formulären själva.
 
 Backa appen till sitt ursprungliga skick först — som den såg ut innan övning 1 —
 och experimentera sedan med `hx-boost` och `hx-select`. Boost förutsätter att
-adressen svarar med en hel sida, och det gör den inte längre efter övning 7.
+adressen svarar med en hel sida, och det gör den inte längre efter övning 8.

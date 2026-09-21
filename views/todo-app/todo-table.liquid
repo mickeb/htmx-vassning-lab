@@ -2,9 +2,9 @@
   The whole list: sortable header, one row per todo, and the message shown when
   there are none. Needs only `todos`, `q` and `sort`, so it renders standalone.
 
-  #todo-table and #todo-rows are always present, even with nothing in the list.
-  The empty message is a plain sibling of the table -- app.css decides which of
-  the two is visible, so no server round trip is involved.
+  #todo-table is always present, even with nothing in the list, because it is
+  what swaps target. The empty message is a plain sibling of the table -- app.css
+  decides which of the two is visible, so no server round trip is involved.
 {% endcomment %}
 <div class="todo-table" id="todo-table">
   <table class="todo-table__table">

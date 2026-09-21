@@ -33,12 +33,13 @@ nav:
   - 1. Installera htmx: 01-import-map/README.md
   - 2. Sortering: 02-sorting/README.md
   - 3. Lägg till en todo: 03-adding/README.md
-  - 4. Out-of-band-byten: 04-out-of-band/README.md
-  - 5. Bocka av en todo: 05-complete/README.md
-  - 6. Fyrverkerier: 06-fireworks/README.md
-  - 7. En adress, två svar: 07-one-url/README.md
-  - 8. Ge tillbaka adressen: 08-url-state/README.md
-  - 9. Sök medan du skriver: 09-search/README.md
+  - 4. Ser du buggen?: 04-stale-state/README.md
+  - 5. Out-of-band-byten: 05-out-of-band/README.md
+  - 6. Bocka av en todo: 06-complete/README.md
+  - 7. Fyrverkerier: 07-fireworks/README.md
+  - 8. En adress, två svar: 08-one-url/README.md
+  - 9. Ge tillbaka adressen: 09-url-state/README.md
+  - 10. Sök medan du skriver: 10-search/README.md
   - Extrauppgifter: extra/README.md
   - Vidare läsning: reading/README.md
 

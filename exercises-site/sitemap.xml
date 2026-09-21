@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://localhost:4000/exercises/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>http://localhost:4000/exercises/01-import-map/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>http://localhost:4000/exercises/02-sorting/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>http://localhost:4000/exercises/03-adding/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/04-out-of-band/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/04-stale-state/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/05-complete/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/05-out-of-band/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/06-fireworks/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/06-complete/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/07-one-url/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/07-fireworks/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/08-url-state/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/08-one-url/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>http://localhost:4000/exercises/09-search/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <loc>http://localhost:4000/exercises/09-url-state/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:4000/exercises/10-search/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>http://localhost:4000/exercises/extra/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>http://localhost:4000/exercises/reading/</loc>
-         <lastmod>2026-09-20</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
 </urlset>

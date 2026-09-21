@@ -63,18 +63,20 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    länk, och en sidladdning försvinner.
 3. [**Lägg till en todo utan sidladdning**](03-adding/README.md) — en `POST`
    som bär med sig formuläret, och ett fel som servern placerar själv.
-4. [**Uppdatera två ställen med ett svar**](04-out-of-band/README.md) — ett svar
+4. [**Ser du buggen?**](04-stale-state/README.md) — ett värde som blivit
+   gammalt utan att synas, och ett HTML-attribut som löser det.
+5. [**Uppdatera två ställen med ett svar**](05-out-of-band/README.md) — ett svar
    där varje del bär med sig var den hör hemma.
-5. [**Bocka av en todo**](05-complete/README.md) — ett mål som beskriver ett
+6. [**Bocka av en todo**](06-complete/README.md) — ett mål som beskriver ett
    släktskap i stället för en adress.
-6. [**Fyrverkerier när allt är klart**](06-fireworks/README.md) — en HTTP-header
+7. [**Fyrverkerier när allt är klart**](07-fireworks/README.md) — en HTTP-header
    som säger att något hänt, inte vad sidan ska göra åt det.
-7. [**En adress, två svar**](07-one-url/README.md) — servern läser en header och
+8. [**En adress, två svar**](08-one-url/README.md) — servern läser en header och
    svarar olika beroende på vem som frågar.
-8. [**Ge tillbaka adressen**](08-url-state/README.md) — ett attribut som lämnar
+9. [**Ge tillbaka adressen**](09-url-state/README.md) — ett attribut som lämnar
    tillbaka något webben alltid har haft.
-9. [**Sök medan du skriver**](09-search/README.md) — en förfrågan bär exakt det
-   du lägger i den, och det du lägger i den måste renderas om.
+10. [**Sök medan du skriver**](10-search/README.md) — en förfrågan bär exakt det
+    du lägger i den, och det du lägger i den måste renderas om.
 
 Blir det tid över finns [**extrauppgifter**](extra/README.md) — uppgifter utan
 ledtrådar och facit — och [**vidare läsning**](reading/README.md) om delar av

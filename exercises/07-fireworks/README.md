@@ -1,4 +1,4 @@
-# 6. Fyrverkerier när allt är klart 🎆
+# 7. Fyrverkerier när allt är klart 🎆
 
 ## Mål
 
@@ -154,7 +154,7 @@ fyrverkerierna helt och den fortsätter skicka headern. Det som firas är ett
 beslut på servern; hur det firas är ett beslut i frontend, och de två känner
 bara till ett ord gemensamt.
 
-Det är samma uppdelning som i övning 4, en nivå upp. Där bar svaret med sig var
+Det är samma uppdelning som i övning 5, en nivå upp. Där bar svaret med sig var
 varje del hörde hemma. Här bär det med sig att något hänt, och ingenting om vad
 som ska ske.
 

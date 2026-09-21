@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="http://localhost:4000/exercises/05-complete/">
+        <link rel="canonical" href="http://localhost:4000/exercises/05-out-of-band/">
       
       
-        <link rel="prev" href="../04-out-of-band/">
+        <link rel="prev" href="../04-stale-state/">
       
       
-        <link rel="next" href="../06-fireworks/">
+        <link rel="next" href="../06-complete/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>5. Bocka av en todo - HTMX-vassning — övningar</title>
+        <title>5. Out-of-band-byten - HTMX-vassning — övningar</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-bocka-av-en-todo" class="md-skip">
+        <a href="#5-uppdatera-tva-stallen-med-ett-svar" class="md-skip">
           Gå till innehållet
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Bocka av en todo
+              5. Out-of-band-byten
             
           </span>
         </div>
@@ -344,14 +344,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-out-of-band/" class="md-nav__link">
+      <a href="../04-stale-state/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Out-of-band-byten
+    4. Ser du buggen?
   
 
     
@@ -387,7 +387,7 @@
   <span class="md-ellipsis">
     
   
-    5. Bocka av en todo
+    5. Out-of-band-byten
   
 
     
@@ -405,7 +405,7 @@
   <span class="md-ellipsis">
     
   
-    5. Bocka av en todo
+    5. Out-of-band-byten
   
 
     
@@ -465,10 +465,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-lagg-attributen-pa-complete-knappen" class="md-nav__link">
+  <a href="#1-lat-rubriken-kunna-markas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Lägg attributen på Complete-knappen
+        1. Låt rubriken kunna märkas
       
     </span>
   </a>
@@ -476,10 +476,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-rakna-om-rubriken" class="md-nav__link">
+  <a href="#2-skicka-med-rubriken-i-svaret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Räkna om rubriken
+        2. Skicka med rubriken i svaret
       
     </span>
   </a>
@@ -511,45 +511,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#malet-beskrev-ett-slaktskap-inte-en-adress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Målet beskrev ett släktskap, inte en adress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rubriken-var-inte-en-ny-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rubriken var inte en ny idé
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
-      
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -567,14 +528,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-fireworks/" class="md-nav__link">
+      <a href="../06-complete/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Fyrverkerier
+    6. Bocka av en todo
   
 
     
@@ -594,14 +555,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-one-url/" class="md-nav__link">
+      <a href="../07-fireworks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. En adress, två svar
+    7. Fyrverkerier
   
 
     
@@ -621,14 +582,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-url-state/" class="md-nav__link">
+      <a href="../08-one-url/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Ge tillbaka adressen
+    8. En adress, två svar
   
 
     
@@ -648,14 +609,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-search/" class="md-nav__link">
+      <a href="../09-url-state/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Sök medan du skriver
+    9. Ge tillbaka adressen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sök medan du skriver
   
 
     
@@ -783,10 +771,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-lagg-attributen-pa-complete-knappen" class="md-nav__link">
+  <a href="#1-lat-rubriken-kunna-markas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Lägg attributen på Complete-knappen
+        1. Låt rubriken kunna märkas
       
     </span>
   </a>
@@ -794,10 +782,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-rakna-om-rubriken" class="md-nav__link">
+  <a href="#2-skicka-med-rubriken-i-svaret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Räkna om rubriken
+        2. Skicka med rubriken i svaret
       
     </span>
   </a>
@@ -829,45 +817,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Det som faktiskt hände">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#malet-beskrev-ett-slaktskap-inte-en-adress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Målet beskrev ett släktskap, inte en adress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rubriken-var-inte-en-ny-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rubriken var inte en ny idé
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#och-sen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Och sen?
-      
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -887,23 +836,19 @@
 
 
 
-<h1 id="5-bocka-av-en-todo">5. Bocka av en todo<a class="headerlink" href="#5-bocka-av-en-todo" title="Permanent link">&para;</a></h1>
+<h1 id="5-uppdatera-tva-stallen-med-ett-svar">5. Uppdatera två ställen med ett svar<a class="headerlink" href="#5-uppdatera-tva-stallen-med-ett-svar" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>Ett klick på <strong>Complete</strong> markerar raden som klar och uppdaterar räknaren — utan
-att sidan laddas om.</p>
+<p>Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
+extra förfrågan.</p>
 <h2 id="bakgrund">Bakgrund<a class="headerlink" href="#bakgrund" title="Permanent link">&para;</a></h2>
-<p>Knappen sitter redan i ett formulär som postar. Samma utgångsläge som när du
-lade till en todo, och samma grepp: htmx bredvid det som redan fungerar.</p>
-<p>Två saker skiljer.</p>
-<p><strong>Hela raden byts ut, inte en del av den.</strong> Att bocka av är enkelriktat — när
-todon är klar ska knappen vara borta och en bock stå i stället. Servern skickar
-tillbaka raden i sitt nya skick, och den ska ersätta den gamla.</p>
-<p><strong>Målet är inte ett <code>id</code> den här gången.</strong> Varje rad har visserligen ett eget
-<code>id</code>, men du behöver det inte. <code>hx-target</code> förstår också <em>relativa</em> uttryck:</p>
-<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
-</code></pre></div>
-<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde förfrågan".
-Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
+<p>Att lägga till en todo lämnade två saker trasiga. Den ena lagade du nyss. Den
+andra står kvar: rubriken högst upp renderas aldrig om, så den räknar fortfarande
+som om den nya todon inte fanns. Rubriken ligger utanför <code>#todo-table</code>, och bytet
+rör bara det som låg innanför.</p>
+<p>Det går inte att lösa med <code>hx-target</code>. Det attributet pekar ut <strong>ett</strong> ställe,
+och svaret behöver hamna på två.</p>
+<p>Lösningen vänder på frågan. I stället för att förfrågan bestämmer var allt ska
+hamna får en del av <strong>svaret</strong> säga var just den hör hemma.</p>
 <table>
 <thead>
 <tr>
@@ -914,99 +859,104 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>hx-post</code></td>
-<td>Vilken adress ska postas till?</td>
-<td><a href="https://four.htmx.org/reference/attributes/hx-post">Referens</a></td>
-</tr>
-<tr>
-<td><code>hx-target</code></td>
-<td>Var i sidan ska svaret in?</td>
-<td><a href="https://four.htmx.org/reference/attributes/hx-target">Referens</a></td>
-</tr>
-<tr>
-<td><code>hx-swap</code></td>
-<td>Hur ska det sättas in?</td>
-<td><a href="https://four.htmx.org/reference/attributes/hx-swap">Referens</a></td>
-</tr>
-<tr>
 <td><code>hx-swap-oob</code></td>
-<td>Ska elementet hamna någon annanstans än i målet?</td>
+<td>Ska det här elementet hamna någon annanstans än i målet?</td>
 <td><a href="https://four.htmx.org/reference/attributes/hx-swap-oob">Referens</a></td>
 </tr>
 </tbody>
 </table>
-<p>Inget av attributen är nytt. Det nya är värdet <code>closest tr</code>. Rubriken kan redan
-märkas out of band sedan förra övningen — du använder det utan att röra
-<code>todo-header.liquid</code>.</p>
+<p><code>oob</code> står för <em>out of band</em> — vid sidan av. Ett element i svaret som är märkt
+<code>hx-swap-oob="true"</code> placeras inte där bytet skulle ha lagt det. htmx letar upp
+elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
-<p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
-<code>/todo-app/fragments/todos/{{ todo.id }}/complete</code>.</p>
-<details class="tip">
-<summary>Ledtråd — vilket byte?</summary>
-<p>Raden som kommer tillbaka ska <em>ersätta</em> den gamla raden, inte hamna inuti
-den. Samma bytesläge som du satte på tabellen i övning 2.</p>
-</details>
+<h3 id="1-lat-rubriken-kunna-markas">1. Låt rubriken kunna märkas<a class="headerlink" href="#1-lat-rubriken-kunna-markas" title="Permanent link">&para;</a></h3>
+<p>Öppna <code>views/todo-app/todo-header.liquid</code>. <code>&lt;header&gt;</code>-taggen har redan
+<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska den kunna bära
+<code>hx-swap-oob="true"</code> — men bara när den skickas som en del av ett svar.</p>
+<p>Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
+en del av svaret du bygger i nästa steg. Märkningen hör till svaret, inte till
+elementet.</p>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;button button--small&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos/{{ todo.id }}/complete&quot;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;closest tr&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>Complete<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;header class=&quot;todo-header&quot; id=&quot;todo-header&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">oob</span><span class="w"> </span><span class="p">%}</span> hx-swap-oob=&quot;true&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;
 </code></pre></div>
+<p><code>oob</code> är ingenting Liquid känner till i förväg — det är bara ett värde som
+den som renderar mallen kan skicka med. Gör ingen det blir villkoret falskt
+och attributet uteblir.</p>
 </details>
-<p>Klicka på <strong>Complete</strong> på någon rad. Den stryks över och knappen byts mot en
-bock — men räknaren står still igen.</p>
-<h3 id="2-rakna-om-rubriken">2. Räkna om rubriken<a class="headerlink" href="#2-rakna-om-rubriken" title="Permanent link">&para;</a></h3>
-<p>Det här kan du redan. <code>views/todo-app/complete-response.liquid</code> skickar bara
-raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
-be om märkningen på samma sätt.</p>
-<p><code>stats</code> finns redan i mallen, och <code>todo-header.liquid</code> är redan förberedd sedan
-förra övningen, så du behöver inte röra den filen.</p>
-<div class="admonition warning">
-<p class="admonition-title">Raden först — igen</p>
-<p>Samma regel som förra övningen, av samma skäl: ett <code>&lt;tr&gt;</code> som inte står
-först i svaret överlever inte webbläsarens HTML-tolk.</p>
+<div class="admonition note">
+<p class="admonition-title">Varför inte sätta attributet rakt av?</p>
+<p>För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
+Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
+<code>hx-swap-oob</code> i svar som byts in, inte i sidan som redan ligger där.</p>
+<p>Men en sida kan också <em>vara</em> ett svar. Den dagen den är det börjar en
+märkning som ligger kvar gälla på ett ställe där ingen bett om den, och det
+som försvinner gör det tyst.</p>
+</div>
+<h3 id="2-skicka-med-rubriken-i-svaret">2. Skicka med rubriken i svaret<a class="headerlink" href="#2-skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h3>
+<p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara listan.
+Rendera rubriken också, och be om märkningen med <code>oob: true</code>.</p>
+<p><code>stats</code> finns redan tillgängligt i mallen — hanteraren skickar med det — så du
+behöver inte ändra något i <code>app.ts</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Ordningen spelar ingen roll här</p>
+<p>Svaret innehåller en <code>&lt;div&gt;</code> och en <code>&lt;header&gt;</code>, och båda två är giltig HTML
+var som helst. Lägg dem i vilken ordning du vill.</p>
+<p>Det är värt att nämna, för det gäller inte alltid. Nästa övning skickar
+tillbaka ett <code>&lt;tr&gt;</code>, och där är ordningen plötsligt inte valfri.</p>
 </div>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-row&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">todo</span><span class="o">:</span><span class="w"> </span>todo<span class="p">,</span><span class="w"> </span><span class="na">q</span><span class="o">:</span><span class="w"> </span>q<span class="p">,</span><span class="w"> </span><span class="na">sort</span><span class="o">:</span><span class="w"> </span>sort<span class="w"> </span><span class="p">%}</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="p">,</span><span class="w"> </span><span class="na">oob</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">todos</span><span class="o">:</span><span class="w"> </span>todos<span class="p">,</span><span class="w"> </span><span class="na">q</span><span class="o">:</span><span class="w"> </span>q<span class="p">,</span><span class="w"> </span><span class="na">sort</span><span class="o">:</span><span class="w"> </span>sort<span class="w"> </span><span class="p">%}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="p">,</span><span class="w"> </span><span class="na">oob</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Complete</strong> stryker över raden och ersätter knappen med en bock.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Räknaren räknar ner med ett.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan, och inget dokument.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Antalet rader i listan är oförändrat — raden byttes ut, inte tillagd.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Räknaren i rubriken ändras direkt när du lägger till en todo.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan, inte två.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan laddas inte om.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Det finns fortfarande bara en rubrik på sidan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan du laddar om innehåller ingen <code>hx-swap-oob</code> — bara svaren gör det.
+      Titta i sidkällan, och i svaret i nätverkspanelen.</li>
 </ul>
 <details class="question">
-<summary>Ingenting händer när jag klickar</summary>
-<p>Kontrollera att attributen sitter på <code>&lt;button&gt;</code> och inte på <code>&lt;form&gt;</code>, och
-att adressen innehåller <code>/fragments/</code>.</p>
-</details>
-<details class="question">
-<summary>Raden försvann och det står lös text i listan</summary>
-<p>Rubriken ligger före raden i <code>complete-response.liquid</code>.</p>
+<summary>Räknaren ändras inte</summary>
+<p>Titta först på svaret i nätverkspanelen. Står det ingen <code>hx-swap-oob</code> i
+rubriken där, så saknas <code>oob: true</code> i <code>add-response.liquid</code>.</p>
+<p>Står den där matchar htmx på <code>id</code>: kontrollera att det är exakt
+<code>todo-header</code>, och att attributet hamnar på <code>&lt;header&gt;</code>-taggen och inte på
+något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.</p>
 </details>
 <h2 id="det-som-faktiskt-hande">Det som faktiskt hände<a class="headerlink" href="#det-som-faktiskt-hande" title="Permanent link">&para;</a></h2>
-<h3 id="malet-beskrev-ett-slaktskap-inte-en-adress">Målet beskrev ett släktskap, inte en adress<a class="headerlink" href="#malet-beskrev-ett-slaktskap-inte-en-adress" title="Permanent link">&para;</a></h3>
-<p><code>closest tr</code> pekar inte ut en specifik rad. Det beskriver var raden finns i
-förhållande till knappen, och det stämmer i varje rad utan att någon behöver
-hålla reda på vilken.</p>
-<p>Det är samma tanke som resten av övningarna, en nivå ner: ingenting på klienten
-behöver veta <em>vilken</em> todo som bockades av. Knappen vet var den sitter.</p>
-<h3 id="rubriken-var-inte-en-ny-ide">Rubriken var inte en ny idé<a class="headerlink" href="#rubriken-var-inte-en-ny-ide" title="Permanent link">&para;</a></h3>
-<p>Du löste den med ett verktyg du redan hade. Svaret på "den här todon är klar"
-bär med sig allt som ändrades av det, och räknaren hittar sin plats själv.</p>
-<p>Lägg märke till att <code>oob: true</code> står i svaret, inte i rubriken. Två olika svar
-ber om samma märkning var för sig, och rubriken själv vet ingenting om vare sig
-det ena eller det andra.</p>
-<h2 id="och-sen">Och sen?<a class="headerlink" href="#och-sen" title="Permanent link">&para;</a></h2>
-<p>Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
-bockas av.</p>
-<p>Nästa övning gör något av det ögonblicket. Något att fira.</p>
+<p>Ett svar. En förfrågan. Två ställen på sidan uppdaterade.</p>
+<p>Det är värt att stanna vid, för det är inte så det brukar se ut. Det vanliga är
+att klienten vet att "när en todo läggs till måste räknaren också uppdateras" —
+antingen genom en andra förfrågan, eller genom kod som räknar om siffran själv.
+Båda kräver att klienten känner till sambandet.</p>
+<p>Här gör den inte det. Servern fick frågan "lägg till den här todon" och svarade
+med <strong>allt som ändrades av det</strong>, där varje del bär med sig var den hör hemma.
+Ingen kod på sidan vet att en ny todo påverkar en räknare. Om rubriken en dag
+visar något annat, eller om det tillkommer fler delar som ändras, är det ett
+serverbeslut och sidan behöver inte röras.</p>
+<p>Samma idé som i övning 2, från andra hållet: där skickade servern en korrekt
+representation, här skickar den flera på en gång.</p>
+<div class="admonition note">
+<p class="admonition-title">htmx 4 har också ett nyare sätt</p>
+<p><code>hx-swap-oob</code> finns i alla versioner av htmx och är det du kommer stöta på
+i handledningar, forumsvar och andra kodbaser. Därför är det det du lär dig
+här.</p>
+<p>htmx 4 lade till <code>&lt;hx-partial&gt;</code>, som gör samma sak genom att slå in
+innehållet i ett element som pekar ut sitt eget mål:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">hx-partial</span> <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-header&quot;</span> <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ...rubriken...
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;/</span><span class="nt">hx-partial</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Två fördelar: målet står utskrivet i stället för att matchas via <code>id</code>, och
+<code>todo-header.liquid</code> behöver inte ändras alls. Ordningen i svaret spelar
+ingen roll heller. Värt att känna till — men <code>hx-swap-oob</code> är det som
+fungerar överallt.</p>
+</div>
 
 
 
@@ -1042,7 +992,7 @@ bockas av.</p>
       <nav class="md-footer__inner md-grid" aria-label="Sidfot" >
         
           
-          <a href="../04-out-of-band/" class="md-footer__link md-footer__link--prev" aria-label="Föregående: 4. Out-of-band-byten">
+          <a href="../04-stale-state/" class="md-footer__link md-footer__link--prev" aria-label="Föregående: 4. Ser du buggen?">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1052,20 +1002,20 @@ bockas av.</p>
                 Föregående
               </span>
               <div class="md-ellipsis">
-                4. Out-of-band-byten
+                4. Ser du buggen?
               </div>
             </div>
           </a>
         
         
           
-          <a href="../06-fireworks/" class="md-footer__link md-footer__link--next" aria-label="Nästa: 6. Fyrverkerier">
+          <a href="../06-complete/" class="md-footer__link md-footer__link--next" aria-label="Nästa: 6. Bocka av en todo">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Nästa
               </span>
               <div class="md-ellipsis">
-                6. Fyrverkerier
+                6. Bocka av en todo
               </div>
             </div>
             <div class="md-footer__button md-icon">

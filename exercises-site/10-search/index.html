@@ -10,10 +10,10 @@
       
       
       
-        <link rel="canonical" href="http://localhost:4000/exercises/09-search/">
+        <link rel="canonical" href="http://localhost:4000/exercises/10-search/">
       
       
-        <link rel="prev" href="../08-url-state/">
+        <link rel="prev" href="../09-url-state/">
       
       
         <link rel="next" href="../extra/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>9. Sök medan du skriver - HTMX-vassning — övningar</title>
+        <title>10. Sök medan du skriver - HTMX-vassning — övningar</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#9-sok-medan-du-skriver" class="md-skip">
+        <a href="#10-sok-medan-du-skriver" class="md-skip">
           Gå till innehållet
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              9. Sök medan du skriver
+              10. Sök medan du skriver
             
           </span>
         </div>
@@ -344,14 +344,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-out-of-band/" class="md-nav__link">
+      <a href="../04-stale-state/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Out-of-band-byten
+    4. Ser du buggen?
   
 
     
@@ -371,14 +371,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-complete/" class="md-nav__link">
+      <a href="../05-out-of-band/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Bocka av en todo
+    5. Out-of-band-byten
   
 
     
@@ -398,14 +398,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-fireworks/" class="md-nav__link">
+      <a href="../06-complete/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Fyrverkerier
+    6. Bocka av en todo
   
 
     
@@ -425,14 +425,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-one-url/" class="md-nav__link">
+      <a href="../07-fireworks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. En adress, två svar
+    7. Fyrverkerier
   
 
     
@@ -452,14 +452,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-url-state/" class="md-nav__link">
+      <a href="../08-one-url/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Ge tillbaka adressen
+    8. En adress, två svar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-url-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Ge tillbaka adressen
   
 
     
@@ -495,7 +522,7 @@
   <span class="md-ellipsis">
     
   
-    9. Sök medan du skriver
+    10. Sök medan du skriver
   
 
     
@@ -513,7 +540,7 @@
   <span class="md-ellipsis">
     
   
-    9. Sök medan du skriver
+    10. Sök medan du skriver
   
 
     
@@ -953,7 +980,7 @@
 
 
 
-<h1 id="9-sok-medan-du-skriver">9. Sök medan du skriver<a class="headerlink" href="#9-sok-medan-du-skriver" title="Permanent link">&para;</a></h1>
+<h1 id="10-sok-medan-du-skriver">10. Sök medan du skriver<a class="headerlink" href="#10-sok-medan-du-skriver" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>Listan filtreras medan du skriver, sorteringen följer med sökningen, och
 sökordet hamnar i adressen utan att fylla historiken med ett steg per
@@ -995,7 +1022,7 @@ lämnade tillbaka till sorteringen i förra övningen.</p>
 <h3 id="1-sok-medan-du-skriver">1. Sök medan du skriver<a class="headerlink" href="#1-sok-medan-du-skriver" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg attributen på
 <code>&lt;input class="search__input"&gt;</code>. Adressen är <code>/todo-app</code> — samma som
-sorteringen hämtar sedan övning 7.</p>
+sorteringen hämtar sedan övning 8.</p>
 <p>Utlösaren är det nya:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-trigger=&quot;input changed delay:300ms&quot;
 </code></pre></div>
@@ -1205,7 +1232,7 @@ det det beskriver ändras.</p>
 <p>Sorteringsfältet i formuläret låg utanför det som byttes. Det var korrekt när
 sidan laddades och blev inaktuellt vid första sorteringen, utan att någonting
 såg fel ut.</p>
-<p>Det är samma idé som räknaren i övning 4, en nivå ner: där skickade servern med
+<p>Det är samma idé som räknaren i övning 5, en nivå ner: där skickade servern med
 det som ändrades så att sidan inte behövde räkna själv. Här måste den skicka med
 det som ändrades så att nästa förfrågan kan citera tillbaka det rätt.</p>
 <h3 id="adressen-ar-inte-en-etikett">Adressen är inte en etikett<a class="headerlink" href="#adressen-ar-inte-en-etikett" title="Permanent link">&para;</a></h3>
@@ -1258,7 +1285,7 @@ bestämmer vad ett svar innehåller.</p>
       <nav class="md-footer__inner md-grid" aria-label="Sidfot" >
         
           
-          <a href="../08-url-state/" class="md-footer__link md-footer__link--prev" aria-label="Föregående: 8. Ge tillbaka adressen">
+          <a href="../09-url-state/" class="md-footer__link md-footer__link--prev" aria-label="Föregående: 9. Ge tillbaka adressen">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1268,7 +1295,7 @@ bestämmer vad ett svar innehåller.</p>
                 Föregående
               </span>
               <div class="md-ellipsis">
-                8. Ge tillbaka adressen
+                9. Ge tillbaka adressen
               </div>
             </div>
           </a>

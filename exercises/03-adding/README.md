@@ -2,8 +2,8 @@
 
 ## Mål
 
-En ny todo hamnar längst ned i listan utan att sidan laddas om, och ett tomt
-formulär ger ett synligt fel på rätt ställe.
+En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
+ger ett synligt fel på rätt ställe.
 
 ## Bakgrund
 
@@ -11,7 +11,10 @@ Formuläret postar redan. Det har `method="post"` och `action="/todo-app/todos"`
 och det fungerar. Precis som i förra övningen tar du inte bort det — du lägger
 htmx bredvid det.
 
-En sak skiljer sig från sorteringen, och den är värd att lägga på minnet:
+**Det här är samma form som sorteringen**, med en `POST` i stället för en `GET`.
+Du pekar ut en adress, ett mål och ett byte, och svaret är hela listan i sitt nya
+skick. Ingen ny idé, med andra ord — men två saker skiljer, och båda är värda att
+lägga på minnet.
 
 !!! note "En `POST` bär med sig hela formuläret"
 
@@ -25,7 +28,8 @@ En sak skiljer sig från sorteringen, och den är värd att lägga på minnet:
     Reglerna för vad som skickas med står i
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms).
 
-Två attribut känner du igen. Ett är nytt, och ett värde är nytt:
+Den andra skillnaden kommer i steg 2: servern kan behöva säga emot attributen du
+sätter nu.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
@@ -33,9 +37,9 @@ Två attribut känner du igen. Ett är nytt, och ett värde är nytt:
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-Målet är `#todo-rows` — `<tbody>`, inte hela tabellen — och bytet är
-`beforeend`, som lägger svaret sist bland det som redan finns i stället för att
-ersätta något.
+Målet är `#todo-table` och bytet är `outerHTML` — samma två värden som på
+sorteringslänken, och av samma skäl: det som kommer tillbaka **är**
+`<div id="todo-table">`, så det ska ersätta elementet, inte hamna inuti det.
 
 ## Steg
 
@@ -49,52 +53,47 @@ Lägg de tre attributen på `<form>`-taggen. Adressen är
     ```html
     <form class="new-todo" id="new-todo-form" method="post" action="/todo-app/todos"
           hx-post="/todo-app/fragments/todos"
-          hx-target="#todo-rows"
-          hx-swap="beforeend">
+          hx-target="#todo-table"
+          hx-swap="outerHTML">
     ```
 
-Lägg till en todo. Den dyker upp längst ned, utan att sidan laddas om.
+Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
 
-!!! warning "Det här förutsätter en sak"
+!!! warning "Har du en sökning igång händer ingenting synligt"
 
-    Att listan är sorterad äldst först och att ingen sökning är aktiv. Att
-    lägga något sist är bara rätt om listan går i den ordningen. Sortera
-    nyast först och lägg till en todo till, så ser du vad som händer.
+    Svaret är **listan**, inte raden. Servern renderar den lista du tittar på —
+    och söker du efter något som den nya todon inte matchar, så ingår den inte i
+    listan. Den skapas, men den syns inte.
 
-    Övningen rättar inte det. Det är värt att veta att det är så, inte att
-    bygga bort här.
+    Och räknaren högst upp rör sig inte heller, eftersom ingenting uppdaterar den
+    ännu. Resultatet är att du trycker **Add** och absolut ingenting på sidan
+    ändras, trots att allt gick rätt till.
+
+    Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
+    det är vad det innebär att svaret är en lista och inte en rad.
 
 ### 2. Skicka in ett tomt fält
 
 Töm textfältet och tryck **Add**.
 
 Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
-Problemet är var svaret hamnar. Titta noga — formuläret dyker upp **inne i
-listan**, som en ny rad.
+Problemet är var svaret hamnar. Titta noga — formuläret ersätter **hela listan**.
 
-Det är väntat. Attributen du nyss satte säger "lägg svaret sist i `#todo-rows`",
+Det är väntat. Attributen du nyss satte säger "byt ut `#todo-table` mot svaret",
 och servern har inget sätt att säga emot dem från HTML:en.
 
 ### 3. Låt servern styra svaret
 
-Två HTTP-headers i svaret, satta i `src/app.ts`, i felgrenen för
+En HTTP-header i svaret, satt i `src/app.ts`, i felgrenen för
 `POST /fragments/todos`.
 
-`HX-Retarget` byter ut `hx-target` för det här ena svaret. `HX-Reswap` byter ut
-`hx-swap`.
-
-??? tip "Varför räcker det inte med `HX-Retarget`?"
-
-    För att `hx-swap="beforeend"` fortfarande gäller. Du pekar om svaret till
-    formuläret och lägger det sedan **sist inuti** formuläret — ett formulär
-    inuti ett formulär. Du behöver båda: en för vart, en för hur.
+`HX-Retarget` byter ut `hx-target` för det här ena svaret.
 
 ??? example "Facit"
 
     ```ts
     if (!text) {
       res.set('HX-Retarget', '#new-todo-form')
-      res.set('HX-Reswap', 'outerHTML')
       res.status(422).render('todo-app/new-todo-form', { q, sort, error: true })
       return
     }
@@ -105,14 +104,14 @@ felrapporten.
 
 ## Klart när
 
-- [ ] En ny todo läggs till sist i listan utan att sidan laddas om.
+- [ ] En ny todo dyker upp i listan utan att sidan laddas om.
 - [ ] Nätverkspanelen visar en `POST` till `/todo-app/fragments/todos`, och inget dokument.
-- [ ] Ett tomt fält ger röd ram **på formuläret**, inte ett formulär inne i listan.
+- [ ] Ett tomt fält ger röd ram **på formuläret**, och listan står kvar.
 - [ ] Efter felet går det att skriva något och lägga till som vanligt.
 
-??? question "Formuläret hamnar fortfarande i listan"
+??? question "Formuläret ersatte hela listan"
 
-    Då saknas `HX-Reswap`. Se den fällbara rutan i steg 3.
+    Då saknas `HX-Retarget`. Se steg 3.
 
 ??? question "Ingenting händer alls vid tomt fält"
 
@@ -120,33 +119,64 @@ felrapporten.
     byter innehåll även på felsvar. Om du har läst att htmx hoppar över svar
     som inte är `2xx` så stämmer det för htmx 2, inte för htmx 4.
 
+??? question "Sorteringen försvinner när jag lägger till något"
+
+    Den gör det, och det är inget du har gjort fel. Sortera nyast först, lägg
+    till en todo, och listan hoppar tillbaka till äldst först.
+
+    Det är en riktig bugg, den är äldre än den här övningen, och nästa övning
+    handlar om den. Låt den vara så länge.
+
+??? question "Ingenting händer alls när jag lägger till"
+
+    Kontrollera först om du har något i sökrutan. Se varningen i steg 1.
+
 ## Det som faktiskt hände
+
+### Svaret var listan, inte raden
+
+Du bad inte om att få en rad tillagd. Du postade en todo och fick tillbaka **hur
+listan ser ut nu**.
+
+Ingen kod på sidan räknade ut var den nya todon skulle ligga. Ingenting behövde
+veta hur listan var sorterad eller vad som söktes — servern renderade en korrekt
+lista, och sidan blev den.
+
+Hade svaret varit en rad som lades sist hade den hamnat på fel ställe så fort
+listan gick i någon annan ordning, och webbläsaren hade inte haft något sätt att
+märka det.
+
+Det förutsätter förstås att servern får veta hur du sorterat. Det är värt att
+hålla i minnet.
 
 ### Servern bestämde var svaret skulle hamna
 
-`hx-target` och `hx-swap` står i HTML:en och gäller normalt varje gång. Men
-elementet kan inte veta i förväg att just den här förfrågan skulle misslyckas.
+`hx-target` står i HTML:en och gäller normalt varje gång. Men elementet kan inte
+veta i förväg att just den här förfrågan skulle misslyckas.
 
-Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som
-klienten får tolka, skickade den tillbaka **det som skulle visas** plus två
-headers som säger var det hör hemma. Klienten behövde ingen felhantering, ingen
-`if`-sats och ingen kunskap om vad som kunde gå fel.
+Det vet servern. Och i stället för att skicka tillbaka ett felobjekt som klienten
+får tolka, skickade den tillbaka **det som skulle visas** plus en header som
+säger var det hör hemma. Klienten behövde ingen felhantering, ingen `if`-sats och
+ingen kunskap om vad som kunde gå fel.
 
 ### Räknaren stämmer inte längre
 
-Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du
-lade till något.
+Titta på rubriken högst upp. Den säger fortfarande samma antal som innan du lade
+till något.
 
 Det är inte ett misstag i övningen. Du bytte ut en del av sidan, och räknaren är
-en annan del som ingen bad om. Den ligger inte i närheten av raden som ändrades,
-och den är inte det förfrågan siktade på.
+en annan del som ingen bad om. Den ligger utanför `#todo-table`, och den är inte
+det förfrågan siktade på.
 
-**Nästa övning handlar om precis det.** Låt den vara trasig så länge.
+Den lagas snart, men inte härnäst. **Det är nämligen två saker som är trasiga nu**,
+och den andra är svårare att få syn på: sortera nyast först och lägg till en todo.
+
+Låt båda vara så länge.
 
 ## Extra: töm textfältet
 
-Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas
-aldrig om när allt gick bra — servern skickar bara raden — så fältet behåller
+Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
+om när allt gick bra — servern skickar listan, inte formuläret — så fältet behåller
 det du skrev.
 
 Ett attribut på formuläret räcker.
@@ -155,8 +185,8 @@ Ett attribut på formuläret räcker.
 | --- | --- | --- |
 | `hx-on` | Vad ska köras när en händelse inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
 
-`hx-on` kopplar JavaScript till en händelse direkt på elementet. Attributet
-heter `hx-on:` plus händelsens namn — `hx-on:click` för ett vanligt klick.
+`hx-on` kopplar JavaScript till en händelse direkt på elementet. Attributet heter
+`hx-on:` plus händelsens namn — `hx-on:click` för ett vanligt klick.
 
 htmx egna händelser heter i sin tur `htmx:after:swap`, `htmx:before:request` och
 så vidare. Fullt utskrivet blir attributet alltså `hx-on:htmx:after:swap`. Och
@@ -179,8 +209,8 @@ den vanliga.
     ```html
     <form class="new-todo" id="new-todo-form" method="post" action="/todo-app/todos"
           hx-post="/todo-app/fragments/todos"
-          hx-target="#todo-rows"
-          hx-swap="beforeend"
+          hx-target="#todo-table"
+          hx-swap="outerHTML"
           hx-on::after:swap="this.reset()">
     ```
 
@@ -189,8 +219,8 @@ den vanliga.
 !!! note "htmx 4 har också en längre form"
 
     `hx-on:<händelse>="kod"` är den enkla formen, och den du kommer se mest.
-    htmx 4 lade till en längre som bygger på `hx-trigger`:s grammatik och
-    skiljer händelsen från koden med `->`:
+    htmx 4 lade till en längre som bygger på `hx-trigger`:s grammatik och skiljer
+    händelsen från koden med `->`:
 
     ```html
     hx-on="<händelse>[<filter>] <modifierare> -> <kod>"
@@ -203,8 +233,14 @@ den vanliga.
 
 Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
 Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
-det här fältet. Hade du i stället lagt en lyssnare på `document` hade
-halvskriven text försvunnit varje gång någon sorterade.
+det här fältet. Hade du i stället lagt en lyssnare på `document` hade halvskriven
+text försvunnit varje gång någon sorterade.
 
 Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
 formuläret.
+
+!!! note "Den röda ramen då?"
+
+    Den ligger kvar efter ett lyckat tillägg, av samma skäl: formuläret renderas
+    aldrig om. `reset()` återställer fältets värde men tar inte bort en
+    CSS-klass. Det är inget övningen bygger bort.

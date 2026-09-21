@@ -1,6 +1,6 @@
 # Exercises
 
-All nine exercises are written. This file documents the conventions they follow,
+All ten exercises are written. This file documents the conventions they follow,
 so anything added later stays consistent with them.
 
 ## Structure

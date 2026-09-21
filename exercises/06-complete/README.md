@@ -1,4 +1,4 @@
-# 5. Bocka av en todo
+# 6. Bocka av en todo
 
 ## Mål
 
@@ -34,7 +34,7 @@ Ett attribut, samma i varje rad, oavsett vilken rad det är.
 | `hx-swap-oob` | Ska elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
 Inget av attributen är nytt. Det nya är värdet `closest tr`. Rubriken kan redan
-märkas out of band sedan förra övningen — du använder det utan att röra
+märkas out of band sedan övning 5 — du använder det utan att röra
 `todo-header.liquid`.
 
 ## Steg
@@ -67,13 +67,25 @@ Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
 raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
 be om märkningen på samma sätt.
 
-`stats` finns redan i mallen, och `todo-header.liquid` är redan förberedd sedan
-förra övningen, så du behöver inte röra den filen.
+`stats` finns redan i mallen, och `todo-header.liquid` förbereddes i övning 5,
+så du behöver inte röra den filen.
 
-!!! warning "Raden först — igen"
+!!! warning "Ordningen är inte valfri här: raden måste komma först"
 
-    Samma regel som förra övningen, av samma skäl: ett `<tr>` som inte står
-    först i svaret överlever inte webbläsarens HTML-tolk.
+    Förra övningens svar var en tabell, och då kvittade ordningen. Det här svaret
+    innehåller ett `<tr>` och en `<header>`, och lägger du rubriken först
+    försvinner raden — **tyst**.
+
+    Det är inte htmx som är kinkig, utan webbläsarens HTML-tolk. Ett `<tr>` som
+    inte står i ett tabellsammanhang är ogiltigt, så tolken kastar taggarna och
+    behåller texten. Det som hamnar i listan blir en lös textsnutt:
+    `2026-09-21 14:38:52 Köp mjölk`. Inget felmeddelande, ingenting i konsolen.
+
+    Lömskast är att räknaren ändå uppdateras korrekt, så det ser ut som att
+    hälften fungerade.
+
+    htmx plockar ut out-of-band-elementen ur svaret innan det byts in — men då är
+    raden redan förstörd, ett steg tidigare.
 
 ??? example "Facit"
 
@@ -96,7 +108,8 @@ förra övningen, så du behöver inte röra den filen.
 
 ??? question "Raden försvann och det står lös text i listan"
 
-    Rubriken ligger före raden i `complete-response.liquid`.
+    Rubriken ligger före raden i `complete-response.liquid`. Byt plats på dem,
+    och se varningen i steg 2.
 
 ## Det som faktiskt hände
 
