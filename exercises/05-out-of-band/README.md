@@ -29,9 +29,8 @@ upp elementet på sidan som har **samma `id`** och ersätter det.
 `<header>`-taggen har redan `id="todo-header"`, vilket är det htmx matchar på.
 
 Samma template renderas på två ställen: en gång när hela sidan `/todo-app`
-renderas, och en gång inuti svaret du bygger i nästa steg. `hx-swap-oob="true"`
-ska bara komma med i det andra fallet — attributet hör till svaret, inte till
-elementet.
+renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
+todo. `hx-swap-oob="true"` ska bara komma med i fragmentet, inte i sidan.
 
 ??? example "Facit"
 

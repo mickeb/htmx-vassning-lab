@@ -890,9 +890,8 @@ upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersä
 <h3 id="1-oppna-viewstodo-apptodo-headerliquid">1. Öppna <code>views/todo-app/todo-header.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-headerliquid" title="Permanent link">&para;</a></h3>
 <p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.</p>
 <p>Samma template renderas på två ställen: en gång när hela sidan <code>/todo-app</code>
-renderas, och en gång inuti svaret du bygger i nästa steg. <code>hx-swap-oob="true"</code>
-ska bara komma med i det andra fallet — attributet hör till svaret, inte till
-elementet.</p>
+renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
+todo. <code>hx-swap-oob="true"</code> ska bara komma med i fragmentet, inte i sidan.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;header class=&quot;todo-header&quot; id=&quot;todo-header&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">oob</span><span class="w"> </span><span class="p">%}</span> hx-swap-oob=&quot;true&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;
