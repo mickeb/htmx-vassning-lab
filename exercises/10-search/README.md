@@ -100,17 +100,6 @@ data som ska inkluderas i requesten. Peka den på det dolda sorteringsfältet so
 redan ligger inuti `#todo-table` — det du flyttade dit i övning 4. Ge det ett
 `id` först.
 
-!!! warning "Inte fältet i sökformuläret"
-
-    Sökformuläret har också ett dolt sorteringsfält, men det ligger utanför
-    `#todo-table` och renderas aldrig om när du sorterar. Pekar du `hx-include`
-    på det skickas värdet som stod där när sidan laddades, och resultatet ser
-    exakt ut som buggen du just tittade på.
-
-    Samma sak händer om du bakar in sorteringen i adressen —
-    `hx-get="/todo-app?sort={{ sort }}"`. Templaten skriver ut värdet när sidan
-    renderas, och formuläret renderas aldrig om.
-
 ??? example "Facit — `views/todo-app/todo-table.liquid`"
 
     ```html
