@@ -876,8 +876,10 @@ listan byter ordning utan att sidan laddas om.</p>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
 <p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p><code>hx-get</code> hämtar <code>/todo-app/fragments/table</code>. Den routen finns redan och renderar
-ett färdigt fragment — samma tabell som sidan visar, utan sidan runt omkring.</p>
+<p><code>hx-get</code> hämtar
+<a href="http://localhost:4000/todo-app/fragments/table"><code>/todo-app/fragments/table</code></a>.
+Den routen finns redan och renderar ett färdigt fragment — samma tabell som sidan
+visar, utan sidan runt omkring.</p>
 <p><code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>. Fragmentet som kommer
 tillbaka är tabellen i sin helhet — samma <code>&lt;div id="todo-table"&gt;</code> som redan står
 på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; <code>innerHTML</code>
