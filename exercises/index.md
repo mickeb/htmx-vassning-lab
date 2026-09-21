@@ -16,7 +16,7 @@ Labbet ska vara igång. Om du inte har startat det än:
 ```
 
 Öppna sedan [http://localhost:4000](http://localhost:4000). Sidan är en
-självkontroll med fyra indikatorer — server, stilmall, JavaScript och hot
+självkontroll med fyra indikatorer — server, stylesheet, JavaScript och hot
 reload. Alla fyra ska vara gröna innan du går vidare.
 
 !!! tip "Du behöver inte kunna Node"
@@ -35,7 +35,7 @@ sidor, precis som webben fungerade innan JavaScript blev inblandat.
 
 Vid sidan av dem ligger en andra uppsättning **routes**, under
 `/todo-app/fragments/...`. De
-renderar exakt samma Liquid-mallar, men utan sidan runt omkring. De fanns med
+renderar exakt samma templates, men utan sidan runt omkring. De fanns med
 redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
 någon serverkod för att använda dem.
 

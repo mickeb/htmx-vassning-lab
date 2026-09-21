@@ -110,7 +110,7 @@ sak till, och det är den intressanta halvan.
     Resultatet ser exakt ut som buggen du just tittade på.
 
     Samma sak händer om du bakar in sorteringen i adressen —
-    `hx-get="/todo-app?sort={{ sort }}"`. Liquid skriver in värdet när sidan
+    `hx-get="/todo-app?sort={{ sort }}"`. Templaten skriver in värdet när sidan
     renderas, och formuläret renderas inte om.
 
 Lägg därför ett sorteringsfält **inuti** `#todo-table`, som renderas om varje
@@ -178,7 +178,7 @@ innan listan byts. Just nu syns ingenting under tiden.
 | `hx-indicator` | Vilket element ska markeras medan requesten pågår? | [Referens](https://four.htmx.org/reference/attributes/hx-indicator) |
 
 htmx lägger klassen `htmx-request` på elementet under tiden, och tar bort den
-när svaret kommit. Stilmallen som får det att synas kommer från htmx självt:
+när svaret kommit. Den stylesheet som får det att synas kommer från htmx självt:
 
 ```css
 .htmx-indicator { opacity: 0; visibility: hidden }

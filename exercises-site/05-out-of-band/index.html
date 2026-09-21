@@ -889,19 +889,19 @@ upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersä
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-rendera-hx-swap-oob-bara-i-svar">1. Rendera <code>hx-swap-oob</code> bara i svar<a class="headerlink" href="#1-rendera-hx-swap-oob-bara-i-svar" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-header.liquid</code>. <code>&lt;header&gt;</code>-taggen har redan
-<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska mallen rendera
+<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska templaten rendera
 <code>hx-swap-oob="true"</code> på den, men bara när rubriken skickas som en del av ett
 svar.</p>
-<p>Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
+<p>Samma template renderas nämligen på två ställen: som en del av hela sidan, och som
 en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
 elementet.</p>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;header class=&quot;todo-header&quot; id=&quot;todo-header&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">oob</span><span class="w"> </span><span class="p">%}</span> hx-swap-oob=&quot;true&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;
 </code></pre></div>
-<p><code>oob</code> är inget inbyggt i Liquid — det är bara ett värde som den som renderar
-mallen kan skicka med. Gör ingen det blir villkoret falskt och attributet
-uteblir.</p>
+<p><code>oob</code> är inget inbyggt — det är bara ett värde som den som renderar
+template-fragmentet skickar med. Gör ingen det blir villkoret falskt och
+attributet uteblir.</p>
 </details>
 <div class="admonition note">
 <p class="admonition-title">Varför inte sätta attributet rakt av?</p>
@@ -915,7 +915,7 @@ det som försvinner gör det tyst.</p>
 <h3 id="2-skicka-med-rubriken-i-svaret">2. Skicka med rubriken i svaret<a class="headerlink" href="#2-skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara listan.
 Rendera rubriken också, och skicka med <code>oob: true</code>.</p>
-<p><code>stats</code> finns redan tillgängligt i mallen — hanteraren skickar med det — så du
+<p><code>stats</code> finns redan tillgängligt i templaten — hanteraren skickar med det — så du
 behöver inte ändra något i <code>app.ts</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Ordningen spelar ingen roll här</p>

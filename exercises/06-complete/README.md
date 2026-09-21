@@ -60,7 +60,7 @@ Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
 raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
 skicka med `oob: true` på samma sätt.
 
-`stats` finns redan i mallen, och `todo-header.liquid` förbereddes i övning 5,
+`stats` finns redan i templaten, och `todo-header.liquid` förbereddes i övning 5,
 så du behöver inte röra den filen.
 
 !!! warning "Ordningen är inte valfri här: raden måste komma först"

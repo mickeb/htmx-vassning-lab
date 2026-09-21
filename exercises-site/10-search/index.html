@@ -1002,7 +1002,7 @@ så en sortering renderar aldrig om den. Fältet står kvar på det värde det
 hade när sidan laddades, och <code>hx-include</code> skickar lydigt det gamla värdet.</p>
 <p>Resultatet ser exakt ut som buggen du just tittade på.</p>
 <p>Samma sak händer om du bakar in sorteringen i adressen —
-<code>hx-get="/todo-app?sort={{ sort }}"</code>. Liquid skriver in värdet när sidan
+<code>hx-get="/todo-app?sort={{ sort }}"</code>. Templaten skriver in värdet när sidan
 renderas, och formuläret renderas inte om.</p>
 </div>
 <p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som renderas om varje
@@ -1081,7 +1081,7 @@ innan listan byts. Just nu syns ingenting under tiden.</p>
 </tbody>
 </table>
 <p>htmx lägger klassen <code>htmx-request</code> på elementet under tiden, och tar bort den
-när svaret kommit. Stilmallen som får det att synas kommer från htmx självt:</p>
+när svaret kommit. Den stylesheet som får det att synas kommer från htmx självt:</p>
 <div class="language-css highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">.</span><span class="nc">htmx-indicator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">visibility</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">.</span><span class="nc">htmx-request</span><span class="w"> </span><span class="p">.</span><span class="nc">htmx-indicator</span><span class="o">,</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">.</span><span class="nc">htmx-request</span><span class="p">.</span><span class="nc">htmx-indicator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">visibility</span><span class="p">:</span><span class="w"> </span><span class="kc">visible</span><span class="p">;</span><span class="w"> </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-in</span><span class="w"> </span><span class="p">}</span>
