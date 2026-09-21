@@ -112,6 +112,41 @@ code {
   .check__note { grid-column: 1; }
 }
 
+/* --- where to go --------------------------------------------------------- */
+
+/* Same hairline card stack as the checks above: 1px gaps over the border
+   colour, so the rows are separated without drawing a rule for each. */
+.destinations {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.destination {
+  display: block;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+}
+
+.destination:hover,
+.destination:focus-visible {
+  background: var(--accent-soft);
+}
+
+.destination__name { font-weight: 600; color: var(--accent); }
+
+.destination__note {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
 /* --- next steps ---------------------------------------------------------- */
 
 .next { margin-top: 2.5rem; }

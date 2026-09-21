@@ -3,18 +3,24 @@
 {% block content %}
 <main class="page">
   <header class="page__header">
-    <h1 class="page__title">Welcome to the htmx lab</h1>
+    <h1 class="page__title">Välkommen till htmx-vässningen</h1>
     <p class="page__lede">
-      Work through the exercises, and build them into the todo app.
+      Gör övningarna, och bygg in dem i lekplatsen.
     </p>
   </header>
 
   <section class="next">
-    <h2 class="next__title">Where to go</h2>
-    <ul class="next__list">
-      <li><a href="/exercises/">Exercises</a> — start here</li>
-      <li><a href="/todo-app">Todo app</a> — what you will be changing</li>
-    </ul>
+    <h2 class="next__title">Gå vidare till</h2>
+    <div class="destinations">
+      <a class="destination" href="/exercises/">
+        <span class="destination__name">Övningar</span>
+        <span class="destination__note">Börja här. Tio stycken, i ordning.</span>
+      </a>
+      <a class="destination" href="/todo-app">
+        <span class="destination__name">Lekplatsen</span>
+        <span class="destination__note">Todo-appen du bygger om.</span>
+      </a>
+    </div>
   </section>
 </main>
 {% endblock %}

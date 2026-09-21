@@ -16,7 +16,7 @@ docker compose up
 ```
 
 Öppna sedan [http://localhost:4000](http://localhost:4000). Därifrån når du
-både övningarna och todo-appen.
+både övningarna och lekplatsen.
 
 !!! tip "Du behöver inte kunna Node"
 
