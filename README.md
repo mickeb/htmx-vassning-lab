@@ -6,4 +6,4 @@ docker compose down      # stop it
 docker compose down -v   # stop it and delete the containers, volumes and data
 ```
 
-<http://localhost:4000/>
+<http://localhost:4000/exercises/>

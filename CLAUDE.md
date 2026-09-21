@@ -106,7 +106,7 @@ tick once there is not — one column, not a status column plus an action column
 | `views/layout.liquid` | The page shell. The import map goes here. |
 | `views/todo-app/` | The app's templates. **Most exercise work is here.** |
 | `public/css/app.css` | Styles. |
-| `public/js/app.js` | Browser JavaScript. |
+| `public/js/` | Browser JavaScript. Only the hot-reload client lives here. |
 | `src/app.ts` | The todo app's request handlers: parse input, call a lib function, render a template. Some exercises add a branch here. |
 
 And where you do not:
@@ -191,13 +191,12 @@ resolved for Linux, inside the container.
 itself — no build, no manual refresh. Saving under `src/` restarts the server
 first, so it takes a moment longer.
 
-The page at <http://localhost:4000/> is a welcome page linking the exercises
-and the todo app. **It used to be an environment self-check with four
-indicators; that was removed 2026-09-21.** Nothing in the lab reports on its own
-health any more, so a broken stylesheet or a dead SSE stream now looks like the
-app behaving oddly. `public/js/app.js` and `public/js/dev-reload.js` still write
-to `[data-check]` elements and guard on their absence, so restoring the
-indicators means putting the markup back and nothing else.
+**There is no root page.** <http://localhost:4000/> redirects to
+`/exercises/`, which is the entry point and links the todo app itself. It was an
+environment self-check with four indicators until 2026-09-21, then briefly a
+welcome page; both are gone, along with `public/js/app.js` and the page's CSS.
+Nothing in the lab reports on its own health any more, so a broken stylesheet or
+a dead SSE stream now looks like the app behaving oddly.
 
 ## Language
 

@@ -15,16 +15,16 @@ Labbet ska vara igång. Om du inte har startat det än:
 docker compose up
 ```
 
-Öppna sedan [http://localhost:4000](http://localhost:4000). Därifrån når du
-både övningarna och labbmiljön.
+Öppna sedan [labbmiljön](http://localhost:4000/todo-app){:target="_blank" rel="noopener"}
+i en egen flik — du kommer att växla mellan den och de här sidorna hela vägen.
 
-## Det labbet redan ger dig
+## Labbet bygger på
 
 Allt körs i en Docker-container, så du behöver inte installera något själv.
 
 | | | |
 | --- | --- | --- |
-| **Node 24** | körtiden | [nodejs.org](https://nodejs.org/) |
+| **Node 24** | runtime | [nodejs.org](https://nodejs.org/) |
 | **Express 5** | routes och request-hantering | [expressjs.com](https://expressjs.com/) |
 | **Liquid** | templatespråket i filerna under `views/` | [liquidjs.com](https://liquidjs.com/) |
 

@@ -14,7 +14,6 @@ const port = Number(process.env.PORT ?? 4000)
 // it after an SSE reconnect; a different value means the server restarted and
 // the open page is stale. See dev-reload.ts.
 const bootId = `${process.pid}-${Date.now()}`
-const bootTime = new Date().toISOString().replace('T', ' ').slice(0, 19)
 
 const app = express()
 
@@ -50,12 +49,10 @@ app.get('/healthz', async (_req, res) => {
   }
 })
 
+// There is no root page. The exercises are the entry point, and they link the
+// todo app themselves.
 app.get('/', (_req, res) => {
-  res.render('index', {
-    dev: isDev,
-    nodeVersion: process.version,
-    bootTime,
-  })
+  res.redirect('/exercises/')
 })
 
 app.use('/todo-app', todoApp)
