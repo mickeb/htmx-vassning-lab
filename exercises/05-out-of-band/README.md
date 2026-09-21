@@ -20,6 +20,8 @@ del för sig.
 `hx-swap-oob="true"` placeras inte där `hx-target` pekar. htmx letar i stället
 upp elementet på sidan som har **samma `id`** och ersätter det.
 
+[Mer om out-of-band swaps](https://four.htmx.org/docs#out-of-band-swaps)
+
 ## Steg
 
 ### 1. Rendera `hx-swap-oob` bara i svar
