@@ -23,11 +23,12 @@ upp elementet på sidan som har **samma `id`** och ersätter det.
 
 ## Steg
 
-### 1. Sätt `hx-swap-oob` på rubriken — men bara i svar
+### 1. Rendera `hx-swap-oob` bara i svar
 
 Öppna `views/todo-app/todo-header.liquid`. `<header>`-taggen har redan
-`id="todo-header"`, vilket är det htmx matchar på. Nu ska `hx-swap-oob="true"`
-sättas på den, men bara när den skickas som en del av ett svar.
+`id="todo-header"`, vilket är det htmx matchar på. Nu ska mallen rendera
+`hx-swap-oob="true"` på den, men bara när rubriken skickas som en del av ett
+svar.
 
 Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
 en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
@@ -39,9 +40,9 @@ elementet.
     <header class="todo-header" id="todo-header"{% if oob %} hx-swap-oob="true"{% endif %}>
     ```
 
-    `oob` är ingenting Liquid känner till i förväg — det är bara ett värde som
-    den som renderar mallen kan skicka med. Gör ingen det blir villkoret falskt
-    och attributet uteblir.
+    `oob` är inget inbyggt i Liquid — det är bara ett värde som den som renderar
+    mallen kan skicka med. Gör ingen det blir villkoret falskt och attributet
+    uteblir.
 
 !!! note "Varför inte sätta attributet rakt av?"
 

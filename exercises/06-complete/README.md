@@ -27,8 +27,8 @@ inte radens `id`.
 Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
 är klar ska knappen vara borta och en bock stå i stället.
 
-Rubriken sätter redan `hx-swap-oob` när den får `oob: true`, sedan övning 5 —
-du använder det utan att röra `todo-header.liquid`.
+`todo-header.liquid` renderar redan `hx-swap-oob` när den får `oob: true`,
+sedan övning 5 — du använder det utan att röra filen.
 
 ## Steg
 
