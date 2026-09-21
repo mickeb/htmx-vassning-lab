@@ -902,7 +902,9 @@ rubriken — utan att sidan laddas om.</p>
 på <code>hx-target</code>:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
 </code></pre></div>
-<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde requesten".
+<p><code>closest tr</code> är en CSS-selektor
+(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">MDN</a>) och
+betyder "närmaste <code>tr</code> uppåt från elementet som gjorde requesten".
 Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
 inte radens <code>id</code>.</p>
 <p>Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon

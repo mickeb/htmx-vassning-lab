@@ -28,7 +28,9 @@ på `hx-target`:
 hx-target="closest tr"
 ```
 
-`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde requesten".
+`closest tr` är en CSS-selektor
+([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)) och
+betyder "närmaste `tr` uppåt från elementet som gjorde requesten".
 Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
 inte radens `id`.
 
