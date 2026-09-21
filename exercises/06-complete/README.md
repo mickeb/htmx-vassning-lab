@@ -2,8 +2,8 @@
 
 ## Mål
 
-Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren — utan
-att sidan laddas om.
+Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren i
+rubriken — utan att sidan laddas om.
 
 ## Användbara attribut
 
