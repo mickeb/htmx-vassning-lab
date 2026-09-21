@@ -125,9 +125,8 @@ pauser.
 
 Titta sedan på bakåtknappen.
 
-Varje paus har blivit ett eget steg i historiken. Att ta sig tillbaka till där
-du var innan du började söka kräver ett tryck per paus. Adressen stämmer, men
-varje sökning har blivit ett sidbesök.
+Att ta sig tillbaka till där du var innan du började söka kräver ett tryck per
+paus. Adressen stämmer, men varje sökning har blivit ett sidbesök.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
