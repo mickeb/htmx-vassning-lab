@@ -110,11 +110,3 @@ Sortera ett par gånger. Det ska bete sig precis som förut.
 
     Då slog `if`-satsen i `app.ts` inte till, så htmx fick tillbaka ett helt
     dokument och satte in det i `#todo-table`. Kontrollera stavningen: `HX-Request`.
-
-## Nästa övning
-
-Sortera så att nyast ligger först. Titta sedan på adressfältet.
-
-Det står `/todo-app`. Kopiera adressen, öppna den i en ny flik, och listan
-kommer tillbaka i fel ordning — sidan visar en sortering som adressen inte
-känner till.
