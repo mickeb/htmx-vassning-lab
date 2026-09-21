@@ -57,11 +57,11 @@ Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
 Töm textfältet och tryck **Add**.
 
 Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
-Problemet är var svaret hamnar. Titta noga — formuläret ersätter **hela listan**.
+Men titta noga — formuläret ersätter **listan**, i stället för att hamna där man
+förväntar sig.
 
 Det är väntat. `hx-target` står i sidan, och det gäller varje svar formuläret
-får — även felsvar. Vad servern än lägger i svarets kropp hamnar i
-`#todo-table`.
+får — även felsvar. Vad servern än svarar hamnar i `#todo-table`.
 
 ### 3. Låt servern styra svaret
 
