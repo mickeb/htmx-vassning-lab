@@ -422,10 +422,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-har-har-ett-namn" class="md-nav__link">
+  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det här har ett namn
+        Titta på tabellen som kom tillbaka
       
     </span>
   </a>
@@ -809,10 +809,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#det-har-har-ett-namn" class="md-nav__link">
+  <a href="#titta-pa-tabellen-som-kom-tillbaka" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Det här har ett namn
+        Titta på tabellen som kom tillbaka
       
     </span>
   </a>
@@ -924,21 +924,24 @@ så — en senare övning tar bort den ena.</p>
 <summary>Det växlar bara en gång — sedan står det still</summary>
 <p>Då saknar <code>hx-get</code> sin query-sträng. Se den fällbara rutan i steg 2.</p>
 </details>
-<h2 id="det-har-har-ett-namn">Det här har ett namn<a class="headerlink" href="#det-har-har-ett-namn" title="Permanent link">&para;</a></h2>
-<p>Klicka runt lite och läs tabellen som kommer tillbaka. Den bär <strong>sin egen</strong>
-chevron åt rätt håll, <strong>sin egen</strong> länk som pekar på motsatt ordning, och sin
-egen sökterm om du har sökt. Ingen variabel i webbläsaren säger
-<code>sortOrder = 'desc'</code>, ingen kod vänder en pil.</p>
-<p>Att svaret bär med sig kontrollerna för vad som kan göras härnäst är kärnan i
-<strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet drivs
-av det hypermedia servern skickar, inte av kod som håller reda på saker i
-webbläsaren.</p>
-<p>Värt att notera: <strong>htmx lade inte till det här.</strong> Länken du började med gjorde
-redan samma sak. Den bar sin egen nästa ordning, och en full sidladdning hämtade
-nästa representation.</p>
+<h2 id="titta-pa-tabellen-som-kom-tillbaka">Titta på tabellen som kom tillbaka<a class="headerlink" href="#titta-pa-tabellen-som-kom-tillbaka" title="Permanent link">&para;</a></h2>
+<p>Klicka runt lite och läs den. Den bär <strong>sin egen</strong> chevron åt rätt håll, <strong>sin
+egen</strong> länk som pekar på motsatt ordning, och sin egen sökterm om du har sökt.
+Ingen variabel i webbläsaren säger <code>sortOrder = 'desc'</code>, ingen kod vänder en pil.</p>
+<div class="admonition note">
+<p class="admonition-title">Det här har ett namn</p>
+<p>Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
+vilken ordning den leder till, vilken sökning som gäller — är kärnan i
+<strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet
+drivs av det hypermedia servern skickar, inte av kod som håller reda på
+saker i webbläsaren.</p>
+<p>Värt att notera: <strong>htmx lade inte till det här.</strong> Länken du började med
+gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
+sidladdning hämtade nästa representation.</p>
 <p>Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
 tillstånd i klienten — och då försvinner det. Den här övningen tog bort
 sidladdningen utan att släppa hypermedia.</p>
+</div>
 
 
 

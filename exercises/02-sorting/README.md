@@ -82,22 +82,24 @@ Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
     Då saknar `hx-get` sin query-sträng. Se den fällbara rutan i steg 2.
 
-## Det här har ett namn
+## Titta på tabellen som kom tillbaka
 
-Klicka runt lite och läs tabellen som kommer tillbaka. Den bär **sin egen**
-chevron åt rätt håll, **sin egen** länk som pekar på motsatt ordning, och sin
-egen sökterm om du har sökt. Ingen variabel i webbläsaren säger
-`sortOrder = 'desc'`, ingen kod vänder en pil.
+Klicka runt lite och läs den. Den bär **sin egen** chevron åt rätt håll, **sin
+egen** länk som pekar på motsatt ordning, och sin egen sökterm om du har sökt.
+Ingen variabel i webbläsaren säger `sortOrder = 'desc'`, ingen kod vänder en pil.
 
-Att svaret bär med sig kontrollerna för vad som kan göras härnäst är kärnan i
-**HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet drivs
-av det hypermedia servern skickar, inte av kod som håller reda på saker i
-webbläsaren.
+!!! note "Det här har ett namn"
 
-Värt att notera: **htmx lade inte till det här.** Länken du började med gjorde
-redan samma sak. Den bar sin egen nästa ordning, och en full sidladdning hämtade
-nästa representation.
+    Att svaret bär med sig kontrollerna för vad som kan göras härnäst — länken,
+    vilken ordning den leder till, vilken sökning som gäller — är kärnan i
+    **HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet
+    drivs av det hypermedia servern skickar, inte av kod som håller reda på
+    saker i webbläsaren.
 
-Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
-tillstånd i klienten — och då försvinner det. Den här övningen tog bort
-sidladdningen utan att släppa hypermedia.
+    Värt att notera: **htmx lade inte till det här.** Länken du började med
+    gjorde redan samma sak. Den bar sin egen nästa ordning, och en full
+    sidladdning hämtade nästa representation.
+
+    Det vanliga när en sida ska bli dynamisk är att byta ut det mot JSON och
+    tillstånd i klienten — och då försvinner det. Den här övningen tog bort
+    sidladdningen utan att släppa hypermedia.
