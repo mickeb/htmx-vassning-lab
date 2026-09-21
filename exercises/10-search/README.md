@@ -24,8 +24,8 @@ requesten: fältets `input`. Formuläret får inget event förrän någon trycke
 **Search**.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
-**Search** kommer att fortsätta submitta formuläret precis som vanligt. Det är
-inte något som ska byggas bort; det är reservvägen, synlig.
+**Search** kommer fortsätta submitta formuläret precis som vanligt. Det är inte
+något som ska byggas bort; det är reservvägen, synlig.
 
 Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
