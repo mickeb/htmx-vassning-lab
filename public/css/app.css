@@ -129,22 +129,14 @@ code {
   display: block;
   padding: 1rem 1.25rem;
   background: var(--surface);
-  color: inherit;
+  font-weight: 600;
+  color: var(--accent);
   text-decoration: none;
 }
 
 .destination:hover,
 .destination:focus-visible {
   background: var(--accent-soft);
-}
-
-.destination__name { font-weight: 600; color: var(--accent); }
-
-.destination__note {
-  display: block;
-  margin-top: 0.125rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
 }
 
 /* --- next steps ---------------------------------------------------------- */
