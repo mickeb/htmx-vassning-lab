@@ -64,7 +64,9 @@ Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 
 Öppna `src/app.ts` och leta upp hanteraren för
 `POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
-renderar svaret. En rad till: sätt headern när allt är avbockat.
+renderar svaret.
+
+Lägg till en rad som sätter headern när allt är avbockat.
 
 `stats.allComplete` är sant när det finns todos och alla är klara. En tom lista
 är inte klar — ingenting är inte allt.
