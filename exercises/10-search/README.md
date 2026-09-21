@@ -100,8 +100,9 @@ fråga.
     `GET` har ingen kropp. Fältet skickar `q` och ingenting annat — det dolda
     sorteringsfältet ligger i samma formulär och följer ändå inte med.
 
-Lösningen är `hx-include`, som pekar ut vad mer som ska skickas. Men den kräver
-en sak till, och det är den intressanta halvan.
+Lösningen är `hx-include`, som ger dig möjlighet att specificera ytterligare
+data som ska inkluderas i requesten. Men den kräver en sak till, och det är
+den intressanta halvan.
 
 !!! warning "Fältet måste ligga där det renderas om"
 
