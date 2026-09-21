@@ -10,7 +10,7 @@ tangenttryckning.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `hx-trigger` | Vad ska utlösa requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
+| `hx-trigger` | Vad ska trigga requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
 | `hx-include` | Vad mer än elementets eget värde ska skickas med? | [Referens](https://four.htmx.org/reference/attributes/hx-include) |
 
 ## Steg

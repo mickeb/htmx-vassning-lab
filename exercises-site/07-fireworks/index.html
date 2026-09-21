@@ -895,7 +895,7 @@
 <tbody>
 <tr>
 <td><code>HX-Trigger</code></td>
-<td>Vilket event ska utlösas när svaret är insatt?</td>
+<td>Vilket event ska triggas när svaret är insatt?</td>
 <td><a href="https://four.htmx.org/reference/headers/hx-trigger">Referens</a></td>
 </tr>
 </tbody>
@@ -930,12 +930,12 @@ vad sidan ska göra åt det.</p>
 <p>Det görs med HTTP-headern <code>HX-Trigger</code> i svaret:</p>
 <div class="language-http highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">HX-Trigger: fireworks</span>
 </code></pre></div>
-<p>htmx läser headern när svaret är insatt och utlöser ett event med det namnet.
+<p>htmx läser headern när svaret är insatt och triggar ett event med det namnet.
 Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
 <div class="admonition warning">
 <p class="admonition-title">Till dig som tidigare använt v2</p>
 <p><code>HX-Trigger</code>, <code>HX-Trigger-After-Swap</code> och <code>HX-Trigger-After-Settle</code>. htmx 4
-har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser
+har slagit ihop dem till en enda, som alltid triggas efter insättningen. Ser
 du de två längre namnen i ett exempel läser du htmx 2-material.</p>
 </div>
 <p>Öppna <code>src/app.ts</code> och leta upp hanteraren för
@@ -979,7 +979,7 @@ modulskriptet i <code>views/layout.liquid</code> med det här:</p>
 <div class="admonition note">
 <p class="admonition-title">Varför lyssna på <code>document</code>?</p>
 <p>Knappen som skickade requesten finns inte kvar när eventet kommer — hela
-raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
+raden byttes ju ut. htmx triggar eventet på det element som gjorde requesten
 om det finns kvar, annars på dokumentet. Eventet bubblar, så <code>document</code> hör
 det i båda fallen.</p>
 </div>

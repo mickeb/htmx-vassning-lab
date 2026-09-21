@@ -8,7 +8,7 @@ När den sista todon bockas av smäller fyrverkerier över sidan.
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `HX-Trigger` | Vilket event ska utlösas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
+| `HX-Trigger` | Vilket event ska triggas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
 
 ## Steg
 
@@ -53,13 +53,13 @@ Det görs med HTTP-headern `HX-Trigger` i svaret:
 HX-Trigger: fireworks
 ```
 
-htmx läser headern när svaret är insatt och utlöser ett event med det namnet.
+htmx läser headern när svaret är insatt och triggar ett event med det namnet.
 Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 
 !!! warning "Till dig som tidigare använt v2"
 
     `HX-Trigger`, `HX-Trigger-After-Swap` och `HX-Trigger-After-Settle`. htmx 4
-    har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser
+    har slagit ihop dem till en enda, som alltid triggas efter insättningen. Ser
     du de två längre namnen i ett exempel läser du htmx 2-material.
 
 Öppna `src/app.ts` och leta upp hanteraren för
@@ -112,7 +112,7 @@ Den enda raden som har med htmx att göra är
 !!! note "Varför lyssna på `document`?"
 
     Knappen som skickade requesten finns inte kvar när eventet kommer — hela
-    raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
+    raden byttes ju ut. htmx triggar eventet på det element som gjorde requesten
     om det finns kvar, annars på dokumentet. Eventet bubblar, så `document` hör
     det i båda fallen.
 
