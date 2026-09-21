@@ -41,7 +41,7 @@ som vid sortering.
 hx-trigger="input changed delay:300ms"
 ```
 
-`input` är webbläsarens eget event: det kommer vid varje tangenttryckning.
+`input` är webbläsarens eget event: det triggas vid varje tangenttryckning.
 `delay:300ms` startar om nedräkningen vid varje nytt event, så en request går
 iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
 värdet inte ändrats — pilknappar och liknande ger `input` utan att
