@@ -19,8 +19,8 @@ En för ett vanligt klick, en för htmx.
 Det var för att förenkla de tidigare övningarna: routen under `/fragments/` fanns
 färdig, så du kunde peka `hx-get` på den utan att skriva någon serverkod.
 
-Men sidan och tabellen är inte två olika saker — de är **samma sak i två
-utföranden**. Hela listan, med eller utan sidan runt omkring.
+Men båda adresserna returnerar samma innehåll: tabellen. Det enda som skiljer
+är om sidan ligger runt omkring eller inte.
 
 ## Användbara headers
 
