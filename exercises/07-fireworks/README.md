@@ -110,7 +110,7 @@ Den enda raden som har med htmx att göra är
 `HX-Trigger`-headern. Stavas de olika körs funktionen aldrig, och ingenting
 säger ifrån.
 
-!!! note "Varför `document`?"
+!!! note "Varför lyssna på `document`?"
 
     Knappen som skickade requesten finns inte kvar när eventet kommer — hela
     raden byttes ju ut. htmx utlöser eventet på det element som gjorde requesten
