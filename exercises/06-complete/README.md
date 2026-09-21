@@ -21,7 +21,7 @@ rubriken — utan att sidan laddas om.
 Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
 `/todo-app/fragments/todos/{{ todo.id }}/complete`.
 
-Inget av attributen är nytt. Det nya är **värdet** på `hx-target`:
+Inga av attributen vi använder är nya. Det nya är **värdet** på `hx-target`:
 
 ```
 hx-target="closest tr"
