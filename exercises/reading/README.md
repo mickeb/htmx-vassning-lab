@@ -27,8 +27,7 @@ ingen request till servern, och att skicka en för att få det vore fel väg.
 `hx-live` är ett tillägg till htmx 4 för precis det — att binda ihop läget i
 DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript.
 
-- [`hx-live`](https://four.htmx.org/extensions/hx-live) — tillägget, med
-  beslutsträdet, `q()`, delad `data`-state och de asynkrona hjälpmedlen
+- [Dokumentation](https://four.htmx.org/extensions/hx-live)
 
 ## _hyperscript — ett språk för det som händer i sidan
 
@@ -37,7 +36,7 @@ hända i sidan utan att servern blandas in. Skillnaden är formen. `hx-live`
 binder ett attribut till ett uttryck; _hyperscript är ett litet språk för
 beteende, skrivet i ett `_`-attribut.
 
-- [_hyperscript](https://hyperscript.org/) — språket och dess dokumentation
+- [Dokumentation](https://hyperscript.org/)
 
 ## Alpine.js
 
