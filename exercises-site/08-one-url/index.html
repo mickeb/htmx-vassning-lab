@@ -895,7 +895,7 @@ förbli så.</p>
 adress. Men de är inte två olika saker — de är <strong>samma sak i två utföranden</strong>.
 Hela listan, med eller utan sidan runt omkring.</p>
 <p>Och en adress kan svara olika beroende på vem som frågar. htmx skickar en header
-i varje förfrågan den gör:</p>
+i varje request den gör:</p>
 <table>
 <thead>
 <tr>
@@ -907,7 +907,7 @@ i varje förfrågan den gör:</p>
 <tbody>
 <tr>
 <td><code>HX-Request</code></td>
-<td>Kommer den här förfrågan från htmx?</td>
+<td>Kommer den här requesten från htmx?</td>
 <td><a href="https://four.htmx.org/reference/headers/hx-request">Referens</a></td>
 </tr>
 </tbody>
@@ -917,14 +917,15 @@ själv. Det räcker för att servern ska kunna svara på samma adress på två s
 <div class="admonition note">
 <p class="admonition-title">Den här gången <em>läser</em> servern en header</p>
 <p>I övning 3 satte servern <code>HX-Retarget</code> i svaret, och i övning 7
-<code>HX-Trigger</code>. Det var servern som talade om något för htmx.</p>
-<p>Nu går det åt andra hållet: htmx talar om något för servern, och servern
-väljer vad den skickar tillbaka. Samma sorts mekanism, motsatt riktning.</p>
+<code>HX-Trigger</code>. Båda gångerna satt headern i svaret.</p>
+<p>Nu går det åt andra hållet: headern sitter i requesten, och servern läser
+den för att välja vad den skickar tillbaka. Samma mekanism, motsatt
+riktning.</p>
 </div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lat-todo-app-svara-pa-tva-satt">1. Låt <code>/todo-app</code> svara på två sätt<a class="headerlink" href="#1-lat-todo-app-svara-pa-tva-satt" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>src/app.ts</code> och leta upp hanteraren för <code>GET /</code>. Den renderar alltid hela
-sidan. Lägg till en gren före den: kommer förfrågan från htmx, rendera bara
+sidan. Lägg till en gren före den: kommer requesten från htmx, rendera bara
 tabellen.</p>
 <p><code>todos.listModel(...)</code> ger det som behövs i båda fallen, så hämta det en gång
 och låt grenarna dela på det.</p>
@@ -942,8 +943,8 @@ och låt grenarna dela på det.</p>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/page&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">)</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">})</span>
 </code></pre></div>
-<p><code>res.render('todo-app/todo-table', model)</code> är exakt vad fragmentrutten redan
-gjorde. Det är därför den strax kan tas bort.</p>
+<p><code>res.render('todo-app/todo-table', model)</code> är exakt vad routen under
+<code>/fragments/</code> redan gjorde. Det är därför den strax kan tas bort.</p>
 </details>
 <h3 id="2-peka-om-sorteringslanken">2. Peka om sorteringslänken<a class="headerlink" href="#2-peka-om-sorteringslanken" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-table.liquid</code>. <code>hx-get</code> ska nu hämta samma adress som
@@ -964,22 +965,21 @@ gjorde. Det är därför den strax kan tas bort.</p>
 <p>Sortera ett par gånger. Det ska bete sig precis som förut.</p>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sortering fungerar som förut: <strong>en</strong> förfrågan, ingen sidladdning, och
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sortering fungerar som förut: <strong>en</strong> request, ingen sidladdning, och
       pilen växlar åt rätt håll varje gång.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>hx-get</code> och <code>href</code> innehåller samma sträng.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Öppnar du <code>href</code>-adressen i en ny flik kommer <strong>hela sidan</strong> tillbaka,
-      sorterad som adressen säger.</li>
+      sorterad enligt <code>?sort=</code> i adressen.</li>
 </ul>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>Hela sidan hamnar inne i tabellen</summary>
 <p>Då träffade grenen i <code>app.ts</code> inte, så htmx fick tillbaka ett helt dokument
-och bytte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
+och satte in det i <code>#todo-table</code>. Kontrollera stavningen: <code>HX-Request</code>.</p>
 </details>
 <h2 id="vart-att-kanna-till">Värt att känna till<a class="headerlink" href="#vart-att-kanna-till" title="Permanent link">&para;</a></h2>
 <p><code>/todo-app/fragments/table</code> finns kvar i labbet, men ingenting använder den
-längre. Den fanns för att de tidiga övningarna skulle handla om htmx och inte om
-routing, och i en riktig kodbas hade den tagits bort i den här commiten.</p>
+längre. I en riktig kodbas hade den tagits bort i den här commiten.</p>
 <p>Kvar finns idén den fanns till för: <strong>servern bestämmer vad ett svar
 innehåller.</strong> Först utifrån vad som hände — en rad, en rubrik, en händelse — och
 nu också utifrån vem som frågar.</p>

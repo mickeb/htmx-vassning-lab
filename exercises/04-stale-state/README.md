@@ -19,12 +19,12 @@ Börja med att se det hända.
     Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
 
 Ingen sidladdning, inget felmeddelande, ingenting i konsolen. Servern svarade
-`200` och htmx bytte in svaret precis som den skulle. Ändå är resultatet fel.
+`200` och htmx satte in svaret precis som den skulle. Ändå är resultatet fel.
 
 ### Vad som faktiskt skickades
 
-Öppna nätverkspanelen och gör om det. Titta på kroppen i `POST`-förfrågan när du
-lägger till todon:
+Öppna nätverkspanelen och gör om det. Titta på kroppen i den `POST` som går
+iväg när du lägger till todon:
 
 ```
 sort=asc&q=&description=Köp mjölk
@@ -33,7 +33,7 @@ sort=asc&q=&description=Köp mjölk
 `asc` — trots att tabellen framför dig är sorterad fallande.
 
 Servern gjorde alltså inget fel. Den blev ombedd om en lista i stigande ordning
-och renderade en lista i stigande ordning. Felet ligger i förfrågan, inte i
+och renderade en lista i stigande ordning. Felet ligger i requesten, inte i
 svaret.
 
 ??? question "Varför skickar formuläret `asc`?"
@@ -47,16 +47,14 @@ svaret.
     Liquid skrev in värdet när **sidan** renderades, och då var sorteringen
     `asc`.
 
-    Sorteringslänken byter bara ut `#todo-table`. Formuläret ligger utanför, i
+    Sorteringslänken ersätter bara `#todo-table`. Formuläret ligger utanför, i
     en helt annan del av sidan, och ingenting har renderat om det sedan
     sidladdningen. Fältet säger fortfarande `asc`, och det kommer att göra det
     hur många gånger du än sorterar.
 
-Regeln är värd att ta med sig, och den gäller långt utanför det här labbet:
+!!! warning "Bara det som svaret ersätter är aktuellt"
 
-!!! warning "Bara det som bytet renderar om är aktuellt"
-
-    Allt annat på sidan bär kvar det värde det hade när det senast renderades.
+    Allt annat på sidan har kvar det värde det hade när det senast renderades.
 
     Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt.
     Ett gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när
@@ -70,8 +68,8 @@ Regeln är värd att ta med sig, och den gäller långt utanför det här labbet
     tiden, ända tills du gjorde något åt sorteringen.
 
     Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
-    sidan byts ut blir "renderas om" plötsligt något som gäller vissa element och
-    inte andra — och ingenting i markupen säger vilka.
+    sidan ersätts blir "renderas om" plötsligt något som gäller vissa element och
+    inte andra — och ingenting i markupen skiljer dem åt.
 
     Buggen syntes först när du la till en todo, en övning senare. Så brukar det
     se ut: den kommer fram någon helt annanstans än där den bor.
@@ -94,7 +92,7 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
 !!! tip "Det här är inte htmx"
 
     `form` är ett vanligt HTML-attribut och har funnits sedan HTML5. Webbläsaren
-    räknar fältet till formuläret när den bygger förfrågan, oavsett vem som
+    räknar fältet till formuläret när den bygger requesten, oavsett vem som
     skickar den.
 
     Det syns sällan i kod, och det är synd — det löser precis den här sortens
@@ -111,8 +109,8 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
 ```
 
 Öppna sedan `views/todo-app/todo-table.liquid` och lägg in den överst inuti
-`<div class="todo-table" id="todo-table">` — med `form`-attributet som säger
-vilket formulär fältet hör till.
+`<div class="todo-table" id="todo-table">` — med `form`-attributet satt till
+formulärets `id`.
 
 ??? tip "Ledtråd"
 
@@ -133,7 +131,7 @@ kvar.
 
 - [ ] Sortera nyast först, lägg till en todo: den hamnar **överst**, och listan
       står kvar i fallande ordning.
-- [ ] Nätverkspanelen visar `sort=desc` i kroppen på `POST`-förfrågan.
+- [ ] Nätverkspanelen visar `sort=desc` i kroppen på den `POST` som går iväg.
 - [ ] Sorteringen fungerar fortfarande som vanligt, fram och tillbaka.
 - [ ] Räknaren i rubriken är fortfarande fel — den lagas inte här.
 
@@ -148,7 +146,7 @@ kvar.
 ??? question "Kan jag inte bara lägga fältet inuti formuläret igen?"
 
     Jo, och då är du tillbaka där du började. Fältet måste ligga i den del av
-    sidan som byts ut, annars renderas det aldrig om.
+    sidan som ersätts, annars renderas det aldrig om.
 
 ## Nästa övning
 

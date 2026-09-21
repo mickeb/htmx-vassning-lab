@@ -465,10 +465,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-lat-rubriken-kunna-markas" class="md-nav__link">
+  <a href="#1-satt-hx-swap-oob-pa-rubriken-men-bara-i-svar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Låt rubriken kunna märkas
+        1. Sätt hx-swap-oob på rubriken — men bara i svar
       
     </span>
   </a>
@@ -782,10 +782,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-lat-rubriken-kunna-markas" class="md-nav__link">
+  <a href="#1-satt-hx-swap-oob-pa-rubriken-men-bara-i-svar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Låt rubriken kunna märkas
+        1. Sätt hx-swap-oob på rubriken — men bara i svar
       
     </span>
   </a>
@@ -861,7 +861,7 @@
 <h1 id="5-uppdatera-tva-stallen-med-ett-svar">5. Uppdatera två ställen med ett svar<a class="headerlink" href="#5-uppdatera-tva-stallen-med-ett-svar" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
-extra förfrågan.</p>
+extra request.</p>
 <h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -874,25 +874,25 @@ extra förfrågan.</p>
 <tbody>
 <tr>
 <td><code>hx-swap-oob</code></td>
-<td>Ska det här elementet hamna någon annanstans än i målet?</td>
+<td>Ska det här elementet hamna någon annanstans än där <code>hx-target</code> pekar?</td>
 <td><a href="https://four.htmx.org/reference/attributes/hx-swap-oob">Referens</a></td>
 </tr>
 </tbody>
 </table>
 <p>Räknaren går inte att laga med <code>hx-target</code>. Det attributet pekar ut <strong>ett</strong>
 ställe, och svaret behöver hamna på två.</p>
-<p>Lösningen vänder på frågan: i stället för att förfrågan bestämmer var allt ska
+<p>Lösningen vänder på frågan: i stället för att requesten bestämmer var allt ska
 hamna får en del av <strong>svaret</strong> säga var just den hör hemma.</p>
-<p><code>oob</code> står för <em>out of band</em> — vid sidan av. Ett element i svaret som är märkt
-<code>hx-swap-oob="true"</code> placeras inte där bytet skulle ha lagt det. htmx letar upp
-elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
+<p><code>oob</code> står för <em>out of band</em> — vid sidan av. Ett element i svaret som har
+<code>hx-swap-oob="true"</code> placeras inte där <code>hx-target</code> pekar. htmx letar i stället
+upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-lat-rubriken-kunna-markas">1. Låt rubriken kunna märkas<a class="headerlink" href="#1-lat-rubriken-kunna-markas" title="Permanent link">&para;</a></h3>
+<h3 id="1-satt-hx-swap-oob-pa-rubriken-men-bara-i-svar">1. Sätt <code>hx-swap-oob</code> på rubriken — men bara i svar<a class="headerlink" href="#1-satt-hx-swap-oob-pa-rubriken-men-bara-i-svar" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-header.liquid</code>. <code>&lt;header&gt;</code>-taggen har redan
-<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska den kunna bära
-<code>hx-swap-oob="true"</code> — men bara när den skickas som en del av ett svar.</p>
+<code>id="todo-header"</code>, vilket är det htmx matchar på. Nu ska <code>hx-swap-oob="true"</code>
+sättas på den, men bara när den skickas som en del av ett svar.</p>
 <p>Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
-en del av svaret du bygger i nästa steg. Märkningen hör till svaret, inte till
+en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
 elementet.</p>
 <details class="example">
 <summary>Facit</summary>
@@ -906,14 +906,14 @@ och attributet uteblir.</p>
 <p class="admonition-title">Varför inte sätta attributet rakt av?</p>
 <p>För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
 Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
-<code>hx-swap-oob</code> i svar som byts in, inte i sidan som redan ligger där.</p>
-<p>Men en sida kan också <em>vara</em> ett svar. Den dagen den är det börjar en
-märkning som ligger kvar gälla på ett ställe där ingen bett om den, och det
-som försvinner gör det tyst.</p>
+<code>hx-swap-oob</code> i svar som sätts in, inte i sidan som redan ligger där.</p>
+<p>Men en sida kan också <em>vara</em> ett svar. Den dagen den är det börjar ett
+<code>hx-swap-oob</code> som ligger kvar gälla på ett ställe där ingen bett om det, och
+det som försvinner gör det tyst.</p>
 </div>
 <h3 id="2-skicka-med-rubriken-i-svaret">2. Skicka med rubriken i svaret<a class="headerlink" href="#2-skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara listan.
-Rendera rubriken också, och be om märkningen med <code>oob: true</code>.</p>
+Rendera rubriken också, och skicka med <code>oob: true</code>.</p>
 <p><code>stats</code> finns redan tillgängligt i mallen — hanteraren skickar med det — så du
 behöver inte ändra något i <code>app.ts</code>.</p>
 <div class="admonition note">
@@ -932,7 +932,7 @@ tillbaka ett <code>&lt;tr&gt;</code>, och där är ordningen plötsligt inte val
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Räknaren i rubriken ändras direkt när du lägger till en todo.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan, inte två.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> request, inte två.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan laddas inte om.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Det finns fortfarande bara en rubrik på sidan.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan du laddar om innehåller ingen <code>hx-swap-oob</code> — bara svaren gör det.
@@ -959,9 +959,8 @@ innehållet i ett element som pekar ut sitt eget mål:</p>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ...rubriken...
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;/</span><span class="nt">hx-partial</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Två fördelar: målet står utskrivet i stället för att matchas via <code>id</code>, och
-<code>todo-header.liquid</code> behöver inte ändras alls. Ordningen i svaret spelar
-ingen roll heller. Värt att känna till — men <code>hx-swap-oob</code> är det som
+<p><code>hx-target</code> står utskrivet i stället för att matchas via <code>id</code>, och
+<code>todo-header.liquid</code> behöver inte ändras alls. Men <code>hx-swap-oob</code> är det som
 fungerar överallt.</p>
 </div>
 

@@ -541,10 +541,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-lat-servern-saga-till" class="md-nav__link">
+  <a href="#3-lat-servern-skicka-headern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Låt servern säga till
+        3. Låt servern skicka headern
       
     </span>
   </a>
@@ -815,10 +815,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-lat-servern-saga-till" class="md-nav__link">
+  <a href="#3-lat-servern-skicka-headern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Låt servern säga till
+        3. Låt servern skicka headern
       
     </span>
   </a>
@@ -894,7 +894,7 @@ vad sidan ska göra åt det.</p>
 <p>Det görs med en HTTP-header i svaret:</p>
 <div class="language-http highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">HX-Trigger: fireworks</span>
 </code></pre></div>
-<p>htmx läser headern när bytet är klart och utlöser en händelse med det namnet.
+<p>htmx läser headern när svaret är insatt och utlöser en händelse med det namnet.
 Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
 <table>
 <thead>
@@ -907,7 +907,7 @@ Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
 <tbody>
 <tr>
 <td><code>HX-Trigger</code></td>
-<td>Vilken händelse ska utlösas när svaret är inbytt?</td>
+<td>Vilken händelse ska utlösas när svaret är insatt?</td>
 <td><a href="https://four.htmx.org/reference/headers/hx-trigger">Referens</a></td>
 </tr>
 </tbody>
@@ -915,7 +915,7 @@ Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
 <div class="admonition warning">
 <p class="admonition-title">I htmx 2 fanns tre headers</p>
 <p><code>HX-Trigger</code>, <code>HX-Trigger-After-Swap</code> och <code>HX-Trigger-After-Settle</code>. htmx 4
-har slagit ihop dem till en enda, som alltid utlöses efter bytet. Ser du de
+har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser du de
 två längre namnen i ett exempel läser du htmx 2-material.</p>
 </div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
@@ -943,9 +943,9 @@ sista raden och hela tabellen slutar gälla — även raden för htmx.</p>
 ge biblioteket en yta att rita på, och starta när händelsen <code>fireworks</code> kommer.</p>
 <div class="admonition note">
 <p class="admonition-title">Lyssna på <code>document</code></p>
-<p>Knappen som skickade förfrågan finns inte kvar när händelsen kommer — hela
+<p>Knappen som skickade requesten finns inte kvar när händelsen kommer — hela
 raden byttes ju ut. htmx utlöser händelsen på det element som gjorde
-förfrågan om det finns kvar, annars på dokumentet. Händelsen bubblar, så
+requesten om det finns kvar, annars på dokumentet. Händelsen bubblar, så
 <code>document</code> hör den i båda fallen.</p>
 </div>
 <details class="example">
@@ -969,9 +969,9 @@ förfrågan om det finns kvar, annars på dokumentet. Händelsen bubblar, så
 sidan rullas och tar inte emot klick. Resten är <code>fireworks-js</code> eget API och
 har ingenting med htmx att göra.</p>
 </details>
-<p>Ladda om och bocka av den sista todon. Ingenting händer — ingen har sagt till
-webbläsaren att något är värt att fira. 😢</p>
-<h3 id="3-lat-servern-saga-till">3. Låt servern säga till<a class="headerlink" href="#3-lat-servern-saga-till" title="Permanent link">&para;</a></h3>
+<p>Ladda om och bocka av den sista todon. Ingenting händer — inget svar har
+skickat headern ännu. 😢</p>
+<h3 id="3-lat-servern-skicka-headern">3. Låt servern skicka headern<a class="headerlink" href="#3-lat-servern-skicka-headern" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>src/app.ts</code> och leta upp hanteraren för
 <code>POST /fragments/todos/:id/complete</code>. Den hämtar redan <code>stats</code> innan den
 renderar svaret. En rad till: sätt headern när allt är avbockat.</p>
@@ -991,7 +991,7 @@ renderar svaret. En rad till: sätt headern när allt är avbockat.</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Att bocka av en todo när det finns fler kvar ger inga fyrverkerier.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Svaret på den sista avbockningen har headern <code>HX-Trigger: fireworks</code>.
       Nätverkspanelen visar den under svarets headers.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Det är fortfarande <strong>en</strong> förfrågan, och raden och räknaren uppdateras som
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Det är fortfarande <strong>en</strong> request, och raden och räknaren uppdateras som
       förut.</li>
 </ul>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>

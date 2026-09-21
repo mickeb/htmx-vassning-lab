@@ -14,15 +14,15 @@ ger ett synligt fel på rätt ställe.
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
 Det är **samma form som sorteringen**, med en `POST` i stället för en `GET`.
-Målet är `#todo-table` och bytet är `outerHTML`, av samma skäl som förra gången:
-det som kommer tillbaka **är** `<div id="todo-table">`.
+`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`, av samma skäl som
+förra gången: det som kommer tillbaka **är** `<div id="todo-table">`.
 
 !!! note "En `POST` bär med sig hela formuläret"
 
     I förra övningen satt `hx-get` på en `<a>`, och länken hade inget värde att
     skicka — adressen fick bära sorteringen själv.
 
-    Här är det tvärtom. En förfrågan med kropp — allt utom `GET` och `DELETE` —
+    Här är det tvärtom. En request med kropp — allt utom `GET` och `DELETE` —
     tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
     `q`- och `sort`-fälten, följer med utan att du gör något.
 
@@ -51,11 +51,8 @@ Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
 
     Svaret är **listan**, inte raden. Servern renderar den lista du tittar på —
     och söker du efter något som den nya todon inte matchar, så ingår den inte i
-    listan. Den skapas, men den syns inte.
-
-    Och räknaren högst upp rör sig inte heller, eftersom ingenting uppdaterar den
-    ännu. Resultatet är att du trycker **Add** och absolut ingenting på sidan
-    ändras, trots att allt gick rätt till.
+    listan. Den skapas, men den syns inte. Räknaren högst upp rör sig inte
+    heller, eftersom ingenting uppdaterar den ännu.
 
     Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
     det är vad det innebär att svaret är en lista och inte en rad.
@@ -67,8 +64,9 @@ Töm textfältet och tryck **Add**.
 Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
 Problemet är var svaret hamnar. Titta noga — formuläret ersätter **hela listan**.
 
-Det är väntat. Attributen du nyss satte säger "byt ut `#todo-table` mot svaret",
-och servern har inget sätt att säga emot dem från HTML:en.
+Det är väntat. `hx-target` står i sidan, och det gäller varje svar formuläret
+får — även felsvar. Vad servern än lägger i svarets kropp hamnar i
+`#todo-table`.
 
 ### 3. Låt servern styra svaret
 
@@ -106,16 +104,15 @@ felrapporten.
 ??? question "Ingenting händer alls vid tomt fält"
 
     Titta på statuskoden i nätverkspanelen. Servern svarar `422`, och htmx 4
-    byter innehåll även på felsvar. Om du har läst att htmx hoppar över svar
-    som inte är `2xx` så stämmer det för htmx 2, inte för htmx 4.
+    sätter in svaret även när statuskoden är ett fel. Om du har läst att htmx
+    hoppar över svar som inte är `2xx` så stämmer det för htmx 2, inte för
+    htmx 4.
 
 ??? question "Sorteringen försvinner när jag lägger till något"
 
-    Den gör det, och det är inget du har gjort fel. Sortera nyast först, lägg
-    till en todo, och listan hoppar tillbaka till äldst först.
-
-    Det är en riktig bugg, den är äldre än den här övningen, och nästa övning
-    handlar om den. Låt den vara så länge.
+    Sortera nyast först, lägg till en todo, och listan hoppar tillbaka till
+    äldst först. Det är en riktig bugg, den är äldre än den här övningen, och
+    nästa övning handlar om den. Låt den vara så länge.
 
 ??? question "Ingenting händer alls när jag lägger till"
 
@@ -164,25 +161,10 @@ den vanliga.
 
     `this` är formuläret och `reset()` är vanlig DOM — ingenting htmx-specifikt.
 
-!!! note "htmx 4 har också en längre form"
-
-    `hx-on:<händelse>="kod"` är den enkla formen, och den du kommer se mest.
-    htmx 4 lade till en längre som bygger på `hx-trigger`:s grammatik och skiljer
-    händelsen från koden med `->`:
-
-    ```html
-    hx-on="<händelse>[<filter>] <modifierare> -> <kod>"
-    ```
-
-    Den kan filtrera på händelsen, lyssna på ett annat element med `from:`, köra
-    samma kod för flera händelser och para ihop flera händelser med olika kod.
-    Inget av det behövs här. Formerna står bredvid varandra i
-    [referensen](https://four.htmx.org/reference/attributes/hx-on).
-
-Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
-Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
-det här fältet. Hade du i stället lagt en lyssnare på `document` hade halvskriven
-text försvunnit varje gång någon sorterade.
+Notera var attributet sitter. Det gäller bara svaren på formulärets egna
+requests. Sorteringen från förra övningen ändrar också innehåll på sidan, men
+den rör inte det här fältet. Hade du i stället lagt en lyssnare på `document`
+hade halvskriven text försvunnit varje gång någon sorterade.
 
 Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
 formuläret.
@@ -198,7 +180,7 @@ formuläret.
 Två saker är trasiga nu.
 
 Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
-ligger utanför `#todo-table`, så bytet rörde den aldrig. Den lagas — men inte
+ligger utanför `#todo-table` och rördes därför aldrig. Den lagas — men inte
 härnäst.
 
 Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.

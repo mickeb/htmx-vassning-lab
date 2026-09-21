@@ -21,7 +21,7 @@ Två nya attribut, och två till längre fram i övningen:
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `hx-trigger` | Vad ska utlösa förfrågan, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
+| `hx-trigger` | Vad ska utlösa requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
 | `hx-include` | Vad mer än elementets eget värde ska skickas med? | [Referens](https://four.htmx.org/reference/attributes/hx-include) |
 
 Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poängen —
@@ -36,21 +36,22 @@ lämnade tillbaka till sorteringen i förra övningen.
 `<input class="search__input">`. Adressen är `/todo-app` — samma som
 sorteringen hämtar sedan övning 8.
 
-Utlösaren är det nya:
+`hx-trigger` är det nya:
 
 ```
 hx-trigger="input changed delay:300ms"
 ```
 
 `input` är webbläsarens egen händelse: den kommer vid varje tangenttryckning.
-`delay:300ms` startar om nedräkningen vid varje ny händelse, så en förfrågan går
-iväg när du **pausar**, inte per tecken. `changed` hoppar över förfrågan om
+`delay:300ms` startar om nedräkningen vid varje ny händelse, så en request går
+iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
 värdet inte faktiskt ändrats — pilknappar och liknande ger `input` utan att
 texten blir en annan.
 
 !!! warning "Glöm inte `hx-swap`"
 
-    Svaret **är** `#todo-table`. Standardbytet i htmx 4 är `innerHTML`, så utan
+    Svaret **är** `#todo-table`. Standardvärdet för `hx-swap` i htmx 4 är
+    `innerHTML`, så utan
     `hx-swap="outerHTML"` hamnar en ny `#todo-table` *inuti* den gamla. Listan
     ser rätt ut, men sidan har nu två element med samma `id`.
 
@@ -65,9 +66,8 @@ texten blir en annan.
            hx-swap="outerHTML">
     ```
 
-Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge **en** förfrågan,
-inte fem. Ta bort `delay:300ms` en stund och skriv igen om du vill se
-skillnaden.
+Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge **en** request,
+inte fem.
 
 ### 2. Sortera först, sök sedan
 
@@ -92,7 +92,7 @@ fråga.
     en `POST` har en kropp. Regeln, från
     [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms), är att
     ett element skickar **sitt eget värde**, och att formulärets alla fält
-    följer med först när förfrågan har en kropp.
+    följer med först när requesten har en kropp.
 
     `GET` har ingen kropp. Fältet skickar `q` och ingenting annat — det dolda
     sorteringsfältet ligger i samma formulär och följer ändå inte med.
@@ -113,8 +113,8 @@ sak till, och det är den intressanta halvan.
     `hx-get="/todo-app?sort={{ sort }}"`. Liquid skriver in värdet när sidan
     renderas, och formuläret renderas inte om.
 
-Lägg därför ett sorteringsfält **inuti** `#todo-table`, som varje byte renderar
-om, och peka `hx-include` på det.
+Lägg därför ett sorteringsfält **inuti** `#todo-table`, som renderas om varje
+gång tabellen ersätts, och peka `hx-include` på det.
 
 ??? example "Facit — `views/todo-app/todo-table.liquid`"
 
@@ -168,10 +168,6 @@ Regeln, rakt ut: **push för beslut, replace för förfining.** Att sortera är 
 beslut — du vill kunna gå tillbaka till det. Att skriva ett tecken till i en
 sökruta är det inte.
 
-De två sitter kvar sida vid sida i appen nu: sorteringslänken lägger till steg,
-sökrutan byter ut. Samma sorts adress, två olika svar på frågan om det är värt
-ett steg bakåt.
-
 ### 4. Extra: visa att något händer
 
 Sökningen sker på en paus, och på en långsam förbindelse hinner det gå en stund
@@ -179,7 +175,7 @@ innan listan byts. Just nu syns ingenting under tiden.
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `hx-indicator` | Vilket element ska markeras medan förfrågan pågår? | [Referens](https://four.htmx.org/reference/attributes/hx-indicator) |
+| `hx-indicator` | Vilket element ska markeras medan requesten pågår? | [Referens](https://four.htmx.org/reference/attributes/hx-indicator) |
 
 htmx lägger klassen `htmx-request` på elementet under tiden, och tar bort den
 när svaret kommit. Stilmallen som får det att synas kommer från htmx självt:
@@ -207,7 +203,7 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
            hx-indicator="#search-status"
     ```
 
-!!! note "Attributet måste sitta på elementet som gör förfrågan"
+!!! note "Attributet måste sitta på elementet som gör requesten"
 
     Arvet mellan element är explicit i htmx 4. Sitter `hx-indicator` på
     formuläret gäller det inte fältet inuti, om det inte skrivs
@@ -225,7 +221,7 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 ## Klart när
 
 - [ ] Listan filtreras medan du skriver, utan att sidan laddas om.
-- [ ] Fem tecken i rad ger **en** förfrågan, inte fem.
+- [ ] Fem tecken i rad ger **en** request, inte fem.
 - [ ] Sortera nyast först och sök — ordningen ligger kvar.
 - [ ] Adressen visar `?q=...`, och bakåtknappen går **inte** tillbaka genom
       varje paus.
@@ -245,7 +241,7 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 
     `hx-swap="outerHTML"` saknas. Ladda om sidan så försvinner dubbleringen.
 
-??? question "Varje bokstav ger en förfrågan"
+??? question "Varje bokstav ger en request"
 
     `delay:300ms` saknas i `hx-trigger`, eller står på fel plats — den hör till
     `input`, inte till elementet.

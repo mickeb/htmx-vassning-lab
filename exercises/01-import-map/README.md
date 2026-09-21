@@ -25,17 +25,11 @@ Det är skalet som varje sida i labbet renderas in i. Lägger du något i dess
 ### 2. Lägg till import map och modulskript
 
 htmx laddas som en **ES-modul via en import map**. En import map är en liten
-JSON-tabell i sidans `<head>` som talar om vad ett namn ska peka på. När ett
+JSON-tabell i sidans `<head>` som kopplar ett namn till en URL. När ett
 modulskript sedan skriver `import htmx from 'htmx.org'` slår webbläsaren upp
-`htmx.org` i tabellen och hämtar filen därifrån.
-
-Poängen med en import map är att **koden inte behöver veta var filen ligger**.
-Koden säger `htmx.org`; tabellen bestämmer vad det pekar på, och tabellen kan
-ändras utan att en enda `import`-rad rörs.
-
-Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
-produktion: samma `import`-rader i koden, olika URL i tabellen. htmx finns i
-båda formerna — `htmx.esm.js` och `htmx.esm.min.js`.
+`htmx.org` i tabellen och hämtar filen därifrån — koden behöver alltså aldrig
+veta var filen ligger, och versionen kan bytas utan att en enda `import`-rad
+rörs.
 
 Båda ska in före `</head>`.
 
@@ -51,8 +45,8 @@ kommit än när importen körs går uppslaget inte att göra.
     </script>
     ```
 
-    Innehållet är ren JSON. Inga kommentarer, inga avslutande kommatecken —
-    en trailing comma räcker för att hela tabellen ska ignoreras tyst.
+    Innehållet är ren JSON. Inga kommentarer, och en trailing comma räcker för
+    att hela tabellen ska ignoreras tyst.
 
 ??? tip "Ledtråd — vilken URL?"
 

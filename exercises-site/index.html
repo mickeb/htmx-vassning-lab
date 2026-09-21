@@ -755,15 +755,16 @@ arbetsflödet. Behöver en övning ett terminalkommando utöver <code>./setup.sh
 det ett misstag i övningen, inte i din miljö.</p>
 </div>
 <h2 id="det-labbet-redan-ger-dig">Det labbet redan ger dig<a class="headerlink" href="#det-labbet-redan-ger-dig" title="Permanent link">&para;</a></h2>
-<p>Appen har <strong>två uppsättningar rutter över samma data</strong>.</p>
+<p>Appen har <strong>två uppsättningar routes över samma data</strong>.</p>
 <p>De vanliga — <code>/todo-app</code>, och formulären som postar till den — returnerar hela
 sidor, precis som webben fungerade innan JavaScript blev inblandat.</p>
-<p>Vid sidan av dem ligger <strong>fragmentrutter</strong> under <code>/todo-app/fragments/...</code>. De
+<p>Vid sidan av dem ligger en andra uppsättning <strong>routes</strong>, under
+<code>/todo-app/fragments/...</code>. De
 renderar exakt samma Liquid-mallar, men utan sidan runt omkring. De fanns med
 redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
 någon serverkod för att använda dem.</p>
 <p>Det är ett medvetet val. Sessionen handlar om hypermedia och htmx, inte om
-routing i Express. Varje övning pekar ut den rutt den behöver.</p>
+routing i Express. Varje övning pekar ut den route den behöver.</p>
 <p>Två av dem går att öppna direkt i en flik:</p>
 <ul>
 <li><a href="http://localhost:4000/todo-app/fragments/table"><code>/todo-app/fragments/table</code></a>
@@ -771,11 +772,11 @@ routing i Express. Varje övning pekar ut den rutt den behöver.</p>
 <li><a href="http://localhost:4000/todo-app/fragments/header"><code>/todo-app/fragments/header</code></a>
   — räknaren överst</li>
 </ul>
-<p>Gör det en gång innan du börjar. Det som kommer tillbaka är <strong>HTML</strong>, inte JSON.
-Ingen kod i webbläsaren behöver tolka svaret och bygga element av det — det är
-en färdig tabell som kan sättas in rakt av. Det är halva poängen med hela
-angreppssättet, och det är lättare att se än att läsa sig till.</p>
-<p>Resten av fragmentrutterna svarar bara på <code>POST</code> och dyker upp i senare övningar.</p>
+<p>Gör det en gång innan du börjar. Det som kommer tillbaka är <strong>HTML</strong>. Ingen kod
+i webbläsaren behöver tolka svaret och bygga element av det — det är en färdig
+tabell som kan sättas in rakt av. Det är halva poängen med hela angreppssättet,
+och det är lättare att se än att läsa sig till.</p>
+<p>Resten svarar bara på <code>POST</code> och dyker upp i senare övningar.</p>
 <h2 id="ovningarna">Övningarna<a class="headerlink" href="#ovningarna" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="01-import-map/"><strong>Installera htmx med en import map</strong></a> — få in htmx
@@ -796,7 +797,7 @@ angreppssättet, och det är lättare att se än att läsa sig till.</p>
    svarar olika beroende på vem som frågar.</li>
 <li><a href="09-url-state/"><strong>Ge tillbaka adressen</strong></a> — ett attribut som lämnar
    tillbaka något webben alltid har haft.</li>
-<li><a href="10-search/"><strong>Sök medan du skriver</strong></a> — en förfrågan bär exakt det
+<li><a href="10-search/"><strong>Sök medan du skriver</strong></a> — en request bär exakt det
     du lägger i den, och det du lägger i den måste renderas om.</li>
 </ol>
 <p>Blir det tid över finns <a href="extra/"><strong>extrauppgifter</strong></a> — uppgifter utan

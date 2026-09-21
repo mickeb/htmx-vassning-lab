@@ -7,12 +7,12 @@ bocka av.
 Allt nedan gäller **htmx 4**. Söker du på egen hand: kontrollera att det du
 hittar inte handlar om htmx 2.
 
-## Morph — ett byte som ändrar i stället för att ersätta
+## Morph — ändrar i stället för att ersätta
 
-Hittills har varje byte i labbet kastat bort det gamla innehållet och satt dit
-nytt. `outerHTML` betyder just det: elementet byts ut.
+Hittills har allt htmx satt in i labbet kastat bort det gamla innehållet och
+satt dit nytt. `outerHTML` betyder just det: elementet byts ut.
 
-htmx 4 har två bytesstrategier till, `innerMorph` och `outerMorph`. De *jämför*
+htmx 4 har två `hx-swap`-värden till, `innerMorph` och `outerMorph`. De *jämför*
 det nya innehållet med det som redan står i DOM:en och ändrar bara det som
 skiljer. Element som inte ändrats behåller sin identitet — och därmed fokus,
 textmarkering, rullningsläge, pågående videouppspelning och allt annat som
@@ -26,10 +26,10 @@ Det går att prova direkt i labbet: byt `hx-swap="outerHTML"` mot
 att raderna som blir kvar efter en filtrering är *samma* element som förut,
 inte nya med samma innehåll.
 
-- [Morphing Guide](https://four.htmx.org/docs/morphing-swaps-guide) — vad ett
-  morph-byte gör, när det är värt det, och hur man styr det
+- [Morphing Guide](https://four.htmx.org/docs/morphing-swaps-guide) — vad en
+  morph gör, när det är värt det, och hur man styr det
 - [`hx-swap`](https://four.htmx.org/reference/attributes/hx-swap) — alla
-  bytesstrategier bredvid varandra
+  värden bredvid varandra
 - [idiomorph](https://github.com/bigskysoftware/idiomorph) — algoritmen, om du
   vill veta hur den matchar ihop gammalt och nytt
 
@@ -37,7 +37,7 @@ inte nya med samma innehåll.
 
 Hela labbet bygger på att servern äger tillståndet. Det är inte alltid hela
 sanningen: en knapp som ska bli avstängd medan fältet bredvid är tomt behöver
-inget serveranrop, och att skicka ett för att få det vore fel väg.
+ingen request till servern, och att skicka en för att få det vore fel väg.
 
 `hx-live` är ett tillägg till htmx 4 för precis det — att binda ihop läget i
 DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript:
@@ -47,7 +47,7 @@ DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript:
 <button :disabled="!q('#name').value">Submit</button>
 ```
 
-Dokumentationen inleder med en beslutstrappa som är värd att läsa även om du
+Dokumentationen inleder med ett beslutsträd som är värt att läsa även om du
 aldrig använder tillägget:
 
 ```text
@@ -63,7 +63,7 @@ Det är samma hållning som resten av dagen, ett steg längre ut: ta till det
 minsta som räcker, och ta till klienten sist.
 
 - [`hx-live`](https://four.htmx.org/extensions/hx-live) — tillägget, med
-  beslutstrappan, `q()`, delad `data`-state och de asynkrona hjälpmedlen
+  beslutsträdet, `q()`, delad `data`-state och de asynkrona hjälpmedlen
 
 ## Alpine.js, och htmx-teamets integration
 
@@ -73,9 +73,9 @@ htmx-teamet har skrivit ett officiellt tillägg som löser det.
 
 Tre saker som annars går sönder, enligt tilläggets dokumentation:
 
-- **Alpine initierar för tidigt.** htmx pausar kort efter ett byte för att låta
-  CSS-övergångar hinna. Alpines observatör hinner se DOM:en mitt i det.
-  Tillägget håller tillbaka den tills bytet lagt sig.
+- **Alpine initierar för tidigt.** htmx pausar kort efter att ha satt in ett
+  svar, för att låta CSS-övergångar hinna. Alpines observatör hinner se DOM:en
+  mitt i det. Tillägget håller tillbaka den tills svaret lagt sig.
 - **Morph tappar Alpines tillstånd.** Vid `innerMorph` och `outerMorph` flyttar
   tillägget Alpines reaktiva data från det gamla elementet till det nya innan
   morphen körs.

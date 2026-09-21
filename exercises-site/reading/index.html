@@ -618,10 +618,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#morph-ett-byte-som-andrar-i-stallet-for-att-ersatta" class="md-nav__link">
+  <a href="#morph-andrar-i-stallet-for-att-ersatta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Morph — ett byte som ändrar i stället för att ersätta
+        Morph — ändrar i stället för att ersätta
       
     </span>
   </a>
@@ -685,10 +685,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#morph-ett-byte-som-andrar-i-stallet-for-att-ersatta" class="md-nav__link">
+  <a href="#morph-andrar-i-stallet-for-att-ersatta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Morph — ett byte som ändrar i stället för att ersätta
+        Morph — ändrar i stället för att ersätta
       
     </span>
   </a>
@@ -740,10 +740,10 @@ Det här är läsning, inte uppgifter — det finns inget att bygga och inget at
 bocka av.</p>
 <p>Allt nedan gäller <strong>htmx 4</strong>. Söker du på egen hand: kontrollera att det du
 hittar inte handlar om htmx 2.</p>
-<h2 id="morph-ett-byte-som-andrar-i-stallet-for-att-ersatta">Morph — ett byte som ändrar i stället för att ersätta<a class="headerlink" href="#morph-ett-byte-som-andrar-i-stallet-for-att-ersatta" title="Permanent link">&para;</a></h2>
-<p>Hittills har varje byte i labbet kastat bort det gamla innehållet och satt dit
-nytt. <code>outerHTML</code> betyder just det: elementet byts ut.</p>
-<p>htmx 4 har två bytesstrategier till, <code>innerMorph</code> och <code>outerMorph</code>. De <em>jämför</em>
+<h2 id="morph-andrar-i-stallet-for-att-ersatta">Morph — ändrar i stället för att ersätta<a class="headerlink" href="#morph-andrar-i-stallet-for-att-ersatta" title="Permanent link">&para;</a></h2>
+<p>Hittills har allt htmx satt in i labbet kastat bort det gamla innehållet och
+satt dit nytt. <code>outerHTML</code> betyder just det: elementet byts ut.</p>
+<p>htmx 4 har två <code>hx-swap</code>-värden till, <code>innerMorph</code> och <code>outerMorph</code>. De <em>jämför</em>
 det nya innehållet med det som redan står i DOM:en och ändrar bara det som
 skiljer. Element som inte ändrats behåller sin identitet — och därmed fokus,
 textmarkering, rullningsläge, pågående videouppspelning och allt annat som
@@ -755,23 +755,23 @@ hänger på just det elementet.</p>
 att raderna som blir kvar efter en filtrering är <em>samma</em> element som förut,
 inte nya med samma innehåll.</p>
 <ul>
-<li><a href="https://four.htmx.org/docs/morphing-swaps-guide">Morphing Guide</a> — vad ett
-  morph-byte gör, när det är värt det, och hur man styr det</li>
+<li><a href="https://four.htmx.org/docs/morphing-swaps-guide">Morphing Guide</a> — vad en
+  morph gör, när det är värt det, och hur man styr det</li>
 <li><a href="https://four.htmx.org/reference/attributes/hx-swap"><code>hx-swap</code></a> — alla
-  bytesstrategier bredvid varandra</li>
+  värden bredvid varandra</li>
 <li><a href="https://github.com/bigskysoftware/idiomorph">idiomorph</a> — algoritmen, om du
   vill veta hur den matchar ihop gammalt och nytt</li>
 </ul>
 <h2 id="hx-live-nar-nagot-anda-maste-vara-pa-klienten"><code>hx-live</code> — när något ändå måste vara på klienten<a class="headerlink" href="#hx-live-nar-nagot-anda-maste-vara-pa-klienten" title="Permanent link">&para;</a></h2>
 <p>Hela labbet bygger på att servern äger tillståndet. Det är inte alltid hela
 sanningen: en knapp som ska bli avstängd medan fältet bredvid är tomt behöver
-inget serveranrop, och att skicka ett för att få det vore fel väg.</p>
+ingen request till servern, och att skicka en för att få det vore fel väg.</p>
 <p><code>hx-live</code> är ett tillägg till htmx 4 för precis det — att binda ihop läget i
 DOM:en med små uttryck, utan ett ramverk och utan en modell i JavaScript:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;!q(&#39;#name&#39;).value&quot;</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Dokumentationen inleder med en beslutstrappa som är värd att läsa även om du
+<p>Dokumentationen inleder med ett beslutsträd som är värt att läsa även om du
 aldrig använder tillägget:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Kan HTML lösa det?
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├─ ja  → använd HTML
@@ -784,7 +784,7 @@ aldrig använder tillägget:</p>
 minsta som räcker, och ta till klienten sist.</p>
 <ul>
 <li><a href="https://four.htmx.org/extensions/hx-live"><code>hx-live</code></a> — tillägget, med
-  beslutstrappan, <code>q()</code>, delad <code>data</code>-state och de asynkrona hjälpmedlen</li>
+  beslutsträdet, <code>q()</code>, delad <code>data</code>-state och de asynkrona hjälpmedlen</li>
 </ul>
 <h2 id="alpinejs-och-htmx-teamets-integration">Alpine.js, och htmx-teamets integration<a class="headerlink" href="#alpinejs-och-htmx-teamets-integration" title="Permanent link">&para;</a></h2>
 <p><a href="https://alpinejs.dev/">Alpine.js</a> är det ramverk som oftast dyker upp bredvid
@@ -792,9 +792,9 @@ htmx när något ska hållas på klienten. De två krockar på ett par ställen,
 htmx-teamet har skrivit ett officiellt tillägg som löser det.</p>
 <p>Tre saker som annars går sönder, enligt tilläggets dokumentation:</p>
 <ul>
-<li><strong>Alpine initierar för tidigt.</strong> htmx pausar kort efter ett byte för att låta
-  CSS-övergångar hinna. Alpines observatör hinner se DOM:en mitt i det.
-  Tillägget håller tillbaka den tills bytet lagt sig.</li>
+<li><strong>Alpine initierar för tidigt.</strong> htmx pausar kort efter att ha satt in ett
+  svar, för att låta CSS-övergångar hinna. Alpines observatör hinner se DOM:en
+  mitt i det. Tillägget håller tillbaka den tills svaret lagt sig.</li>
 <li><strong>Morph tappar Alpines tillstånd.</strong> Vid <code>innerMorph</code> och <code>outerMorph</code> flyttar
   tillägget Alpines reaktiva data från det gamla elementet till det nya innan
   morphen körs.</li>

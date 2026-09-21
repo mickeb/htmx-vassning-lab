@@ -903,7 +903,7 @@ sidans nuvarande adress, inte något du skriver.</p>
 kommer tillbaka är en naken tabell utan sida omkring. Att lägga den i
 adressfältet hade gett en kollega en ostylad tabell.</p>
 <p>Nu hämtar länken <code>/todo-app?sort=desc</code>, och det är en adress som duger att
-skicka vidare. Att slå ihop de två adresserna tog inte bara bort en rutt —
+skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route —
 det gjorde historiken användbar.</p>
 </div>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
@@ -924,7 +924,7 @@ sorteringslänken.</p>
 <h3 id="2-titta-pa-vad-bakatknappen-gor">2. Titta på vad bakåtknappen gör<a class="headerlink" href="#2-titta-pa-vad-bakatknappen-gor" title="Permanent link">&para;</a></h3>
 <p>Det här steget bygger ingenting. Öppna nätverkspanelen, sortera några gånger och
 tryck sedan bakåt.</p>
-<p>Du ser en förfrågan gå iväg — och den är <strong>större</strong> än de som sorteringen gör.
+<p>Du ser en request gå iväg — och den är <strong>större</strong> än de som sorteringen gör.
 Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.</p>
 <div class="admonition note">
 <p class="admonition-title">htmx 4 hämtar om sidan i stället för att komma ihåg den</p>
@@ -932,7 +932,7 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.</p>
 bakåtnavigering. Det gav en snabb återgång och ett obehagligt fel: kopian
 kunde vara tagen efter att annan JavaScript hunnit ändra i DOM:en, och då
 återställdes något som aldrig hade funnits på servern.</p>
-<p>htmx 4 gör i stället en vanlig förfrågan till adressen och byter in svaret i
+<p>htmx 4 gör i stället en vanlig request till adressen och sätter in svaret i
 <code>&lt;body&gt;</code>. Långsammare, och mycket svårare att få fel. Det är också därför du
 ser hela sidan komma tillbaka i nätverkspanelen.</p>
 </div>
@@ -942,7 +942,7 @@ ser hela sidan komma tillbaka i nätverkspanelen.</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Kopierar du adressen och öppnar den i en ny flik får du samma ordning.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bakåtknappen går tillbaka till föregående sortering i stället för ut ur
       appen, och fungerar flera steg bakåt.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bakåt ger <strong>en</strong> förfrågan i nätverkspanelen, och svaret är större än vid
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bakåt ger <strong>en</strong> request i nätverkspanelen, och svaret är större än vid
       en sortering.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Efter bakåt fungerar sidan fortfarande: lägg till en todo och se att
       räknaren uppdateras utan sidladdning.</li>

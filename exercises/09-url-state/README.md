@@ -39,7 +39,7 @@ sidans nuvarande adress, inte något du skriver.
     adressfältet hade gett en kollega en ostylad tabell.
 
     Nu hämtar länken `/todo-app?sort=desc`, och det är en adress som duger att
-    skicka vidare. Att slå ihop de två adresserna tog inte bara bort en rutt —
+    skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route —
     det gjorde historiken användbar.
 
 ## Steg
@@ -67,7 +67,7 @@ Sortera. Adressen ändras nu till `/todo-app?sort=desc` utan att sidan laddas om
 Det här steget bygger ingenting. Öppna nätverkspanelen, sortera några gånger och
 tryck sedan bakåt.
 
-Du ser en förfrågan gå iväg — och den är **större** än de som sorteringen gör.
+Du ser en request gå iväg — och den är **större** än de som sorteringen gör.
 Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 
 !!! note "htmx 4 hämtar om sidan i stället för att komma ihåg den"
@@ -77,7 +77,7 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
     kunde vara tagen efter att annan JavaScript hunnit ändra i DOM:en, och då
     återställdes något som aldrig hade funnits på servern.
 
-    htmx 4 gör i stället en vanlig förfrågan till adressen och byter in svaret i
+    htmx 4 gör i stället en vanlig request till adressen och sätter in svaret i
     `<body>`. Långsammare, och mycket svårare att få fel. Det är också därför du
     ser hela sidan komma tillbaka i nätverkspanelen.
 
@@ -87,7 +87,7 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 - [ ] Kopierar du adressen och öppnar den i en ny flik får du samma ordning.
 - [ ] Bakåtknappen går tillbaka till föregående sortering i stället för ut ur
       appen, och fungerar flera steg bakåt.
-- [ ] Bakåt ger **en** förfrågan i nätverkspanelen, och svaret är större än vid
+- [ ] Bakåt ger **en** request i nätverkspanelen, och svaret är större än vid
       en sortering.
 - [ ] Efter bakåt fungerar sidan fortfarande: lägg till en todo och se att
       räknaren uppdateras utan sidladdning.

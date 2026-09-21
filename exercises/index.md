@@ -28,18 +28,19 @@ reload. Alla fyra ska vara gröna innan du går vidare.
 
 ## Det labbet redan ger dig
 
-Appen har **två uppsättningar rutter över samma data**.
+Appen har **två uppsättningar routes över samma data**.
 
 De vanliga — `/todo-app`, och formulären som postar till den — returnerar hela
 sidor, precis som webben fungerade innan JavaScript blev inblandat.
 
-Vid sidan av dem ligger **fragmentrutter** under `/todo-app/fragments/...`. De
+Vid sidan av dem ligger en andra uppsättning **routes**, under
+`/todo-app/fragments/...`. De
 renderar exakt samma Liquid-mallar, men utan sidan runt omkring. De fanns med
 redan när du klonade labbet: du ska inte skriva dem, och du behöver inte öppna
 någon serverkod för att använda dem.
 
 Det är ett medvetet val. Sessionen handlar om hypermedia och htmx, inte om
-routing i Express. Varje övning pekar ut den rutt den behöver.
+routing i Express. Varje övning pekar ut den route den behöver.
 
 Två av dem går att öppna direkt i en flik:
 
@@ -48,12 +49,12 @@ Två av dem går att öppna direkt i en flik:
 - [`/todo-app/fragments/header`](http://localhost:4000/todo-app/fragments/header)
   — räknaren överst
 
-Gör det en gång innan du börjar. Det som kommer tillbaka är **HTML**, inte JSON.
-Ingen kod i webbläsaren behöver tolka svaret och bygga element av det — det är
-en färdig tabell som kan sättas in rakt av. Det är halva poängen med hela
-angreppssättet, och det är lättare att se än att läsa sig till.
+Gör det en gång innan du börjar. Det som kommer tillbaka är **HTML**. Ingen kod
+i webbläsaren behöver tolka svaret och bygga element av det — det är en färdig
+tabell som kan sättas in rakt av. Det är halva poängen med hela angreppssättet,
+och det är lättare att se än att läsa sig till.
 
-Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övningar.
+Resten svarar bara på `POST` och dyker upp i senare övningar.
 
 ## Övningarna
 
@@ -75,7 +76,7 @@ Resten av fragmentrutterna svarar bara på `POST` och dyker upp i senare övning
    svarar olika beroende på vem som frågar.
 9. [**Ge tillbaka adressen**](09-url-state/README.md) — ett attribut som lämnar
    tillbaka något webben alltid har haft.
-10. [**Sök medan du skriver**](10-search/README.md) — en förfrågan bär exakt det
+10. [**Sök medan du skriver**](10-search/README.md) — en request bär exakt det
     du lägger i den, och det du lägger i den måste renderas om.
 
 Blir det tid över finns [**extrauppgifter**](extra/README.md) — uppgifter utan

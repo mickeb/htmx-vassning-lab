@@ -927,7 +927,7 @@ något som ska byggas bort; det är reservvägen, synlig.</p>
 <tbody>
 <tr>
 <td><code>hx-trigger</code></td>
-<td>Vad ska utlösa förfrågan, och när?</td>
+<td>Vad ska utlösa requesten, och när?</td>
 <td><a href="https://four.htmx.org/reference/attributes/hx-trigger">Referens</a></td>
 </tr>
 <tr>
@@ -945,17 +945,18 @@ lämnade tillbaka till sorteringen i förra övningen.</p>
 <p>Öppna <code>views/todo-app/search-form.liquid</code> och lägg attributen på
 <code>&lt;input class="search__input"&gt;</code>. Adressen är <code>/todo-app</code> — samma som
 sorteringen hämtar sedan övning 8.</p>
-<p>Utlösaren är det nya:</p>
+<p><code>hx-trigger</code> är det nya:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-trigger=&quot;input changed delay:300ms&quot;
 </code></pre></div>
 <p><code>input</code> är webbläsarens egen händelse: den kommer vid varje tangenttryckning.
-<code>delay:300ms</code> startar om nedräkningen vid varje ny händelse, så en förfrågan går
-iväg när du <strong>pausar</strong>, inte per tecken. <code>changed</code> hoppar över förfrågan om
+<code>delay:300ms</code> startar om nedräkningen vid varje ny händelse, så en request går
+iväg när du <strong>pausar</strong>, inte per tecken. <code>changed</code> hoppar över requesten om
 värdet inte faktiskt ändrats — pilknappar och liknande ger <code>input</code> utan att
 texten blir en annan.</p>
 <div class="admonition warning">
 <p class="admonition-title">Glöm inte <code>hx-swap</code></p>
-<p>Svaret <strong>är</strong> <code>#todo-table</code>. Standardbytet i htmx 4 är <code>innerHTML</code>, så utan
+<p>Svaret <strong>är</strong> <code>#todo-table</code>. Standardvärdet för <code>hx-swap</code> i htmx 4 är
+<code>innerHTML</code>, så utan
 <code>hx-swap="outerHTML"</code> hamnar en ny <code>#todo-table</code> <em>inuti</em> den gamla. Listan
 ser rätt ut, men sidan har nu två element med samma <code>id</code>.</p>
 </div>
@@ -969,9 +970,8 @@ ser rätt ut, men sidan har nu två element med samma <code>id</code>.</p>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>       <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 </details>
-<p>Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge <strong>en</strong> förfrågan,
-inte fem. Ta bort <code>delay:300ms</code> en stund och skriv igen om du vill se
-skillnaden.</p>
+<p>Skriv i rutan med nätverkspanelen öppen. Fem tecken ska ge <strong>en</strong> request,
+inte fem.</p>
 <h3 id="2-sortera-forst-sok-sedan">2. Sortera först, sök sedan<a class="headerlink" href="#2-sortera-forst-sok-sedan" title="Permanent link">&para;</a></h3>
 <p>Sortera nyast först. Skriv sedan något i sökrutan.</p>
 <p>Ordningen slår tillbaka till äldst först vid första tangenttryckningen.</p>
@@ -988,7 +988,7 @@ fråga.</p>
 en <code>POST</code> har en kropp. Regeln, från
 <a href="https://four.htmx.org/docs#forms">htmx-dokumentationen om formulär</a>, är att
 ett element skickar <strong>sitt eget värde</strong>, och att formulärets alla fält
-följer med först när förfrågan har en kropp.</p>
+följer med först när requesten har en kropp.</p>
 <p><code>GET</code> har ingen kropp. Fältet skickar <code>q</code> och ingenting annat — det dolda
 sorteringsfältet ligger i samma formulär och följer ändå inte med.</p>
 </div>
@@ -1005,8 +1005,8 @@ hade när sidan laddades, och <code>hx-include</code> skickar lydigt det gamla v
 <code>hx-get="/todo-app?sort={{ sort }}"</code>. Liquid skriver in värdet när sidan
 renderas, och formuläret renderas inte om.</p>
 </div>
-<p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som varje byte renderar
-om, och peka <code>hx-include</code> på det.</p>
+<p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som renderas om varje
+gång tabellen ersätts, och peka <code>hx-include</code> på det.</p>
 <details class="example">
 <summary>Facit — <code>views/todo-app/todo-table.liquid</code></summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span><span class="p">&gt;</span>
@@ -1061,9 +1061,6 @@ historiken har blivit en logg över ditt skrivande.</p>
 <p>Regeln, rakt ut: <strong>push för beslut, replace för förfining.</strong> Att sortera är ett
 beslut — du vill kunna gå tillbaka till det. Att skriva ett tecken till i en
 sökruta är det inte.</p>
-<p>De två sitter kvar sida vid sida i appen nu: sorteringslänken lägger till steg,
-sökrutan byter ut. Samma sorts adress, två olika svar på frågan om det är värt
-ett steg bakåt.</p>
 <h3 id="4-extra-visa-att-nagot-hander">4. Extra: visa att något händer<a class="headerlink" href="#4-extra-visa-att-nagot-hander" title="Permanent link">&para;</a></h3>
 <p>Sökningen sker på en paus, och på en långsam förbindelse hinner det gå en stund
 innan listan byts. Just nu syns ingenting under tiden.</p>
@@ -1078,7 +1075,7 @@ innan listan byts. Just nu syns ingenting under tiden.</p>
 <tbody>
 <tr>
 <td><code>hx-indicator</code></td>
-<td>Vilket element ska markeras medan förfrågan pågår?</td>
+<td>Vilket element ska markeras medan requesten pågår?</td>
 <td><a href="https://four.htmx.org/reference/attributes/hx-indicator">Referens</a></td>
 </tr>
 </tbody>
@@ -1101,7 +1098,7 @@ när svaret kommit. Stilmallen som får det att synas kommer från htmx självt:
 </code></pre></div>
 </details>
 <div class="admonition note">
-<p class="admonition-title">Attributet måste sitta på elementet som gör förfrågan</p>
+<p class="admonition-title">Attributet måste sitta på elementet som gör requesten</p>
 <p>Arvet mellan element är explicit i htmx 4. Sitter <code>hx-indicator</code> på
 formuläret gäller det inte fältet inuti, om det inte skrivs
 <code>hx-indicator:inherited</code>.</p>
@@ -1117,7 +1114,7 @@ Annars: markera <code>&lt;span&gt;</code> i inspektören och skriv i sökrutan �
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Listan filtreras medan du skriver, utan att sidan laddas om.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fem tecken i rad ger <strong>en</strong> förfrågan, inte fem.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fem tecken i rad ger <strong>en</strong> request, inte fem.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sortera nyast först och sök — ordningen ligger kvar.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Adressen visar <code>?q=...</code>, och bakåtknappen går <strong>inte</strong> tillbaka genom
       varje paus.</li>
@@ -1137,7 +1134,7 @@ stället för på det i tabellen. Titta på adressen i nätverkspanelen: saknas
 <p><code>hx-swap="outerHTML"</code> saknas. Ladda om sidan så försvinner dubbleringen.</p>
 </details>
 <details class="question">
-<summary>Varje bokstav ger en förfrågan</summary>
+<summary>Varje bokstav ger en request</summary>
 <p><code>delay:300ms</code> saknas i <code>hx-trigger</code>, eller står på fel plats — den hör till
 <code>input</code>, inte till elementet.</p>
 </details>

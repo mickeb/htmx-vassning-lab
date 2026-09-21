@@ -855,15 +855,11 @@ också ha ändrats i och med version 4. Dubbelkolla alltid på
 <code>&lt;head&gt;</code> finns det på alla sidor.</p>
 <h3 id="2-lagg-till-import-map-och-modulskript">2. Lägg till import map och modulskript<a class="headerlink" href="#2-lagg-till-import-map-och-modulskript" title="Permanent link">&para;</a></h3>
 <p>htmx laddas som en <strong>ES-modul via en import map</strong>. En import map är en liten
-JSON-tabell i sidans <code>&lt;head&gt;</code> som talar om vad ett namn ska peka på. När ett
+JSON-tabell i sidans <code>&lt;head&gt;</code> som kopplar ett namn till en URL. När ett
 modulskript sedan skriver <code>import htmx from 'htmx.org'</code> slår webbläsaren upp
-<code>htmx.org</code> i tabellen och hämtar filen därifrån.</p>
-<p>Poängen med en import map är att <strong>koden inte behöver veta var filen ligger</strong>.
-Koden säger <code>htmx.org</code>; tabellen bestämmer vad det pekar på, och tabellen kan
-ändras utan att en enda <code>import</code>-rad rörs.</p>
-<p>Det är så man kör en ominifierad utvecklingsversion lokalt och en minifierad i
-produktion: samma <code>import</code>-rader i koden, olika URL i tabellen. htmx finns i
-båda formerna — <code>htmx.esm.js</code> och <code>htmx.esm.min.js</code>.</p>
+<code>htmx.org</code> i tabellen och hämtar filen därifrån — koden behöver alltså aldrig
+veta var filen ligger, och versionen kan bytas utan att en enda <code>import</code>-rad
+rörs.</p>
 <p>Båda ska in före <code>&lt;/head&gt;</code>.</p>
 <p>Ordningen spelar roll: <strong>import map:en måste stå före det modulskript som
 använder namnet.</strong> Webbläsaren läser tabellen en gång, och har den inte
@@ -874,8 +870,8 @@ kommit än när importen körs går uppslaget inte att göra.</p>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="w"> </span><span class="s2">&quot;imports&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;paketnamn&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://exempel.se/fil.js&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Innehållet är ren JSON. Inga kommentarer, inga avslutande kommatecken —
-en trailing comma räcker för att hela tabellen ska ignoreras tyst.</p>
+<p>Innehållet är ren JSON. Inga kommentarer, och en trailing comma räcker för
+att hela tabellen ska ignoreras tyst.</p>
 </details>
 <details class="tip">
 <summary>Ledtråd — vilken URL?</summary>

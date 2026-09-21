@@ -12,7 +12,7 @@ att sidan laddas om.
 | `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
-| `hx-swap-oob` | Ska elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+| `hx-swap-oob` | Ska elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
 Inget av attributen är nytt. Det nya är **värdet** på `hx-target`:
 
@@ -20,15 +20,15 @@ Inget av attributen är nytt. Det nya är **värdet** på `hx-target`:
 hx-target="closest tr"
 ```
 
-`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde förfrågan".
+`closest tr` betyder "närmaste `tr` uppåt från elementet som gjorde requesten".
 Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
 inte radens `id`.
 
 Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
 är klar ska knappen vara borta och en bock stå i stället.
 
-Rubriken kan redan märkas out of band sedan övning 5 — du använder det utan att
-röra `todo-header.liquid`.
+Rubriken sätter redan `hx-swap-oob` när den får `oob: true`, sedan övning 5 —
+du använder det utan att röra `todo-header.liquid`.
 
 ## Steg
 
@@ -37,10 +37,10 @@ röra `todo-header.liquid`.
 Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
 `/todo-app/fragments/todos/{{ todo.id }}/complete`.
 
-??? tip "Ledtråd — vilket byte?"
+??? tip "Ledtråd — vilket `hx-swap`?"
 
     Raden som kommer tillbaka ska *ersätta* den gamla raden, inte hamna inuti
-    den. Samma bytesläge som du satte på tabellen i övning 2.
+    den. Samma värde som du satte på tabellen i övning 2.
 
 ??? example "Facit"
 
@@ -58,7 +58,7 @@ bock — men räknaren står still igen.
 
 Det här kan du redan. `views/todo-app/complete-response.liquid` skickar bara
 raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
-be om märkningen på samma sätt.
+skicka med `oob: true` på samma sätt.
 
 `stats` finns redan i mallen, och `todo-header.liquid` förbereddes i övning 5,
 så du behöver inte röra den filen.
@@ -77,8 +77,8 @@ så du behöver inte röra den filen.
     Lömskast är att räknaren ändå uppdateras korrekt, så det ser ut som att
     hälften fungerade.
 
-    htmx plockar ut out-of-band-elementen ur svaret innan det byts in — men då är
-    raden redan förstörd, ett steg tidigare.
+    htmx plockar ut out-of-band-elementen ur svaret innan det sätts in — men då
+    är raden redan förstörd, ett steg tidigare.
 
 ??? example "Facit"
 
@@ -91,8 +91,8 @@ så du behöver inte röra den filen.
 
 - [ ] **Complete** stryker över raden och ersätter knappen med en bock.
 - [ ] Räknaren räknar ner med ett.
-- [ ] Nätverkspanelen visar **en** förfrågan, och inget dokument.
-- [ ] Antalet rader i listan är oförändrat — raden byttes ut, inte tillagd.
+- [ ] Nätverkspanelen visar **en** request, och inget dokument.
+- [ ] Antalet rader i listan är oförändrat — raden ersattes, den lades inte till.
 
 ## Fungerar det inte?
 

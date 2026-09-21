@@ -3,34 +3,34 @@
 ## Mål
 
 Räknaren i rubriken stämmer igen direkt när du lägger till en todo — utan en
-extra förfrågan.
+extra request.
 
 ## Användbara attribut
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `hx-swap-oob` | Ska det här elementet hamna någon annanstans än i målet? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+| `hx-swap-oob` | Ska det här elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
 
 Räknaren går inte att laga med `hx-target`. Det attributet pekar ut **ett**
 ställe, och svaret behöver hamna på två.
 
-Lösningen vänder på frågan: i stället för att förfrågan bestämmer var allt ska
+Lösningen vänder på frågan: i stället för att requesten bestämmer var allt ska
 hamna får en del av **svaret** säga var just den hör hemma.
 
-`oob` står för *out of band* — vid sidan av. Ett element i svaret som är märkt
-`hx-swap-oob="true"` placeras inte där bytet skulle ha lagt det. htmx letar upp
-elementet på sidan som har **samma `id`** och ersätter det.
+`oob` står för *out of band* — vid sidan av. Ett element i svaret som har
+`hx-swap-oob="true"` placeras inte där `hx-target` pekar. htmx letar i stället
+upp elementet på sidan som har **samma `id`** och ersätter det.
 
 ## Steg
 
-### 1. Låt rubriken kunna märkas
+### 1. Sätt `hx-swap-oob` på rubriken — men bara i svar
 
 Öppna `views/todo-app/todo-header.liquid`. `<header>`-taggen har redan
-`id="todo-header"`, vilket är det htmx matchar på. Nu ska den kunna bära
-`hx-swap-oob="true"` — men bara när den skickas som en del av ett svar.
+`id="todo-header"`, vilket är det htmx matchar på. Nu ska `hx-swap-oob="true"`
+sättas på den, men bara när den skickas som en del av ett svar.
 
 Samma mall renderas nämligen på två ställen: som en del av hela sidan, och som
-en del av svaret du bygger i nästa steg. Märkningen hör till svaret, inte till
+en del av svaret du bygger i nästa steg. Attributet hör till svaret, inte till
 elementet.
 
 ??? example "Facit"
@@ -47,16 +47,16 @@ elementet.
 
     För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
     Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
-    `hx-swap-oob` i svar som byts in, inte i sidan som redan ligger där.
+    `hx-swap-oob` i svar som sätts in, inte i sidan som redan ligger där.
 
-    Men en sida kan också *vara* ett svar. Den dagen den är det börjar en
-    märkning som ligger kvar gälla på ett ställe där ingen bett om den, och det
-    som försvinner gör det tyst.
+    Men en sida kan också *vara* ett svar. Den dagen den är det börjar ett
+    `hx-swap-oob` som ligger kvar gälla på ett ställe där ingen bett om det, och
+    det som försvinner gör det tyst.
 
 ### 2. Skicka med rubriken i svaret
 
 Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara listan.
-Rendera rubriken också, och be om märkningen med `oob: true`.
+Rendera rubriken också, och skicka med `oob: true`.
 
 `stats` finns redan tillgängligt i mallen — hanteraren skickar med det — så du
 behöver inte ändra något i `app.ts`.
@@ -79,7 +79,7 @@ behöver inte ändra något i `app.ts`.
 ## Klart när
 
 - [ ] Räknaren i rubriken ändras direkt när du lägger till en todo.
-- [ ] Nätverkspanelen visar **en** förfrågan, inte två.
+- [ ] Nätverkspanelen visar **en** request, inte två.
 - [ ] Sidan laddas inte om.
 - [ ] Det finns fortfarande bara en rubrik på sidan.
 - [ ] Sidan du laddar om innehåller ingen `hx-swap-oob` — bara svaren gör det.
@@ -113,7 +113,6 @@ behöver inte ändra något i `app.ts`.
     </hx-partial>
     ```
 
-    Två fördelar: målet står utskrivet i stället för att matchas via `id`, och
-    `todo-header.liquid` behöver inte ändras alls. Ordningen i svaret spelar
-    ingen roll heller. Värt att känna till — men `hx-swap-oob` är det som
+    `hx-target` står utskrivet i stället för att matchas via `id`, och
+    `todo-header.liquid` behöver inte ändras alls. Men `hx-swap-oob` är det som
     fungerar överallt.

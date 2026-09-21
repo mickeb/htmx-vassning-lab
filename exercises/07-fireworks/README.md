@@ -21,17 +21,17 @@ Det görs med en HTTP-header i svaret:
 HX-Trigger: fireworks
 ```
 
-htmx läser headern när bytet är klart och utlöser en händelse med det namnet.
+htmx läser headern när svaret är insatt och utlöser en händelse med det namnet.
 Vad `fireworks` betyder är upp till webbläsaren att avgöra.
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `HX-Trigger` | Vilken händelse ska utlösas när svaret är inbytt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
+| `HX-Trigger` | Vilken händelse ska utlösas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
 
 !!! warning "I htmx 2 fanns tre headers"
 
     `HX-Trigger`, `HX-Trigger-After-Swap` och `HX-Trigger-After-Settle`. htmx 4
-    har slagit ihop dem till en enda, som alltid utlöses efter bytet. Ser du de
+    har slagit ihop dem till en enda, som alltid utlöses efter insättningen. Ser du de
     två längre namnen i ett exempel läser du htmx 2-material.
 
 ## Steg
@@ -68,9 +68,9 @@ ge biblioteket en yta att rita på, och starta när händelsen `fireworks` komme
 
 !!! note "Lyssna på `document`"
 
-    Knappen som skickade förfrågan finns inte kvar när händelsen kommer — hela
+    Knappen som skickade requesten finns inte kvar när händelsen kommer — hela
     raden byttes ju ut. htmx utlöser händelsen på det element som gjorde
-    förfrågan om det finns kvar, annars på dokumentet. Händelsen bubblar, så
+    requesten om det finns kvar, annars på dokumentet. Händelsen bubblar, så
     `document` hör den i båda fallen.
 
 ??? example "Facit"
@@ -96,10 +96,10 @@ ge biblioteket en yta att rita på, och starta när händelsen `fireworks` komme
     sidan rullas och tar inte emot klick. Resten är `fireworks-js` eget API och
     har ingenting med htmx att göra.
 
-Ladda om och bocka av den sista todon. Ingenting händer — ingen har sagt till
-webbläsaren att något är värt att fira. 😢
+Ladda om och bocka av den sista todon. Ingenting händer — inget svar har
+skickat headern ännu. 😢
 
-### 3. Låt servern säga till
+### 3. Låt servern skicka headern
 
 Öppna `src/app.ts` och leta upp hanteraren för
 `POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
@@ -123,7 +123,7 @@ renderar svaret. En rad till: sätt headern när allt är avbockat.
 - [ ] Att bocka av en todo när det finns fler kvar ger inga fyrverkerier.
 - [ ] Svaret på den sista avbockningen har headern `HX-Trigger: fireworks`.
       Nätverkspanelen visar den under svarets headers.
-- [ ] Det är fortfarande **en** förfrågan, och raden och räknaren uppdateras som
+- [ ] Det är fortfarande **en** request, och raden och räknaren uppdateras som
       förut.
 
 ## Fungerar det inte?

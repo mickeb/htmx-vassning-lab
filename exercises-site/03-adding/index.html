@@ -934,13 +934,13 @@ ger ett synligt fel på rätt ställe.</p>
 </tbody>
 </table>
 <p>Det är <strong>samma form som sorteringen</strong>, med en <code>POST</code> i stället för en <code>GET</code>.
-Målet är <code>#todo-table</code> och bytet är <code>outerHTML</code>, av samma skäl som förra gången:
-det som kommer tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>.</p>
+<code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>, av samma skäl som
+förra gången: det som kommer tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">En <code>POST</code> bär med sig hela formuläret</p>
 <p>I förra övningen satt <code>hx-get</code> på en <code>&lt;a&gt;</code>, och länken hade inget värde att
 skicka — adressen fick bära sorteringen själv.</p>
-<p>Här är det tvärtom. En förfrågan med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
+<p>Här är det tvärtom. En request med kropp — allt utom <code>GET</code> och <code>DELETE</code> —
 tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 <code>q</code>- och <code>sort</code>-fälten, följer med utan att du gör något.</p>
 <p>Reglerna för vad som skickas med står i
@@ -963,10 +963,8 @@ tar med sig alla fält i formuläret automatiskt. Beskrivningen, och de dolda
 <p class="admonition-title">Har du en sökning igång händer ingenting synligt</p>
 <p>Svaret är <strong>listan</strong>, inte raden. Servern renderar den lista du tittar på —
 och söker du efter något som den nya todon inte matchar, så ingår den inte i
-listan. Den skapas, men den syns inte.</p>
-<p>Och räknaren högst upp rör sig inte heller, eftersom ingenting uppdaterar den
-ännu. Resultatet är att du trycker <strong>Add</strong> och absolut ingenting på sidan
-ändras, trots att allt gick rätt till.</p>
+listan. Den skapas, men den syns inte. Räknaren högst upp rör sig inte
+heller, eftersom ingenting uppdaterar den ännu.</p>
 <p>Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
 det är vad det innebär att svaret är en lista och inte en rad.</p>
 </div>
@@ -974,8 +972,9 @@ det är vad det innebär att svaret är en lista och inte en rad.</p>
 <p>Töm textfältet och tryck <strong>Add</strong>.</p>
 <p>Servern svarar redan som den ska: den renderar formuläret med fältet markerat.
 Problemet är var svaret hamnar. Titta noga — formuläret ersätter <strong>hela listan</strong>.</p>
-<p>Det är väntat. Attributen du nyss satte säger "byt ut <code>#todo-table</code> mot svaret",
-och servern har inget sätt att säga emot dem från HTML:en.</p>
+<p>Det är väntat. <code>hx-target</code> står i sidan, och det gäller varje svar formuläret
+får — även felsvar. Vad servern än lägger i svarets kropp hamnar i
+<code>#todo-table</code>.</p>
 <h3 id="3-lat-servern-styra-svaret">3. Låt servern styra svaret<a class="headerlink" href="#3-lat-servern-styra-svaret" title="Permanent link">&para;</a></h3>
 <p>En HTTP-header i svaret, satt i <code>src/app.ts</code>, i felgrenen för
 <code>POST /fragments/todos</code>.</p>
@@ -1006,15 +1005,15 @@ felrapporten.</p>
 <details class="question">
 <summary>Ingenting händer alls vid tomt fält</summary>
 <p>Titta på statuskoden i nätverkspanelen. Servern svarar <code>422</code>, och htmx 4
-byter innehåll även på felsvar. Om du har läst att htmx hoppar över svar
-som inte är <code>2xx</code> så stämmer det för htmx 2, inte för htmx 4.</p>
+sätter in svaret även när statuskoden är ett fel. Om du har läst att htmx
+hoppar över svar som inte är <code>2xx</code> så stämmer det för htmx 2, inte för
+htmx 4.</p>
 </details>
 <details class="question">
 <summary>Sorteringen försvinner när jag lägger till något</summary>
-<p>Den gör det, och det är inget du har gjort fel. Sortera nyast först, lägg
-till en todo, och listan hoppar tillbaka till äldst först.</p>
-<p>Det är en riktig bugg, den är äldre än den här övningen, och nästa övning
-handlar om den. Låt den vara så länge.</p>
+<p>Sortera nyast först, lägg till en todo, och listan hoppar tillbaka till
+äldst först. Det är en riktig bugg, den är äldre än den här övningen, och
+nästa övning handlar om den. Låt den vara så länge.</p>
 </details>
 <details class="question">
 <summary>Ingenting händer alls när jag lägger till</summary>
@@ -1067,22 +1066,10 @@ inget felmeddelande. Koden körs bara aldrig.</p>
 </code></pre></div>
 <p><code>this</code> är formuläret och <code>reset()</code> är vanlig DOM — ingenting htmx-specifikt.</p>
 </details>
-<div class="admonition note">
-<p class="admonition-title">htmx 4 har också en längre form</p>
-<p><code>hx-on:&lt;händelse&gt;="kod"</code> är den enkla formen, och den du kommer se mest.
-htmx 4 lade till en längre som bygger på <code>hx-trigger</code>:s grammatik och skiljer
-händelsen från koden med <code>-&gt;</code>:</p>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>hx-on=&quot;<span class="p">&lt;</span><span class="nt">händelse</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">filter</span><span class="p">&gt;</span>] <span class="p">&lt;</span><span class="nt">modifierare</span><span class="p">&gt;</span> -&gt; <span class="p">&lt;</span><span class="nt">kod</span><span class="p">&gt;</span>&quot;
-</code></pre></div>
-<p>Den kan filtrera på händelsen, lyssna på ett annat element med <code>from:</code>, köra
-samma kod för flera händelser och para ihop flera händelser med olika kod.
-Inget av det behövs här. Formerna står bredvid varandra i
-<a href="https://four.htmx.org/reference/attributes/hx-on">referensen</a>.</p>
-</div>
-<p>Notera var attributet sitter. Det gäller formulärets egna byten, och bara dem.
-Sorteringen från förra övningen byter också innehåll på sidan, men den rör inte
-det här fältet. Hade du i stället lagt en lyssnare på <code>document</code> hade halvskriven
-text försvunnit varje gång någon sorterade.</p>
+<p>Notera var attributet sitter. Det gäller bara svaren på formulärets egna
+requests. Sorteringen från förra övningen ändrar också innehåll på sidan, men
+den rör inte det här fältet. Hade du i stället lagt en lyssnare på <code>document</code>
+hade halvskriven text försvunnit varje gång någon sorterade.</p>
 <p>Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
 formuläret.</p>
 <div class="admonition note">
@@ -1094,7 +1081,7 @@ CSS-klass. Det är inget övningen bygger bort.</p>
 <h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
 <p>Två saker är trasiga nu.</p>
 <p>Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
-ligger utanför <code>#todo-table</code>, så bytet rörde den aldrig. Den lagas — men inte
+ligger utanför <code>#todo-table</code> och rördes därför aldrig. Den lagas — men inte
 härnäst.</p>
 <p>Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.</p>
 <p>Nästa övning handlar om den.</p>

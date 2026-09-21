@@ -889,7 +889,7 @@ att sidan laddas om.</p>
 </tr>
 <tr>
 <td><code>hx-swap-oob</code></td>
-<td>Ska elementet hamna någon annanstans än i målet?</td>
+<td>Ska elementet hamna någon annanstans än där <code>hx-target</code> pekar?</td>
 <td><a href="https://four.htmx.org/reference/attributes/hx-swap-oob">Referens</a></td>
 </tr>
 </tbody>
@@ -897,21 +897,21 @@ att sidan laddas om.</p>
 <p>Inget av attributen är nytt. Det nya är <strong>värdet</strong> på <code>hx-target</code>:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>hx-target=&quot;closest tr&quot;
 </code></pre></div>
-<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde förfrågan".
+<p><code>closest tr</code> betyder "närmaste <code>tr</code> uppåt från elementet som gjorde requesten".
 Ett attribut, samma i varje rad, oavsett vilken rad det är — du behöver alltså
 inte radens <code>id</code>.</p>
 <p>Hela raden byts ut, inte en del av den. Att bocka av är enkelriktat: när todon
 är klar ska knappen vara borta och en bock stå i stället.</p>
-<p>Rubriken kan redan märkas out of band sedan övning 5 — du använder det utan att
-röra <code>todo-header.liquid</code>.</p>
+<p>Rubriken sätter redan <code>hx-swap-oob</code> när den får <code>oob: true</code>, sedan övning 5 —
+du använder det utan att röra <code>todo-header.liquid</code>.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lagg-attributen-pa-complete-knappen">1. Lägg attributen på Complete-knappen<a class="headerlink" href="#1-lagg-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-row.liquid</code>. Knappen ska posta till
 <code>/todo-app/fragments/todos/{{ todo.id }}/complete</code>.</p>
 <details class="tip">
-<summary>Ledtråd — vilket byte?</summary>
+<summary>Ledtråd — vilket <code>hx-swap</code>?</summary>
 <p>Raden som kommer tillbaka ska <em>ersätta</em> den gamla raden, inte hamna inuti
-den. Samma bytesläge som du satte på tabellen i övning 2.</p>
+den. Samma värde som du satte på tabellen i övning 2.</p>
 </details>
 <details class="example">
 <summary>Facit</summary>
@@ -926,7 +926,7 @@ bock — men räknaren står still igen.</p>
 <h3 id="2-rakna-om-rubriken">2. Räkna om rubriken<a class="headerlink" href="#2-rakna-om-rubriken" title="Permanent link">&para;</a></h3>
 <p>Det här kan du redan. <code>views/todo-app/complete-response.liquid</code> skickar bara
 raden. Lägg till rubriken, precis som du gjorde med svaret för en ny todo — och
-be om märkningen på samma sätt.</p>
+skicka med <code>oob: true</code> på samma sätt.</p>
 <p><code>stats</code> finns redan i mallen, och <code>todo-header.liquid</code> förbereddes i övning 5,
 så du behöver inte röra den filen.</p>
 <div class="admonition warning">
@@ -940,8 +940,8 @@ behåller texten. Det som hamnar i listan blir en lös textsnutt:
 <code>2026-09-21 14:38:52 Köp mjölk</code>. Inget felmeddelande, ingenting i konsolen.</p>
 <p>Lömskast är att räknaren ändå uppdateras korrekt, så det ser ut som att
 hälften fungerade.</p>
-<p>htmx plockar ut out-of-band-elementen ur svaret innan det byts in — men då är
-raden redan förstörd, ett steg tidigare.</p>
+<p>htmx plockar ut out-of-band-elementen ur svaret innan det sätts in — men då
+är raden redan förstörd, ett steg tidigare.</p>
 </div>
 <details class="example">
 <summary>Facit</summary>
@@ -953,8 +953,8 @@ raden redan förstörd, ett steg tidigare.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Complete</strong> stryker över raden och ersätter knappen med en bock.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Räknaren räknar ner med ett.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> förfrågan, och inget dokument.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Antalet rader i listan är oförändrat — raden byttes ut, inte tillagd.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> request, och inget dokument.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Antalet rader i listan är oförändrat — raden ersattes, den lades inte till.</li>
 </ul>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
