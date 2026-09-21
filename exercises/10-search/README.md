@@ -106,10 +106,11 @@ den intressanta halvan.
 
 !!! warning "Fältet måste ligga där det renderas om"
 
-    Formuläret har redan ett dolt sorteringsfält. Pekar du `hx-include` på det
-    får du **fel svar på ett nytt sätt**: sökrutan ligger utanför `#todo-table`,
-    så en sortering renderar aldrig om den. Fältet står kvar på det värde det
-    hade när sidan laddades, och `hx-include` skickar lydigt det gamla värdet.
+    Sökformuläret har redan ett dolt sorteringsfält. Pekar du `hx-include` på
+    det får du **fel svar på ett nytt sätt**: sökrutan ligger utanför
+    `#todo-table`, så en sortering renderar aldrig om den. Fältet står kvar på
+    det värde det hade när sidan laddades, och `hx-include` skickar lydigt det
+    gamla värdet.
 
     Resultatet ser exakt ut som buggen du just tittade på.
 
@@ -117,14 +118,15 @@ den intressanta halvan.
     `hx-get="/todo-app?sort={{ sort }}"`. Templaten skriver ut värdet när sidan
     renderas, och formuläret renderas aldrig om.
 
-Lägg därför ett sorteringsfält **inuti** `#todo-table`, som renderas om varje
-gång tabellen ersätts, och peka `hx-include` på det.
+Fältet måste alltså ligga **inuti** `#todo-table`, som renderas om varje gång
+tabellen ersätts. Där ligger det redan: det var dit du flyttade det i övning 4.
+Ge det ett `id` och peka `hx-include` på det.
 
 ??? example "Facit — `views/todo-app/todo-table.liquid`"
 
     ```html
     <div class="todo-table" id="todo-table">
-      <input type="hidden" id="current-sort" name="sort" value="{{ sort }}">
+      <input type="hidden" id="current-sort" name="sort" value="{{ sort }}" form="new-todo-form">
     ```
 
 ??? example "Facit — fältet i sökrutan"
@@ -137,11 +139,12 @@ Sortera nyast först och skriv igen. Ordningen ligger kvar. Sortera medan en
 sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har haft
 `q` i adressen sedan övning 2.
 
-!!! note "Nu finns det två dolda sorteringsfält"
+!!! note "Fältet i tabellen har nu två användningar"
 
-    Ett i formuläret och ett i tabellen. Det är inte ett misstag. Formulärets
-    används när formuläret postas på vanligt vis — reservvägen — och tabellens
-    används av htmx. Bara ett av dem skickas åt gången.
+    `form="new-todo-form"` gör att det följer med när en todo läggs till, och
+    `hx-include` att det följer med när du söker. Sökformuläret har kvar sitt
+    eget dolda sorteringsfält för den vanliga submiten. Bara ett av dem skickas
+    per request.
 
 ### 3. Sökordet i adressen
 

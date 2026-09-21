@@ -999,21 +999,23 @@ data som ska inkluderas i requesten. Men den kräver en sak till, och det är
 den intressanta halvan.</p>
 <div class="admonition warning">
 <p class="admonition-title">Fältet måste ligga där det renderas om</p>
-<p>Formuläret har redan ett dolt sorteringsfält. Pekar du <code>hx-include</code> på det
-får du <strong>fel svar på ett nytt sätt</strong>: sökrutan ligger utanför <code>#todo-table</code>,
-så en sortering renderar aldrig om den. Fältet står kvar på det värde det
-hade när sidan laddades, och <code>hx-include</code> skickar lydigt det gamla värdet.</p>
+<p>Sökformuläret har redan ett dolt sorteringsfält. Pekar du <code>hx-include</code> på
+det får du <strong>fel svar på ett nytt sätt</strong>: sökrutan ligger utanför
+<code>#todo-table</code>, så en sortering renderar aldrig om den. Fältet står kvar på
+det värde det hade när sidan laddades, och <code>hx-include</code> skickar lydigt det
+gamla värdet.</p>
 <p>Resultatet ser exakt ut som buggen du just tittade på.</p>
 <p>Samma sak händer om du bakar in sorteringen i adressen —
 <code>hx-get="/todo-app?sort={{ sort }}"</code>. Templaten skriver ut värdet när sidan
 renderas, och formuläret renderas aldrig om.</p>
 </div>
-<p>Lägg därför ett sorteringsfält <strong>inuti</strong> <code>#todo-table</code>, som renderas om varje
-gång tabellen ersätts, och peka <code>hx-include</code> på det.</p>
+<p>Fältet måste alltså ligga <strong>inuti</strong> <code>#todo-table</code>, som renderas om varje gång
+tabellen ersätts. Där ligger det redan: det var dit du flyttade det i övning 4.
+Ge det ett <code>id</code> och peka <code>hx-include</code> på det.</p>
 <details class="example">
 <summary>Facit — <code>views/todo-app/todo-table.liquid</code></summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;current-sort&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;current-sort&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span> <span class="na">form</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 </details>
 <details class="example">
@@ -1025,10 +1027,11 @@ gång tabellen ersätts, och peka <code>hx-include</code> på det.</p>
 sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har haft
 <code>q</code> i adressen sedan övning 2.</p>
 <div class="admonition note">
-<p class="admonition-title">Nu finns det två dolda sorteringsfält</p>
-<p>Ett i formuläret och ett i tabellen. Det är inte ett misstag. Formulärets
-används när formuläret postas på vanligt vis — reservvägen — och tabellens
-används av htmx. Bara ett av dem skickas åt gången.</p>
+<p class="admonition-title">Fältet i tabellen har nu två användningar</p>
+<p><code>form="new-todo-form"</code> gör att det följer med när en todo läggs till, och
+<code>hx-include</code> att det följer med när du söker. Sökformuläret har kvar sitt
+eget dolda sorteringsfält för den vanliga submiten. Bara ett av dem skickas
+per request.</p>
 </div>
 <h3 id="3-sokordet-i-adressen">3. Sökordet i adressen<a class="headerlink" href="#3-sokordet-i-adressen" title="Permanent link">&para;</a></h3>
 <p>Sorteringen lägger sin adress i historiken sedan förra övningen. Gör samma sak
