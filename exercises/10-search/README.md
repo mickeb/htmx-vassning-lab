@@ -110,8 +110,8 @@ sak till, och det är den intressanta halvan.
     Resultatet ser exakt ut som buggen du just tittade på.
 
     Samma sak händer om du bakar in sorteringen i adressen —
-    `hx-get="/todo-app?sort={{ sort }}"`. Templaten renderar värdet när sidan
-    laddas, och formuläret renderas aldrig om.
+    `hx-get="/todo-app?sort={{ sort }}"`. Templaten skriver ut värdet när sidan
+    renderas, och formuläret renderas aldrig om.
 
 Lägg därför ett sorteringsfält **inuti** `#todo-table`, som renderas om varje
 gång tabellen ersätts, och peka `hx-include` på det.

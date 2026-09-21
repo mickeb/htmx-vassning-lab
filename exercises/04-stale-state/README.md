@@ -44,7 +44,7 @@ svaret.
     <input type="hidden" name="sort" value="{{ sort }}">
     ```
 
-    Templaten renderade värdet när **sidan** renderades, och då var sorteringen
+    Templaten skrev ut värdet när **sidan** renderades, och då var sorteringen
     `asc`.
 
     Sorteringslänken ersätter bara `#todo-table`. Formuläret ligger utanför, i
