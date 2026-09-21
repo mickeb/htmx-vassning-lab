@@ -6,7 +6,7 @@ Sorteringen syns i adressfältet igen. Adressen går att kopiera och skicka
 vidare, och bakåtknappen tar dig ett steg tillbaka i listan i stället för ut ur
 appen.
 
-## Användbara attribut
+## Vart tog adressen vägen?
 
 Sortera nyast först och titta på adressfältet. Det står fortfarande `/todo-app`.
 
@@ -23,9 +23,15 @@ Konsekvenserna märks först när någon gör något vanligt:
 - trycker på bakåtknappen — och åker ut ur appen, för appen har inte lagt något
   i historiken
 
+## Användbara attribut
+
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `hx-push-url` | Ska adressen som hämtades hamna i adressfältet och i historiken? | [Referens](https://four.htmx.org/reference/attributes/hx-push-url) |
+
+## Steg
+
+### 1. Lägg till attributet
 
 `hx-push-url="true"` betyder "lägg adressen du hämtade i historiken". Läs den
 meningen en gång till, för det är just *den adressen* som hamnar där — inte
@@ -41,10 +47,6 @@ sidans nuvarande adress, inte något du skriver.
     Nu hämtar länken `/todo-app?sort=desc`, och det är en adress som duger att
     skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route —
     det gjorde historiken användbar.
-
-## Steg
-
-### 1. Lägg till attributet
 
 Öppna `views/todo-app/todo-table.liquid` och lägg `hx-push-url="true"` på
 sorteringslänken.

@@ -550,6 +550,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vart-tog-adressen-vagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vart tog adressen vägen?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -759,6 +770,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vart-tog-adressen-vagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vart tog adressen vägen?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#anvandbara-attribut" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -863,7 +885,7 @@
 <p>Sorteringen syns i adressfältet igen. Adressen går att kopiera och skicka
 vidare, och bakåtknappen tar dig ett steg tillbaka i listan i stället för ut ur
 appen.</p>
-<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
+<h2 id="vart-tog-adressen-vagen">Vart tog adressen vägen?<a class="headerlink" href="#vart-tog-adressen-vagen" title="Permanent link">&para;</a></h2>
 <p>Sortera nyast först och titta på adressfältet. Det står fortfarande <code>/todo-app</code>.</p>
 <p>Det är en sak som gick förlorad någonstans mellan övning 2 och nu. Innan htmx
 var varje sortering en sidladdning, och adressen följde med av sig själv — det
@@ -877,6 +899,7 @@ inte av sig själv.</p>
 <li>trycker på bakåtknappen — och åker ut ur appen, för appen har inte lagt något
   i historiken</li>
 </ul>
+<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -893,6 +916,8 @@ inte av sig själv.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
+<h3 id="1-lagg-till-attributet">1. Lägg till attributet<a class="headerlink" href="#1-lagg-till-attributet" title="Permanent link">&para;</a></h3>
 <p><code>hx-push-url="true"</code> betyder "lägg adressen du hämtade i historiken". Läs den
 meningen en gång till, för det är just <em>den adressen</em> som hamnar där — inte
 sidans nuvarande adress, inte något du skriver.</p>
@@ -906,8 +931,6 @@ adressfältet hade gett en kollega en ostylad tabell.</p>
 skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route —
 det gjorde historiken användbar.</p>
 </div>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-lagg-till-attributet">1. Lägg till attributet<a class="headerlink" href="#1-lagg-till-attributet" title="Permanent link">&para;</a></h3>
 <p>Öppna <code>views/todo-app/todo-table.liquid</code> och lägg <code>hx-push-url="true"</code> på
 sorteringslänken.</p>
 <details class="example">
