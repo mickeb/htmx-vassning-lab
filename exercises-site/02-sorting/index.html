@@ -872,17 +872,18 @@ listan byter ordning utan att sidan laddas om.</p>
 </tr>
 </tbody>
 </table>
-<p><code>hx-get</code> ska hämta <code>/todo-app/fragments/table</code>. Den routen fanns redan innan du
-började: den renderar ett färdigt fragment — samma tabell som sidan visar, utan
-sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.</p>
+<p>Svaren, i tur och ordning: <code>/todo-app/fragments/table</code>, <code>#todo-table</code> och
+<code>outerHTML</code>.</p>
+<p>Adressen är en route som redan finns. Den renderar ett färdigt fragment — samma
+tabell som sidan visar, utan sidan runt omkring — så du ska inte skriva någon
+serverkod i den här övningen.</p>
+<p><code>outerHTML</code> för att fragmentet som kommer tillbaka <strong>är</strong>
+<code>&lt;div id="todo-table"&gt;</code>. Det ska ersätta elementet det kom ifrån, inte innehållet
+i det; <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti en <code>#todo-table</code>.</p>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
 <p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
 <h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p><code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>. Fragmentet som kommer
-tillbaka <strong>är</strong> <code>&lt;div id="todo-table"&gt;</code>, så det ska ersätta elementet det kom
-ifrån, inte innehållet i det — <code>innerHTML</code> hade gett dig en <code>#todo-table</code> inuti
-en <code>#todo-table</code>.</p>
 <p>Adressen i <code>hx-get</code> måste bära med sig sorteringen, precis som <code>href</code> gör.</p>
 <details class="warning">
 <summary>Varför räcker det inte med <code>/todo-app/fragments/table</code>?</summary>

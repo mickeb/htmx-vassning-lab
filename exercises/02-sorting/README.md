@@ -18,9 +18,16 @@ listan byter ordning utan att sidan laddas om.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-`hx-get` ska hämta `/todo-app/fragments/table`. Den routen fanns redan innan du
-började: den renderar ett färdigt fragment — samma tabell som sidan visar, utan
-sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.
+Svaren, i tur och ordning: `/todo-app/fragments/table`, `#todo-table` och
+`outerHTML`.
+
+Adressen är en route som redan finns. Den renderar ett färdigt fragment — samma
+tabell som sidan visar, utan sidan runt omkring — så du ska inte skriva någon
+serverkod i den här övningen.
+
+`outerHTML` för att fragmentet som kommer tillbaka **är**
+`<div id="todo-table">`. Det ska ersätta elementet det kom ifrån, inte innehållet
+i det; `innerHTML` hade gett dig en `#todo-table` inuti en `#todo-table`.
 
 ## Steg
 
@@ -29,11 +36,6 @@ sidan runt omkring. Du ska inte skriva någon serverkod i den här övningen.
 Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
 
 ### 2. Lägg till de tre attributen
-
-`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
-tillbaka **är** `<div id="todo-table">`, så det ska ersätta elementet det kom
-ifrån, inte innehållet i det — `innerHTML` hade gett dig en `#todo-table` inuti
-en `#todo-table`.
 
 Adressen i `hx-get` måste bära med sig sorteringen, precis som `href` gör.
 
