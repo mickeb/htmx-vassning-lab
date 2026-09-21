@@ -23,8 +23,8 @@ formuläret. Det beror på vilket event som ska utlösa requesten: fältets `inp
 Formuläret får inget event förrän någon trycker på **Search**.
 
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
-**Search** gör fortfarande en vanlig sidladdning till samma adress. Det är inte
-något som ska byggas bort; det är reservvägen, synlig.
+**Search** kommer att fortsätta submitta formuläret precis som vanligt. Det är
+inte något som ska byggas bort; det är reservvägen, synlig.
 
 Sökningen är en `GET` hela vägen. Frågesträngen i adressen är själva poängen —
 det är den som gör en sökning möjlig att skicka vidare, och det är den du
