@@ -63,7 +63,7 @@ förväntar sig.
 Det är väntat. `hx-target="#todo-table"` sitter på formuläret och gäller alla
 svar formuläret får — även felsvar.
 
-### 3. Låt servern styra svaret
+### 3. Låt servern styra var svaret ska visas
 
 En HTTP-header i svaret, satt i `src/app.ts`, i felgrenen för
 `POST /fragments/todos`.
