@@ -49,7 +49,7 @@ Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt. E
 gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när något
 skickar iväg det.
 
-### Appen var aldrig fel — förrän sidladdningen försvann
+### Appen blev fel först när sidladdningen försvann
 
 Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
 aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
