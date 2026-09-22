@@ -957,12 +957,11 @@ med automatiskt. Undantaget är <code>GET</code> och <code>DELETE</code>.</p>
 <p>Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.</p>
 <div class="admonition warning">
 <p class="admonition-title">Har du en sökning igång händer ingenting synligt</p>
-<p>Svaret är <strong>listan</strong>, inte raden. Servern renderar den lista du tittar på —
-och söker du efter något som den nya todon inte matchar, så ingår den inte i
-listan. Den skapas, men den syns inte. Räknaren högst upp rör sig inte
-heller, eftersom ingenting uppdaterar den ännu.</p>
-<p>Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
-det är vad det innebär att svaret är en lista och inte en rad.</p>
+<p>Servern renderar den lista du tittar på, alltså den filtrerade. Matchar
+den nya todon inte sökordet är den inte med i svaret — den skapas, men
+syns inte. Räknaren rör sig inte heller, eftersom ingenting uppdaterar
+den ännu.</p>
+<p>Töm sökrutan så ser du den.</p>
 </div>
 <h3 id="2-skicka-in-ett-tomt-falt">2. Skicka in ett tomt fält<a class="headerlink" href="#2-skicka-in-ett-tomt-falt" title="Permanent link">&para;</a></h3>
 <p>Töm textfältet och tryck <strong>Add</strong>.</p>

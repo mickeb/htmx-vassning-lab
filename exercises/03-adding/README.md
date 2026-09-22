@@ -44,13 +44,12 @@ Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
 
 !!! warning "Har du en sökning igång händer ingenting synligt"
 
-    Svaret är **listan**, inte raden. Servern renderar den lista du tittar på —
-    och söker du efter något som den nya todon inte matchar, så ingår den inte i
-    listan. Den skapas, men den syns inte. Räknaren högst upp rör sig inte
-    heller, eftersom ingenting uppdaterar den ännu.
+    Servern renderar den lista du tittar på, alltså den filtrerade. Matchar
+    den nya todon inte sökordet är den inte med i svaret — den skapas, men
+    syns inte. Räknaren rör sig inte heller, eftersom ingenting uppdaterar
+    den ännu.
 
-    Töm sökrutan om du vill se vad du lägger till. Det är inget att bygga bort —
-    det är vad det innebär att svaret är en lista och inte en rad.
+    Töm sökrutan så ser du den.
 
 ### 2. Skicka in ett tomt fält
 
