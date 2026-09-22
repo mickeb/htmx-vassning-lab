@@ -45,7 +45,7 @@ Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
 !!! warning "Har du en sökning igång händer ingenting synligt"
 
     Servern renderar den lista du tittar på, alltså den filtrerade. Matchar
-    den nya todon inte sökordet är den inte med i svaret — den skapas, men
+    den nya todon inte sökordet är den inte med i svaret. Den skapas, men
     syns inte. Räknaren rör sig inte heller, eftersom ingenting uppdaterar
     den ännu.
 
