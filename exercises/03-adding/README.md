@@ -64,10 +64,11 @@ svar formuläret får, även felsvar.
 
 ### 3. Låt server-side styra **var** svaret ska visas
 
-HTTP-headern `HX-Retarget` i svaret låter oss köra över det som markupen
-specificerar i `hx-target` attributet.
+HTTP-headern `HX-Retarget` i svaret låter dig köra över det som markupen
+specificerar i `hx-target`-attributet.
 
-Uppdatera så att headern specificerar "nya todo" formuläret när ingen beskrivning skickas med.
+Uppdatera så att headern pekar ut formuläret för nya todos när ingen
+beskrivning skickas med.
 
 ??? example "Facit"
 
