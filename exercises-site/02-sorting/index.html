@@ -885,7 +885,8 @@ tillbaka är tabellen i sin helhet — samma <code>&lt;div id="todo-table"&gt;</
 på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; <code>innerHTML</code>
 hade gett dig en <code>#todo-table</code> inuti en <code>#todo-table</code>.</p>
 <p>Adressen i <code>hx-get</code> måste skicka med sorteringen, precis som <code>href</code> gör — i det
-här fallet som en query-parameter.</p>
+här fallet som en query-parameter. Frågesträngen är densamma, så kopiera den
+rakt av från <code>href</code>; det är bara sökvägen som skiljer.</p>
 <details class="example">
 <summary>Facit — hela länken</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort sort--{{ sort }}&quot;</span>

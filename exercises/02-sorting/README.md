@@ -37,7 +37,8 @@ på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; `innerHTM
 hade gett dig en `#todo-table` inuti en `#todo-table`.
 
 Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
-här fallet som en query-parameter.
+här fallet som en query-parameter. Frågesträngen är densamma, så kopiera den
+rakt av från `href`; det är bara sökvägen som skiljer.
 
 ??? example "Facit — hela länken"
 
