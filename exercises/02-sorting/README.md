@@ -39,19 +39,6 @@ hade gett dig en `#todo-table` inuti en `#todo-table`.
 Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
 här fallet som en query-parameter.
 
-??? warning "Varför räcker det inte med `/todo-app/fragments/table`?"
-
-    För att en `<a>` inte har något värde att skicka. htmx lägger inte till
-    något åt dig, och `href` är en helt annan sak som htmx inte läser.
-
-    Servern får alltså inget `sort` alls, och faller tillbaka på stigande
-    ordning. Det ser ut att fungera vid första klicket — du stod på fallande och
-    bad om stigande, och fick stigande — och sedan händer ingenting mer, hur
-    många gånger du än klickar.
-
-    **En htmx-request innehåller exakt det du lägger i den.** Ingenting minns
-    något mellan requests.
-
 ??? example "Facit — hela länken"
 
     ```html
@@ -89,4 +76,5 @@ här fallet som en query-parameter.
 
 ??? question "Det växlar bara en gång — sedan står det still"
 
-    Då saknar `hx-get` sin `?sort=…`. Se den fällbara rutan i steg 2.
+    Då saknar `hx-get` sin `?sort=…`. Servern får inget `sort`, faller
+    tillbaka på stigande ordning och svarar likadant varje gång.
