@@ -62,7 +62,7 @@ förväntar sig.
 Det är väntat. `hx-target="#todo-table"` sitter på formuläret och gäller alla
 svar formuläret får — även felsvar.
 
-### 3. Låt server-side styra var svaret ska visas
+### 3. Låt server-side styra **var** svaret ska visas
 
 HTTP-headern `HX-Retarget` i svaret låter oss köra över det som markupen
 specificerar i `hx-target` attributet.
