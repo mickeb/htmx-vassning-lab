@@ -49,7 +49,7 @@ Lägg till en todo. Den dyker upp i listan, utan att sidan laddas om.
     syns inte. Räknaren rör sig inte heller, eftersom ingenting uppdaterar
     den ännu.
 
-    Töm sökrutan så ser du den.
+    Gör en sökning utan sökterm så ser du den.
 
 ### 2. Skicka in ett tomt fält
 
