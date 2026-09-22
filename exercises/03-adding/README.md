@@ -67,8 +67,16 @@ svar formuläret får, även felsvar.
 HTTP-headern `HX-Retarget` i svaret låter dig köra över det som markupen
 specificerar i `hx-target`-attributet.
 
-Uppdatera så att headern pekar ut formuläret för nya todos när ingen
-beskrivning skickas med.
+Öppna `src/app.ts` och leta upp hanteraren för `POST /fragments/todos`. Den har
+redan en `if`-sats för tomt fält, den som renderar formuläret med `error: true`.
+
+Så här sätter du en header på svaret:
+
+```ts
+res.set('<header>', '<target>')
+```
+
+Lägg till raden i `if`-satsen och låt den peka ut formuläret för nya todos.
 
 ??? example "Facit"
 
