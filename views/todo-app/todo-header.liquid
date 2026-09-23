@@ -2,8 +2,11 @@
   <h1 class="todo-header__title">Todos</h1>
   <p class="todo-header__count">{{ stats.total | minus: stats.complete }} todos left</p>
 
-  <form class="todo-header__clear" method="post" action="/todo-app/todos/clear"
-        onsubmit="return confirm('Delete all todos? This cannot be undone.')">
+  <form
+    class="todo-header__clear"
+    method="post"
+    action="/todo-app/todos/clear"
+    onsubmit="return confirm('Delete all todos? This cannot be undone.')">
     <button class="link-button" type="submit">Clear all</button>
   </form>
 </header>

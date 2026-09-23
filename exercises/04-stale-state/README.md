@@ -68,13 +68,9 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
 
 ## Flytta fältet
 
-1. Öppna `views/todo-app/new-todo-form.liquid` och ta bort raden:
-
-    ```html
-    <input type="hidden" name="sort" value="{{ sort }}">
-    ```
-
-2. Öppna `views/todo-app/todo-table.liquid` och lägg in raden överst inuti
+1. Öppna `views/todo-app/new-todo-form.liquid` och ta bort det dolda
+   `sort`-fältet.
+2. Öppna `views/todo-app/todo-table.liquid` och lägg in fältet överst inuti
    `<div class="todo-table" id="todo-table">`.
 3. Lägg till `form`-attributet, med formulärets `id` som värde.
 

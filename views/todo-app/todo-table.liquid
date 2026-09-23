@@ -2,12 +2,26 @@
   <table class="todo-table__table">
     <thead>
       <tr>
-        {% if sort == 'desc' %}{% assign next_sort = 'asc' %}{% else %}{% assign next_sort = 'desc' %}{% endif %}
-        <th class="todo-table__col--created" scope="col" aria-sort="{% if sort == 'desc' %}descending{% else %}ascending{% endif %}">
+        {% if sort == 'desc' %}
+          {% assign next_sort = 'asc' %}
+        {% else %}
+          {% assign next_sort = 'desc' %}
+        {% endif %}
+        <th
+          class="todo-table__col--created"
+          scope="col"
+          aria-sort="{% if sort == 'desc' %}descending{% else %}ascending{% endif %}">
           <a class="sort sort--{{ sort }}" href="/todo-app?sort={{ next_sort }}{% if q != "" %}&amp;q={{ q | url_encode }}{% endif %}">
             Created at
-            <svg class="sort__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
-            <span class="visually-hidden">sorted {% if sort == 'desc' %}newest{% else %}oldest{% endif %} first; activate to reverse</span>
+            <svg
+              class="sort__chevron"
+              viewBox="0 0 10 6"
+              aria-hidden="true">
+              <path d="M1 1l4 4 4-4" />
+            </svg>
+            <span class="visually-hidden">sorted
+              {% if sort == 'desc' %}newest{% else %}oldest{% endif %}
+              first; activate to reverse</span>
           </a>
         </th>
         <th scope="col">Description</th>
@@ -16,7 +30,9 @@
     </thead>
 
     <tbody id="todo-rows">
-      {% for todo in todos %}{% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}{% endfor %}
+      {% for todo in todos %}
+        {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
+      {% endfor %}
     </tbody>
   </table>
 

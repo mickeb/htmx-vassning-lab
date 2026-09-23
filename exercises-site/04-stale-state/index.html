@@ -954,15 +954,10 @@ skickar den.</p>
 </table>
 <h2 id="flytta-faltet">Flytta fältet<a class="headerlink" href="#flytta-faltet" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>Öppna <code>views/todo-app/new-todo-form.liquid</code> och ta bort raden:</p>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span><span class="p">&gt;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Öppna <code>views/todo-app/todo-table.liquid</code> och lägg in raden överst inuti
-   <code>&lt;div class="todo-table" id="todo-table"&gt;</code>.</p>
-</li>
+<li>Öppna <code>views/todo-app/new-todo-form.liquid</code> och ta bort det dolda
+   <code>sort</code>-fältet.</li>
+<li>Öppna <code>views/todo-app/todo-table.liquid</code> och lägg in fältet överst inuti
+   <code>&lt;div class="todo-table" id="todo-table"&gt;</code>.</li>
 <li>Lägg till <code>form</code>-attributet, med formulärets <code>id</code> som värde.</li>
 </ol>
 <details class="tip">
@@ -972,8 +967,8 @@ skickar den.</p>
 </details>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span> <span class="na">form</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;todo-table&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sort&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ sort }}&quot;</span> <span class="na">form</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 </details>
 <p>Sortera nyast först och lägg till en todo. Den hamnar överst, och ordningen står

@@ -1,0 +1,9 @@
+{
+  "format": {
+    "endNewline": true,
+    "liquid": {
+      "forceArgument": 4,
+      "indentAttribute": true
+    }
+  }
+}

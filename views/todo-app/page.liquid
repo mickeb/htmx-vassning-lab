@@ -1,14 +1,14 @@
 {% layout 'layout', title: 'Todos — HTMX vassning lab' %}
 
 {% block content %}
-<main class="page">
-  {% render 'todo-app/todo-header', stats: stats %}
+  <main class="page">
+    {% render 'todo-app/todo-header', stats: stats %}
 
-  <section class="todo-list" aria-label="Todo list">
-    {% render 'todo-app/search-form', q: q, sort: sort %}
-    {% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}
-  </section>
+    <section class="todo-list" aria-label="Todo list">
+      {% render 'todo-app/search-form', q: q, sort: sort %}
+      {% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}
+    </section>
 
-  {% render 'todo-app/new-todo-form', q: q, sort: sort, error: error %}
-</main>
+    {% render 'todo-app/new-todo-form', q: q, sort: sort, error: error %}
+  </main>
 {% endblock %}

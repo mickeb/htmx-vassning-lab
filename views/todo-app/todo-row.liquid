@@ -3,13 +3,20 @@
   <td class="todo-row__description">{{ todo.description }}</td>
   <td class="todo-row__complete">
     {% if todo.complete %}
-    <span class="todo-row__tick" aria-hidden="true">✓</span><span class="visually-hidden">Completed</span>
+      <span class="todo-row__tick" aria-hidden="true">✓</span>
+      <span class="visually-hidden">Completed</span>
     {% else %}
-    <form method="post" action="/todo-app/todos/{{ todo.id }}/complete">
-      <input type="hidden" name="q" value="{{ q }}">
-      <input type="hidden" name="sort" value="{{ sort }}">
-      <button class="button button--small" type="submit">Complete</button>
-    </form>
+      <form method="post" action="/todo-app/todos/{{ todo.id }}/complete">
+        <input
+          type="hidden"
+          name="q"
+          value="{{ q }}">
+        <input
+          type="hidden"
+          name="sort"
+          value="{{ sort }}">
+        <button class="button button--small" type="submit">Complete</button>
+      </form>
     {% endif %}
   </td>
 </tr>

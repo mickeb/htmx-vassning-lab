@@ -1,11 +1,32 @@
-<form class="search" method="get" action="/todo-app">
+<form
+  class="search"
+  method="get"
+  action="/todo-app">
   <label class="search__field">
-    <svg class="search__icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+    <svg
+      class="search__icon"
+      viewBox="0 0 16 16"
+      aria-hidden="true">
+      <circle
+        cx="7"
+        cy="7"
+        r="5" />
+      <path d="M11 11l4 4" />
+    </svg>
     <span class="visually-hidden">Search todos</span>
-    <input class="search__input" type="search" name="q" value="{{ q }}" placeholder="Search todos">
+    <input
+      class="search__input"
+      type="search"
+      name="q"
+      value="{{ q }}"
+      placeholder="Search todos">
   </label>
 
-  <input type="hidden" id="search-sort" name="sort" value="{{ sort }}">
+  <input
+    type="hidden"
+    id="search-sort"
+    name="sort"
+    value="{{ sort }}">
 
   <button class="button" type="submit">Search</button>
 </form>
