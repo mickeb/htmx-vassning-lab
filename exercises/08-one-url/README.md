@@ -1,4 +1,4 @@
-# 8. En adress, två svar
+# 8. En fråga med två svar
 
 ## Mål
 
