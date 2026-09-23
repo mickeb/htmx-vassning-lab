@@ -7,3 +7,5 @@ docker compose down -v   # stop it and delete the containers, volumes and data
 ```
 
 Run `docker compose up`, then open <http://localhost:4000/exercises/>.
+
+Open the cloned directory in your editor, for example VS Code.
