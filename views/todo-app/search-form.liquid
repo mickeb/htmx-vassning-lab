@@ -5,7 +5,6 @@
     <input class="search__input" type="search" name="q" value="{{ q }}" placeholder="Search todos">
   </label>
 
-  {% comment %} Carries the current sort through the search, so searching does not reset it. {% endcomment %}
   <input type="hidden" id="search-sort" name="sort" value="{{ sort }}">
 
   <button class="button" type="submit">Search</button>

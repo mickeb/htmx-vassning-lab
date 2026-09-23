@@ -1,7 +1,3 @@
-{% comment %}
-  `error` marks the text field when a todo was submitted with no description.
-  There is deliberately no message -- the red border is the whole report.
-{% endcomment %}
 <form class="new-todo" id="new-todo-form" method="post" action="/todo-app/todos">
   <input type="hidden" name="q" value="{{ q }}">
   <input type="hidden" name="sort" value="{{ sort }}">

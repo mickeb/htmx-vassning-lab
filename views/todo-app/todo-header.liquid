@@ -1,7 +1,3 @@
-{% comment %}
-  Renders on its own, with nothing but `stats`. That is what lets an action
-  return just this piece of the page instead of the whole thing.
-{% endcomment %}
 <header class="todo-header" id="todo-header">
   <h1 class="todo-header__title">Todos</h1>
   <p class="todo-header__count">{{ stats.total | minus: stats.complete }} todos left</p>

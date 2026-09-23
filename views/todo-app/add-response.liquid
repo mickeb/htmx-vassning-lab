@@ -1,8 +1,1 @@
-{% comment %}
-  The answer to "a todo was added": the whole list, in its new state.
-
-  It is a file of its own rather than rendering todo-table directly, so that what
-  this action returns can change without touching every other place the list is
-  drawn.
-{% endcomment %}
 {% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}
