@@ -42,10 +42,10 @@ Each `README.md` covers, using these Swedish headings:
 **No exercise introduces the next one.** `Nästa övning` was dropped on
 2026-09-23. Exercise 10 closes the set with `Och sen då?` instead.
 
-**`??? question` means troubleshooting.** One `??? question` sits outside
-`Fungerar det inte?` — exercise 4's *"Varför skickar formuläret `asc`?"*, which
-is the diagnosis the exercise is built on rather than a thing that went wrong.
-Hints inside `Steg` are `??? tip` and `??? example`, never `??? question`.
+**`??? question` means troubleshooting,** and only `Fungerar det inte?` uses
+it. Exercise 4's *"Varför skickar formuläret `asc`?"* is a `###` heading inside
+`Vilken bugg?`, not a box. Hints inside `Steg` are `??? tip` and `??? example`,
+never `??? question`.
 
 **Restructured 2026-09-21.** Two sections were removed from every exercise:
 `Bakgrund`, which had become a second explanation slot before the work, and
@@ -55,7 +55,7 @@ one with `git show debee82:exercises/<folder>/README.md`.
 
 Two exercises keep a section outside this shape, each for a stated reason:
 
-- **4** opens with **`Vilken bugg?`** instead of an attribute table, because its
+- **4** opens with **`Vilken bugg?`** before the attribute table, because its
   opening *is* the work — reproduce the bug, read the request body, get the rule.
 - **5** and **8** end with **`Värt att känna till`** for a pointer the material
   depends on elsewhere — `hx-partial` as the htmx 4 alternative to

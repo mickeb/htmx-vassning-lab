@@ -6,7 +6,7 @@ Sorteringen överlever att du lägger till en todo.
 
 ## Vilken bugg?
 
-1. Sortera **nyast först** — klicka på **Created at**.
+1. Sortera **nyast först** genom att klicka på **Created at**.
 2. Lägg till en todo.
 
 Listan hoppar tillbaka till äldst först. Sorteringen du valde är borta.
@@ -20,13 +20,13 @@ iväg när du lägger till todon:
 sort=asc&q=&description=Köp mjölk
 ```
 
-`asc` — trots att tabellen framför dig är sorterad fallande.
+Där står `asc`, trots att tabellen framför dig är sorterad fallande.
 
 Servern gjorde alltså inget fel. Den blev ombedd om en lista i stigande ordning
 och renderade en lista i stigande ordning. Felet ligger i requesten, inte i
 svaret.
 
-### Varför formuläret skickar `asc`
+### Varför skickar formuläret `asc`?
 
 Formuläret har ett dolt fält:
 
@@ -41,41 +41,17 @@ helt annan del av sidan, och ingenting har renderat om det sedan sidladdningen.
 Fältet säger fortfarande `asc`, och det kommer att göra det hur många gånger du
 än sorterar.
 
-### Bara det som svaret ersätter är aktuellt
+Vi behöver alltså ett sätt att skicka med sorteringen från den senast hämtade
+tabellen. Ett fält inuti `#todo-table` renderas om varje gång du sorterar och har
+därför alltid rätt värde. Det måste bara fortfarande höra till formuläret.
 
-Allt annat på sidan har kvar det värde det hade när det senast renderades.
-
-Det finns ingenting i markupen som avslöjar att ett värde blivit inaktuellt. Ett
-gammalt `value="asc"` ser exakt ut som ett färskt. Det syns först när något
-skickar iväg det.
-
-### Appen gick sönder först när sidladdningen försvann
-
-Det dolda fältet är inte ett designmisstag. I en vanlig flersidesapp kan det
-aldrig bli inaktuellt: varje post laddar om hela sidan, och då renderas
-formuläret om tillsammans med allt annat. Fältet var färskt varje gång, hela
-tiden, ända tills du gjorde något åt sorteringen.
-
-Det är övning 2 som skapar problemet, inte den här koden. När bara en del av
-sidan ersätts blir "renderas om" plötsligt något som gäller vissa element och
-inte andra — och ingenting i markupen skiljer dem åt.
-
-Buggen syntes först när du la till en todo, en övning senare. Så brukar det se
-ut: den kommer fram någon helt annanstans än där den bor.
-
-## Användbara attribut
-
-Fältet måste ligga någonstans som renderas om när du sorterar — alltså **inuti
-`#todo-table`**. Men det måste fortfarande skickas med formuläret, och
-formuläret ligger någon annanstans på sidan.
-
-Det finns ett HTML-attribut för precis det.
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `form` | Vilket formulär hör det här fältet till? | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#form) |
 
-Ett fält med `form="nånting"` tillhör formuläret vars `id` är `nånting` — var i
+Ett fält med `form="nånting"` tillhör formuläret vars `id` är `nånting`, var i
 dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls.
 
 !!! tip "Det här är inte htmx!"
@@ -84,19 +60,23 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
     räknar fältet till formuläret när den bygger requesten, oavsett vem som
     skickar den.
 
-## Steg
+## Template fragment använda under övningen
 
-### Flytta fältet
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/todo-table.liquid` | [`GET /todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table) | Tabellen, och efter den här övningen även det dolda `sort`-fältet |
 
-Öppna `views/todo-app/new-todo-form.liquid` och ta bort raden:
+## Flytta fältet
 
-```html
-<input type="hidden" name="sort" value="{{ sort }}">
-```
+1. Öppna `views/todo-app/new-todo-form.liquid` och ta bort raden:
 
-Öppna sedan `views/todo-app/todo-table.liquid` och lägg in den överst inuti
-`<div class="todo-table" id="todo-table">` — med `form`-attributet satt till
-formulärets `id`.
+    ```html
+    <input type="hidden" name="sort" value="{{ sort }}">
+    ```
+
+2. Öppna `views/todo-app/todo-table.liquid` och lägg in raden överst inuti
+   `<div class="todo-table" id="todo-table">`.
+3. Lägg till `form`-attributet, med formulärets `id` som värde.
 
 ??? tip "Ledtråd"
 
@@ -119,7 +99,6 @@ kvar.
       står kvar i fallande ordning.
 - [ ] Nätverkspanelen visar `sort=desc` i kroppen på den `POST` som går iväg.
 - [ ] Sorteringen fungerar fortfarande som vanligt, fram och tillbaka.
-- [ ] Räknaren i rubriken är fortfarande fel — den lagas inte här.
 
 ## Fungerar det inte?
 
@@ -127,16 +106,9 @@ kvar.
 
     Kontrollera att `form`-attributets värde är exakt samma sträng som
     formulärets `id`. Matchar de inte tillhör fältet inget formulär, och då
-    skickas det med ingenting — tyst.
+    skickas det inte med. Inget felmeddelande säger till.
 
 ??? question "Kan jag inte bara lägga fältet inuti formuläret igen?"
 
     Jo, och då är du tillbaka där du började. Fältet måste ligga i den del av
     sidan som ersätts, annars renderas det aldrig om.
-
-## Nästa övning
-
-Sorteringen överlever ett tillägg. Kvar står räknaren i rubriken, som fortfarande
-inte har räknat om sig sedan du la till något.
-
-Nästa övning tar den — och svaret på den är inte HTML den här gången.
