@@ -7,10 +7,10 @@ listan byter ordning utan att sidan laddas om.
 
 !!! note "Du behöver några todos att sortera"
 
-    Har du inga än, lägg in en handfull på
+    Har du inga än, lägg in ett par stycken på
     [http://localhost:4000/todo-app](http://localhost:4000/todo-app).
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
@@ -18,27 +18,24 @@ listan byter ordning utan att sidan laddas om.
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-## Steg
+## Template fragment använda under övningen
 
-### 1. Öppna `views/todo-app/todo-table.liquid`
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/todo-table.liquid` | [`GET /todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table) | Tabellen, utan sidan runt omkring |
 
-Leta upp länken i kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
+## Lägg till attributen på sorteringslänken
 
-### 2. Lägg till de tre attributen
-
-`hx-get` hämtar
-[`/todo-app/fragments/table`](http://localhost:4000/todo-app/fragments/table).
-Den routen finns redan och renderar ett färdigt fragment — samma tabell som sidan
-visar, utan sidan runt omkring.
-
-`hx-target` är `#todo-table` och `hx-swap` är `outerHTML`. Fragmentet som kommer
-tillbaka är tabellen i sin helhet — samma `<div id="todo-table">` som redan står
-på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; `innerHTML`
-hade gett dig en `#todo-table` inuti en `#todo-table`.
-
-Adressen i `hx-get` måste skicka med sorteringen, precis som `href` gör — i det
-här fallet som en query-parameter. Frågesträngen är densamma, så kopiera den
-rakt av från `href`; det är bara sökvägen som skiljer.
+1. Öppna `views/todo-app/todo-table.liquid` och leta upp länken i
+   kolumnheadern. Den börjar med `<a class="sort sort--{{ sort }}"`.
+2. Lägg till `hx-get`. Adressen är `/todo-app/fragments/table` följd av
+   query stringen från `href`, kopierad rakt av. Det är query stringen som
+   skickar med sorteringen.
+3. Lägg till `hx-target="#todo-table"`.
+4. Lägg till `hx-swap="outerHTML"`. Fragmentet som kommer tillbaka är hela
+   `<div id="todo-table">`, samma element som redan står på sidan, så det ska
+   ersätta elementet och inte läggas inuti det. Med `innerHTML` hade du fått en
+   `#todo-table` inuti en `#todo-table`.
 
 ??? example "Facit — hela länken"
 
@@ -52,26 +49,10 @@ rakt av från `href`; det är bara sökvägen som skiljer.
 
 ## Klart när
 
-- [ ] Sorteringen beter sig **precis som förut** — ett klick vänder ordningen och chevronen pekar åt andra hållet.
+- [ ] Sorteringen beter sig **precis som förut**: ett klick vänder ordningen och chevronen pekar åt andra hållet.
 - [ ] **Sidan laddas inte om.** Ingen blinkning, och rullningsläget står kvar där du lämnade det.
 - [ ] Nätverkspanelen visar **en** request till `/todo-app/fragments/table?sort=…`, och ingen ny dokumentladdning.
 - [ ] Du kan klicka **flera gånger i rad** och ordningen växlar varje gång.
-
-!!! note "Det här har ett namn"
-
-    Att svaret innehåller kontrollerna för vad som kan göras härnäst — länken,
-    vilken ordning den leder till, vilken sökning som gäller — är kärnan i
-    **HATEOAS**: *Hypermedia As The Engine Of Application State*. Tillståndet
-    drivs av det hypermedia servern skickar, inte av kod som håller reda på
-    saker i webbläsaren.
-
-    **htmx lade inte till det här.** Länken du började med gjorde redan samma
-    sak: den innehöll sin egen nästa ordning, och en full sidladdning hämtade nästa
-    representation.
-
-    Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och
-    tillstånd i klienten — och då försvinner det. Den här övningen tog bort
-    sidladdningen utan att släppa hypermedia.
 
 ## Fungerar det inte?
 

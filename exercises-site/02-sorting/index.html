@@ -361,10 +361,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
       
     </span>
   </a>
@@ -372,41 +372,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg" class="md-nav__link">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Steg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-apptodo-tableliquid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Öppna views/todo-app/todo-table.liquid
+        Template fragment använda under övningen
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-lagg-till-de-tre-attributen" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#lagg-till-attributen-pa-sorteringslanken" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Lägg till de tre attributen
+        Lägg till attributen på sorteringslänken
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -748,10 +731,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
       
     </span>
   </a>
@@ -759,41 +742,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg" class="md-nav__link">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Steg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-apptodo-tableliquid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Öppna views/todo-app/todo-table.liquid
+        Template fragment använda under övningen
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-lagg-till-de-tre-attributen" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#lagg-till-attributen-pa-sorteringslanken" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Lägg till de tre attributen
+        Lägg till attributen på sorteringslänken
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -842,10 +808,10 @@
 listan byter ordning utan att sidan laddas om.</p>
 <div class="admonition note">
 <p class="admonition-title">Du behöver några todos att sortera</p>
-<p>Har du inga än, lägg in en handfull på
+<p>Har du inga än, lägg in ett par stycken på
 <a href="http://localhost:4000/todo-app">http://localhost:4000/todo-app</a>.</p>
 </div>
-<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
+<h2 id="attribut-anvanda-under-ovningen">Attribut använda under övningen<a class="headerlink" href="#attribut-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -872,21 +838,36 @@ listan byter ordning utan att sidan laddas om.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-oppna-viewstodo-apptodo-tableliquid">1. Öppna <code>views/todo-app/todo-table.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-tableliquid" title="Permanent link">&para;</a></h3>
-<p>Leta upp länken i kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</p>
-<h3 id="2-lagg-till-de-tre-attributen">2. Lägg till de tre attributen<a class="headerlink" href="#2-lagg-till-de-tre-attributen" title="Permanent link">&para;</a></h3>
-<p><code>hx-get</code> hämtar
-<a href="http://localhost:4000/todo-app/fragments/table"><code>/todo-app/fragments/table</code></a>.
-Den routen finns redan och renderar ett färdigt fragment — samma tabell som sidan
-visar, utan sidan runt omkring.</p>
-<p><code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är <code>outerHTML</code>. Fragmentet som kommer
-tillbaka är tabellen i sin helhet — samma <code>&lt;div id="todo-table"&gt;</code> som redan står
-på sidan. Det ska alltså ersätta elementet, inte läggas inuti det; <code>innerHTML</code>
-hade gett dig en <code>#todo-table</code> inuti en <code>#todo-table</code>.</p>
-<p>Adressen i <code>hx-get</code> måste skicka med sorteringen, precis som <code>href</code> gör — i det
-här fallet som en query-parameter. Frågesträngen är densamma, så kopiera den
-rakt av från <code>href</code>; det är bara sökvägen som skiljer.</p>
+<h2 id="template-fragment-anvanda-under-ovningen">Template fragment använda under övningen<a class="headerlink" href="#template-fragment-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Route</th>
+<th>Innehåller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>views/todo-app/todo-table.liquid</code></td>
+<td><a href="http://localhost:4000/todo-app/fragments/table"><code>GET /todo-app/fragments/table</code></a></td>
+<td>Tabellen, utan sidan runt omkring</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lagg-till-attributen-pa-sorteringslanken">Lägg till attributen på sorteringslänken<a class="headerlink" href="#lagg-till-attributen-pa-sorteringslanken" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Öppna <code>views/todo-app/todo-table.liquid</code> och leta upp länken i
+   kolumnheadern. Den börjar med <code>&lt;a class="sort sort--{{ sort }}"</code>.</li>
+<li>Lägg till <code>hx-get</code>. Adressen är <code>/todo-app/fragments/table</code> följd av
+   query stringen från <code>href</code>, kopierad rakt av. Det är query stringen som
+   skickar med sorteringen.</li>
+<li>Lägg till <code>hx-target="#todo-table"</code>.</li>
+<li>Lägg till <code>hx-swap="outerHTML"</code>. Fragmentet som kommer tillbaka är hela
+   <code>&lt;div id="todo-table"&gt;</code>, samma element som redan står på sidan, så det ska
+   ersätta elementet och inte läggas inuti det. Med <code>innerHTML</code> hade du fått en
+   <code>#todo-table</code> inuti en <code>#todo-table</code>.</li>
+</ol>
 <details class="example">
 <summary>Facit — hela länken</summary>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort sort--{{ sort }}&quot;</span>
@@ -898,25 +879,11 @@ rakt av från <code>href</code>; det är bara sökvägen som skiljer.</p>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sorteringen beter sig <strong>precis som förut</strong> — ett klick vänder ordningen och chevronen pekar åt andra hållet.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sorteringen beter sig <strong>precis som förut</strong>: ett klick vänder ordningen och chevronen pekar åt andra hållet.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Sidan laddas inte om.</strong> Ingen blinkning, och rullningsläget står kvar där du lämnade det.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> request till <code>/todo-app/fragments/table?sort=…</code>, och ingen ny dokumentladdning.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Du kan klicka <strong>flera gånger i rad</strong> och ordningen växlar varje gång.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Det här har ett namn</p>
-<p>Att svaret innehåller kontrollerna för vad som kan göras härnäst — länken,
-vilken ordning den leder till, vilken sökning som gäller — är kärnan i
-<strong>HATEOAS</strong>: <em>Hypermedia As The Engine Of Application State</em>. Tillståndet
-drivs av det hypermedia servern skickar, inte av kod som håller reda på
-saker i webbläsaren.</p>
-<p><strong>htmx lade inte till det här.</strong> Länken du började med gjorde redan samma
-sak: den innehöll sin egen nästa ordning, och en full sidladdning hämtade nästa
-representation.</p>
-<p>Det vanliga när en sida ska bli dynamisk är att ersätta det med JSON och
-tillstånd i klienten — och då försvinner det. Den här övningen tog bort
-sidladdningen utan att släppa hypermedia.</p>
-</div>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>Det växlar bara en gång — sedan står det still</summary>

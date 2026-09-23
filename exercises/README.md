@@ -19,14 +19,22 @@ Each `README.md` covers, using these Swedish headings:
 1. **`Mål`** — what works at the end, in one sentence, from the point of view of
    someone using the todo app. Not "you add three attributes" but "the list
    reorders without the page reloading".
-2. **`Användbara attribut`** — the attribute table, plus whatever is needed to
-   act on it: the address to call, what already exists in the lab, a value worth
-   explaining before it is used. Named **`Användbara headers`** where the
-   exercise turns on an HTTP header rather than an attribute (7 and 8).
-3. **`Steg`** — what to change, by file. Numbered `###` subheadings.
-4. **`Klart när`** — how you know it worked. **Checks only:** a task list of
+2. **`Attribut använda under övningen`** — the attribute table. Named
+   **`Headers använda under övningen`** where the exercise turns on an HTTP
+   header rather than an attribute (7 and 8). Renamed from `Användbara
+   attribut` on 2026-09-23.
+3. **`Template fragment använda under övningen`** — added 2026-09-23. A table
+   of the templates a fragment route renders as the response, with columns
+   `Template`, `Route` and `Innehåller`. Templates the attendee only edits are
+   not listed; `Steg` names those. Only `GET` routes are linked, since a
+   `POST` route cannot be opened in a browser.
+4. **`Steg`** — what to change, by file. Numbered `###` subheadings. **When
+   there is only one step there is no `Steg` heading:** the step's own heading
+   becomes the `##` section. A step can be a numbered list, and when every
+   edit is in one file, opening it is the first item.
+5. **`Klart när`** — how you know it worked. **Checks only:** a task list of
    things to observe, and nothing else.
-5. **`Fungerar det inte?`** — the troubleshooting collapsibles, one `??? question`
+6. **`Fungerar det inte?`** — the troubleshooting collapsibles, one `??? question`
    per symptom, titled with the symptom as the reader would describe it. Moved
    out of `Klart när` on 2026-09-21 so that section is genuinely checks only, and
    so a stuck attendee has one place to look.
@@ -45,21 +53,20 @@ Hints inside `Steg` are `??? tip` and `??? example`, never `??? question`.
 task instructions now. The previous versions are in git at `debee82` — recover
 one with `git show debee82:exercises/<folder>/README.md`.
 
-Three exercises keep a section outside this shape, each for a stated reason:
+Two exercises keep a section outside this shape, each for a stated reason:
 
 - **4** opens with **`Vilken bugg?`** instead of an attribute table, because its
   opening *is* the work — reproduce the bug, read the request body, get the rule.
-- **2** closes with a bare `!!! note "Det här har ett namn"` box, after
-  `Klart när`, with no heading of its own. It is the only place HATEOAS is
-  introduced and glossed, and `CONTEXT.md` and `OUTLINE.md` in the presentation
-  repo both depend on it being here. Keep it boxed and keep it unheaded: it is
-  an aside, not a section.
 - **5** and **8** end with **`Värt att känna till`** for a pointer the material
   depends on elsewhere — `hx-partial` as the htmx 4 alternative to
   `hx-swap-oob`, and why the dead fragment route is left in place.
 
 A section is dropped when an exercise has nothing for it, rather than padded.
-Exercise 1 has no attribute section, because an import map is not an attribute.
+Exercise 1 has no attribute section and no template fragment section: an
+import map is not an attribute, and `layout.liquid` is not a fragment.
+
+**The 2026-09-23 sweep applies these page by page,** from exercise 1 upward.
+Pages it has not reached yet still use the old headings.
 
 ## Extra assignments
 
