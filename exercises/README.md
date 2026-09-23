@@ -30,8 +30,9 @@ Each `README.md` covers, using these Swedish headings:
    per symptom, titled with the symptom as the reader would describe it. Moved
    out of `Klart när` on 2026-09-21 so that section is genuinely checks only, and
    so a stuck attendee has one place to look.
-6. **`Nästa övning`** — a short lead-in to the one that follows. Written only
-   where there is something real to say; not every exercise has it yet.
+
+**No exercise introduces the next one.** `Nästa övning` was dropped on
+2026-09-23. Exercise 10 closes the set with `Och sen då?` instead.
 
 **`??? question` means troubleshooting.** One `??? question` sits outside
 `Fungerar det inte?` — exercise 4's *"Varför skickar formuläret `asc`?"*, which
