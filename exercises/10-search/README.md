@@ -6,12 +6,22 @@ Listan filtreras medan du skriver, sorteringen följer med sökningen, och
 sökordet hamnar i adressen utan att fylla historiken med ett steg per
 tangenttryckning.
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
+| `hx-get` | Vilken adress ska hämtas? | [Referens](https://four.htmx.org/reference/attributes/hx-get) |
 | `hx-trigger` | Vad ska trigga requesten, och när? | [Referens](https://four.htmx.org/reference/attributes/hx-trigger) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 | `hx-include` | Vad mer än elementets eget värde ska skickas med? | [Referens](https://four.htmx.org/reference/attributes/hx-include) |
+| `hx-replace-url` | Ska adressen bytas ut utan att ett steg läggs till? | [Referens](https://four.htmx.org/reference/attributes/hx-replace-url) |
+
+## Template-fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/todo-table.liquid` | `GET /todo-app`, med `HX-Request` | Tabellen, filtrerad på sökordet i `q` |
 
 ## Steg
 
@@ -28,24 +38,19 @@ sökning.
 Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 **Search** kommer fortsätta submitta formuläret precis som vanligt.
 
-Öppna `views/todo-app/search-form.liquid` och lägg de fyra attributen på
-`<input class="search__input">`-elementet.
+1. Öppna `views/todo-app/search-form.liquid` och leta upp
+   `<input class="search__input">`.
+2. Lägg till `hx-get="/todo-app"`, samma adress som sorteringen hämtar sedan
+   övning 8.
+3. Lägg till `hx-trigger="input changed delay:300ms"`.
+4. Lägg till `hx-target="#todo-table"`.
+5. Lägg till `hx-swap="outerHTML"`. Svaret är tabellen i sin helhet, inte
+   innehållet i den.
 
-`hx-get` hämtar `/todo-app` — samma adress som sorteringen hämtar sedan
-övning 8. `hx-target` är `#todo-table`, och sätt `hx-swap` till `outerHTML`:
-svaret är tabellen i sin helhet, inte innehållet i den.
-
-`hx-trigger` är det nya:
-
-```
-hx-trigger="input changed delay:300ms"
-```
-
-`input` är webbläsarens eget event: det triggas vid varje tangenttryckning.
-`delay:300ms` startar om nedräkningen vid varje nytt event, så en request går
-iväg när du **pausar**, inte per tecken. `changed` hoppar över requesten om
-värdet inte ändrats — pilknappar och liknande ger `input` utan att
-texten blir en annan.
+`hx-trigger` är det nya attributet. `input` är webbläsarens eget event, och det triggas
+varje gång texten i fältet ändras. `delay:300ms` startar om nedräkningen vid
+varje nytt event, så en request går iväg när du **pausar**, inte per varje tecken.
+`changed` hoppar över requesten om värdet inte har ändrats.
 
 ??? example "Facit"
 
@@ -73,25 +78,27 @@ Titta i nätverkspanelen, på adressen som gick iväg:
 /todo-app?q=alpha&sort=desc  <- det formuläret hade skickat
 ```
 
-Sorteringen är inte med. Servern har ingen aning om vad du valde, faller
-tillbaka på sin standardordning och svarar med en helt korrekt lista — på fel
-fråga.
+Sorteringen är inte med i requesten. Servern vet alltså inte att du valde
+nyast först, och sorterar som standard äldst först.
 
 !!! note "En `GET` skickar inte med sitt formulär"
 
-    I övning 3 följde hela formuläret med av sig självt. Det gjorde det för att
-    en `POST` har en kropp. Regeln, från
-    [htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms), är att
-    ett element skickar **sitt eget värde**, och att formulärets alla fält
-    följer med först när requesten har en kropp.
+    I övning 3 satt attributen på formuläret, och ett formulär skickar alltid
+    alla sina fält. Här sitter de på fältet. Ett fält skickar **sitt eget
+    värde**, och formulärets övriga fält följer med bara när requesten har en
+    kropp
+    ([htmx-dokumentationen om formulär](https://four.htmx.org/docs#forms)).
 
-    `GET` har ingen kropp. Fältet skickar `q` och ingenting annat — det dolda
+    `GET` har ingen kropp. Fältet skickar `q` och ingenting annat. Det dolda
     sorteringsfältet ligger i samma formulär och följer ändå inte med.
 
 Lösningen är `hx-include`, som ger dig möjlighet att specificera ytterligare
-data som ska inkluderas i requesten. Peka den på det dolda sorteringsfältet som
-redan ligger inuti `#todo-table` — det du flyttade dit i övning 4. Ge det ett
-`id` först.
+data som ska inkluderas i requesten.
+
+1. Öppna `views/todo-app/todo-table.liquid` och ge det dolda sorteringsfältet
+   ett `id`. Det är fältet du flyttade dit i övning 4.
+2. Lägg till `hx-include` på sökfältet i `search-form.liquid`, och peka det på
+   fältets `id`.
 
 ??? example "Facit — `views/todo-app/todo-table.liquid`"
 
@@ -107,7 +114,7 @@ redan ligger inuti `#todo-table` — det du flyttade dit i övning 4. Ge det ett
     ```
 
 Sortera nyast först och skriv igen. Ordningen ligger kvar. Sortera medan en
-sökning är aktiv — sökordet ligger kvar också, för sorteringslänken har haft
+sökning är aktiv. Sökordet ligger kvar också, för sorteringslänken har haft
 `q` i adressen sedan övning 2.
 
 !!! note "Fältet i tabellen har nu två användningar"
@@ -128,10 +135,6 @@ Titta sedan på bakåtknappen.
 Att ta sig tillbaka till där du var innan du började söka kräver ett tryck per
 paus. Adressen stämmer, men varje sökning har blivit ett sidbesök.
 
-| Attribut | Svarar på | Dokumentation |
-| --- | --- | --- |
-| `hx-replace-url` | Ska adressen bytas ut utan att ett steg läggs till? | [Referens](https://four.htmx.org/reference/attributes/hx-replace-url) |
-
 Byt ut attributet mot `hx-replace-url="true"`.
 
 ??? example "Facit"
@@ -151,13 +154,8 @@ hinner det gå en stund innan listan byts. Just nu syns ingenting under tiden.
 | `hx-indicator` | Vilket element ska markeras medan requesten pågår? | [Referens](https://four.htmx.org/reference/attributes/hx-indicator) |
 
 htmx lägger klassen `htmx-request` på elementet under tiden, och tar bort den
-när svaret kommit. Den stylesheet som får det att synas kommer från htmx självt:
-
-```css
-.htmx-indicator { opacity: 0; visibility: hidden }
-.htmx-request .htmx-indicator,
-.htmx-request.htmx-indicator { opacity: 1; visibility: visible; transition: opacity 200ms ease-in }
-```
+när svaret kommit. Stylingen som visar elementet under tiden kommer från htmx
+självt.
 
 Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 `hx-indicator` som pekar på det.
@@ -176,29 +174,23 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
            hx-indicator="#search-status"
     ```
 
-!!! note "Attributet måste sitta på elementet som gör requesten"
-
-    Arvet mellan element är explicit i htmx 4. Sitter `hx-indicator` på
-    formuläret gäller det inte fältet inuti, om det inte skrivs
-    `hx-indicator:inherited`.
-
 !!! warning "Du kommer inte se den lokalt"
 
-    Servern svarar på några millisekunder, och intoningen tar 200. Indikatorn
-    hinner aldrig bli synlig.
+    Servern svarar på några millisekunder, men indikatorn tonas in under
+    200 ms. Den hinner aldrig synas.
 
-    Strypa hastigheten i nätverkspanelen är det enklaste sättet att se den.
-    Annars: markera `<span>` i inspektören och skriv i sökrutan — klassen
-    `htmx-request` dyker upp och försvinner.
+    I route handlern för `GET /` i `src/app.ts` finns en utkommenterad rad som
+    gör att svaret tar en sekund. Ta bort kommentartecknen på den raden så
+    syns indikatorn. Lägg tillbaka dem när du är klar.
 
 ## Klart när
 
 - [ ] Listan filtreras medan du skriver, utan att sidan laddas om.
 - [ ] Fem tecken i rad ger **en** request, inte fem.
-- [ ] Sortera nyast först och sök — ordningen ligger kvar.
+- [ ] Sortera nyast först och sök: ordningen ligger kvar.
 - [ ] Adressen visar `?q=...`, och bakåtknappen går **inte** tillbaka genom
       varje paus.
-- [ ] Bakåt efter en sortering tar dig till sökningen igen — med sökordet kvar i
+- [ ] Bakåt efter en sortering tar dig till sökningen igen, med sökordet kvar i
       rutan.
 - [ ] Knappen **Search** fungerar fortfarande, med en vanlig sidladdning.
 
@@ -216,13 +208,13 @@ Du behöver alltså bara ett element med klassen `htmx-indicator` och ett
 
 ??? question "Varje bokstav ger en request"
 
-    `delay:300ms` saknas i `hx-trigger`, eller står på fel plats — den hör till
+    `delay:300ms` saknas i `hx-trigger`, eller står på fel plats. Den hör till
     `input`, inte till elementet.
 
 ## Och sen då?
 
 Det var den sista övningen. Appen du började med har nu blivit något många
-skulle tro är skrivet med React eller Vue — och du har inte skrivit en rad kod
+skulle tro är skrivet med React eller Vue, och du har inte skrivit en rad kod
 som bygger HTML i webbläsaren.
 
 Har du tid över finns [**extrauppgifter**](../extra/README.md) att utforska och

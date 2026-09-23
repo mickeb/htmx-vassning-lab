@@ -62,6 +62,10 @@ function listUrl(q: string, sort: todos.SortDirection): string {
 // --- full pages --------------------------------------------------------------
 
 todoApp.get('/', async (req, res) => {
+  // Uncomment to make this response take a second, for example to see a
+  // loading indicator.
+  // await new Promise((resolve) => setTimeout(resolve, 1000))
+
   const { q, sort } = listParams(req.query)
   const model = await todos.listModel(q, sort)
   res.render('todo-app/page', model)
