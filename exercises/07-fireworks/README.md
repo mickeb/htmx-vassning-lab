@@ -48,8 +48,8 @@ Det görs med HTTP-headern `HX-Trigger` i svaret:
 HX-Trigger: fireworks
 ```
 
-htmx läser headern när svaret är insatt och triggar ett event med det namnet.
-Vad `fireworks` betyder är upp till webbläsaren att avgöra.
+När headern finns i svaret triggar htmx ett event med samma namn som headerns
+värde.
 
 !!! warning "Till dig som tidigare använt v2"
 

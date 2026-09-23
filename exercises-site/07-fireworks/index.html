@@ -938,8 +938,8 @@ inträffat</em> (att det inte finns några todos kvar att bocka av).</p>
 <p>Det görs med HTTP-headern <code>HX-Trigger</code> i svaret:</p>
 <div class="language-http highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">HX-Trigger: fireworks</span>
 </code></pre></div>
-<p>htmx läser headern när svaret är insatt och triggar ett event med det namnet.
-Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
+<p>När headern finns i svaret triggar htmx ett event med samma namn som headerns
+värde.</p>
 <div class="admonition warning">
 <p class="admonition-title">Till dig som tidigare använt v2</p>
 <p><code>HX-Trigger</code>, <code>HX-Trigger-After-Swap</code> och <code>HX-Trigger-After-Settle</code>. htmx 4
