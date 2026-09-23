@@ -5,36 +5,33 @@
 Ett klick på **Complete** markerar raden som klar och uppdaterar räknaren i
 rubriken, utan att sidan laddas om.
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `hx-post` | Vilken adress ska postas till? | [Referens](https://four.htmx.org/reference/attributes/hx-post) |
 | `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
-| `hx-swap-oob` | Ska elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+| `<hx-partial>` | Vilken del av svaret ska någon annanstans? | [Referens](https://four.htmx.org/reference/tags/hx-partial) |
+
+## Template-fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/complete-response.liquid` | `POST /todo-app/fragments/todos/:id/complete` | Raden, och efter den här övningen även rubriken i ett `<hx-partial>` |
 
 ## Steg
 
-### 1. Lägg attributen på Complete-knappen
+### 1. Lägg till attributen på Complete-knappen
 
-Öppna `views/todo-app/todo-row.liquid`. Knappen ska posta till
-`/todo-app/fragments/todos/{{ todo.id }}/complete`.
-
-Inga av attributen vi använder är nya. Däremot använder vi en ny typ av värde
-på `hx-target`:
-
-```
-hx-target="closest tr"
-```
-
-`closest tr` är en CSS-selektor
-([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)) och
-betyder "närmaste `tr` uppåt från elementet som gjorde requesten".
-Eftersom värdet är relativt kan alla rader ha exakt samma `hx-target` — du
-slipper ge varje rad ett unikt `id`.
-
-Som vanligt använder vi `hx-swap="outerHTML"`.
+1. Öppna `views/todo-app/todo-row.liquid` och leta upp knappen **Complete**.
+2. Lägg till `hx-post="/todo-app/fragments/todos/{{ todo.id }}/complete"`.
+3. Lägg till `hx-target="closest tr"`. Det är en CSS-selektor och betyder
+   "närmaste `tr` uppåt från knappen"
+   ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)).
+   Eftersom värdet är relativt kan alla rader ha exakt samma `hx-target`, och
+   du slipper ge varje rad ett unikt `id`.
+4. Lägg till `hx-swap="outerHTML"`.
 
 ??? example "Facit"
 
@@ -46,38 +43,25 @@ Som vanligt använder vi `hx-swap="outerHTML"`.
     ```
 
 Klicka på **Complete** på någon rad. Den stryks över och knappen byts mot en
-bock — men räknaren står still igen!
+bock, men felet med summeringen slår till igen.
 
 ### 2. Rendera om rubriken
 
 Det här kan du redan.
 
-`views/todo-app/complete-response.liquid` renderar bara `todo-app/todo-row`.
-Rendera `todo-app/todo-header` också, och skicka med `oob: true` — precis som du
-gjorde med svaret för en ny todo.
-
-!!! warning "Ordningen är inte valfri här: raden måste komma först"
-
-    Förra övningens svar var en tabell, och då kvittade ordningen. Det här svaret
-    innehåller ett `<tr>` och en `<header>`, och lägger du rubriken först
-    försvinner raden — **tyst**.
-
-    Det är inte htmx som är kinkig, utan webbläsarens HTML-tolk. Ett `<tr>` som
-    inte står i ett tabellsammanhang är ogiltigt, så tolken kastar taggarna och
-    behåller texten. Det som hamnar i listan blir en lös textsnutt:
-    `2026-09-21 14:38:52 Köp mjölk`. Inget felmeddelande, ingenting i konsolen.
-
-    Lömskast är att räknaren ändå uppdateras korrekt, så det ser ut som att
-    hälften fungerade.
-
-    htmx plockar ut out-of-band-elementen ur svaret innan det sätts in — men då
-    är raden redan förstörd, ett steg tidigare.
+1. Öppna `views/todo-app/complete-response.liquid`. Just nu renderar den bara
+   `todo-app/todo-row`.
+2. Rendera `todo-app/todo-header` också, wrappad i ett `<hx-partial>`, precis
+   som i övning 5. Fragmentvariabeln `stats`, som `todo-app/todo-header`
+   behöver, finns redan tillgänglig.
 
 ??? example "Facit"
 
     ```liquid
     {% render 'todo-app/todo-row', todo: todo, q: q, sort: sort %}
-    {% render 'todo-app/todo-header', stats: stats, oob: true %}
+    <hx-partial hx-target="#todo-header" hx-swap="outerHTML">
+      {% render 'todo-app/todo-header', stats: stats %}
+    </hx-partial>
     ```
 
 ## Klart när
@@ -85,7 +69,7 @@ gjorde med svaret för en ny todo.
 - [ ] **Complete** stryker över raden och ersätter knappen med en bock.
 - [ ] Räknaren räknar ner med ett.
 - [ ] Nätverkspanelen visar **en** request, och inget dokument.
-- [ ] Antalet rader i listan är oförändrat — raden ersattes, den lades inte till.
+- [ ] Antalet rader i listan är oförändrat. Raden ersattes, den lades inte till.
 
 ## Fungerar det inte?
 
@@ -94,14 +78,7 @@ gjorde med svaret för en ny todo.
     Kontrollera att attributen sitter på `<button>` och inte på `<form>`, och
     att adressen innehåller `/fragments/`.
 
-??? question "Raden försvann och det står lös text i listan"
+??? question "Rubriken ligger i en ram inuti en ram"
 
-    Rubriken ligger före raden i `complete-response.liquid`. Byt plats på dem,
-    och se varningen i steg 2.
-
-## Nästa övning
-
-Räknaren räknar ner. Lägg märke till vad som står där när den sista todon
-bockas av.
-
-Nästa övning gör något av det ögonblicket. Något att fira.
+    `hx-swap="outerHTML"` saknas på `<hx-partial>`. Utan det används
+    `innerHTML`, och den nya rubriken hamnar inuti den gamla.
