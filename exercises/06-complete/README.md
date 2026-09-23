@@ -51,9 +51,10 @@ Det här kan du redan.
 
 1. Öppna `views/todo-app/complete-response.liquid`. Just nu renderar den bara
    `todo-app/todo-row`.
-2. Rendera `todo-app/todo-header` också, wrappad i ett `<hx-partial>`, precis
-   som i övning 5. Fragmentvariabeln `stats`, som `todo-app/todo-header`
-   behöver, finns redan tillgänglig.
+2. Rendera `todo-app/todo-header` också, wrappad i ett `<hx-partial>` med
+   `hx-target="#todo-header"` och `hx-swap="outerHTML"`, precis som i övning 5.
+   Fragmentvariabeln `stats`, som `todo-app/todo-header` behöver, finns redan
+   tillgänglig.
 
 ??? example "Facit"
 

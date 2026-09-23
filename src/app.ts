@@ -1,26 +1,6 @@
 import express from 'express'
 import * as todos from './lib/todos.ts'
 
-/**
- * The todo app, mounted at /todo-app by server.ts.
- *
- * Handlers here do three things and nothing else: read the query string or the
- * form body, call a function from lib/todos.ts, render a template. No SQL, no
- * business logic, no HTML.
- *
- * There are two sets of routes over the same data:
- *
- *   /todo-app/...             full pages and redirects -- ordinary links and
- *                             form posts, the way the web worked before
- *                             JavaScript got involved.
- *
- *   /todo-app/fragments/...   the same content without the surrounding page.
- *                             Open one in a browser: what comes back is a piece
- *                             of HTML, not JSON. Nothing uses these yet.
- *
- * Both sets render the same Liquid partials. The only difference is whether a
- * layout is wrapped around the result.
- */
 export const todoApp = express.Router()
 
 todoApp.use(express.urlencoded({ extended: false }))

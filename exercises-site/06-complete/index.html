@@ -938,9 +938,10 @@ bock, men felet med summeringen slår till igen.</p>
 <ol>
 <li>Öppna <code>views/todo-app/complete-response.liquid</code>. Just nu renderar den bara
    <code>todo-app/todo-row</code>.</li>
-<li>Rendera <code>todo-app/todo-header</code> också, wrappad i ett <code>&lt;hx-partial&gt;</code>, precis
-   som i övning 5. Fragmentvariabeln <code>stats</code>, som <code>todo-app/todo-header</code>
-   behöver, finns redan tillgänglig.</li>
+<li>Rendera <code>todo-app/todo-header</code> också, wrappad i ett <code>&lt;hx-partial&gt;</code> med
+   <code>hx-target="#todo-header"</code> och <code>hx-swap="outerHTML"</code>, precis som i övning 5.
+   Fragmentvariabeln <code>stats</code>, som <code>todo-app/todo-header</code> behöver, finns redan
+   tillgänglig.</li>
 </ol>
 <details class="example">
 <summary>Facit</summary>
