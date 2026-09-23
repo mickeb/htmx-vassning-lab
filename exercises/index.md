@@ -36,7 +36,7 @@ sker i en template, och ett par övningar lägger till några rader i `src/app.t
    där varje del säger var den hör hemma.
 6. [**Bocka av en todo**](06-complete/README.md) — ett mål som beskriver ett
    släktskap i stället för en adress.
-7. [**Fyrverkerier när allt är klart**](07-fireworks/README.md) — en HTTP-header
+7. [**Fyrverkerier när allt är klart!**](07-fireworks/README.md) — en HTTP-header
    som säger att något hänt, inte vad sidan ska göra åt det.
 8. [**En adress, två svar**](08-one-url/README.md) — servern läser en header och
    svarar olika beroende på vem som frågar.

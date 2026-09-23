@@ -1,4 +1,4 @@
-# 7. Fyrverkerier när allt är klart 🎆
+# 7. Fyrverkerier när allt är klart! 🎆
 
 ## Mål
 
