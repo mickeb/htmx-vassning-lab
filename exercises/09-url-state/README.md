@@ -11,43 +11,48 @@ appen.
 Sortera nyast först och titta på adressfältet. Det står fortfarande `/todo-app`.
 
 Det är en sak som gick förlorad någonstans mellan övning 2 och nu. Innan htmx
-var varje sortering en sidladdning, och adressen följde med av sig själv — det
-var webbläsaren som bytte sida. Nu är det htmx som hämtar, och då händer det
+var varje sortering en sidladdning, och adressen följde med av sig själv,
+eftersom det var webbläsaren som bytte sida. Nu är det htmx som hämtar, och då händer det
 inte av sig själv.
 
 Konsekvenserna märks först när någon gör något vanligt:
 
-- kopierar adressen och skickar den till en kollega — som får listan i
+- kopierar adressen och skickar den till en kollega, som får listan i
   standardordning
-- bokmärker sidan — bokmärket tappar sorteringen
-- trycker på bakåtknappen — och åker ut ur appen, för appen har inte lagt något
+- bokmärker sidan, och bokmärket tappar sorteringen
+- trycker på bakåtknappen och åker ut ur appen, för appen har inte lagt något
   i historiken
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `hx-push-url` | Ska adressen som hämtades hamna i adressfältet och i historiken? | [Referens](https://four.htmx.org/reference/attributes/hx-push-url) |
 
+## Template-fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/todo-table.liquid` | `GET /todo-app`, med `HX-Request` | Tabellen, som i övning 8 |
+
 ## Steg
 
-### 1. Lägg till attributet
+### 1. Lägg till `hx-push-url` på sorteringslänken
 
-`hx-push-url="true"` betyder "lägg adressen du hämtade i historiken".
+1. Öppna `views/todo-app/todo-table.liquid` och leta upp sorteringslänken.
+2. Lägg till `hx-push-url="true"`. Det betyder "lägg adressen du hämtade i
+   historiken".
 
 !!! note "Det här hade inte fungerat före förra övningen"
 
     Fram till övning 8 hämtade sorteringslänken
-    `/todo-app/fragments/table?sort=desc`. Den adressen fungerar — men det som
+    `/todo-app/fragments/table?sort=desc`. Den adressen fungerar, men det som
     kommer tillbaka är en naken tabell utan sida omkring. Att lägga den i
     adressfältet hade gett en kollega en ostylad tabell.
 
     Nu hämtar länken `/todo-app?sort=desc`, och det är en adress som duger att
-    skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route —
-    det gjorde historiken användbar.
-
-Öppna `views/todo-app/todo-table.liquid` och lägg `hx-push-url="true"` på
-sorteringslänken.
+    skicka vidare. Att slå ihop de två adresserna tog inte bara bort en route.
+    Det gjorde också historiken användbar.
 
 ??? example "Facit"
 
@@ -67,7 +72,7 @@ Sortera. Adressen ändras nu till `/todo-app?sort=desc` utan att sidan laddas om
 Det här steget bygger ingenting. Öppna nätverkspanelen, sortera några gånger och
 tryck sedan bakåt.
 
-Du ser en request gå iväg — och den är **större** än de som sorteringen gör.
+Du ser en request gå iväg, och den är **större** än de som sorteringen gör.
 Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 
 !!! note "Till dig som tidigare använt v2"
@@ -103,12 +108,3 @@ Sorteringen hämtar bara tabellen; bakåtknappen hämtar hela sidan.
 
     Då har ingenting lagts i historiken. Har du sorterat efter att du lade till
     attributet? Bara sorteringar som gjorts *efter* det hamnar där.
-
-## Nästa övning
-
-Sortering har adressen tillbaka. Sökrutan har den inte — skriv något i den och
-se efter.
-
-Nästa övning tar sökningen hela vägen: den ska söka medan du skriver, skicka med
-sorteringen, och lägga sökordet i adressen utan att fylla historiken med ett
-steg per tangenttryckning.
