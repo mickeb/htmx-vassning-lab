@@ -23,7 +23,7 @@ Each `README.md` covers, using these Swedish headings:
    **`Headers använda under övningen`** where the exercise turns on an HTTP
    header rather than an attribute (7 and 8). Renamed from `Användbara
    attribut` on 2026-09-23.
-3. **`Template fragment använda under övningen`** — added 2026-09-23. A table
+3. **`Template-fragment använda under övningen`** — added 2026-09-23. A table
    of the templates a fragment route renders as the response, with columns
    `Template`, `Route` and `Innehåller`. Templates the attendee only edits are
    not listed; `Steg` names those. Only `GET` routes are linked, since a
@@ -57,9 +57,9 @@ Two exercises keep a section outside this shape, each for a stated reason:
 
 - **4** opens with **`Vilken bugg?`** before the attribute table, because its
   opening *is* the work — reproduce the bug, read the request body, get the rule.
-- **5** and **8** end with **`Värt att känna till`** for a pointer the material
-  depends on elsewhere — `hx-partial` as the htmx 4 alternative to
-  `hx-swap-oob`, and why the dead fragment route is left in place.
+- **5** ends with **`Värt att känna till`**, naming `hx-swap-oob` as the older
+  way to do what the exercise does with `<hx-partial>`. It is what attendees
+  will meet in tutorials and other codebases.
 
 A section is dropped when an exercise has nothing for it, rather than padded.
 Exercise 1 has no attribute section and no template fragment section: an

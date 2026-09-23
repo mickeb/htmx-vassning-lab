@@ -60,7 +60,7 @@ dokumentet fältet än står. Det behöver inte ligga inuti `<form>`-taggen alls
     räknar fältet till formuläret när den bygger requesten, oavsett vem som
     skickar den.
 
-## Template fragment använda under övningen
+## Template-fragment använda under övningen
 
 | Template | Route | Innehåller |
 | --- | --- | --- |

@@ -2,79 +2,51 @@
 
 ## Mål
 
-Räknaren i rubriken stämmer igen direkt när du lägger till en todo.
+Räknaren i rubriken uppdateras i samband med att en todo läggs till.
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut | Svarar på | Dokumentation |
 | --- | --- | --- |
-| `hx-swap-oob` | Ska det här elementet hamna någon annanstans än där `hx-target` pekar? | [Referens](https://four.htmx.org/reference/attributes/hx-swap-oob) |
+| `<hx-partial>` | Vilken del av svaret ska någon annanstans? | [Referens](https://four.htmx.org/reference/tags/hx-partial) |
+| `hx-target` | Var i sidan ska svaret in? | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
+| `hx-swap` | Hur ska det sättas in? | [Referens](https://four.htmx.org/reference/attributes/hx-swap) |
 
-Räknaren går inte att laga med `hx-target`. Det attributet pekar ut **ett**
-ställe, och svaret behöver på något sätt uppdatera två ställen på sidan.
+Räknaren går inte att laga med formulärets `hx-target`. Det pekar ut **ett**
+ställe, och svaret behöver uppdatera två.
 
-Återigen låter vi servern bestämma var svaret ska hamna — den här gången med
-flera instruktioner.
+Lösningen för att uppdatera flera områden på sidan är `<hx-partial>`-elementet.
 
-`oob` står för *out of band* — vid sidan av. Ett element i svaret som har
-`hx-swap-oob="true"` placeras inte där `hx-target` pekar. htmx letar i stället
-upp elementet på sidan som har **samma `id`** och ersätter det.
+[Mer om `<hx-partial>`](https://four.htmx.org/docs#partials-hx-partial)
 
-[Mer om out-of-band swaps](https://four.htmx.org/docs#out-of-band-swaps)
+## Template-fragment använda under övningen
 
-## Steg
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/add-response.liquid` | `POST /todo-app/fragments/todos` | Tabellen, och efter den här övningen även rubriken i ett `<hx-partial>` |
 
-### 1. Öppna `views/todo-app/todo-header.liquid`
+## Skicka med rubriken i svaret
 
-`<header>`-taggen har redan `id="todo-header"`, vilket är det htmx matchar på.
+1. Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara
+   `todo-app/todo-table`.
+2. Rendera `todo-app/todo-header` också. Fragmentvariabeln `stats`, som
+   `todo-app/todo-header` behöver, finns redan tillgänglig.
+3. Wrappa `todo-app/todo-header` i ett `<hx-partial>` med `hx-target="#todo-header"` och
+   `hx-swap="outerHTML"`.
 
-Samma template renderas på två ställen: en gång när hela sidan `/todo-app`
-renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
-todo. `hx-swap-oob="true"` ska bara komma med när fragmentet renderas enskilt,
-inte som en del av hela sidan.
+!!! warning "Glöm inte `hx-swap`"
 
-??? example "Facit"
-
-    ```liquid
-    <header class="todo-header" id="todo-header"{% if oob %} hx-swap-oob="true"{% endif %}>
-    ```
-
-    `oob` är inget inbyggt — det är bara ett värde som den som renderar
-    template-fragmentet skickar med. Gör ingen det blir villkoret falskt och
-    attributet uteblir.
-
-!!! note "Varför inte alltid rendera attributet?"
-
-    För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
-    Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
-    `hx-swap-oob` i svar som sätts in, inte i sidan som redan ligger där.
-
-    Men en sida kan också *vara* ett svar. Den dagen den är det börjar ett
-    `hx-swap-oob` som ligger kvar gälla på ett ställe där ingen bett om det, och
-    det som försvinner gör det tyst.
-
-### 2. Skicka med rubriken i svaret
-
-Öppna `views/todo-app/add-response.liquid`. Just nu renderar den bara
-`todo-app/todo-table`. Rendera `todo-app/todo-header` också, och skicka med
-`oob: true`.
-
-`stats` finns redan tillgängligt i templaten — hanteraren skickar med det — så du
-behöver inte ändra något i `app.ts`.
-
-!!! note "Ordningen spelar ingen roll här"
-
-    Svaret innehåller en `<div>` och en `<header>`, och båda två är giltig HTML
-    var som helst. Lägg dem i vilken ordning du vill.
-
-    Det är värt att nämna, för det gäller inte alltid. Nästa övning skickar
-    tillbaka ett `<tr>`, och där är ordningen plötsligt inte valfri.
+    Utan `hx-swap` använder `<hx-partial>` `innerHTML`. Då hamnar den nya
+    rubriken **inuti** den gamla, och sidan får två `#todo-header`. Räknaren
+    visar rätt siffra, så det ser nästan rätt ut.
 
 ??? example "Facit"
 
     ```liquid
     {% render 'todo-app/todo-table', todos: todos, q: q, sort: sort %}
-    {% render 'todo-app/todo-header', stats: stats, oob: true %}
+    <hx-partial hx-target="#todo-header" hx-swap="outerHTML">
+      {% render 'todo-app/todo-header', stats: stats %}
+    </hx-partial>
     ```
 
 ## Klart när
@@ -83,37 +55,29 @@ behöver inte ändra något i `app.ts`.
 - [ ] Nätverkspanelen visar **en** request, inte två.
 - [ ] Sidan laddas inte om.
 - [ ] Det finns fortfarande bara en rubrik på sidan.
-- [ ] Sidan du laddar om innehåller ingen `hx-swap-oob` — bara svaren gör det.
-      Titta i sidkällan, och i svaret i nätverkspanelen.
 
 ## Fungerar det inte?
 
 ??? question "Räknaren ändras inte"
 
-    Titta först på svaret i nätverkspanelen. Står det ingen `hx-swap-oob` i
-    rubriken där, så saknas `oob: true` i `add-response.liquid`.
+    Titta först på svaret i nätverkspanelen. Finns inte rubriken med där
+    saknas den i `add-response.liquid`.
 
-    Står den där matchar htmx på `id`: kontrollera att det är exakt
-    `todo-header`, och att attributet hamnar på `<header>`-taggen och inte på
-    något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.
+    Finns den med, kontrollera att `hx-target` är exakt `#todo-header`. Hittar
+    htmx inget element att sätta in i händer ingenting, och inget felmeddelande
+    säger till.
+
+??? question "Rubriken ligger i en ram inuti en ram"
+
+    `hx-swap="outerHTML"` saknas på `<hx-partial>`. Se varningen i steget.
 
 ## Värt att känna till
 
-!!! note "htmx 4 har också ett nyare sätt"
+!!! note "Det äldre sättet: `hx-swap-oob`"
 
-    `hx-swap-oob` finns i alla versioner av htmx och är det du kommer stöta på
-    i handledningar, forumsvar och andra kodbaser. Därför är det det du lär dig
-    här.
+    Samma sak görs också med attributet `hx-swap-oob` på elementet i svaret.
+    htmx letar då upp elementet på sidan som har samma `id` och ersätter det.
+    Det finns i alla versioner av htmx, och det är det du kommer stöta på i
+    handledningar, forumsvar och andra kodbaser.
 
-    htmx 4 lade till `<hx-partial>`, som gör samma sak genom att slå in
-    innehållet i ett element som pekar ut sitt eget mål:
-
-    ```html
-    <hx-partial hx-target="#todo-header" hx-swap="outerHTML">
-      ...rubriken...
-    </hx-partial>
-    ```
-
-    `hx-target` står utskrivet i stället för att matchas via `id`, och
-    `todo-header.liquid` behöver inte ändras alls. Men `hx-swap-oob` är det som
-    fungerar överallt.
+    [Mer om out-of-band swaps](https://four.htmx.org/docs#out-of-band-swaps)

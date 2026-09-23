@@ -34,7 +34,7 @@ nav:
   - 2. Sortering: 02-sorting/README.md
   - 3. Lägg till en todo: 03-adding/README.md
   - 4. Ser du buggen?: 04-stale-state/README.md
-  - 5. Out-of-band-byten: 05-out-of-band/README.md
+  - 5. Uppdatera två ställen: 05-out-of-band/README.md
   - 6. Bocka av en todo: 06-complete/README.md
   - 7. Fyrverkerier: 07-fireworks/README.md
   - 8. En adress, två svar: 08-one-url/README.md

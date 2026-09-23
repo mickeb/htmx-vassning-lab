@@ -27,7 +27,7 @@
     
     
       
-        <title>5. Out-of-band-byten - HTMX-vassning — övningar</title>
+        <title>5. Uppdatera två ställen - HTMX-vassning — övningar</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Out-of-band-byten
+              5. Uppdatera två ställen
             
           </span>
         </div>
@@ -387,7 +387,7 @@
   <span class="md-ellipsis">
     
   
-    5. Out-of-band-byten
+    5. Uppdatera två ställen
   
 
     
@@ -405,7 +405,7 @@
   <span class="md-ellipsis">
     
   
-    5. Out-of-band-byten
+    5. Uppdatera två ställen
   
 
     
@@ -442,10 +442,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
       
     </span>
   </a>
@@ -453,41 +453,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg" class="md-nav__link">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Steg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-apptodo-headerliquid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Öppna views/todo-app/todo-header.liquid
+        Template-fragment använda under övningen
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-skicka-med-rubriken-i-svaret" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#skicka-med-rubriken-i-svaret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Skicka med rubriken i svaret
+        Skicka med rubriken i svaret
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -759,10 +742,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
       
     </span>
   </a>
@@ -770,41 +753,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg" class="md-nav__link">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Steg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-apptodo-headerliquid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Öppna views/todo-app/todo-header.liquid
+        Template-fragment använda under övningen
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-skicka-med-rubriken-i-svaret" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#skicka-med-rubriken-i-svaret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Skicka med rubriken i svaret
+        Skicka med rubriken i svaret
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -860,8 +826,8 @@
 
 <h1 id="5-uppdatera-tva-stallen-med-ett-svar">5. Uppdatera två ställen med ett svar<a class="headerlink" href="#5-uppdatera-tva-stallen-med-ett-svar" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
-<p>Räknaren i rubriken stämmer igen direkt när du lägger till en todo.</p>
-<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
+<p>Räknaren i rubriken uppdateras i samband med att en todo läggs till.</p>
+<h2 id="attribut-anvanda-under-ovningen">Attribut använda under övningen<a class="headerlink" href="#attribut-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -872,61 +838,64 @@
 </thead>
 <tbody>
 <tr>
-<td><code>hx-swap-oob</code></td>
-<td>Ska det här elementet hamna någon annanstans än där <code>hx-target</code> pekar?</td>
-<td><a href="https://four.htmx.org/reference/attributes/hx-swap-oob">Referens</a></td>
+<td><code>&lt;hx-partial&gt;</code></td>
+<td>Vilken del av svaret ska någon annanstans?</td>
+<td><a href="https://four.htmx.org/reference/tags/hx-partial">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-target</code></td>
+<td>Var i sidan ska svaret in?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-target">Referens</a></td>
+</tr>
+<tr>
+<td><code>hx-swap</code></td>
+<td>Hur ska det sättas in?</td>
+<td><a href="https://four.htmx.org/reference/attributes/hx-swap">Referens</a></td>
 </tr>
 </tbody>
 </table>
-<p>Räknaren går inte att laga med <code>hx-target</code>. Det attributet pekar ut <strong>ett</strong>
-ställe, och svaret behöver på något sätt uppdatera två ställen på sidan.</p>
-<p>Återigen låter vi servern bestämma var svaret ska hamna — den här gången med
-flera instruktioner.</p>
-<p><code>oob</code> står för <em>out of band</em> — vid sidan av. Ett element i svaret som har
-<code>hx-swap-oob="true"</code> placeras inte där <code>hx-target</code> pekar. htmx letar i stället
-upp elementet på sidan som har <strong>samma <code>id</code></strong> och ersätter det.</p>
-<p><a href="https://four.htmx.org/docs#out-of-band-swaps">Mer om out-of-band swaps</a></p>
-<h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-oppna-viewstodo-apptodo-headerliquid">1. Öppna <code>views/todo-app/todo-header.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-apptodo-headerliquid" title="Permanent link">&para;</a></h3>
-<p><code>&lt;header&gt;</code>-taggen har redan <code>id="todo-header"</code>, vilket är det htmx matchar på.</p>
-<p>Samma template renderas på två ställen: en gång när hela sidan <code>/todo-app</code>
-renderas, och en gång i det fragment som skickas tillbaka när du lägger till en
-todo. <code>hx-swap-oob="true"</code> ska bara komma med när fragmentet renderas enskilt,
-inte som en del av hela sidan.</p>
-<details class="example">
-<summary>Facit</summary>
-<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;header class=&quot;todo-header&quot; id=&quot;todo-header&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">oob</span><span class="w"> </span><span class="p">%}</span> hx-swap-oob=&quot;true&quot;<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;
-</code></pre></div>
-<p><code>oob</code> är inget inbyggt — det är bara ett värde som den som renderar
-template-fragmentet skickar med. Gör ingen det blir villkoret falskt och
-attributet uteblir.</p>
-</details>
-<div class="admonition note">
-<p class="admonition-title">Varför inte alltid rendera attributet?</p>
-<p>För att det då skulle ligga kvar i sidan som webbläsaren laddar helt vanligt.
-Det gör ingen skada så länge sidan bara laddas — htmx tittar efter
-<code>hx-swap-oob</code> i svar som sätts in, inte i sidan som redan ligger där.</p>
-<p>Men en sida kan också <em>vara</em> ett svar. Den dagen den är det börjar ett
-<code>hx-swap-oob</code> som ligger kvar gälla på ett ställe där ingen bett om det, och
-det som försvinner gör det tyst.</p>
-</div>
-<h3 id="2-skicka-med-rubriken-i-svaret">2. Skicka med rubriken i svaret<a class="headerlink" href="#2-skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h3>
-<p>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara
-<code>todo-app/todo-table</code>. Rendera <code>todo-app/todo-header</code> också, och skicka med
-<code>oob: true</code>.</p>
-<p><code>stats</code> finns redan tillgängligt i templaten — hanteraren skickar med det — så du
-behöver inte ändra något i <code>app.ts</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Ordningen spelar ingen roll här</p>
-<p>Svaret innehåller en <code>&lt;div&gt;</code> och en <code>&lt;header&gt;</code>, och båda två är giltig HTML
-var som helst. Lägg dem i vilken ordning du vill.</p>
-<p>Det är värt att nämna, för det gäller inte alltid. Nästa övning skickar
-tillbaka ett <code>&lt;tr&gt;</code>, och där är ordningen plötsligt inte valfri.</p>
+<p>Räknaren går inte att laga med formulärets <code>hx-target</code>. Det pekar ut <strong>ett</strong>
+ställe, och svaret behöver uppdatera två.</p>
+<p>Lösningen för att uppdatera flera områden på sidan är <code>&lt;hx-partial&gt;</code>-elementet.</p>
+<p><a href="https://four.htmx.org/docs#partials-hx-partial">Mer om <code>&lt;hx-partial&gt;</code></a></p>
+<h2 id="template-fragment-anvanda-under-ovningen">Template-fragment använda under övningen<a class="headerlink" href="#template-fragment-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Route</th>
+<th>Innehåller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>views/todo-app/add-response.liquid</code></td>
+<td><code>POST /todo-app/fragments/todos</code></td>
+<td>Tabellen, och efter den här övningen även rubriken i ett <code>&lt;hx-partial&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="skicka-med-rubriken-i-svaret">Skicka med rubriken i svaret<a class="headerlink" href="#skicka-med-rubriken-i-svaret" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Öppna <code>views/todo-app/add-response.liquid</code>. Just nu renderar den bara
+   <code>todo-app/todo-table</code>.</li>
+<li>Rendera <code>todo-app/todo-header</code> också. Fragmentvariabeln <code>stats</code>, som
+   <code>todo-app/todo-header</code> behöver, finns redan tillgänglig.</li>
+<li>Wrappa <code>todo-app/todo-header</code> i ett <code>&lt;hx-partial&gt;</code> med <code>hx-target="#todo-header"</code> och
+   <code>hx-swap="outerHTML"</code>.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Glöm inte <code>hx-swap</code></p>
+<p>Utan <code>hx-swap</code> använder <code>&lt;hx-partial&gt;</code> <code>innerHTML</code>. Då hamnar den nya
+rubriken <strong>inuti</strong> den gamla, och sidan får två <code>#todo-header</code>. Räknaren
+visar rätt siffra, så det ser nästan rätt ut.</p>
 </div>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">todos</span><span class="o">:</span><span class="w"> </span>todos<span class="p">,</span><span class="w"> </span><span class="na">q</span><span class="o">:</span><span class="w"> </span>q<span class="p">,</span><span class="w"> </span><span class="na">sort</span><span class="o">:</span><span class="w"> </span>sort<span class="w"> </span><span class="p">%}</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="p">,</span><span class="w"> </span><span class="na">oob</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">todos</span><span class="o">:</span><span class="w"> </span>todos<span class="p">,</span><span class="w"> </span><span class="na">q</span><span class="o">:</span><span class="w"> </span>q<span class="p">,</span><span class="w"> </span><span class="na">sort</span><span class="o">:</span><span class="w"> </span>sort<span class="w"> </span><span class="p">%}</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;hx-partial hx-target=&quot;#todo-header&quot; hx-swap=&quot;outerHTML&quot;&gt;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="p">{%</span><span class="w"> </span><span class="nt">render</span><span class="w"> </span><span class="s1">&#39;todo-app/todo-header&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">stats</span><span class="o">:</span><span class="w"> </span>stats<span class="w"> </span><span class="p">%}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&lt;/hx-partial&gt;
 </code></pre></div>
 </details>
 <h2 id="klart-nar">Klart när<a class="headerlink" href="#klart-nar" title="Permanent link">&para;</a></h2>
@@ -935,33 +904,28 @@ tillbaka ett <code>&lt;tr&gt;</code>, och där är ordningen plötsligt inte val
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nätverkspanelen visar <strong>en</strong> request, inte två.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan laddas inte om.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Det finns fortfarande bara en rubrik på sidan.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sidan du laddar om innehåller ingen <code>hx-swap-oob</code> — bara svaren gör det.
-      Titta i sidkällan, och i svaret i nätverkspanelen.</li>
 </ul>
 <h2 id="fungerar-det-inte">Fungerar det inte?<a class="headerlink" href="#fungerar-det-inte" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>Räknaren ändras inte</summary>
-<p>Titta först på svaret i nätverkspanelen. Står det ingen <code>hx-swap-oob</code> i
-rubriken där, så saknas <code>oob: true</code> i <code>add-response.liquid</code>.</p>
-<p>Står den där matchar htmx på <code>id</code>: kontrollera att det är exakt
-<code>todo-header</code>, och att attributet hamnar på <code>&lt;header&gt;</code>-taggen och inte på
-något inuti den. Hittar htmx inget att matcha mot gör den ingenting alls.</p>
+<p>Titta först på svaret i nätverkspanelen. Finns inte rubriken med där
+saknas den i <code>add-response.liquid</code>.</p>
+<p>Finns den med, kontrollera att <code>hx-target</code> är exakt <code>#todo-header</code>. Hittar
+htmx inget element att sätta in i händer ingenting, och inget felmeddelande
+säger till.</p>
+</details>
+<details class="question">
+<summary>Rubriken ligger i en ram inuti en ram</summary>
+<p><code>hx-swap="outerHTML"</code> saknas på <code>&lt;hx-partial&gt;</code>. Se varningen i steget.</p>
 </details>
 <h2 id="vart-att-kanna-till">Värt att känna till<a class="headerlink" href="#vart-att-kanna-till" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
-<p class="admonition-title">htmx 4 har också ett nyare sätt</p>
-<p><code>hx-swap-oob</code> finns i alla versioner av htmx och är det du kommer stöta på
-i handledningar, forumsvar och andra kodbaser. Därför är det det du lär dig
-här.</p>
-<p>htmx 4 lade till <code>&lt;hx-partial&gt;</code>, som gör samma sak genom att slå in
-innehållet i ett element som pekar ut sitt eget mål:</p>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">hx-partial</span> <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-header&quot;</span> <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ...rubriken...
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;/</span><span class="nt">hx-partial</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><code>hx-target</code> står utskrivet i stället för att matchas via <code>id</code>, och
-<code>todo-header.liquid</code> behöver inte ändras alls. Men <code>hx-swap-oob</code> är det som
-fungerar överallt.</p>
+<p class="admonition-title">Det äldre sättet: <code>hx-swap-oob</code></p>
+<p>Samma sak görs också med attributet <code>hx-swap-oob</code> på elementet i svaret.
+htmx letar då upp elementet på sidan som har samma <code>id</code> och ersätter det.
+Det finns i alla versioner av htmx, och det är det du kommer stöta på i
+handledningar, forumsvar och andra kodbaser.</p>
+<p><a href="https://four.htmx.org/docs#out-of-band-swaps">Mer om out-of-band swaps</a></p>
 </div>
 
 

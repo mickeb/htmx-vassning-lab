@@ -13,7 +13,7 @@ ger ett synligt fel på rätt ställe.
 | `hx-target` | Var i sidan ska svaret in?     | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap`   | Hur ska det sättas in?         | [Referens](https://four.htmx.org/reference/attributes/hx-swap)   |
 
-## Template fragment använda under övningen
+## Template-fragment använda under övningen
 
 | Template | Route | Innehåller |
 | --- | --- | --- |
