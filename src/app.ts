@@ -63,7 +63,8 @@ function listUrl(q: string, sort: todos.SortDirection): string {
 
 todoApp.get('/', async (req, res) => {
   const { q, sort } = listParams(req.query)
-  res.render('todo-app/page', await todos.listModel(q, sort))
+  const model = await todos.listModel(q, sort)
+  res.render('todo-app/page', model)
 })
 
 todoApp.post('/todos', async (req, res) => {

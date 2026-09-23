@@ -7,14 +7,14 @@ hämtar bara tabellen.
 
 ## Varför två adresser?
 
-Sedan övning 2 har sorteringslänken haft samma frågesträng två gånger:
+Sedan övning 2 har sorteringslänken haft samma query string två gånger:
 
 ```html
 href="/todo-app?sort=desc"
 hx-get="/todo-app/fragments/table?sort=desc"
 ```
 
-En för ett vanligt klick, en för htmx.
+En för vanlig navigering, en för htmx.
 
 Det var för att förenkla de tidigare övningarna: routen under `/fragments/` fanns
 färdig, så du kunde peka `hx-get` på den utan att skriva någon serverkod.
@@ -23,13 +23,19 @@ Men båda adresserna returnerar samma innehåll: tabellen. Det enda som skiljer
 är om sidan ligger runt omkring eller inte.
 
 I en "riktig app" är det vanligt att man strävar efter att kunna använda samma
-adress — av skäl vi tittar på i nästa övning.
+adress.
 
-## Användbara headers
+## Headers använda under övningen
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `HX-Request` | Kommer den här requesten från htmx? | [Referens](https://four.htmx.org/reference/headers/hx-request) |
+
+## Template-fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/todo-table.liquid` | `GET /todo-app`, med `HX-Request` | Tabellen, utan sidan runt omkring |
 
 ## Steg
 
@@ -49,12 +55,22 @@ kunna svara på samma adress på två sätt.
     den för att välja vad den skickar tillbaka. Samma mekanism, motsatt
     riktning.
 
-Öppna `src/app.ts` och leta upp hanteraren för `GET /`. Den renderar alltid hela
-sidan. Lägg till en `if`-sats före den: kommer requesten från htmx, rendera
-bara tabellen.
+1. Öppna `src/app.ts` och leta upp route handlern för `GET /`. Den renderar
+   alltid hela sidan, med `model`.
+2. Lägg till en `if`-sats före `res.render` som kollar om requesten har
+   headern `HX-Request`. Har den det kommer requesten från htmx, och då ska
+   bara `todo-app/todo-table` renderas, med samma `model`.
 
-`todos.listModel(...)` ger det som behövs i båda fallen, så hämta det en gång
-och låt båda fallen dela på det.
+??? tip "Ledtråd — läsa en header i Express"
+
+    `req.get('<header>')` ger värdet på en header i requesten, eller `undefined`
+    om den saknas. Det räcker alltså att kolla om det finns något:
+
+    ```ts
+    if (req.get('<header>')) {
+      // ...
+    }
+    ```
 
 ??? example "Facit"
 
@@ -77,8 +93,8 @@ och låt båda fallen dela på det.
 
 ### 2. Peka om sorteringslänken
 
-Öppna `views/todo-app/todo-table.liquid`. `hx-get` ska nu hämta samma adress som
-`href` redan pekar på.
+1. Öppna `views/todo-app/todo-table.liquid` och leta upp sorteringslänken.
+2. Ändra `hx-get` så att den hämtar samma adress som `href` redan pekar på.
 
 ??? tip "Ledtråd"
 

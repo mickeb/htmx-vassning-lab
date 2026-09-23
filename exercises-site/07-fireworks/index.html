@@ -496,10 +496,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-headers" class="md-nav__link">
+  <a href="#headers-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara headers
+        Headers använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-fragment använda under övningen
       
     </span>
   </a>
@@ -572,17 +583,6 @@
     <span class="md-ellipsis">
       
         Fungerar det inte?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nasta-ovning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nästa övning
       
     </span>
   </a>
@@ -770,10 +770,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-headers" class="md-nav__link">
+  <a href="#headers-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara headers
+        Headers använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-fragment använda under övningen
       
     </span>
   </a>
@@ -852,17 +863,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#nasta-ovning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nästa övning
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -883,7 +883,7 @@
 <h1 id="7-fyrverkerier-nar-allt-ar-klart">7. Fyrverkerier när allt är klart 🎆<a class="headerlink" href="#7-fyrverkerier-nar-allt-ar-klart" title="Permanent link">&para;</a></h1>
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>När den sista todon bockas av smäller fyrverkerier över sidan.</p>
-<h2 id="anvandbara-headers">Användbara headers<a class="headerlink" href="#anvandbara-headers" title="Permanent link">&para;</a></h2>
+<h2 id="headers-anvanda-under-ovningen">Headers använda under övningen<a class="headerlink" href="#headers-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -900,35 +900,43 @@
 </tr>
 </tbody>
 </table>
+<h2 id="template-fragment-anvanda-under-ovningen">Template-fragment använda under övningen<a class="headerlink" href="#template-fragment-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Route</th>
+<th>Innehåller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>views/todo-app/complete-response.liquid</code></td>
+<td><code>POST /todo-app/fragments/todos/:id/complete</code></td>
+<td>Raden och rubriken, som i övning 6</td>
+</tr>
+</tbody>
+</table>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
 <h3 id="1-lagg-till-fireworks-js-i-import-mapen">1. Lägg till fireworks-js i import map:en<a class="headerlink" href="#1-lagg-till-fireworks-js-i-import-mapen" title="Permanent link">&para;</a></h3>
 <p>För att generera fyrverkerier kommer vi använda ett färdigt bibliotek,
-<a href="https://fireworks.js.org/"><code>fireworks-js</code></a>. Det blir en rad till i import map:en
-du skrev i övning 1, och importeras sedan med sitt namn.</p>
-<p>Lägg till filen i <code>views/layout.liquid</code>, under namnet <code>fireworks-js</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js
+<a href="https://fireworks.js.org/"><code>fireworks-js</code></a>.</p>
+<p>Ersätt import map:en i <code>views/layout.liquid</code> med den här:</p>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;importmap&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="s2">&quot;imports&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="s2">&quot;htmx.org&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="s2">&quot;fireworks-js&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<details class="example">
-<summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;importmap&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="s2">&quot;imports&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">&quot;htmx.org&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">&quot;fireworks-js&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>JSON igen, med samma fälla som i övning 1: ett kommatecken för mycket efter
-sista raden och hela tabellen slutar gälla — även raden för htmx.</p>
-</details>
 <h3 id="2-trigga-eventet">2. Trigga eventet<a class="headerlink" href="#2-trigga-eventet" title="Permanent link">&para;</a></h3>
 <p>Servern bestämmer när det ska firas. Hittills har varje svar varit HTML som
 satts in någonstans på sidan. Nu ska ett svar också kunna säga <em>att något har
-inträffat</em> — att det inte finns några todos kvar att bocka av — utan att säga
-vad sidan ska göra åt det.</p>
+inträffat</em> (att det inte finns några todos kvar att bocka av).</p>
 <p>Det görs med HTTP-headern <code>HX-Trigger</code> i svaret:</p>
-<div class="language-http highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">HX-Trigger: fireworks</span>
+<div class="language-http highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">HX-Trigger: fireworks</span>
 </code></pre></div>
 <p>htmx läser headern när svaret är insatt och triggar ett event med det namnet.
 Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
@@ -938,10 +946,13 @@ Vad <code>fireworks</code> betyder är upp till webbläsaren att avgöra.</p>
 har slagit ihop dem till en enda, som alltid triggas efter insättningen. Ser
 du de två längre namnen i ett exempel läser du htmx 2-material.</p>
 </div>
-<p>Öppna <code>src/app.ts</code> och leta upp hanteraren för
+<p>Öppna <code>src/app.ts</code> och leta upp route handlern för
 <code>POST /fragments/todos/:id/complete</code>. Den hämtar redan <code>stats</code> innan den
 renderar svaret. <code>stats.allComplete</code> är sant när det finns todos och alla är
-klara — en tom lista ger alltså inga fyrverkerier.</p>
+klara. En tom lista ger alltså inga fyrverkerier.</p>
+<p>Du sätter en header på svaret på samma sätt som i övning 3:</p>
+<div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;&lt;header&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;value&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p>Lägg till en rad som sätter headern när allt är avbockat.</p>
 <details class="example">
 <summary>Facit</summary>
@@ -952,8 +963,8 @@ klara — en tom lista ger alltså inga fyrverkerier.</p>
 </code></pre></div>
 </details>
 <p>Bocka av den sista todon och titta på svarets headers i nätverkspanelen.
-<code>HX-Trigger: fireworks</code> ska stå där. På sidan händer ingenting — ingen lyssnar
-på eventet ännu. 😢</p>
+<code>HX-Trigger: fireworks</code> ska nu skickas tillbaka. På sidan blir det dock inga
+fyrverkerier 😢. Det är nämligen inget som lyssnar på eventet ännu.</p>
 <h3 id="3-hantera-eventet">3. Hantera eventet<a class="headerlink" href="#3-hantera-eventet" title="Permanent link">&para;</a></h3>
 <p>Själva fyrverkerierna är vanlig JavaScript och inte poängen med övningen. Ersätt
 modulskriptet i <code>views/layout.liquid</code> med det här:</p>
@@ -978,7 +989,7 @@ modulskriptet i <code>views/layout.liquid</code> med det här:</p>
 <code>HX-Trigger</code>-headern.</p>
 <div class="admonition note">
 <p class="admonition-title">Varför lyssna på <code>document</code>?</p>
-<p>Knappen som skickade requesten finns inte kvar när eventet kommer — hela
+<p>Knappen som skickade requesten finns inte kvar när eventet kommer. Hela
 raden byttes ju ut. htmx triggar eventet på det element som gjorde requesten
 om det finns kvar, annars på dokumentet. Eventet bubblar, så <code>document</code> hör
 det i båda fallen.</p>
@@ -1002,16 +1013,13 @@ och att namnet är stavat likadant på båda ställena. Står headern inte där
 </details>
 <details class="question">
 <summary>Konsolen säger att <code>fireworks-js</code> inte kan slås upp</summary>
-<p>Felet lyder <code>Failed to resolve module specifier</code>. Import map:en har ett
-JSON-fel, antagligen ett kommatecken för mycket eller för lite. Då har htmx
-slutat fungera samtidigt — sortering och avbockning laddar om hela sidan
-igen.</p>
+<p>Import map:en saknar <code>fireworks-js</code>. Kontrollera att du ersatte hela
+import map:en i steg 1.</p>
+<p>I Chrome lyder felet <code>Failed to resolve module specifier</code>, i Firefox
+<code>was a bare specifier, but was not remapped to anything</code>. Felet stoppar
+hela modulskriptet, så htmx har slutat fungera samtidigt: sortering och
+avbockning laddar om hela sidan igen.</p>
 </details>
-<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
-<p>Öppna <code>views/todo-app/todo-table.liquid</code> och titta på sorteringslänken igen.
-Adressen står där två gånger: en gång i <code>href</code>, en gång i <code>hx-get</code>. Samma
-frågesträng, olika sökväg.</p>
-<p>Nästa övning tar bort den ena. Servern får svara på samma adress på två sätt.</p>
 
 
 

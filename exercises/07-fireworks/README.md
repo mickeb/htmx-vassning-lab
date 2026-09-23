@@ -4,48 +4,43 @@
 
 När den sista todon bockas av smäller fyrverkerier över sidan.
 
-## Användbara headers
+## Headers använda under övningen
 
 | HTTP-header | Svarar på | Dokumentation |
 | --- | --- | --- |
 | `HX-Trigger` | Vilket event ska triggas när svaret är insatt? | [Referens](https://four.htmx.org/reference/headers/hx-trigger) |
+
+## Template-fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/complete-response.liquid` | `POST /todo-app/fragments/todos/:id/complete` | Raden och rubriken, som i övning 6 |
 
 ## Steg
 
 ### 1. Lägg till fireworks-js i import map:en
 
 För att generera fyrverkerier kommer vi använda ett färdigt bibliotek,
-[`fireworks-js`](https://fireworks.js.org/). Det blir en rad till i import map:en
-du skrev i övning 1, och importeras sedan med sitt namn.
+[`fireworks-js`](https://fireworks.js.org/).
 
-Lägg till filen i `views/layout.liquid`, under namnet `fireworks-js`:
+Ersätt import map:en i `views/layout.liquid` med den här:
 
+```html
+<script type="importmap">
+{
+  "imports": {
+    "htmx.org": "https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js",
+    "fireworks-js": "https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js"
+  }
+}
+</script>
 ```
-https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js
-```
-
-??? example "Facit"
-
-    ```html
-    <script type="importmap">
-    {
-      "imports": {
-        "htmx.org": "https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.esm.js",
-        "fireworks-js": "https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.es.js"
-      }
-    }
-    </script>
-    ```
-
-    JSON igen, med samma fälla som i övning 1: ett kommatecken för mycket efter
-    sista raden och hela tabellen slutar gälla — även raden för htmx.
 
 ### 2. Trigga eventet
 
 Servern bestämmer när det ska firas. Hittills har varje svar varit HTML som
 satts in någonstans på sidan. Nu ska ett svar också kunna säga *att något har
-inträffat* — att det inte finns några todos kvar att bocka av — utan att säga
-vad sidan ska göra åt det.
+inträffat* (att det inte finns några todos kvar att bocka av).
 
 Det görs med HTTP-headern `HX-Trigger` i svaret:
 
@@ -62,10 +57,16 @@ Vad `fireworks` betyder är upp till webbläsaren att avgöra.
     har slagit ihop dem till en enda, som alltid triggas efter insättningen. Ser
     du de två längre namnen i ett exempel läser du htmx 2-material.
 
-Öppna `src/app.ts` och leta upp hanteraren för
+Öppna `src/app.ts` och leta upp route handlern för
 `POST /fragments/todos/:id/complete`. Den hämtar redan `stats` innan den
 renderar svaret. `stats.allComplete` är sant när det finns todos och alla är
-klara — en tom lista ger alltså inga fyrverkerier.
+klara. En tom lista ger alltså inga fyrverkerier.
+
+Du sätter en header på svaret på samma sätt som i övning 3:
+
+```ts
+res.set('<header>', '<value>')
+```
 
 Lägg till en rad som sätter headern när allt är avbockat.
 
@@ -79,8 +80,8 @@ Lägg till en rad som sätter headern när allt är avbockat.
     ```
 
 Bocka av den sista todon och titta på svarets headers i nätverkspanelen.
-`HX-Trigger: fireworks` ska stå där. På sidan händer ingenting — ingen lyssnar
-på eventet ännu. 😢
+`HX-Trigger: fireworks` ska nu skickas tillbaka. På sidan blir det dock inga
+fyrverkerier 😢. Det är nämligen inget som lyssnar på eventet ännu.
 
 ### 3. Hantera eventet
 
@@ -111,7 +112,7 @@ Den enda raden som har med htmx att göra är
 
 !!! note "Varför lyssna på `document`?"
 
-    Knappen som skickade requesten finns inte kvar när eventet kommer — hela
+    Knappen som skickade requesten finns inte kvar när eventet kommer. Hela
     raden byttes ju ut. htmx triggar eventet på det element som gjorde requesten
     om det finns kvar, annars på dokumentet. Eventet bubblar, så `document` hör
     det i båda fallen.
@@ -136,15 +137,10 @@ Den enda raden som har med htmx att göra är
 
 ??? question "Konsolen säger att `fireworks-js` inte kan slås upp"
 
-    Felet lyder `Failed to resolve module specifier`. Import map:en har ett
-    JSON-fel, antagligen ett kommatecken för mycket eller för lite. Då har htmx
-    slutat fungera samtidigt — sortering och avbockning laddar om hela sidan
-    igen.
+    Import map:en saknar `fireworks-js`. Kontrollera att du ersatte hela
+    import map:en i steg 1.
 
-## Nästa övning
-
-Öppna `views/todo-app/todo-table.liquid` och titta på sorteringslänken igen.
-Adressen står där två gånger: en gång i `href`, en gång i `hx-get`. Samma
-frågesträng, olika sökväg.
-
-Nästa övning tar bort den ena. Servern får svara på samma adress på två sätt.
+    I Chrome lyder felet `Failed to resolve module specifier`, i Firefox
+    `was a bare specifier, but was not remapped to anything`. Felet stoppar
+    hela modulskriptet, så htmx har slutat fungera samtidigt: sortering och
+    avbockning laddar om hela sidan igen.

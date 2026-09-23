@@ -534,10 +534,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-headers" class="md-nav__link">
+  <a href="#headers-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara headers
+        Headers använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-fragment använda under övningen
       
     </span>
   </a>
@@ -770,10 +781,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-headers" class="md-nav__link">
+  <a href="#headers-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara headers
+        Headers använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-fragment använda under övningen
       
     </span>
   </a>
@@ -863,18 +885,18 @@
 <p>En och samma adress används både när webbläsaren hämtar hela sidan och när htmx
 hämtar bara tabellen.</p>
 <h2 id="varfor-tva-adresser">Varför två adresser?<a class="headerlink" href="#varfor-tva-adresser" title="Permanent link">&para;</a></h2>
-<p>Sedan övning 2 har sorteringslänken haft samma frågesträng två gånger:</p>
+<p>Sedan övning 2 har sorteringslänken haft samma query string två gånger:</p>
 <div class="language-html highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>href=&quot;/todo-app?sort=desc&quot;
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>hx-get=&quot;/todo-app/fragments/table?sort=desc&quot;
 </code></pre></div>
-<p>En för ett vanligt klick, en för htmx.</p>
+<p>En för vanlig navigering, en för htmx.</p>
 <p>Det var för att förenkla de tidigare övningarna: routen under <code>/fragments/</code> fanns
 färdig, så du kunde peka <code>hx-get</code> på den utan att skriva någon serverkod.</p>
 <p>Men båda adresserna returnerar samma innehåll: tabellen. Det enda som skiljer
 är om sidan ligger runt omkring eller inte.</p>
 <p>I en "riktig app" är det vanligt att man strävar efter att kunna använda samma
-adress — av skäl vi tittar på i nästa övning.</p>
-<h2 id="anvandbara-headers">Användbara headers<a class="headerlink" href="#anvandbara-headers" title="Permanent link">&para;</a></h2>
+adress.</p>
+<h2 id="headers-anvanda-under-ovningen">Headers använda under övningen<a class="headerlink" href="#headers-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -888,6 +910,23 @@ adress — av skäl vi tittar på i nästa övning.</p>
 <td><code>HX-Request</code></td>
 <td>Kommer den här requesten från htmx?</td>
 <td><a href="https://four.htmx.org/reference/headers/hx-request">Referens</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="template-fragment-anvanda-under-ovningen">Template-fragment använda under övningen<a class="headerlink" href="#template-fragment-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Route</th>
+<th>Innehåller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>views/todo-app/todo-table.liquid</code></td>
+<td><code>GET /todo-app</code>, med <code>HX-Request</code></td>
+<td>Tabellen, utan sidan runt omkring</td>
 </tr>
 </tbody>
 </table>
@@ -905,42 +944,55 @@ kunna svara på samma adress på två sätt.</p>
 den för att välja vad den skickar tillbaka. Samma mekanism, motsatt
 riktning.</p>
 </div>
-<p>Öppna <code>src/app.ts</code> och leta upp hanteraren för <code>GET /</code>. Den renderar alltid hela
-sidan. Lägg till en <code>if</code>-sats före den: kommer requesten från htmx, rendera
-bara tabellen.</p>
-<p><code>todos.listModel(...)</code> ger det som behövs i båda fallen, så hämta det en gång
-och låt båda fallen dela på det.</p>
+<ol>
+<li>Öppna <code>src/app.ts</code> och leta upp route handlern för <code>GET /</code>. Den renderar
+   alltid hela sidan, med <code>model</code>.</li>
+<li>Lägg till en <code>if</code>-sats före <code>res.render</code> som kollar om requesten har
+   headern <code>HX-Request</code>. Har den det kommer requesten från htmx, och då ska
+   bara <code>todo-app/todo-table</code> renderas, med samma <code>model</code>.</li>
+</ol>
+<details class="tip">
+<summary>Ledtråd — läsa en header i Express</summary>
+<p><code>req.get('&lt;header&gt;')</code> ger värdet på en header i requesten, eller <code>undefined</code>
+om den saknas. Det räcker alltså att kolla om det finns något:</p>
+<div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;&lt;header&gt;&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="c1">// ...</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div>
+</details>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">todoApp</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listParams</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">todos</span><span class="p">.</span><span class="nx">listModel</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;HX-Request&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">return</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/page&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">})</span>
+<div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">todoApp</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listParams</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">todos</span><span class="p">.</span><span class="nx">listModel</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">sort</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;HX-Request&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/todo-table&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">return</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;todo-app/page&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">})</span>
 </code></pre></div>
 <p><code>res.render('todo-app/todo-table', model)</code> är exakt vad routen under
 <code>/fragments/</code> redan gjorde. Den är alltså död kod från och med nu.</p>
 </details>
 <h3 id="2-peka-om-sorteringslanken">2. Peka om sorteringslänken<a class="headerlink" href="#2-peka-om-sorteringslanken" title="Permanent link">&para;</a></h3>
-<p>Öppna <code>views/todo-app/todo-table.liquid</code>. <code>hx-get</code> ska nu hämta samma adress som
-<code>href</code> redan pekar på.</p>
+<ol>
+<li>Öppna <code>views/todo-app/todo-table.liquid</code> och leta upp sorteringslänken.</li>
+<li>Ändra <code>hx-get</code> så att den hämtar samma adress som <code>href</code> redan pekar på.</li>
+</ol>
 <details class="tip">
 <summary>Ledtråd</summary>
 <p>Du behöver inte skriva en ny sträng. Den står redan i <code>href</code>.</p>
 </details>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort sort--{{ sort }}&quot;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   <span class="na">href</span><span class="o">=</span><span class="s">&quot;/todo-app?sort={{ next_sort }}{% if q != &quot;</span><span class="err">&quot;</span> <span class="err">%}&amp;</span><span class="na">amp</span><span class="err">;</span><span class="na">q</span><span class="o">=</span><span class="s">{{</span> <span class="na">q</span> <span class="err">|</span> <span class="na">url_encode</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>   <span class="na">hx-get</span><span class="o">=</span><span class="s">&quot;/todo-app?sort={{ next_sort }}{% if q != &quot;</span><span class="err">&quot;</span> <span class="err">%}&amp;</span><span class="na">amp</span><span class="err">;</span><span class="na">q</span><span class="o">=</span><span class="s">{{</span> <span class="na">q</span> <span class="err">|</span> <span class="na">url_encode</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>   <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>   <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sort sort--{{ sort }}&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   <span class="na">href</span><span class="o">=</span><span class="s">&quot;/todo-app?sort={{ next_sort }}{% if q != &quot;</span><span class="err">&quot;</span> <span class="err">%}&amp;</span><span class="na">amp</span><span class="err">;</span><span class="na">q</span><span class="o">=</span><span class="s">{{</span> <span class="na">q</span> <span class="err">|</span> <span class="na">url_encode</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   <span class="na">hx-get</span><span class="o">=</span><span class="s">&quot;/todo-app?sort={{ next_sort }}{% if q != &quot;</span><span class="err">&quot;</span> <span class="err">%}&amp;</span><span class="na">amp</span><span class="err">;</span><span class="na">q</span><span class="o">=</span><span class="s">{{</span> <span class="na">q</span> <span class="err">|</span> <span class="na">url_encode</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>   <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 </details>
 <p>Sortera ett par gånger. Det ska bete sig precis som förut.</p>
