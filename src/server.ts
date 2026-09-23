@@ -17,6 +17,10 @@ const bootId = `${process.pid}-${Date.now()}`
 
 const app = express()
 
+// Every template sees `dev`, which is what makes layout.liquid include the hot
+// reload client. See dev-reload.ts.
+app.locals.dev = isDev
+
 const liquid = new Liquid({
   root: join(projectRoot, 'views'),
   extname: '.liquid',
