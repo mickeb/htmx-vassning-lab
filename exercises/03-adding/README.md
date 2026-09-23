@@ -5,7 +5,7 @@
 En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
 ger ett synligt fel på rätt ställe.
 
-## Användbara attribut
+## Attribut använda under övningen
 
 | Attribut    | Svarar på                      | Dokumentation                                                    |
 | ----------- | ------------------------------ | ---------------------------------------------------------------- |
@@ -13,21 +13,28 @@ ger ett synligt fel på rätt ställe.
 | `hx-target` | Var i sidan ska svaret in?     | [Referens](https://four.htmx.org/reference/attributes/hx-target) |
 | `hx-swap`   | Hur ska det sättas in?         | [Referens](https://four.htmx.org/reference/attributes/hx-swap)   |
 
+## Template fragment använda under övningen
+
+| Template | Route | Innehåller |
+| --- | --- | --- |
+| `views/todo-app/add-response.liquid` | `POST /todo-app/fragments/todos` | Tabellen, efter att todon lagts till |
+| `views/todo-app/new-todo-form.liquid` | `POST /todo-app/fragments/todos` | Lägg till-formuläret med fältet rödmarkerat |
+
 ## Steg
 
-### 1. Öppna `views/todo-app/new-todo-form.liquid`
+### 1. Lägg till attributen på formuläret
 
-Lägg de tre attributen på `<form>`-taggen.
-
-`hx-post` postar till `/todo-app/fragments/todos`. Det är **samma koncept som
-sorteringen vi precis gjorde**, med en `POST` i stället för en `GET`:
-`hx-target` är `#todo-table` och `hx-swap` är återigen `outerHTML`, eftersom det
-som kommer tillbaka är tabellen i sin helhet.
+1. Öppna `views/todo-app/new-todo-form.liquid` och leta upp `<form>`-taggen.
+2. Lägg till `hx-post="/todo-app/fragments/todos"`. Det är samma sak som
+   sorteringen i övning 2, med en `POST` i stället för en `GET`.
+3. Lägg till `hx-target="#todo-table"`.
+4. Lägg till `hx-swap="outerHTML"`. Det som kommer tillbaka är hela tabellen,
+   återigen som i övning 2.
 
 !!! note "Formulär postas som vanligt"
 
     Att posta ett formulär med htmx fungerar som med vanlig HTML: fälten skickas
-    med automatiskt. Undantaget är `GET` och `DELETE`.
+    med automatiskt.
 
     [Mer om vad som skickas med](https://four.htmx.org/docs#forms)
 
@@ -62,12 +69,12 @@ förväntar sig.
 Det är väntat. `hx-target="#todo-table"` sitter på formuläret och gäller alla
 svar formuläret får, även felsvar.
 
-### 3. Låt server-side styra **var** svaret ska visas
+### 3. Låt servern styra **var** svaret ska visas
 
 HTTP-headern `HX-Retarget` i svaret låter dig köra över det som markupen
 specificerar i `hx-target`-attributet.
 
-Öppna `src/app.ts` och leta upp hanteraren för `POST /fragments/todos`. Den har
+Öppna `src/app.ts` och leta upp route handlern för `POST /fragments/todos`. Den har
 redan en `if`-sats för tomt fält, den som renderar formuläret med `error: true`.
 
 Så här sätter du en header på svaret:
@@ -77,6 +84,11 @@ res.set('<header>', '<target>')
 ```
 
 Lägg till raden i `if`-satsen och låt den peka ut formuläret för nya todos.
+
+??? tip "Ledtråd — vilket id?"
+
+    Formuläret har `id="new-todo-form"`. Värdet skrivs som i `hx-target`, med
+    `#` framför.
 
 ??? example "Facit"
 
@@ -111,18 +123,18 @@ Lägg till raden i `if`-satsen och låt den peka ut formuläret för nya todos.
 ??? question "Sorteringen försvinner när jag lägger till något"
 
     Sortera nyast först, lägg till en todo, och listan hoppar tillbaka till
-    äldst först. Det är en riktig bugg, den är äldre än den här övningen, och
-    nästa övning handlar om den. Låt den vara så länge.
+    äldst först. Det är en bugg. Vi kommer dock låta den vara så länge.
 
 ??? question "Ingenting händer alls när jag lägger till"
 
     Kontrollera först om du har något i sökrutan. Se varningen i steg 1.
 
-## Extra: töm textfältet
+## Extra: töm och fokusera textfältet
 
 Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
-om när allt gick bra — servern skickar listan, inte formuläret — så fältet behåller
-det du skrev.
+om när allt gick bra. Servern skickar listan, inte formuläret, så fältet behåller
+det du skrev. Fältet ska tömmas och få fokus igen, så att nästa todo kan skrivas
+direkt.
 
 Ett attribut på formuläret räcker.
 
@@ -130,24 +142,27 @@ Ett attribut på formuläret räcker.
 | -------- | ---------------------------------------- | ------------------------------------------------------------ |
 | `hx-on`  | Vad ska köras när ett event inträffar? | [Referens](https://four.htmx.org/reference/attributes/hx-on) |
 
-`hx-on` kopplar JavaScript till ett event direkt på elementet. Attributet heter
-`hx-on:` plus eventets namn — `hx-on:click` för ett vanligt klick.
+`hx-on` kopplar JavaScript till ett event direkt på elementet. Attributet anges
+på formen `hx-on:<event>`. Då eventet vi vill lyssna på är htmx eget
+`htmx:after:swap`, blir attributet `hx-on:htmx:after:swap`.
 
-htmx egna event heter i sin tur `htmx:after:swap`, `htmx:before:request` och
-så vidare. Fullt utskrivet blir attributet alltså `hx-on:htmx:after:swap`. Och
-eftersom varje htmx-event börjar med `htmx:` går det att utelämna ordet men
-behålla kolonet:
+(Det finns också ett kortare skrivsätt, `hx-on::after:swap`, som beskrivs i
+[referensen](https://four.htmx.org/reference/attributes/hx-on).)
 
-    hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
+JavaScriptet vi vill köra är:
 
-Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
-är det vanliga.
+```js
+this.reset(); this.elements.description.focus()
+```
+
+`this` är formuläret. `reset()` och `focus()` är vanlig DOM, ingenting
+htmx-specifikt.
 
 !!! warning "Till dig som tidigare använt v2"
 
-    Eventet heter `after:swap`. Inte `afterSwap` — det är htmx 2, och det är
-    vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
-    inget felmeddelande. Koden körs bara aldrig.
+    Eventet heter `htmx:after:swap`, inte `htmx:afterSwap`. `htmx:afterSwap` är
+    htmx 2, och det är vad nästan varje handledning och AI-assistent föreslår.
+    Fel stavning ger inget felmeddelande. Koden körs bara aldrig.
 
 ??? example "Facit"
 
@@ -156,33 +171,11 @@ Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det k
           hx-post="/todo-app/fragments/todos"
           hx-target="#todo-table"
           hx-swap="outerHTML"
-          hx-on::after:swap="this.reset()">
+          hx-on:htmx:after:swap="this.reset(); this.elements.description.focus()">
     ```
-
-    `this` är formuläret och `reset()` är vanlig DOM — ingenting htmx-specifikt.
-
-Notera var attributet sitter. Det gäller bara svaren på formulärets egna
-requests. Sorteringen från förra övningen ändrar också innehåll på sidan, men
-den rör inte det här fältet. Hade du i stället lagt en lyssnare på `document`
-hade halvskriven text försvunnit varje gång någon sorterade.
-
-Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
-formuläret.
 
 !!! note "Den röda ramen då?"
 
     Den ligger kvar efter ett lyckat tillägg, av samma skäl: formuläret renderas
     aldrig om. `reset()` återställer fältets värde men tar inte bort en
     CSS-klass. Det är inget övningen bygger bort.
-
-## Nästa övning
-
-Två saker är trasiga nu.
-
-Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
-ligger utanför `#todo-table` och rördes därför aldrig. Den lagas — men inte
-härnäst.
-
-Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.
-
-Nästa övning handlar om den.

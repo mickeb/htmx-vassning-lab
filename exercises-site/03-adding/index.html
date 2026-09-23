@@ -388,10 +388,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template fragment använda under övningen
       
     </span>
   </a>
@@ -411,10 +422,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-appnew-todo-formliquid" class="md-nav__link">
+  <a href="#1-lagg-till-attributen-pa-formularet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Öppna views/todo-app/new-todo-form.liquid
+        1. Lägg till attributen på formuläret
       
     </span>
   </a>
@@ -433,10 +444,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-lat-server-side-styra-var-svaret-ska-visas" class="md-nav__link">
+  <a href="#3-lat-servern-styra-var-svaret-ska-visas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Låt server-side styra var svaret ska visas
+        3. Låt servern styra var svaret ska visas
       
     </span>
   </a>
@@ -471,21 +482,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#extra-tom-textfaltet" class="md-nav__link">
+  <a href="#extra-tom-och-fokusera-textfaltet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extra: töm textfältet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nasta-ovning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nästa övning
+        Extra: töm och fokusera textfältet
       
     </span>
   </a>
@@ -781,10 +781,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anvandbara-attribut" class="md-nav__link">
+  <a href="#attribut-anvanda-under-ovningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Användbara attribut
+        Attribut använda under övningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-fragment-anvanda-under-ovningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template fragment använda under övningen
       
     </span>
   </a>
@@ -804,10 +815,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-oppna-viewstodo-appnew-todo-formliquid" class="md-nav__link">
+  <a href="#1-lagg-till-attributen-pa-formularet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Öppna views/todo-app/new-todo-form.liquid
+        1. Lägg till attributen på formuläret
       
     </span>
   </a>
@@ -826,10 +837,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-lat-server-side-styra-var-svaret-ska-visas" class="md-nav__link">
+  <a href="#3-lat-servern-styra-var-svaret-ska-visas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Låt server-side styra var svaret ska visas
+        3. Låt servern styra var svaret ska visas
       
     </span>
   </a>
@@ -864,21 +875,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#extra-tom-textfaltet" class="md-nav__link">
+  <a href="#extra-tom-och-fokusera-textfaltet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extra: töm textfältet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nasta-ovning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nästa övning
+        Extra: töm och fokusera textfältet
       
     </span>
   </a>
@@ -906,7 +906,7 @@
 <h2 id="mal">Mål<a class="headerlink" href="#mal" title="Permanent link">&para;</a></h2>
 <p>En ny todo dyker upp i listan utan att sidan laddas om, och ett tomt formulär
 ger ett synligt fel på rätt ställe.</p>
-<h2 id="anvandbara-attribut">Användbara attribut<a class="headerlink" href="#anvandbara-attribut" title="Permanent link">&para;</a></h2>
+<h2 id="attribut-anvanda-under-ovningen">Attribut använda under övningen<a class="headerlink" href="#attribut-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -933,17 +933,42 @@ ger ett synligt fel på rätt ställe.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="template-fragment-anvanda-under-ovningen">Template fragment använda under övningen<a class="headerlink" href="#template-fragment-anvanda-under-ovningen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Route</th>
+<th>Innehåller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>views/todo-app/add-response.liquid</code></td>
+<td><code>POST /todo-app/fragments/todos</code></td>
+<td>Tabellen, efter att todon lagts till</td>
+</tr>
+<tr>
+<td><code>views/todo-app/new-todo-form.liquid</code></td>
+<td><code>POST /todo-app/fragments/todos</code></td>
+<td>Lägg till-formuläret med fältet rödmarkerat</td>
+</tr>
+</tbody>
+</table>
 <h2 id="steg">Steg<a class="headerlink" href="#steg" title="Permanent link">&para;</a></h2>
-<h3 id="1-oppna-viewstodo-appnew-todo-formliquid">1. Öppna <code>views/todo-app/new-todo-form.liquid</code><a class="headerlink" href="#1-oppna-viewstodo-appnew-todo-formliquid" title="Permanent link">&para;</a></h3>
-<p>Lägg de tre attributen på <code>&lt;form&gt;</code>-taggen.</p>
-<p><code>hx-post</code> postar till <code>/todo-app/fragments/todos</code>. Det är <strong>samma koncept som
-sorteringen vi precis gjorde</strong>, med en <code>POST</code> i stället för en <code>GET</code>:
-<code>hx-target</code> är <code>#todo-table</code> och <code>hx-swap</code> är återigen <code>outerHTML</code>, eftersom det
-som kommer tillbaka är tabellen i sin helhet.</p>
+<h3 id="1-lagg-till-attributen-pa-formularet">1. Lägg till attributen på formuläret<a class="headerlink" href="#1-lagg-till-attributen-pa-formularet" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Öppna <code>views/todo-app/new-todo-form.liquid</code> och leta upp <code>&lt;form&gt;</code>-taggen.</li>
+<li>Lägg till <code>hx-post="/todo-app/fragments/todos"</code>. Det är samma sak som
+   sorteringen i övning 2, med en <code>POST</code> i stället för en <code>GET</code>.</li>
+<li>Lägg till <code>hx-target="#todo-table"</code>.</li>
+<li>Lägg till <code>hx-swap="outerHTML"</code>. Det som kommer tillbaka är hela tabellen,
+   återigen som i övning 2.</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Formulär postas som vanligt</p>
 <p>Att posta ett formulär med htmx fungerar som med vanlig HTML: fälten skickas
-med automatiskt. Undantaget är <code>GET</code> och <code>DELETE</code>.</p>
+med automatiskt.</p>
 <p><a href="https://four.htmx.org/docs#forms">Mer om vad som skickas med</a></p>
 </div>
 <details class="example">
@@ -970,15 +995,20 @@ Men titta noga. Formuläret ersätter <strong>listan</strong>, i stället för a
 förväntar sig.</p>
 <p>Det är väntat. <code>hx-target="#todo-table"</code> sitter på formuläret och gäller alla
 svar formuläret får, även felsvar.</p>
-<h3 id="3-lat-server-side-styra-var-svaret-ska-visas">3. Låt server-side styra <strong>var</strong> svaret ska visas<a class="headerlink" href="#3-lat-server-side-styra-var-svaret-ska-visas" title="Permanent link">&para;</a></h3>
+<h3 id="3-lat-servern-styra-var-svaret-ska-visas">3. Låt servern styra <strong>var</strong> svaret ska visas<a class="headerlink" href="#3-lat-servern-styra-var-svaret-ska-visas" title="Permanent link">&para;</a></h3>
 <p>HTTP-headern <code>HX-Retarget</code> i svaret låter dig köra över det som markupen
 specificerar i <code>hx-target</code>-attributet.</p>
-<p>Öppna <code>src/app.ts</code> och leta upp hanteraren för <code>POST /fragments/todos</code>. Den har
+<p>Öppna <code>src/app.ts</code> och leta upp route handlern för <code>POST /fragments/todos</code>. Den har
 redan en <code>if</code>-sats för tomt fält, den som renderar formuläret med <code>error: true</code>.</p>
 <p>Så här sätter du en header på svaret:</p>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;&lt;header&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;target&gt;&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>Lägg till raden i <code>if</code>-satsen och låt den peka ut formuläret för nya todos.</p>
+<details class="tip">
+<summary>Ledtråd — vilket id?</summary>
+<p>Formuläret har <code>id="new-todo-form"</code>. Värdet skrivs som i <code>hx-target</code>, med
+<code>#</code> framför.</p>
+</details>
 <details class="example">
 <summary>Facit</summary>
 <div class="language-ts highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1010,17 +1040,17 @@ htmx 4.</p>
 <details class="question">
 <summary>Sorteringen försvinner när jag lägger till något</summary>
 <p>Sortera nyast först, lägg till en todo, och listan hoppar tillbaka till
-äldst först. Det är en riktig bugg, den är äldre än den här övningen, och
-nästa övning handlar om den. Låt den vara så länge.</p>
+äldst först. Det är en bugg. Vi kommer dock låta den vara så länge.</p>
 </details>
 <details class="question">
 <summary>Ingenting händer alls när jag lägger till</summary>
 <p>Kontrollera först om du har något i sökrutan. Se varningen i steg 1.</p>
 </details>
-<h2 id="extra-tom-textfaltet">Extra: töm textfältet<a class="headerlink" href="#extra-tom-textfaltet" title="Permanent link">&para;</a></h2>
+<h2 id="extra-tom-och-fokusera-textfaltet">Extra: töm och fokusera textfältet<a class="headerlink" href="#extra-tom-och-fokusera-textfaltet" title="Permanent link">&para;</a></h2>
 <p>Texten ligger kvar i fältet efter att todon lagts till. Formuläret renderas aldrig
-om när allt gick bra — servern skickar listan, inte formuläret — så fältet behåller
-det du skrev.</p>
+om när allt gick bra. Servern skickar listan, inte formuläret, så fältet behåller
+det du skrev. Fältet ska tömmas och få fokus igen, så att nästa todo kan skrivas
+direkt.</p>
 <p>Ett attribut på formuläret räcker.</p>
 <table>
 <thead>
@@ -1038,51 +1068,37 @@ det du skrev.</p>
 </tr>
 </tbody>
 </table>
-<p><code>hx-on</code> kopplar JavaScript till ett event direkt på elementet. Attributet heter
-<code>hx-on:</code> plus eventets namn — <code>hx-on:click</code> för ett vanligt klick.</p>
-<p>htmx egna event heter i sin tur <code>htmx:after:swap</code>, <code>htmx:before:request</code> och
-så vidare. Fullt utskrivet blir attributet alltså <code>hx-on:htmx:after:swap</code>. Och
-eftersom varje htmx-event börjar med <code>htmx:</code> går det att utelämna ordet men
-behålla kolonet:</p>
-<div class="language-text highlight"><pre><span></span><code>hx-on:htmx:after:swap    är samma sak som    hx-on::after:swap
+<p><code>hx-on</code> kopplar JavaScript till ett event direkt på elementet. Attributet anges
+på formen <code>hx-on:&lt;event&gt;</code>. Då eventet vi vill lyssna på är htmx eget
+<code>htmx:after:swap</code>, blir attributet <code>hx-on:htmx:after:swap</code>.</p>
+<p>(Det finns också ett kortare skrivsätt, <code>hx-on::after:swap</code>, som beskrivs i
+<a href="https://four.htmx.org/reference/attributes/hx-on">referensen</a>.)</p>
+<p>JavaScriptet vi vill köra är:</p>
+<div class="language-js highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">this</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
 </code></pre></div>
-<p>Det är därifrån det dubbla kolonet kommer. Båda skrivsätten fungerar; det korta
-är det vanliga.</p>
+<p><code>this</code> är formuläret. <code>reset()</code> och <code>focus()</code> är vanlig DOM, ingenting
+htmx-specifikt.</p>
 <div class="admonition warning">
 <p class="admonition-title">Till dig som tidigare använt v2</p>
-<p>Eventet heter <code>after:swap</code>. Inte <code>afterSwap</code> — det är htmx 2, och det är
-vad nästan varje handledning och AI-assistent föreslår. Fel stavning ger
-inget felmeddelande. Koden körs bara aldrig.</p>
+<p>Eventet heter <code>htmx:after:swap</code>, inte <code>htmx:afterSwap</code>. <code>htmx:afterSwap</code> är
+htmx 2, och det är vad nästan varje handledning och AI-assistent föreslår.
+Fel stavning ger inget felmeddelande. Koden körs bara aldrig.</p>
 </div>
 <details class="example">
 <summary>Facit</summary>
-<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>      <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>      <span class="na">hx-on::after:swap</span><span class="o">=</span><span class="s">&quot;this.reset()&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new-todo-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/todo-app/todos&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>      <span class="na">hx-post</span><span class="o">=</span><span class="s">&quot;/todo-app/fragments/todos&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>      <span class="na">hx-target</span><span class="o">=</span><span class="s">&quot;#todo-table&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>      <span class="na">hx-swap</span><span class="o">=</span><span class="s">&quot;outerHTML&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>      <span class="na">hx-on:htmx:after:swap</span><span class="o">=</span><span class="s">&quot;this.reset(); this.elements.description.focus()&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
-<p><code>this</code> är formuläret och <code>reset()</code> är vanlig DOM — ingenting htmx-specifikt.</p>
 </details>
-<p>Notera var attributet sitter. Det gäller bara svaren på formulärets egna
-requests. Sorteringen från förra övningen ändrar också innehåll på sidan, men
-den rör inte det här fältet. Hade du i stället lagt en lyssnare på <code>document</code>
-hade halvskriven text försvunnit varje gång någon sorterade.</p>
-<p>Beteendet står på elementet det gäller. För att se vad formuläret gör läser du
-formuläret.</p>
 <div class="admonition note">
 <p class="admonition-title">Den röda ramen då?</p>
 <p>Den ligger kvar efter ett lyckat tillägg, av samma skäl: formuläret renderas
 aldrig om. <code>reset()</code> återställer fältets värde men tar inte bort en
 CSS-klass. Det är inget övningen bygger bort.</p>
 </div>
-<h2 id="nasta-ovning">Nästa övning<a class="headerlink" href="#nasta-ovning" title="Permanent link">&para;</a></h2>
-<p>Två saker är trasiga nu.</p>
-<p>Räknaren i rubriken säger fortfarande samma antal som innan du la till något. Den
-ligger utanför <code>#todo-table</code> och rördes därför aldrig. Den lagas — men inte
-härnäst.</p>
-<p>Den andra är svårare att få syn på: sortera nyast först och lägg till en todo.</p>
-<p>Nästa övning handlar om den.</p>
 
 
 
