@@ -40,11 +40,11 @@ Det innebär också att sökningen fortsätter fungera utan JavaScript. Knappen
 
 1. Öppna `views/todo-app/search-form.liquid` och leta upp
    `<input class="search__input">`.
-2. Lägg till `hx-get="/todo-app"`, samma adress som sorteringen hämtar sedan
+2. Tilldela `hx-get` värdet `/todo-app`, samma adress som sorteringen hämtar sedan
    övning 8.
-3. Lägg till `hx-trigger="input changed delay:300ms"`.
-4. Lägg till `hx-target="#todo-table"`.
-5. Lägg till `hx-swap="outerHTML"`. Svaret är tabellen i sin helhet, inte
+3. Tilldela `hx-trigger` värdet `input changed delay:300ms`.
+4. Tilldela `hx-target` värdet `#todo-table`.
+5. Tilldela `hx-swap` värdet `outerHTML`. Svaret är tabellen i sin helhet, inte
    innehållet i den.
 
 `hx-trigger` är det nya attributet. `input` är webbläsarens eget event, och det triggas

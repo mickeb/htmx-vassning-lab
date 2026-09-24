@@ -25,13 +25,13 @@ rubriken, utan att sidan laddas om.
 ### 1. Lägg till attributen på Complete-knappen
 
 1. Öppna `views/todo-app/todo-row.liquid` och leta upp knappen **Complete**.
-2. Lägg till `hx-post="/todo-app/fragments/todos/{{ todo.id }}/complete"`.
-3. Lägg till `hx-target="closest tr"`. Det är en CSS-selektor och betyder
+2. Tilldela `hx-post` värdet `/todo-app/fragments/todos/{{ todo.id }}/complete`.
+3. Tilldela `hx-target` värdet `closest tr`. Det är en CSS-selektor och betyder
    "närmaste `tr` uppåt från knappen"
    ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)).
    Eftersom värdet är relativt kan alla rader ha exakt samma `hx-target`, och
    du slipper ge varje rad ett unikt `id`.
-4. Lägg till `hx-swap="outerHTML"`.
+4. Tilldela `hx-swap` värdet `outerHTML`.
 
 ??? example "Facit"
 

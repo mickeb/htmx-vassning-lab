@@ -25,10 +25,10 @@ ger ett synligt fel på rätt ställe.
 ### 1. Lägg till attributen på formuläret
 
 1. Öppna `views/todo-app/new-todo-form.liquid` och leta upp `<form>`-taggen.
-2. Lägg till `hx-post="/todo-app/fragments/todos"`. Det är samma sak som
+2. Tilldela `hx-post` värdet `/todo-app/fragments/todos`. Det är samma sak som
    sorteringen i övning 2, med en `POST` i stället för en `GET`.
-3. Lägg till `hx-target="#todo-table"`.
-4. Lägg till `hx-swap="outerHTML"`. Det som kommer tillbaka är hela tabellen,
+3. Tilldela `hx-target` värdet `#todo-table`.
+4. Tilldela `hx-swap` värdet `outerHTML`. Det som kommer tillbaka är hela tabellen,
    återigen som i övning 2.
 
 !!! note "Formulär postas som vanligt"

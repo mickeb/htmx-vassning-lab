@@ -40,7 +40,7 @@ Konsekvenserna märks först när någon gör något vanligt:
 ### 1. Lägg till `hx-push-url` på sorteringslänken
 
 1. Öppna `views/todo-app/todo-table.liquid` och leta upp sorteringslänken.
-2. Lägg till `hx-push-url="true"`. Det betyder "lägg adressen du hämtade i
+2. Tilldela `hx-push-url` värdet `true`. Det betyder "lägg adressen du hämtade i
    historiken".
 
 !!! note "Det här hade inte fungerat före förra övningen"

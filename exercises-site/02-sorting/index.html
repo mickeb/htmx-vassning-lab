@@ -862,8 +862,8 @@ listan byter ordning utan att sidan laddas om.</p>
 <li>Lägg till <code>hx-get</code>. Adressen är <code>/todo-app/fragments/table</code> följd av
    query stringen från <code>href</code>, kopierad rakt av. Det är query stringen som
    skickar med sorteringen.</li>
-<li>Lägg till <code>hx-target="#todo-table"</code>.</li>
-<li>Lägg till <code>hx-swap="outerHTML"</code>. Fragmentet som kommer tillbaka är hela
+<li>Tilldela <code>hx-target</code> värdet <code>#todo-table</code>.</li>
+<li>Tilldela <code>hx-swap</code> värdet <code>outerHTML</code>. Fragmentet som kommer tillbaka är hela
    <code>&lt;div id="todo-table"&gt;</code>, samma element som redan står på sidan, så det ska
    ersätta elementet och inte läggas inuti det. Med <code>innerHTML</code> hade du fått en
    <code>#todo-table</code> inuti en <code>#todo-table</code>.</li>

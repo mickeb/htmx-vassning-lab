@@ -959,10 +959,10 @@ ger ett synligt fel på rätt ställe.</p>
 <h3 id="1-lagg-till-attributen-pa-formularet">1. Lägg till attributen på formuläret<a class="headerlink" href="#1-lagg-till-attributen-pa-formularet" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Öppna <code>views/todo-app/new-todo-form.liquid</code> och leta upp <code>&lt;form&gt;</code>-taggen.</li>
-<li>Lägg till <code>hx-post="/todo-app/fragments/todos"</code>. Det är samma sak som
+<li>Tilldela <code>hx-post</code> värdet <code>/todo-app/fragments/todos</code>. Det är samma sak som
    sorteringen i övning 2, med en <code>POST</code> i stället för en <code>GET</code>.</li>
-<li>Lägg till <code>hx-target="#todo-table"</code>.</li>
-<li>Lägg till <code>hx-swap="outerHTML"</code>. Det som kommer tillbaka är hela tabellen,
+<li>Tilldela <code>hx-target</code> värdet <code>#todo-table</code>.</li>
+<li>Tilldela <code>hx-swap</code> värdet <code>outerHTML</code>. Det som kommer tillbaka är hela tabellen,
    återigen som i övning 2.</li>
 </ol>
 <div class="admonition note">

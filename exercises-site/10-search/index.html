@@ -1001,11 +1001,11 @@ sökning.</p>
 <ol>
 <li>Öppna <code>views/todo-app/search-form.liquid</code> och leta upp
    <code>&lt;input class="search__input"&gt;</code>.</li>
-<li>Lägg till <code>hx-get="/todo-app"</code>, samma adress som sorteringen hämtar sedan
+<li>Tilldela <code>hx-get</code> värdet <code>/todo-app</code>, samma adress som sorteringen hämtar sedan
    övning 8.</li>
-<li>Lägg till <code>hx-trigger="input changed delay:300ms"</code>.</li>
-<li>Lägg till <code>hx-target="#todo-table"</code>.</li>
-<li>Lägg till <code>hx-swap="outerHTML"</code>. Svaret är tabellen i sin helhet, inte
+<li>Tilldela <code>hx-trigger</code> värdet <code>input changed delay:300ms</code>.</li>
+<li>Tilldela <code>hx-target</code> värdet <code>#todo-table</code>.</li>
+<li>Tilldela <code>hx-swap</code> värdet <code>outerHTML</code>. Svaret är tabellen i sin helhet, inte
    innehållet i den.</li>
 </ol>
 <p><code>hx-trigger</code> är det nya attributet. <code>input</code> är webbläsarens eget event, och det triggas

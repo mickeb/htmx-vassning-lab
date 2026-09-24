@@ -915,13 +915,13 @@ rubriken, utan att sidan laddas om.</p>
 <h3 id="1-lagg-till-attributen-pa-complete-knappen">1. Lägg till attributen på Complete-knappen<a class="headerlink" href="#1-lagg-till-attributen-pa-complete-knappen" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Öppna <code>views/todo-app/todo-row.liquid</code> och leta upp knappen <strong>Complete</strong>.</li>
-<li>Lägg till <code>hx-post="/todo-app/fragments/todos/{{ todo.id }}/complete"</code>.</li>
-<li>Lägg till <code>hx-target="closest tr"</code>. Det är en CSS-selektor och betyder
+<li>Tilldela <code>hx-post</code> värdet <code>/todo-app/fragments/todos/{{ todo.id }}/complete</code>.</li>
+<li>Tilldela <code>hx-target</code> värdet <code>closest tr</code>. Det är en CSS-selektor och betyder
    "närmaste <code>tr</code> uppåt från knappen"
    (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">MDN</a>).
    Eftersom värdet är relativt kan alla rader ha exakt samma <code>hx-target</code>, och
    du slipper ge varje rad ett unikt <code>id</code>.</li>
-<li>Lägg till <code>hx-swap="outerHTML"</code>.</li>
+<li>Tilldela <code>hx-swap</code> värdet <code>outerHTML</code>.</li>
 </ol>
 <details class="example">
 <summary>Facit</summary>

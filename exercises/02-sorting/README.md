@@ -31,8 +31,8 @@ listan byter ordning utan att sidan laddas om.
 2. Lägg till `hx-get`. Adressen är `/todo-app/fragments/table` följd av
    query stringen från `href`, kopierad rakt av. Det är query stringen som
    skickar med sorteringen.
-3. Lägg till `hx-target="#todo-table"`.
-4. Lägg till `hx-swap="outerHTML"`. Fragmentet som kommer tillbaka är hela
+3. Tilldela `hx-target` värdet `#todo-table`.
+4. Tilldela `hx-swap` värdet `outerHTML`. Fragmentet som kommer tillbaka är hela
    `<div id="todo-table">`, samma element som redan står på sidan, så det ska
    ersätta elementet och inte läggas inuti det. Med `innerHTML` hade du fått en
    `#todo-table` inuti en `#todo-table`.
